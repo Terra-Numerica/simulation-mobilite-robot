@@ -24,8 +24,6 @@ var DrawingAnt = /** @class */ (function (_super) {
         _this.canvas.width = document.getElementById("playPanel").offsetWidth;
         _this.canvas.height = document.getElementById("playPanel").offsetHeight;
         
-        // _this.canvas.width = window.innerWidth * 0.75;
-        // _this.canvas.height = window.innerHeight * 0.9;
         // _this.canvas.style.width = "auto";
         // _this.canvas.style.height = "auto";
         // _this.canvas.style.margin = '0';

@@ -24,7 +24,7 @@ let sizeScreenHeight;
 // Allow use button instead of checkbox
 let drawAllPathOn = true;
 
-
+let saveFirstDrawApp;
 
 //Change the space between two ants with html
 function changeAntSpacing(element) {
@@ -91,6 +91,10 @@ function drawAllPaths(element) {
     }
 }
 window.onload = function () {
+
+    // sert à sauvegarder le chemin d'origine
+    saveFirstDrawApp = new DrawingApp();
+
     //create canvas and set background
     d = new DrawingApp();
     //creation of the chart
@@ -158,6 +162,10 @@ window.onload = function () {
             sizeScreenHeight = window.innerHeight;
             sizeScreenWidth = window.innerWidth;
 
+            // Functipon unfound ???
+            // saveFirstDrawApp = structuredClone(d); 
+            Object.assign(saveFirstDrawApp, d);
+
             setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
         }
         else {
@@ -185,6 +193,46 @@ function defaultValueRange(element){
     return Math.round((element.max < element.min) ? element.min : Number(element.min) + ((element.max - element.min)/2))
 }
 
+let resizeEvent = false;
+
+window.addEventListener("resize", () => {
+    // this listener has been made to replaced the CSS that does'not work
+    // le canvas doit être entièremenet reconstuit pour évider de graphiquement disparaitre
+
+    if (window.innerWidth >= 900) {
+        let controlPanel = document.getElementById("controlPanel");
+        if (controlPanel.style.display != "block") {
+            controlPanel.style.display = "block";
+        }
+    }
+
+    resizeEvent = true;
+
+    // let saveX = d.clickX;
+    // let saveY = d.clickY;
+    // d = new DrawingApp();
+    // d.clickX = saveX;
+    // d.clickY = saveY;
+
+    // let d = new DrawingApp();
+    let playPanel = document.getElementById("playPanel");
+    let playGround = document.getElementById("playGround");
+    playGround.width = playPanel.offsetWidth;
+    playGround.height = playPanel.offsetHeight;
+    
+    saveFirstDrawApp.redraw()
+
+    // let playPanel = document.getElementById("playPanel");
+    // let newPlayGround = document.getElementById("playGround");
+    // console.log("newPlayGround", newPlayGround);
+    // newPlayGround.width = playPanel.offsetWidth;
+    // newPlayGround.height = playPanel.offsetHeight;
+    // console.log("newPlayGround", newPlayGround);
+    // document.getElementById("playGround").remove();
+    // document.getElementById("playPanel").appendChild(newPlayGround);
+    
+
+});
 
 
 /**
@@ -195,35 +243,6 @@ function defaultValueRange(element){
  * @param {number} firstY coord of thestart of  path
  */
 function startAnts(First, Space, firstX, firstY) {
-
-    // let ratioWidth = window.innerWidth/sizeScreenWidth;
-    // let ratioHeight =window.innerHeight/sizeScreenHeight;
-
-    // // Evite de tout recompute si ratio = 1
-    // if(ratioWidth !=1){
-    //     sizeScreenWidth = window.innerWidth;
-    //     for(let i = 0; i < Space.clickX.length; i++) {
-    //         Space.clickX[i] *= ratioWidth;
-    //     }
-    //     console.log("Resize ratioWidth: " + ratioWidth);
-    //     console.log("FirstX: " + firstX);
-    //     firstX *= ratioWidth;
-    //     console.log("Next X: " + firstX);
-    //     firstAnt.move(firstX, firstY);
-    // }
-
-    // // Evite de tout recompute si ratio = 1
-    // if(ratioHeight != 1){
-    //     sizeScreenHeight = window.innerHeight;
-    //     for(let i = 0; i < Space.clickY.length; i++) {
-    //         Space.clickY[i] *= ratioHeight;
-    //     }
-    //     console.log("Resize ratioHeight: " + ratioHeight);
-    //     console.log("FirstY: " + firstY);
-    //     firstY*= ratioHeight;
-    //     console.log("NextY: " + firstY);
-    //     firstAnt.move(firstX, firstY);
-    // }
 
     //create an ant if none are left
     if (futurAnts.length == 0) {
@@ -302,6 +321,8 @@ function startAnts(First, Space, firstX, firstY) {
     if (!Pause) {
         setTimeout(startAnts, 10, firstAnt, Space, firstX, firstY);
     }
+
+    
 }
 
 
