@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ant simulation</title>
+
+    <script type="text/javascript" src ="./library/gif.js.optimized/dist/gif.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src ="./js/Ant.js" ></script>
+    <script src ="./js/DrawingAnt.js" ></script>
+    <script src ="./js/ImageTS.js" ></script>
+    <script src ="./js/canvas.js" ></script>
+    <script src ="./js/curve.js" ></script>
+
+    <link rel="stylesheet" href="./css/mystyle.css">
+
+
+</head>
+<body>
+    <canvas id="canvas" >
+    </canvas>
+        <div class="terraNcontainer">
+            <a href="http://terra-numerica.org/"  target="_blank"> <img src="./assets/terra-numerica-logo.png" class="terraNumerica"> </a>
+        </div>
+
+        <div class="controlPanel">
+
+            <h1>Control Panel</h1>
+
+            <div id="sliderContainer">
+                <div class="slidecontainer">
+                    Speed selection
+                    <input class='speedSelect, slider'  type="range" id="speed" name="speed" min="1" max="10" oninput="changeSpeed(this)" value="1">
+                </div>
+
+                <div class="slidecontainer">
+                    Spacing
+                    <input class="spaceSelect, slider" type="range" id="spacing" name='spacing' min="1" max="3" value="1" oninput="changeGap2(this)">
+                </div>
+
+                <div class="slidecontainer">
+                    Path selection
+                    <input class='pathDrawing, slider' type="range" id="pathDrawing" name="path" min="-1" max="-1" oninput="drawPath(this)" value="-1">
+                </div>
+
+                <div class="slidecontainer">
+                    Path precision
+                    <input class="spaceSelect, slider" type="range" id="pathPrecision" name='preicision' min="-1" max="-1" value="-1" oninput="precisionPath(this)">
+                </div>
+            </div>
+
+            <div id="buttonContainer">
+                <div id="buttonLine1">
+                    <button class="pauseButton" id="pauseButton" onclick="pauseDraw(this)">Pause</button>
+                    <button class="endButton1" id="resetButton" onclick="EndScreenOne(this)">Download 1</button>
+                </div>
+                <div id="buttonLine2">
+                    <button class="resetButton" onclick="resetDraw(this)">Reset</button>
+                    <button class="endButton2" id="resetButton" onclick="EndScreenTwo(this)">Download 2</button>
+                </div>
+
+                <!--<select id='gapSelect' class="select" onchange="changeGap(this)">
+                    <option value="30">Spacing</option>
+                    <option value="30"> Small</option>
+                    <option value="65"> Medium </option>
+                    <option value="100"> Large </option>
+                </select>-->
+            </div>
+
+
+            <div class="chartWrapper">
+                <canvas id="curve" class="curveCanvas"></canvas>
+            </div>
+        
+    </div>
+    
+</body>
+</html>

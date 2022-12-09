@@ -1,0 +1,198 @@
+body{
+    margin: 0px;
+    background-color: #A0522D;
+}
+
+* {
+    font-family: "Power Red and Green", serif;
+}
+
+h1{
+    margin-top: 2px;
+    margin-bottom: 10px;
+    padding-top: 2px;
+    font-size:3em;
+    text-align: center;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+.controlPanel{
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    top: 0%;
+    height: 100%;
+    width: 25%;
+    left: 75%;
+    outline:10px solid black;
+    /* background-color: #0652DD; */
+    background-color: #efefef;
+    box-shadow: 0 0 25px black;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
+}
+#buttonLine1, #buttonLine2 {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.select, .endButton1, .endButton2, .resetButton, .pauseButton {
+    /*position: absolute;*/
+    transform: translateX(-50%) translateY(-50%);
+    border: none;
+    color: white;
+    width:25%;
+    height:5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    background-color: #585858;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color .1s, transform .2s;
+    box-shadow: 0 0 2px black;
+}
+
+.select:hover, .endButton1:hover, .endButton2:hover, .resetButton:hover, .pauseButton:hover{
+    background-color: #282828;
+}
+
+.select:active, .endButton1:active, .endButton2:active, .resetButton:active, .pauseButton:active {
+    transform: translateX(-50%) translateY(-50%) scaleX(.9) scaleY(.9);
+}
+
+.select{
+    left: 20%;
+    top: 32%;
+}
+
+.pauseButton{
+    left: 50%;
+    top: 32%;
+}
+
+.endButton1{
+    left: 20%;
+    top: 40%;
+}
+
+.endButton2{
+    left: 50%;
+    top: 40%;
+}
+
+.resetButton {
+    left: 80%;
+    top: 40%;
+}
+
+
+
+.btTop {
+    transform: translateX(-50%) translateY(-50%);
+    position:absolute;
+    left: 20%;
+    top: 25%;
+}
+
+.checkbox {
+    cursor: pointer;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////// */
+/* SLIDER | SLIDER | SLIDER | SLIDER |SLIDER */
+
+
+/* The slider itself */
+.speedSelect, .pathDrawing {
+    vertical-align: middle;
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    position: sticky;
+    width:62.5%; /* Full-width */
+    height: 2%; /* Specified height */
+    background: #818181; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+}
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* /////////////////////////////////////////////////////////////////////////////// */
+
+.chartWrapper {
+    position:absolute;
+    background-color: white;
+    top: 50%;
+    /* left:0; */
+    width:100%; 
+    height:50%; 
+    outline:10px solid black;
+    /* border: solid; */
+}
+
+.terraNcontainer{
+    transform: translateX(-50%) translateY(-50%);
+    left:37.5%;
+    position:absolute;
+    top:95%;
+    width: 75%;
+    height: 10%;
+    outline:10px solid black;
+    background-color: white;
+
+}
+
+.terraNumerica{
+    position:absolute;
+    left:50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width:auto;
+    cursor: pointer;
+}
