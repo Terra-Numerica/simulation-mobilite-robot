@@ -110,17 +110,16 @@ button:hover{
     min-height : 1.2rem;
 
 }
+.startButton1:hover, .startButton2:hover {
+    color: white;
+}
 
 
-
-.modalDialog {
-    position: fixed;
+.modalDialog1 {
+    position: absolute;
     font-family: Arial, Helvetica, sans-serif;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.1);
+    left: -20%;
+    top: 36%;
     z-index: 99999;
     opacity: 0;
     -webkit-transition: opacity 400ms ease-in;
@@ -128,19 +127,33 @@ button:hover{
     transition: opacity 400ms ease-in;
     pointer-events: none;
 }
-.modalDialog:target {
+
+.modalDialog2 {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    left: -20%;
+    top: -3%;
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+.modalDialog1:target, .modalDialog2:target {
     opacity: 1;
     pointer-events: auto;
 }
-.modalDialog > div {
-    width: 400px;
+.modalDialog1 > div, .modalDialog2 > div {
+    width: 450px;
     position: relative;
     margin: 10% auto;
     padding: 5px 20px 13px 20px;
     border-radius: 10px;
-    background: -moz-linear-gradient(#2edbe8, #01a6b2);
-    background: -webkit-linear-gradient(#2edbe8, #01a6b2);
-    background: -o-linear-gradient(#2edbe8, #01a6b2);
+    background: -moz-linear-gradient(#01a6b2, #2edbe8);
+    background: -webkit-linear-gradient(#01a6b2, #2edbe8);
+    background: -o-linear-gradient(#01a6b2, #2edbe8);
 }
 .close {
     background: #606061;

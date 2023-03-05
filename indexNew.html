@@ -25,10 +25,10 @@
                             <div id="button1">
                                 <button class="startButton1" onclick="window.location.href='./Ant1/index.html';">Walking simulation</button>
                                     <a href="#openModalWalkingSim"><img src="Ant1/assets/buttonInfo.png" alt="Button information" class="buttonInfo"></a>
-                                    <div id="openModalWalkingSim" class="modalDialog">
+                                    <div id="openModalWalkingSim" class="modalDialog1">
                                         <div>
                                             <a href="#close" title="Close" class="close">X</a>
-                                            <h2>Information about Walking Simulation</h2>
+                                            <h2><u>Information about Walking Simulation</u></h2>
                                             <p>This game will allow you to understand how the movement of ants works</p>
                                         </div>
                                     </div>
@@ -39,10 +39,10 @@
                                 <button class="startButton2" onclick="window.location.href='./Ant2/index.html';">Pheromones simulation</button>
 
                                     <a href="#openModalPheromones"><img src="Ant1/assets/buttonInfo.png" alt="Button information" class="buttonInfo"></a>
-                                    <div id="openModalPheromones" class="modalDialog">
+                                    <div id="openModalPheromones" class="modalDialog2">
                                         <div>
                                             <a href="#close" title="Close" class="close">X</a>
-                                            <h2>Information about Pheromones Simulation</h2>
+                                            <h2><u>Information about Pheromones Simulation</u></h2>
                                             <p>To be determined</p>
                                         </div>
                                     </div>
@@ -55,7 +55,7 @@
         <script>
             var granimInstance = new Granim({
                 element: '#canvas-basic',
-                direction: 'left-right',
+                direction: 'top-bottom',
                 isPausedWhenNotInView: true,
                 states : {
                     "default-state": {

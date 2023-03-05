@@ -1,6 +1,6 @@
 body{
     margin: 0px;
-    background-color: #A0522D;
+    background-color: #99582A;
 }
 
 * {
@@ -17,94 +17,87 @@ h1{
     text-underline-position: under;
 }
 
+.labelControlPanel {
+    font-size:1.2em;
+}
 .controlPanel{
     display: flex;
     flex-direction: column;
     position:absolute;
-    top: 0%;
     height: 100%;
     width: 25%;
     left: 75%;
     outline:10px solid black;
-    /* background-color: #0652DD; */
+    /*background-color: #0652DD;*/
     background-color: #efefef;
     box-shadow: 0 0 25px black;
 }
 
-.buttonContainer {
+
+#buttonContainer {
     display: flex;
     flex-direction: column;
-    background-color: pink;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    height: 8%;
+    /*background-color: red;*/
+
 }
-#buttonLine1, #buttonLine2 {
-    display: flex;
-    flex-direction: row;
-}
 
-
-
-.select, .endButton1, .endButton2, .resetButton, .pauseButton {
-    /*position: absolute;*/
-    transform: translateX(-50%) translateY(-50%);
+.endButton1, .endButton2, .resetButton, .pauseButton{
     border: none;
     color: white;
-    width:25%;
-    height:5%;
-    text-align: center;
-    text-decoration: none;
     display: inline-block;
-    font-size: 1em;
-    background-color: #585858;
+    font-size: 1.15em;
+    background-color: #4f4f4f;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color .1s, transform .2s;
-    box-shadow: 0 0 2px black;
 }
 
-.select:hover, .endButton1:hover, .endButton2:hover, .resetButton:hover, .pauseButton:hover{
-    background-color: #282828;
+#buttonLine2 {
+    padding-top: 6px;
 }
 
-.select:active, .endButton1:active, .endButton2:active, .resetButton:active, .pauseButton:active {
-    transform: translateX(-50%) translateY(-50%) scaleX(.9) scaleY(.9);
+.endButton1, .endButton2 {
+    margin-left: 40px;
+    padding: 1px 15px;
 }
 
-.select{
-    left: 20%;
-    top: 32%;
+.pauseButton, .resetButton {
+    padding: 1px 15px;
 }
 
-.pauseButton{
-    left: 50%;
-    top: 32%;
+.endButton1:hover, .endButton2:hover, .resetButton:hover, .pauseButton:hover, #allPath:hover {
+    background-color: #1c1c1c;
 }
-
-.endButton1{
-    left: 20%;
-    top: 40%;
-}
-
-.endButton2{
-    left: 50%;
-    top: 40%;
-}
-
-.resetButton {
-    left: 80%;
-    top: 40%;
-}
-
 
 
 .btTop {
     transform: translateX(-50%) translateY(-50%);
+    padding-top: 35px;
     position:absolute;
     left: 20%;
-    top: 25%;
+    top: 35%;
 }
 
 .checkbox {
     cursor: pointer;
+}
+#allPath {
+    border: none;
+    color: white;
+    display: inline-block;
+    font-size: 1.1em;
+    background-color: #4f4f4f;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 3px 6px;
+}
+#drawMain {
+    visibility: hidden;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////// */
@@ -131,7 +124,7 @@ h1{
 
 .slider {
     -webkit-appearance: none;
-    width: 100%;
+    width: 65%;
     height: 15px;
     border-radius: 5px;
     background: #d3d3d3;
@@ -165,6 +158,132 @@ h1{
 
 /* /////////////////////////////////////////////////////////////////////////////// */
 
+
+
+
+
+/* ////////////////////////////////////////////////////////////////////////////// */
+
+.buttonInfo{
+    position: absolute;
+    top: 19.5%;
+    left: 77%;
+    width: 2.7rem;
+    height: 2.7rem;
+    min-width : 1.5rem;
+    min-height : 1.5rem;
+}
+
+.buttonTuto{
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    min-width : 2rem;
+    min-height : 2rem;
+}
+
+.buttonAboutAnts{
+    position: absolute;
+    top: 82%;
+    left: 62%;
+    width: 10.2rem;
+    height: 2.5rem;
+}
+
+
+.modalDialog1 {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    left: -125%;
+    top: 0;
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+.modalDialog2 {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    left: 0;
+    top: -5.4%;
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+.modalDialog3 {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    left: 42%;
+    top: 22%;
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+.modalDialog1:target, .modalDialog2:target, .modalDialog3:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modalDialog1 > div {
+    width: 380px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: -moz-linear-gradient(#01a6b2, #2edbe8);
+    background: -webkit-linear-gradient(#01a6b2, #2edbe8);
+    background: -o-linear-gradient(#01a6b2, #2edbe8);
+}
+
+.modalDialog2 > div, .modalDialog3 > div {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: -moz-linear-gradient(#f09535, #ffa500);
+    background: -webkit-linear-gradient(#f09535, #ffa500);
+    background: -o-linear-gradient(#f09535, #ffa500);
+}
+
+.close {
+    background: #606061;
+    color: #ffffff;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+    background: #6ed1d8;
+}
+
+
+/* //////////////////////////////////////////////////////// */
+
+
+
 .chartWrapper {
     position:absolute;
     background-color: white;
@@ -174,6 +293,13 @@ h1{
     height:50%; 
     outline:10px solid black;
     /* border: solid; */
+}
+
+.slidecontainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    margin-left: 1.2rem;
 }
 
 .terraNcontainer{
