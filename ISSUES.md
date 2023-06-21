@@ -1,11 +1,13 @@
 Liste de problème :
 
 1) la valeur du curseur de speed doit être actualiser à chaque tracé de chemin pour être pris en compte
+DONE
 2) pas de multi langue
 3) Gros souscis d'optimisations
 4) All path on --> crash 
 5) Boutton allPath perdu au milieu de rien
 6) Backgroubnd en fond marron --> dégueuallase (mettre png ?)
+Done
 7) Path leng devient barré quand on clique dessus, Pourquoi ???
 8) Boutton (i) en plein milieu de nul part
 9) Le "TerraNumerica" à l'air d'être posé un peu gratuitement
@@ -24,6 +26,8 @@ Liste de problème :
 22) Agnimation de décradé de dcouleur du background --> use just à faire rammer
 
 23) PATH SELECTION PAS DU TOUT CLAIRE : en fait : le curseur =  n° du le chemin de fourmi sélectionnée
+
+24) Les fourmis + chemin non responsive
 
 IDEA :
 - Rendre le tuto obligatoire 

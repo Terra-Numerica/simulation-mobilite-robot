@@ -1,6 +1,8 @@
 body{
     margin: 0px;
-    background-color: #99582A;
+    /* background-color: #99582A; */
+    background-image: url("./../img/ground.jpg");
+    background-attachment: fixed;
 }
 
 * {
@@ -208,7 +210,9 @@ h1{
     position: absolute;
     font-family: Arial, Helvetica, sans-serif;
     left: 0;
-    top: -5.4%;
+    /* top: -5.3%; */
+    top: -38px;
+    left: 7px;
     z-index: 99999;
     opacity: 0;
     -webkit-transition: opacity 400ms ease-in;

@@ -63,12 +63,17 @@ function drawMainPaths(element) {
     }
 }
 function drawAllPaths(element) {
-    for (var i_4 = 0; i_4 < canvasTab.length; i_4++) {
+    // pour éviter de surcharger -> pas plus de 200 path
+    // TODO : y a un problème , ça en affiche x, puis la limite est doublé si on reclick ???
+    let limite = (canvasTab.length < 1000) ? canvasTab.length : 1000;
+
+    for (var i_4 = 0; i_4 < limite; i_4++) {
         canvasTab[i_4].style.opacity = '0';
+        
     }
     if (element.checked) {
         document.getElementById('drawMain').checked = false;
-        for (var i_5 = 0; i_5 < canvasTab.length; i_5++) {
+        for (var i_5 = 0; i_5 < limite; i_5++) {
             canvasTab[i_5].style.opacity = '1';
         }
     }
@@ -88,7 +93,7 @@ window.onload = function () {
                     backgroundColor: [
                         'rgba(0, 0, 0)'
                     ],
-                    label: 'Path\'s lenght',
+                    label: 'Path\'s length of each ant',
                     data: []
                 }]
         },
@@ -101,9 +106,20 @@ window.onload = function () {
             borderColor: 'rgb(0,0,0,1)',
             maintainAspectRatio: false,
             scales: {
+                x:{
+                    title: {
+                        display: true,
+                        text: "Ant"
+                    }
+                },
                 y: {
+                    title: {
+                        display: true,
+                        text: 'Path\'s length (AU)' // Arbitrary Unit
+                      },
                     min: 0
-                }
+                },
+                
             },
             animation: {
                 duration: 0
@@ -121,7 +137,8 @@ window.onload = function () {
             firstX = d.clickX[0];
             firstY = d.clickY[0];
             //Print the anthill
-            var anthill = new Ant('./assets/anthill.png', 50, 50);
+            // var anthill = new Ant('./assets/anthill.png', 50, 50);
+            var anthill = new Ant('./img/fourmiliere_cut.png', 50, 50);
             anthill.moove(firstX, firstY);
             document.body.appendChild(anthill.img);
             //init array containing all the ants
@@ -138,16 +155,22 @@ window.onload = function () {
 
 
     // //Re Set la valeur de speed/gap value par défaut au chargement pour être égale à celle du curseur
+    
     let speedInput = document.getElementById('speed');
-    speedInput.value = changeSpeed(speedInput);
+    speedInput.value = defaultValueRange(speedInput);
+    changeSpeed(speedInput); 
+
     let gapInput = document.getElementById("gapSelect");
-    gapInput.value = changeGap(gapInput);
-    let pathSelectionInput = document.getElementById("pathDrawing");
-    pathSelectionInput.value = drawPath(pathSelectionInput);
-
-
-
+    gapInput.value = defaultValueRange(gapInput);
+    changeGap(gapInput);
+    
+    // Pas touche au path selection 
 };
+
+function defaultValueRange(element){
+    return Math.round((element.max < element.min) ? element.min : Number(element.min) + ((element.max - element.min)/2))
+}
+
 function startAnts(First, Space, firstX, firstY) {
     //create an ant if none are left
     if (futurAnts.length == 0) {
@@ -162,9 +185,12 @@ function startAnts(First, Space, firstX, firstY) {
             //change the first ant in food at the end and add the lenght of its path
             if (!(Math.abs(First.x - Space.clickX[0]) > 1 && Math.abs(First.y - Space.clickY[0]) > 1)) {
                 Space.removeFirstOne();
-                First.img.src = './assets/strawberry.png';
-                First.img.style.width = 70 + 'px';
-                First.img.style.height = 55 + 'px';
+                // First.img.src = './assets/strawberry.png';
+                First.img.src = './img/fraise_trans.png';
+                // First.img.style.width = 70 + 'px';
+                // First.img.style.height = 55 + 'px';
+                First.img.style.width = 80 + 'px';
+                First.img.style.height = 80 + 'px';
                 First.img.style.transform = 'translateX(' + -50 + '%) translateY(' + -50 + '%) rotate(' + (0) + 'deg) ';
                 updateSample(First.distance);
             }
