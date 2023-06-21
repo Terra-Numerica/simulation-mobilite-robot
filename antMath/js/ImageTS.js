@@ -3,7 +3,9 @@ var firstAnt = new Ant('./assets/ant.png', 30, 30);
 var futurAnts = new Array();
 var draw = true;
 var gap = 30;
+
 var speedAnt = 1;
+
 var d;
 var firstAntDelay;
 var chart;
@@ -132,6 +134,19 @@ window.onload = function () {
             //draw = true;
         }
     });
+
+
+
+    // //Re Set la valeur de speed/gap value par défaut au chargement pour être égale à celle du curseur
+    let speedInput = document.getElementById('speed');
+    speedInput.value = changeSpeed(speedInput);
+    let gapInput = document.getElementById("gapSelect");
+    gapInput.value = changeGap(gapInput);
+    let pathSelectionInput = document.getElementById("pathDrawing");
+    pathSelectionInput.value = drawPath(pathSelectionInput);
+
+
+
 };
 function startAnts(First, Space, firstX, firstY) {
     //create an ant if none are left

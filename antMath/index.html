@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ant simulation : Math</title>
 
-    <script type="text/javascript" src ="./library/gif.js.optimized/dist/gif.js"></script>
+    <script type="text/javascript" src="./library/gif.js.optimized/dist/gif.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-    <script src ="./js/Ant.js" ></script>
-    <script src ="./js/DrawingAnt.js" ></script>
-    <script src ="./js/ImageTS.js" ></script>
-    <script src ="./js/canvas.js" ></script>
-    <script src ="./js/curve.js" ></script>
+    <script src="./js/Ant.js"></script>
+    <script src="./js/DrawingAnt.js"></script>
+    <script src="./js/ImageTS.js"></script>
+    <script src="./js/canvas.js"></script>
+    <script src="./js/curve.js"></script>
 
     <link rel="stylesheet" href="./css/mystyle.css">
 
@@ -21,10 +22,9 @@
 
 
 </head>
+
 <body>
     <canvas id="canvas"></canvas>
-
-
 
     <a href="#openModalTuto"><img src="assets/tuto.png" alt="Button information" class="buttonTuto"></a>
     <div id="openModalTuto" class="modalDialog2">
@@ -33,11 +33,13 @@
             <h2><u>Tutorial about the simulation</u></h2>
             <p>This is a tutorial to understand this simulation</p>
             <p>The brown part is where the simulation will take place.
-            To start it, just draw a line which will represent the path taken by the first ant.<br>
-            Clicking on the mouse will therefore define the starting point and releasing it will place the end point for all ants.</p>
-            <p>At the top right is the Control Panel which will allow you to modify the parameters of the simulation.</p>
+                To start it, just draw a line which will represent the path taken by the first ant.<br>
+                Clicking on the mouse will therefore define the starting point and releasing it will place the end point
+                for all ants.</p>
+            <p>At the top right is the Control Panel which will allow you to modify the parameters of the simulation.
+            </p>
             <p>At the bottom right is a graph which, depending on the number of the ant,
-            shows you the number of steps it has taken to go from the starting point to the finishing point. </p>
+                shows you the number of steps it has taken to go from the starting point to the finishing point. </p>
         </div>
     </div>
 
@@ -50,88 +52,99 @@
             <p>The first ant is the one who will lead the group and each ant follows the one in front of it.
                 So the 100th ant will probably not take the same path as the 1st.</p>
             <p>Moreover, the ants are not moving at the same speed, the gap between the ants fluctuate.<br>
-                And as we can see in this simulation, the greater the gap is between two ants, the faster the shortest path will be found.</p>
-            <p>This simulation is interesting from an algorithmic point of view because it reflects part of the shortest path problem in Computer Science.</p>
+                And as we can see in this simulation, the greater the gap is between two ants, the faster the shortest
+                path will be found.</p>
+            <p>This simulation is interesting from an algorithmic point of view because it reflects part of the shortest
+                path problem in Computer Science.</p>
 
         </div>
     </div>
 
-        <div class="terraNcontainer">
-            <a href="http://terra-numerica.org/"  target="_blank"> <img src="./assets/terra-numerica-logo.png" class="terraNumerica"> </a>
+    <div class="terraNcontainer">
+        <a href="http://terra-numerica.org/" target="_blank"> <img src="./assets/terra-numerica-logo.png"
+                class="terraNumerica"> </a>
+    </div>
+
+    <div class="controlPanel">
+
+        <h1>Control Panel</h1>
+
+
+        <a href="#openModalControlPanel"><img src="assets/buttonInfo.png" alt="Button information"
+                class="buttonInfo"></a>
+        <div id="openModalControlPanel" class="modalDialog1">
+            <div>
+                <a href="#close" title="Close" class="close">X</a>
+                <h2><u>Information about the Control Panel</u></h2>
+                <p>This Control Panel will allow you to modify the parameters on the Simulation</p>
+                <p><u>Speed Selection:</u> Allows you to change the speed of the ants</p>
+                <p><u>Spacing Selection:</u> Allows you to modify the space between each ant (small, medium, large)</p>
+                <p><u>All Path:</u> Allows you to display all the paths of each ants</p>
+                <p><u>Pause Button:</u> Allows you to pause the simulation</p>
+                <p><u>Reset Button:</u> Allows you to reset the simulation</p>
+                <p><u>Download:</u> Allows you to download the current simulation in Gif format with 2 different links
+                </p>
+            </div>
         </div>
 
-        <div class="controlPanel">
-
-            <h1>Control Panel</h1>
 
 
-            <a href="#openModalControlPanel"><img src="assets/buttonInfo.png" alt="Button information" class="buttonInfo"></a>
-            <div id="openModalControlPanel" class="modalDialog1">
-                <div>
-                    <a href="#close" title="Close" class="close">X</a>
-                    <h2><u>Information about the Control Panel</u></h2>
-                    <p>This Control Panel will allow you to modify the parameters on the Simulation</p>
-                    <p><u>Speed Selection:</u> Allows you to change the speed of the ants</p>
-                    <p><u>Spacing Selection:</u> Allows you to modify the space between each ant (small, medium, large)</p>
-                    <p><u>All Path:</u> Allows you to display all the paths of each ants</p>
-                    <p><u>Pause Button:</u> Allows you to pause the simulation</p>
-                    <p><u>Reset Button:</u> Allows you to reset the simulation</p>
-                    <p><u>Download:</u> Allows you to download the current simulation in Gif format with 2 different links</p>
-                </div>
+
+
+
+        <div id="sliderContainer">
+            <div class="slidecontainer">
+                <div class="labelControlPanel">Speed selection :</div>
+                <input class='speedSelect, slider' type="range" id="speed" name="speed" min="1" max="10"
+                    oninput="changeSpeed(this)" value="1">
+                    <!-- default value useless car compute au chargement du dom -->
+            
             </div>
 
-
-
-
-
-
-            <div id="sliderContainer">
-                <div class="slidecontainer">
-                    <div class="labelControlPanel">Speed selection :</div>
-                    <input class='speedSelect, slider'  type="range" id="speed" name="speed" min="1" max="10" oninput="changeSpeed(this)" value="1">
-                </div>
-
-                <div class="slidecontainer">
-                    <div class="labelControlPanel">Spacing :</div>
-                    <input id="gapSelect" class="slider" type="range" id="spacing" name='spacing' min="30" max="90" step="30" oninput="changeGap(this)" value="1">
-                </div>
-
-                <div class="slidecontainer">
-                    <div class="labelControlPanel">Path selection :</div>
-                    <input class='pathDrawing, slider' type="range" id="pathDrawing" name="path" min="-1" max="-1" oninput="drawPath(this)" value="-1">
-                </div>
-
+            <div class="slidecontainer">
+                <div class="labelControlPanel">Spacing :</div>
+                <input id="gapSelect" class="slider" type="range" id="spacing" name='spacing' min="30" max="90"
+                    step="30" oninput="changeGap(this)" value="1">
             </div>
 
-            <div id="buttonContainer">
-                <div id="buttonLine1">
-                    <button class="pauseButton" id="pauseButton" onclick="pauseDraw(this)">Pause</button>
-                    <button class="endButton1"  onclick="EndScreenOne(this)">Download 1</button>
-                </div>
-                <div id="buttonLine2">
-                    <button class="resetButton" onclick="resetDraw(this)">Reset</button>
-                    <button class="endButton2"  onclick="EndScreenTwo(this)">Download 2</button>
-                </div>
+            <div class="slidecontainer">
+                <div class="labelControlPanel">Path selection :</div>
+                <input class='pathDrawing, slider' type="range" id="pathDrawing" name="path" min="-1" max="-1"
+                    oninput="drawPath(this)" value="-1">
             </div>
 
-            <div class="btTop">
-                <div id="allPath">
-                    <input type="checkbox" id="drawAll" name="scales" class="checkbox" onclick="drawAllPaths(this)">
-                    <label for="scales">All paths</label>
-                </div>
+        </div>
 
-                <div>
-                    <input type="checkbox" id="drawMain" name="scales" class="checkbox" onclick="drawMainPaths(this)" checked>
-                    <!--<label for="scales">Main paths</label>-->
-                </div>
+        <div id="buttonContainer">
+            <div id="buttonLine1">
+                <button class="pauseButton" id="pauseButton" onclick="pauseDraw(this)">Pause</button>
+                <button class="endButton1" onclick="EndScreenOne(this)">Download 1</button>
+            </div>
+            <div id="buttonLine2">
+                <button class="resetButton" onclick="resetDraw(this)">Reset</button>
+                <button class="endButton2" onclick="EndScreenTwo(this)">Download 2</button>
+            </div>
+        </div>
 
+        <div class="btTop">
+            <div id="allPath">
+                <input type="checkbox" id="drawAll" name="scales" class="checkbox" onclick="drawAllPaths(this)">
+                <label for="scales">All paths</label>
             </div>
 
-
-            <div class="chartWrapper">
-                <canvas id="curve" class="curveCanvas"></canvas>
+            <div>
+                <input type="checkbox" id="drawMain" name="scales" class="checkbox" onclick="drawMainPaths(this)"
+                    checked>
+                <!--<label for="scales">Main paths</label>-->
             </div>
-        
+
+        </div>
+
+
+        <div class="chartWrapper">
+            <canvas id="curve" class="curveCanvas"></canvas>
+        </div>
+
     </div>
 
     <!--<script>
@@ -152,4 +165,5 @@
 
 
 </body>
+
 </html>

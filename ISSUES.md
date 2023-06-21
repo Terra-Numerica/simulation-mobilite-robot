@@ -1,7 +1,5 @@
 Liste de problème :
 
-
-
 1) la valeur du curseur de speed doit être actualiser à chaque tracé de chemin pour être pris en compte
 2) pas de multi langue
 3) Gros souscis d'optimisations
@@ -23,6 +21,9 @@ Liste de problème :
 19) possiblilité d'effacé la courbe "PATH" du graph complètement con
 20) On peut pas recliqué sur tutorial quand la démo est lancé (--> soit autorisé, soit grisser le bouton)
 21) Pas de taille minimal de chemin --> si taille ridicule alors => crash ultra rapide
+22) Agnimation de décradé de dcouleur du background --> use just à faire rammer
+
+23) PATH SELECTION PAS DU TOUT CLAIRE : en fait : le curseur =  n° du le chemin de fourmi sélectionnée
 
 IDEA :
 - Rendre le tuto obligatoire 
