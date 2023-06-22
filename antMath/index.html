@@ -15,7 +15,12 @@
     <script src="./js/canvas.js"></script>
     <script src="./js/curve.js"></script>
 
-    <link rel="stylesheet" href="./css/mystyle.css">
+    <!-- <link rel="stylesheet" href="./css/mystyle.css"> -->
+    <link rel="stylesheet" href="./css/antMath_style.css">
+
+    
+    <!-- <link rel="stylesheet" href="./css/switch_button.css"> -->
+    
 
     <link rel="icon" type="image/x-icon" href="./../favicon.png">
 
@@ -24,6 +29,7 @@
 </head>
 
 <body>
+
     <canvas id="canvas"></canvas>
 
     <a href="#openModalTuto"><img src="assets/tuto.png" alt="Button information" class="buttonTuto"></a>
@@ -69,7 +75,7 @@
 
         <h1>Control Panel</h1>
 
-
+        <!-- Information button -->
         <a href="#openModalControlPanel"><img src="assets/buttonInfo.png" alt="Button information"
                 class="buttonInfo"></a>
         <div id="openModalControlPanel" class="modalDialog1">
@@ -90,15 +96,38 @@
 
 
 
-
-
         <div id="sliderContainer">
+            <div class="slidecontainer">
+                <label for="speed">Ant's Speed</label>
+                <input class='speedSelect, slider' type="range" id="speed" name="speed" min="1" max="10"
+                    oninput="changeSpeed(this)" value="1">            
+            </div>
+
+            <div class="slidecontainer">
+                <label for="spacing">Ant's Spacing</label>
+                <input id="gapSelect" class="slider" type="range" id="spacing" name='spacing' min="30" max="90"
+                    step="30" oninput="changeGap(this)" value="1">
+            </div>
+
+            <div class="slidecontainer">
+                <label for="pathDrawing">Ant's path selected</label>
+                <input class='pathDrawing, slider' type="range" id="pathDrawing" name="path" min="-1" max="-1"
+                    oninput="drawPath(this)" value="-1">
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <!-- Slider Selector of simulation -->
+        <!-- <div id="sliderContainer">
             <div class="slidecontainer">
                 <div class="labelControlPanel">Speed selection :</div>
                 <input class='speedSelect, slider' type="range" id="speed" name="speed" min="1" max="10"
-                    oninput="changeSpeed(this)" value="1">
-                    <!-- default value useless car compute au chargement du dom -->
-            
+                    oninput="changeSpeed(this)" value="1">            
             </div>
 
             <div class="slidecontainer">
@@ -113,10 +142,10 @@
                     oninput="drawPath(this)" value="-1">
             </div>
 
-        </div>
+        </div> -->
 
-        <div id="buttonContainer">
-            <div id="buttonLine1">
+        <!-- <div id="buttonContainer">
+            <div>
                 <button class="pauseButton" id="pauseButton" onclick="pauseDraw(this)">Pause</button>
                 <button class="endButton1" onclick="EndScreenOne(this)">Download 1</button>
             </div>
@@ -124,7 +153,28 @@
                 <button class="resetButton" onclick="resetDraw(this)">Reset</button>
                 <button class="endButton2" onclick="EndScreenTwo(this)">Download 2</button>
             </div>
+        </div> -->
+
+        <div id="buttonContainer">
+            <div>
+                <button class="controlButton" onclick="pauseDraw(this)">Pause</button>
+                <button class="controlButton" onclick="EndScreenOne(this)">Download 1</button>
+            </div>
+            <div>
+                <button class="controlButton" onclick="resetDraw(this)">Reset</button>
+                <button class="controlButton" onclick="EndScreenTwo(this)">Download 2</button>
+            </div>
         </div>
+
+
+        
+<!-- 
+            <div>
+                <label class="switch"> AllPath
+                <input type="checkbox">
+                <span class="slider"></span>
+                </label> 
+            </div> -->
 
         <div class="btTop">
             <div id="allPath">

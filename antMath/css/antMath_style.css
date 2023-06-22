@@ -1,8 +1,8 @@
 body{
-    margin: 0px;
+    /* margin: 0px; */
     /* background-color: #99582A; */
     background-image: url("./../img/ground.jpg");
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
 }
 
 * {
@@ -10,18 +10,20 @@ body{
 }
 
 h1{
-    margin-top: 2px;
-    margin-bottom: 10px;
-    padding-top: 2px;
+    margin-top: 0%;
+    margin-bottom: 5%;
+    padding-top: 0%;
     font-size:3em;
     text-align: center;
     text-decoration: underline;
     text-underline-position: under;
 }
 
-.labelControlPanel {
-    font-size:1.2em;
+.slidecontainer > label{
+    font-size: 1.2em;
 }
+
+
 .controlPanel{
     display: flex;
     flex-direction: column;
@@ -34,6 +36,11 @@ h1{
     background-color: #efefef;
     box-shadow: 0 0 25px black;
 }
+
+
+
+
+
 
 
 #buttonContainer {
@@ -49,7 +56,7 @@ h1{
 
 }
 
-.endButton1, .endButton2, .resetButton, .pauseButton{
+.controlButton {
     border: none;
     color: white;
     display: inline-block;
@@ -59,20 +66,8 @@ h1{
     border-radius: 5px;
 }
 
-#buttonLine2 {
-    padding-top: 6px;
-}
 
-.endButton1, .endButton2 {
-    margin-left: 40px;
-    padding: 1px 15px;
-}
-
-.pauseButton, .resetButton {
-    padding: 1px 15px;
-}
-
-.endButton1:hover, .endButton2:hover, .resetButton:hover, .pauseButton:hover, #allPath:hover {
+.controlButton:hover {
     background-color: #1c1c1c;
 }
 
@@ -113,6 +108,7 @@ h1{
     appearance: none;
     position: sticky;
     width:62.5%; /* Full-width */
+    
     height: 2%; /* Specified height */
     background: #818181; /* Grey background */
     outline: none; /* Remove outline */
@@ -172,24 +168,29 @@ h1{
     left: 77%;
     width: 2.7rem;
     height: 2.7rem;
-    min-width : 1.5rem;
-    min-height : 1.5rem;
+    min-width : 2.7rem;
+    min-height : 2.7rem;
 }
 
 .buttonTuto{
-    position: absolute;
-    width: 5rem;
+    position: fixed;
+    /* width: 5rem;
     height: 5rem;
     min-width : 2rem;
-    min-height : 2rem;
+    min-height : 2re    m; */
+    /* 80px */
+    width: 5.6%;
+    min-width: 30px;
+    /* transform: translateX(50%); */
+    /* height: 5.6%; */
     /* permet d'être par dessus le canvas */
     z-index: 1; 
 }
 
 .buttonAboutAnts{
     position: absolute;
-    top: 82%;
-    left: 62%;
+    top: 10px;
+    left: calc(75% - 200px)  ;
     width: 10.2rem;
     height: 2.5rem;
     /* permet d'être par dessus le canvas */
@@ -311,6 +312,8 @@ h1{
     margin-left: 1.2rem;
 }
 
+
+
 .terraNcontainer{
     transform: translateX(-50%) translateY(-50%);
     left:37.5%;
@@ -320,7 +323,6 @@ h1{
     height: 10%;
     outline:10px solid black;
     background-color: white;
-
 }
 
 .terraNumerica{
@@ -330,4 +332,38 @@ h1{
     height: 100%;
     width:auto;
     cursor: pointer;
+}
+
+
+
+
+
+
+
+/* //////////////////////////////////////////////////////// */
+
+
+@media only screen and (max-width: 767px) {
+    .controlPanel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    flex-direction: row;
+    outline: none;
+    box-shadow: none;
+    }
+
+    .terraNcontainer{
+        display: none;
+    }
+
+    #canvas{
+        width: 100%;
+        height: 50%;
+    }
+
+   
+
 }

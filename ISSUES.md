@@ -12,6 +12,7 @@ Done
 8) Boutton (i) en plein milieu de nul part
 9) Le "TerraNumerica" à l'air d'être posé un peu gratuitement
 10) croix de fermeture du tutoriel se cachache à moitié dans la barre des favoris
+DONE
 11) Les boutons reset path download / se fout e n'importe comment quand resize de la page
 12) Complétement le bordel en appli mobile
 13) Le bouton reset refresh la page au lieu de tout suppr
@@ -22,6 +23,7 @@ Done
 18) pas d'unité sur le graph
 19) possiblilité d'effacé la courbe "PATH" du graph complètement con
 20) On peut pas recliqué sur tutorial quand la démo est lancé (--> soit autorisé, soit grisser le bouton)
+DONE
 21) Pas de taille minimal de chemin --> si taille ridicule alors => crash ultra rapide
 22) Agnimation de décradé de dcouleur du background --> use just à faire rammer
 
