@@ -29,7 +29,7 @@ class DrawingAnt extends Ant {
         pathSelect.max = parseInt(pathSelect.max) + 1;
     }
 
-    override moove(x: number, y: number): void {
+    override move(x: number, y: number): void {
         let ctx = this.canvas.getContext('2d');
         this.img.style.left = x + 'px';
         this.img.style.top = y + 'px';

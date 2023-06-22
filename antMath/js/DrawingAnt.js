@@ -39,7 +39,7 @@ var DrawingAnt = /** @class */ (function (_super) {
         pathSelect.max = parseInt(pathSelect.max) + 1;
         return _this;
     }
-    DrawingAnt.prototype.moove = function (x, y) {
+    DrawingAnt.prototype.move = function (x, y) {
         var ctx = this.canvas.getContext('2d');
         this.img.style.left = x + 'px';
         this.img.style.top = y + 'px';

@@ -26,7 +26,7 @@ class Ant{
     }
 
     //teleport the ant to x and y, update distance and coordonates
-    moove(x:number, y:number){
+    move(x:number, y:number){
         this.img.style.left = x + 'px';
         this.img.style.top = y + 'px';
         this.x = x;
@@ -57,7 +57,7 @@ class Ant{
             this.img.style.transform = 'translateX('+-50+'%) translateY('+-50+'%) rotate(' + ((-90-angl) * (-1)) + 'deg) '; 
         }
         
-        this.moove(this.x + this.speedX, this.y + this.speedY);
+        this.move(this.x + this.speedX, this.y + this.speedY);
     }
 
     updatePosition(){

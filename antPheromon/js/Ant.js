@@ -18,7 +18,7 @@ var Ant = /** @class */ (function () {
         this.img.style.height = y + 'px';
     }
     //teleport the ant to x and y, update distance and coordonates
-    Ant.prototype.moove = function (x, y) {
+    Ant.prototype.move = function (x, y) {
         this.img.style.left = x + 'px';
         this.img.style.top = y + 'px';
         this.x = x;
@@ -45,7 +45,7 @@ var Ant = /** @class */ (function () {
         else {
             this.img.style.transform = 'translateX(' + -50 + '%) translateY(' + -50 + '%) rotate(' + ((-90 - angl) * (-1)) + 'deg) ';
         }
-        this.moove(this.x + this.speedX, this.y + this.speedY);
+        this.move(this.x + this.speedX, this.y + this.speedY);
     };
     Ant.prototype.updatePosition = function () {
         if (this.isOnIsland()) {

@@ -128,7 +128,7 @@ window.onload = () => {
         if(draw) {
             draw = false;
             //add the first ant at the begining and on the page
-            firstAnt.moove(d.clickX[0],d.clickY[0]);
+            firstAnt.move(d.clickX[0],d.clickY[0]);
             document.body.appendChild(firstAnt.img);
 
             //Save the first location
@@ -137,7 +137,7 @@ window.onload = () => {
 
             //Print the anthill
             let anthill = new Ant('./assets/anthill.png',50,50);
-            anthill.moove(firstX,firstY);
+            anthill.move(firstX,firstY);
             document.body.appendChild(anthill.img);
 
             //init array containing all the ants
@@ -157,7 +157,7 @@ function startAnts(First:Ant, Space:DrawingApp, firstX:number, firstY:number){
     //create an ant if none are left
     if (futurAnts.length == 0){
         futurAnts.push(new DrawingAnt('./assets/RedAnt.png',30,30, true));
-        futurAnts[futurAnts.length-1].moove(firstX,firstY);
+        futurAnts[futurAnts.length-1].move(firstX,firstY);
         document.body.appendChild(futurAnts[futurAnts.length-1].img);
     }
 
@@ -209,11 +209,11 @@ function startAnts(First:Ant, Space:DrawingApp, firstX:number, firstY:number){
                 } else {
                     futurAnts.push(new DrawingAnt('./assets/RedAnt.png',30,30, false));   
                 }
-                futurAnts[futurAnts.length-1].moove(firstX,firstY);
+                futurAnts[futurAnts.length-1].move(firstX,firstY);
                 document.body.appendChild(futurAnts[futurAnts.length-1].img);
             } else {
                 futurAnts.push(new DrawingAnt('./assets/ant.png',30,30, false));
-                futurAnts[futurAnts.length-1].moove(firstX,firstY);
+                futurAnts[futurAnts.length-1].move(firstX,firstY);
                 document.body.appendChild(futurAnts[futurAnts.length-1].img);
             }
             i++;
@@ -225,7 +225,7 @@ function startAnts(First:Ant, Space:DrawingApp, firstX:number, firstY:number){
             document.body.removeChild(futurAnts.shift().img);
         }
 
-        //moove all the other ants, from the closest to the farest
+        //move all the other ants, from the closest to the farest
         for(let i:number = 1; i < futurAnts.length; i++) {
             futurAnts[i].follow(futurAnts[i-1]);
         }
@@ -250,7 +250,7 @@ function delayFirst(Space:DrawingApp,First:Ant, firstX:number, firstY:number){
     //create a second ant to avoid bugs
     if (futurAnts.length == 0){
             futurAnts.push(new DrawingAnt('./assets/RedAnt.png',30,30, true));
-            futurAnts[futurAnts.length-1].moove(firstX,firstY);
+            futurAnts[futurAnts.length-1].move(firstX,firstY);
             document.body.appendChild(futurAnts[futurAnts.length-1].img);
 
     //create new ants
@@ -270,11 +270,11 @@ function delayFirst(Space:DrawingApp,First:Ant, firstX:number, firstY:number){
             } else {
                 futurAnts.push(new DrawingAnt('./assets/RedAnt.png',30,30, false));   
             }
-            futurAnts[futurAnts.length-1].moove(firstX,firstY);
+            futurAnts[futurAnts.length-1].move(firstX,firstY);
             document.body.appendChild(futurAnts[futurAnts.length-1].img);
         } else {
             futurAnts.push(new DrawingAnt('./assets/ant.png',30,30, false));
-            futurAnts[futurAnts.length-1].moove(firstX,firstY);
+            futurAnts[futurAnts.length-1].move(firstX,firstY);
             document.body.appendChild(futurAnts[futurAnts.length-1].img);
         }
         i++;
