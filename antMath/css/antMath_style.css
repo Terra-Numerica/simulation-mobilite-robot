@@ -25,8 +25,10 @@ h1{
 
 
 .controlPanel{
-    display: flex;
-    flex-direction: column;
+    /* display: none; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    
     position:absolute;
     height: 100%;
     width: 25%;
@@ -314,11 +316,16 @@ h1{
 
 
 
+
+
+
 .terraNcontainer{
-    transform: translateX(-50%) translateY(-50%);
-    left:37.5%;
+    /* display: none ; */
+    /* transform: translateX(-50%) translateY(-50%); */
+    /* left:37.5%; */
     position:absolute;
-    top:95%;
+
+    bottom: 0%;
     width: 75%;
     height: 10%;
     outline:10px solid black;
@@ -326,7 +333,7 @@ h1{
 }
 
 .terraNumerica{
-    position:absolute;
+    position:relative;
     left:50%;
     transform: translateX(-50%);
     height: 100%;
@@ -338,6 +345,10 @@ h1{
 
 
 
+/* 
+#canvas{
+    width: 75%;
+} */
 
 
 /* //////////////////////////////////////////////////////// */

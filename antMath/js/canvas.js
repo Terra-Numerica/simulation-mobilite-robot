@@ -49,7 +49,7 @@ var DrawingApp = /** @class */ (function () {
                 e.preventDefault();
             }
         };
-        var canvas = document.getElementById('canvas');
+        var canvas = document.getElementById("playGround");
         canvas.width = window.innerWidth * 0.75;
         canvas.height = window.innerHeight * 0.9;
         canvas.style.width = "auto";

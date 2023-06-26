@@ -11,7 +11,7 @@ class DrawingApp{
     //parameters of the main canvas
     constructor() {
 
-        let canvas = document.getElementById('canvas') as HTMLCanvasElement;
+        let canvas = document.getElementById("playGround") as HTMLCanvasElement;
         canvas.width = window.innerWidth * 0.75 ;
         canvas.height = window.innerHeight * 0.9 ;
         canvas.style.width = "auto";

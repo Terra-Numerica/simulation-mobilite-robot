@@ -124,7 +124,7 @@ window.onload = () => {
     });
 
     //detect click on canvas once
-    (document.getElementById('canvas') as HTMLOptionElement).addEventListener('click', function(event) {
+    (document.getElementById("playGround") as HTMLOptionElement).addEventListener('click', function(event) {
         if(draw) {
             draw = false;
             //add the first ant at the begining and on the page

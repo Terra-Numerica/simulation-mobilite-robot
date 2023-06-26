@@ -17,6 +17,12 @@ var firstY;
 var red = 255;
 var blue = 0;
 var green = 0;
+
+let sizeScreenWidth;
+let sizeScreenHeight;
+
+
+
 //Change the space between two ants with html
 function changeGap(element) {
     gap = parseInt(element.value);
@@ -127,7 +133,7 @@ window.onload = function () {
         }
     });
     //detect click on canvas once
-    document.getElementById('canvas').addEventListener('click', function (event) {
+    document.getElementById("playGround").addEventListener('click', function (event) {
         if (draw) {
             draw = false;
             //add the first ant at the begining and on the page
@@ -144,6 +150,10 @@ window.onload = function () {
             //init array containing all the ants
             futurAnts = new Array();
             //start main prg, with the speed choosen by the user
+
+            sizeScreenHeight = window.innerHeight;
+            sizeScreenWidth = window.innerWidth;
+
             setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
         }
         else {
@@ -171,7 +181,49 @@ function defaultValueRange(element){
     return Math.round((element.max < element.min) ? element.min : Number(element.min) + ((element.max - element.min)/2))
 }
 
+window.addEventListener("resize", function (e) {
+    console.log("resize");
+})
+
+
+/**
+ * 
+ * @param {Ant} First First ant of the queue
+ * @param {DrawingApp} Space The curb 
+ * @param {number} firstX coord of thestart of  path 
+ * @param {number} firstY coord of thestart of  path
+ */
 function startAnts(First, Space, firstX, firstY) {
+
+    let ratioWidth = window.innerWidth/sizeScreenWidth;
+    let ratioHeight =window.innerHeight/sizeScreenHeight;
+
+    // Evite de tout recompute si ratio = 1
+    if(ratioWidth !=1){
+        sizeScreenWidth = window.innerWidth;
+        for(let i = 0; i < Space.clickX.length; i++) {
+            Space.clickX[i] *= ratioWidth;
+        }
+        console.log("Resize ratioWidth: " + ratioWidth);
+        console.log("FirstX: " + firstX);
+        firstX *= ratioWidth;
+        console.log("Next X: " + firstX);
+        firstAnt.move(firstX, firstY);
+    }
+
+    // Evite de tout recompute si ratio = 1
+    if(ratioHeight != 1){
+        sizeScreenHeight = window.innerHeight;
+        for(let i = 0; i < Space.clickY.length; i++) {
+            Space.clickY[i] *= ratioHeight;
+        }
+        console.log("Resize ratioHeight: " + ratioHeight);
+        console.log("FirstY: " + firstY);
+        firstY*= ratioHeight;
+        console.log("NextY: " + firstY);
+        firstAnt.move(firstX, firstY);
+    }
+
     //create an ant if none are left
     if (futurAnts.length == 0) {
         futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
@@ -249,6 +301,8 @@ function startAnts(First, Space, firstX, firstY) {
         setTimeout(startAnts, 10, firstAnt, Space, firstX, firstY);
     }
 }
+
+
 function delayFirst(Space, First, firstX, firstY) {
     //follow next point on the line
     First.followN(Space.clickX[0], Space.clickY[0]);
