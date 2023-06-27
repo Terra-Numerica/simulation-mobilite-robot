@@ -24,8 +24,6 @@ body, html {
     z-index: 10;
 }
 
-
-
 #mainPanel {
     display: flex;
     flex-direction: column;
@@ -36,7 +34,6 @@ body, html {
     outline:2px solid black;
     box-shadow: 0 0 40px black;
 }
-
 
 button {
     font-size: 2em;

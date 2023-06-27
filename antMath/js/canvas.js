@@ -50,24 +50,16 @@ var DrawingApp = /** @class */ (function () {
             }
         };
         var canvas = document.getElementById("playGround");
-        canvas.width = window.innerWidth * 0.75;
-        canvas.height = window.innerHeight * 0.9;
-        canvas.style.width = "auto";
-        canvas.style.height = "auto";
-        canvas.style.margin = '0px';
-        canvas.style.position = 'absolute';
+        
+        canvas.width = document.getElementById("playPanel").offsetWidth;
+        canvas.height = document.getElementById("playPanel").offsetHeight;
+        
         var context = canvas.getContext("2d");
         context.lineCap = 'round';
         context.lineJoin = 'round';
         context.strokeStyle = '#EE5A24';
         context.lineWidth = 4;
-        // context.fillStyle = '#009432';
-        // context.fillRect(0,0,canvas.width,canvas.height);
-        // let img = new Image();
-        // img.onload = function() {
-        //     context.drawImage(img,0,0,img.width,img.height);
-        // }
-        // img.src ='./assets/green.jpg';
+        
         this.canvas = canvas;
         this.context = context;
         this.redraw();

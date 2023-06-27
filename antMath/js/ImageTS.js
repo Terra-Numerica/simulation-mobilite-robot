@@ -86,8 +86,6 @@ function drawAllPaths(element) {
 }
 window.onload = function () {
     //create canvas and set background
-    //document.body.style.margin = "0";
-    //document.body.style.backgroundColor = "#008CBA"; 
     d = new DrawingApp();
     //creation of the chart
     var canvasCurve = document.getElementById('curve');
@@ -104,13 +102,16 @@ window.onload = function () {
                 }]
         },
         options: {
-            responsive: true,
+            responsive: false,
+            // Ne pas mettre en responsive --> sinon le graphique s'agrandit à l'infini
             tension: 0.4,
             pointRadius: 2,
             pointBackgroundColor: 'rgba(255,0,0,1)',
             pointBorderColor: 'rgba(0,0,0,1)',
             borderColor: 'rgb(0,0,0,1)',
             maintainAspectRatio: false,
+            // Make the Chart form as a square instead            
+
             scales: {
                 x:{
                     title: {
@@ -125,7 +126,6 @@ window.onload = function () {
                       },
                     min: 0
                 },
-                
             },
             animation: {
                 duration: 0
@@ -166,11 +166,11 @@ window.onload = function () {
 
     // //Re Set la valeur de speed/gap value par défaut au chargement pour être égale à celle du curseur
     
-    let speedInput = document.getElementById('speed');
+    let speedInput = document.getElementById('antSpeed');
     speedInput.value = defaultValueRange(speedInput);
     changeSpeed(speedInput); 
 
-    let gapInput = document.getElementById("gapSelect");
+    let gapInput = document.getElementById("antSpacing");
     gapInput.value = defaultValueRange(gapInput);
     changeGap(gapInput);
     
@@ -195,34 +195,34 @@ window.addEventListener("resize", function (e) {
  */
 function startAnts(First, Space, firstX, firstY) {
 
-    let ratioWidth = window.innerWidth/sizeScreenWidth;
-    let ratioHeight =window.innerHeight/sizeScreenHeight;
+    // let ratioWidth = window.innerWidth/sizeScreenWidth;
+    // let ratioHeight =window.innerHeight/sizeScreenHeight;
 
-    // Evite de tout recompute si ratio = 1
-    if(ratioWidth !=1){
-        sizeScreenWidth = window.innerWidth;
-        for(let i = 0; i < Space.clickX.length; i++) {
-            Space.clickX[i] *= ratioWidth;
-        }
-        console.log("Resize ratioWidth: " + ratioWidth);
-        console.log("FirstX: " + firstX);
-        firstX *= ratioWidth;
-        console.log("Next X: " + firstX);
-        firstAnt.move(firstX, firstY);
-    }
+    // // Evite de tout recompute si ratio = 1
+    // if(ratioWidth !=1){
+    //     sizeScreenWidth = window.innerWidth;
+    //     for(let i = 0; i < Space.clickX.length; i++) {
+    //         Space.clickX[i] *= ratioWidth;
+    //     }
+    //     console.log("Resize ratioWidth: " + ratioWidth);
+    //     console.log("FirstX: " + firstX);
+    //     firstX *= ratioWidth;
+    //     console.log("Next X: " + firstX);
+    //     firstAnt.move(firstX, firstY);
+    // }
 
-    // Evite de tout recompute si ratio = 1
-    if(ratioHeight != 1){
-        sizeScreenHeight = window.innerHeight;
-        for(let i = 0; i < Space.clickY.length; i++) {
-            Space.clickY[i] *= ratioHeight;
-        }
-        console.log("Resize ratioHeight: " + ratioHeight);
-        console.log("FirstY: " + firstY);
-        firstY*= ratioHeight;
-        console.log("NextY: " + firstY);
-        firstAnt.move(firstX, firstY);
-    }
+    // // Evite de tout recompute si ratio = 1
+    // if(ratioHeight != 1){
+    //     sizeScreenHeight = window.innerHeight;
+    //     for(let i = 0; i < Space.clickY.length; i++) {
+    //         Space.clickY[i] *= ratioHeight;
+    //     }
+    //     console.log("Resize ratioHeight: " + ratioHeight);
+    //     console.log("FirstY: " + firstY);
+    //     firstY*= ratioHeight;
+    //     console.log("NextY: " + firstY);
+    //     firstAnt.move(firstX, firstY);
+    // }
 
     //create an ant if none are left
     if (futurAnts.length == 0) {
@@ -360,11 +360,12 @@ function EndScreenOne(element) {
     var canvasFinal = document.createElement('canvas');
     canvasFinal.width = window.innerWidth * 0.75;
     canvasFinal.height = window.innerHeight * 0.9;
-    canvasFinal.style.width = "auto";
-    canvasFinal.style.height = "auto";
-    canvasFinal.style.margin = '0';
-    canvasFinal.style.position = 'absolute';
-    canvasFinal.style.opacity = '0';
+
+    // canvasFinal.style.width = "auto";
+    // canvasFinal.style.height = "auto";
+    // canvasFinal.style.margin = '0';
+    // canvasFinal.style.position = 'absolute';
+    // canvasFinal.style.opacity = '0';
     canvasFinal.getContext('2d').drawImage(d.canvas, 0, 0);
     gif.addFrame(canvasFinal, { delay: 200 });
     for (var i_9 = 0; i_9 < (nbIteration - 1); i_9++) {

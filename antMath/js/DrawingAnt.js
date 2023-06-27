@@ -19,12 +19,12 @@ var DrawingAnt = /** @class */ (function (_super) {
         var _this = _super.call(this, link, x, y) || this;
         _this.canvas = document.createElement('canvas');
         _this.draw = false;
-        _this.canvas.width = window.innerWidth * 0.75;
-        _this.canvas.height = window.innerHeight * 0.9;
-        _this.canvas.style.width = "auto";
-        _this.canvas.style.height = "auto";
-        _this.canvas.style.margin = '0';
-        _this.canvas.style.position = 'absolute';
+        // _this.canvas.width = window.innerWidth * 0.75;
+        // _this.canvas.height = window.innerHeight * 0.9;
+        // _this.canvas.style.width = "auto";
+        // _this.canvas.style.height = "auto";
+        // _this.canvas.style.margin = '0';
+        // _this.canvas.style.position = 'absolute';
         if (!draw) {
             _this.canvas.style.opacity = '0';
         }
