@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    
+    overflow: hidden;
+    display: flex;
+    flex: auto;
+    
+}
+
+#playPanel{
+    background-image: url("./../img/ground.jpg");
+    height: 100vh;
+    width: 75%;
+    /* border: 10px solid black; */
+    /* background-color: #efefef; */
+}
+
+#controlPanel{
+    /* position:absolute; */
+    border-left: 10px solid black;
+    height: 100%;
+    width: 25%;
+    left: 75%;
+    /* outline:10px solid black; */
+    
+    
+}
+
+#inputControler{
+    border-bottom: 10px solid black;
+    height: 50%;
+}
+
+#dataViewer{
+    height:calc(50% - 10px);
+}
+
+#inputControler{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* justify-items: center; */
+    align-items:center;
+    align-content: space-around;
+    
+}
+

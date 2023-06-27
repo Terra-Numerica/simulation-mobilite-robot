@@ -102,7 +102,7 @@ window.onload = function () {
                 }]
         },
         options: {
-            responsive: false,
+            responsive: true,
             // Ne pas mettre en responsive --> sinon le graphique s'agrandit à l'infini
             tension: 0.4,
             pointRadius: 2,

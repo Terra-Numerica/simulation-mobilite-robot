@@ -18,85 +18,62 @@
     <script src="./js/ImageTS.js"></script>
     <script src="./js/canvas.js"></script>
     <script src="./js/curve.js"></script>
-
-
-    <!-- BOOTSTRAP -->
-
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
-
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/antMathV2.css">
+    <link rel="stylesheet" href="./css/antMathV3.css">
 
 </head>
 
 <body>
-    <div class="container-fluid min-vh-100 d-flex flex-column g-0">
 
-        <!-- Une ligne unique -->
-        <div class="row flex-grow-1 ">
+    <!-- PlayGround -->
+    <div id="playPanel">
+        <canvas id="playGround"></canvas>
+        <!-- Tuto -->
+        <!-- More Information -->
+    </div>
 
-
-            <!-- PlayGround -->
-            <div class="col-sm-9">
-                <div id="playPanel">
-                    <canvas id="playGround"></canvas>
-                    <!-- Tuto -->
-                    <!-- More Information -->
+    <div id="controlPanel">
+        <!-- Input -->
+        <div id="inputControler">
+            <h1>Control Panel</h1>
+            <!-- Slider -->
+            <div id="antControler">
+                <div>
+                    <label for="antSpeed">Ant's Speed</label>
+                    <input type="range" id="antSpeed" name="antSpeed" min="1" max="10" value="5" step="1"
+                        oninput="changeAntSpeed(this)">
                 </div>
-
+                <div>
+                    <label for="antSpacing">Ant's Spacing</label>
+                    <input type="range" id="antSpacing" name="antSpacing" min="30" max="90" value="30" step="30"
+                        oninput="changeAntSpacing(this)">
+                </div>
+                <div>
+                    <label for="pathDrawing">Ant's path selected</label>
+                    <input type="range" id="pathDrawing" name="pathDrawing" min="-1" max="-1" value="-1" step="1"
+                        oninput="drawPath(this)">
+                </div>
             </div>
+            <!-- Button -->
+            <div id="gameControler">
 
-            <div class="col-sm-3 flex-column" id="controlPanel">
-                <div class="row h-50">
-                    <!-- Input -->
-                    <div id="inputControler">
-                        <h1>Control Panel</h1>
-                        <!-- Slider -->
-                        <div id="antControler">
-                            <div>
-                                <label for="antSpeed">Ant's Speed</label>
-                                <input type="range" id="antSpeed" name="antSpeed" min="1" max="10" value="5" step="1"
-                                    oninput="changeAntSpeed(this)">
-                            </div>
-                            <div>
-                                <label for="antSpacing">Ant's Spacing</label>
-                                <input type="range" id="antSpacing" name="antSpacing" min="30" max="90" value="30"
-                                    step="30" oninput="changeAntSpacing(this)">
-                            </div>
-                            <div>
-                                <label for="pathDrawing">Ant's path selected</label>
-                                <input type="range" id="pathDrawing" name="pathDrawing" min="-1" max="-1" value="-1"
-                                    step="1" oninput="drawPath(this)">
-                            </div>
-                        </div>
-                        <!-- Button -->
-                        <div id="gameControler">
-
-                            <button class="controlButton" onclick="pauseDraw(this)">Pause</button>
-                            <button class="controlButton" onclick="EndScreenOne(this)">Download 1</button>
-                            <button class="controlButton" onclick="resetDraw(this)">Reset</button>
-                            <!-- <button class="controlButton" onclick="EndScreenTwo(this)">Download 2</button> -->
-                            <!-- TODO : Add "allPath" -->
-                            <!-- <button class="controlButton" onclick="drawAllPaths(this)">Path</button> -->
-                            <input type="checkbox" id="drawMain" name="scales" class="checkbox"
-                                onclick="drawMainPaths(this)" checked>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row h-50">
-                    <!-- Graph -->
-                    <canvas id="curve" ></canvas>
-                </div>
-
+                <button class="controlButton" onclick="pauseDraw(this)">Pause</button>
+                <button class="controlButton" onclick="EndScreenOne(this)">Download 1</button>
+                <button class="controlButton" onclick="resetDraw(this)">Reset</button>
+                <!-- <button class="controlButton" onclick="EndScreenTwo(this)">Download 2</button> -->
+                <!-- TODO : Add "allPath" -->
+                <!-- <button class="controlButton" onclick="drawAllPaths(this)">Path</button> -->
+                <input type="checkbox" id="drawMain" name="scales" class="checkbox" onclick="drawMainPaths(this)"
+                    checked>
             </div>
         </div>
-    </div>
-</body>
 
+        <div id="dataViewer">
+        <!-- Graph -->  
+        <canvas id="curve"></canvas>
+        </div>
+        
+    </div>
+
+</body>
 </html>
