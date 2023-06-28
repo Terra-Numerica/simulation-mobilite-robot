@@ -4,7 +4,6 @@
 }
 
 html, body{
-    
     overflow: hidden;
     display: flex;
     flex: auto;
@@ -29,28 +28,144 @@ html, body{
     left: 75%;
     /* outline:10px solid black; */
     
-    
 }
 
-#inputControler{
+#inputControler {
     border-bottom: 10px solid black;
     height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* justify-items: center; */
+    align-items:center;
 }
 
 #dataViewer{
     height:calc(50% - 10px);
 }
 
-#inputControler{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* justify-items: center; */
-    align-items:center;
-    align-content: space-around;
-}
-
 canvas:not(#curve){
     position: absolute;
 }
 
+#explanationControler{
+    width: 100%;
+    border-top  : 10px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    /* align-items:center; */
+}
+
+
+/* ================================================================= */
+/* ========================  TUTORIAL  =============================*/
+/* =================================================================*/
+
+#tutorial * , #information * , #aboutAnts * {
+    /* display: none; */
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items:center;
+    text-align:center;
+}
+
+#tutorial , #information , #aboutAnts {
+    display: none;
+}
+
+#explanationControler > img{
+    width: calc(100%/3);
+}
+
+/* 
+#information {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    left: -125%;
+    top: 0;
+    z-index: 99999;
+    
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+#tutorial {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    left: 0;
+    top: -5.4%;
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+#aboutAnts {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    left: 42%;
+    top: 22%;
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+#information:target, #tutorial:target, #aboutAnts:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#information > div {
+    width: 380px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: -moz-linear-gradient(#01a6b2, #2edbe8);
+    background: -webkit-linear-gradient(#01a6b2, #2edbe8);
+    background: -o-linear-gradient(#01a6b2, #2edbe8);
+}
+
+#tutorial, #aboutAnts {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: -moz-linear-gradient(#f09535, #ffa500);
+    background: -webkit-linear-gradient(#f09535, #ffa500);
+    background: -o-linear-gradient(#f09535, #ffa500);
+}
+
+.close {
+    background: #606061;
+    color: #ffffff;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+.close:hover {
+    background: #6ed1d8;
+} */

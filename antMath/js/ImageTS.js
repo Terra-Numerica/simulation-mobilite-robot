@@ -21,6 +21,9 @@ var green = 0;
 let sizeScreenWidth;
 let sizeScreenHeight;
 
+// Allow use button instead of checkbox
+let drawAllPathOn = true;
+
 
 
 //Change the space between two ants with html
@@ -48,7 +51,7 @@ function pauseDraw(element) {
     }
 }
 function drawPath(element) {
-    document.getElementById('drawMain').checked = false;
+    // document.getElementById('drawMain').checked = false;
     document.getElementById('drawAll').checked = false;
     for (var i_1 = 0; i_1 < canvasTab.length; i_1++) {
         canvasTab[i_1].style.opacity = '0';
@@ -59,11 +62,13 @@ function drawPath(element) {
     }
 }
 function drawMainPaths(element) {
+    drawAllPathOn = !drawAllPathOn;
     for (var i_2 = 0; i_2 < canvasTab.length; i_2++) {
         canvasTab[i_2].style.opacity = '0';
     }
-    if (element.checked) {
-        document.getElementById('drawAll').checked = false;
+    if(drawAllPathOn){
+    // if (element.checked) {
+        // document.getElementById('drawAll').checked = false;
         for (var i_3 = 0; i_3 < canvasTab.length; i_3 = i_3 * 2 + 1) {
             canvasTab[i_3].style.opacity = '1';
         }
@@ -270,7 +275,8 @@ function startAnts(First, Space, firstX, firstY) {
                 }
                 red = Math.max(0, red - 45);
                 drawingGap = Math.round(drawingGap * 2 - drawingGap / 2);
-                if (document.getElementById('drawMain').checked) {
+                if(drawAllPathOn){
+                // if (document.getElementById('drawMain').checked) {
                     futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
                 }
                 else {
@@ -324,7 +330,8 @@ function delayFirst(Space, First, firstX, firstY) {
             }
             red = Math.max(0, red - 45);
             drawingGap = Math.round(drawingGap * 2 - drawingGap / 2);
-            if (document.getElementById('drawMain').checked) {
+            if(drawAllPathOn){
+            // if (document.getElementById('drawMain').checked) {
                 futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
             }
             else {

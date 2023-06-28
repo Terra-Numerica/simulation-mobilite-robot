@@ -21,6 +21,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/antMathV3.css">
 
+    <!-- ADD js for button -->
+    <script src="./js/button.js"></script>
+
 </head>
 
 <body>
@@ -56,24 +59,72 @@
             </div>
             <!-- Button -->
             <div id="gameControler">
-
                 <button class="controlButton" onclick="pauseDraw(this)">Pause</button>
                 <button class="controlButton" onclick="EndScreenOne(this)">Download 1</button>
                 <button class="controlButton" onclick="resetDraw(this)">Reset</button>
-                <!-- <button class="controlButton" onclick="EndScreenTwo(this)">Download 2</button> -->
-                <!-- TODO : Add "allPath" -->
-                <!-- <button class="controlButton" onclick="drawAllPaths(this)">Path</button> -->
-                <input type="checkbox" id="drawMain" name="scales" class="checkbox" onclick="drawMainPaths(this)"
-                    checked>
+
+                <!-- <input type="checkbox" id="drawMain" name="scales" class="checkbox" onclick="drawMainPaths(this)"
+                    checked> -->
+                <button class="controlButton" onclick="drawMainPaths(this)">All Path</button>
             </div>
+            
+            <div id="explanationControler">
+
+                <img  src="assets/tuto.png" alt="Button information" onclick="displayTexte(this, 'tutorial')">
+                <img src="assets/buttonInfo.png" alt="Button information" onclick="displayTexte(this, 'information')">
+                <img src="assets/aboutAnts.png" alt="AButton : bout ant's mobility" onclick="displayTexte(this, 'aboutAnts')">
+            </div>
+            
+            <div class="displayTexteDiv" id="tutorial">
+                <!-- <a href="#close" title="Close" class="close">X</a> -->
+                <h2><u>Tutorial about the simulation</u></h2>
+                <p>This is a tutorial to understand this simulation</p>
+                <p>The brown part is where the simulation will take place.
+                To start it, just draw a line which will represent the path taken by the first ant.<br>
+                Clicking on the mouse will therefore define the starting point and releasing it will place the end point for all ants.</p>
+                <p>At the top right is the Control Panel which will allow you to modify the parameters of the simulation.</p>
+                <p>At the bottom right is a graph which, depending on the number of the ant,
+                shows you the number of steps it has taken to go from the starting point to the finishing point. </p>
+            </div>
+
+            <div class="displayTexteDiv" id="aboutAnts">
+                <!-- <a href="#close" title="Close" class="close">X</a> -->
+                <h2><u>About ants mobility</u></h2>
+                <p>Ants are able to choose the shortest path to access a food source.</p>
+                <p>The first ant is the one who will lead the group and each ant follows the one in front of it.
+                    So the 100th ant will probably not take the same path as the 1st.</p>
+                <p>Moreover, the ants are not moving at the same speed, the gap between the ants fluctuate.<br>
+                    And as we can see in this simulation, the greater the gap is between two ants, the faster the shortest path will be found.</p>
+                <p>This simulation is interesting from an algorithmic point of view because it reflects part of the shortest path problem in Computer Science.</p>
+    
+            </div>
+
+            <div class="displayTexteDiv" id="information">
+                <!-- <a href="#close" title="Close" class="close">X</a> -->
+                <h2><u>Information about the Control Panel</u></h2>
+                <p>This Control Panel will allow you to modify the parameters on the Simulation</p>
+                <p><u>Speed Selection:</u> Allows you to change the speed of the ants</p>
+                <p><u>Spacing Selection:</u> Allows you to modify the space between each ant (small, medium, large)</p>
+                <p><u>All Path:</u> Allows you to display all the paths of each ants</p>
+                <p><u>Pause Button:</u> Allows you to pause the simulation</p>
+                <p><u>Reset Button:</u> Allows you to reset the simulation</p>
+                <p><u>Download:</u> Allows you to download the current simulation in Gif format with 2 different links</p>
+            </div>
+
+
         </div>
 
         <div id="dataViewer">
-        <!-- Graph -->  
-        <canvas id="curve"></canvas>
+            <!-- Graph -->
+            <canvas id="curve"></canvas>
         </div>
-        
+
     </div>
 
+
+
+
+
 </body>
+
 </html>
