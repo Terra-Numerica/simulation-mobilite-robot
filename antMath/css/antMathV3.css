@@ -50,7 +50,6 @@ html, body{
     align-content: space-around;
 }
 
-
 canvas:not(#curve){
     position: absolute;
 }
