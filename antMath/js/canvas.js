@@ -59,7 +59,13 @@ var DrawingApp = /** @class */ (function () {
         context.lineJoin = 'round';
         context.strokeStyle = '#EE5A24';
         context.lineWidth = 4;
-        
+        // context.fillStyle = '#009432';
+        // context.fillRect(0,0,canvas.width,canvas.height);
+        // let img = new Image();
+        // img.onload = function() {
+        //     context.drawImage(img,0,0,img.width,img.height);
+        // }
+        // img.src ='./assets/green.jpg';
         this.canvas = canvas;
         this.context = context;
         this.redraw();

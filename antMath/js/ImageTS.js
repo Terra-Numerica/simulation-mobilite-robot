@@ -52,6 +52,7 @@ function drawPath(element) {
     document.getElementById('drawAll').checked = false;
     for (var i_1 = 0; i_1 < canvasTab.length; i_1++) {
         canvasTab[i_1].style.opacity = '0';
+        
     }
     if (canvasTab.length > 0 && parseInt(element.value) >= 0) {
         canvasTab[parseInt(element.value)].style.opacity = '1';
@@ -103,7 +104,6 @@ window.onload = function () {
         },
         options: {
             responsive: true,
-            // Ne pas mettre en responsive --> sinon le graphique s'agrandit à l'infini
             tension: 0.4,
             pointRadius: 2,
             pointBackgroundColor: 'rgba(255,0,0,1)',
@@ -365,7 +365,10 @@ function EndScreenOne(element) {
     // canvasFinal.style.height = "auto";
     // canvasFinal.style.margin = '0';
     // canvasFinal.style.position = 'absolute';
-    // canvasFinal.style.opacity = '0';
+    canvasFinal.style.opacity = '0';
+
+
+
     canvasFinal.getContext('2d').drawImage(d.canvas, 0, 0);
     gif.addFrame(canvasFinal, { delay: 200 });
     for (var i_9 = 0; i_9 < (nbIteration - 1); i_9++) {
