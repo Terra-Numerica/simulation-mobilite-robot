@@ -109,13 +109,12 @@ window.onload = function () {
         },
         options: {
             responsive: true,
+            maintainAspectRatio : false,
             tension: 0.4,
             pointRadius: 2,
             pointBackgroundColor: 'rgba(255,0,0,1)',
             pointBorderColor: 'rgba(0,0,0,1)',
             borderColor: 'rgb(0,0,0,1)',
-            maintainAspectRatio: false,
-            // Make the Chart form as a square instead            
 
             scales: {
                 x:{
