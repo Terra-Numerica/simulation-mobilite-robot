@@ -21,17 +21,11 @@ function displayTexte(button, id){
     }
 } 
 
+/**
+ * Hide / Show the display control panel
+ */
 function displayControlPanel(){
     let controlPanel = document.getElementById("controlPanel");
-    let playPanel = document.getElementById("playPanel");
-    
-    if(controlPanel.style.display == "block"){
-        // Hide
-        controlPanel.style.display = "none";
-        console.log("Hide control panel")
-    }
-    else {
-        controlPanel.style.display = "block";
-        console.log("Show control panel")
-    }
+
+    controlPanel.style.display = (controlPanel.style.display == "block") ? "none" : "block";
 }

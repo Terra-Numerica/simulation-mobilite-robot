@@ -28,14 +28,13 @@
 
 <body>
 
-    <!-- For smartphone -->
+    <!-- Menu for Smartphone -->
     <img src="/antMath/img/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
 
     <!-- PlayGround -->
     <div id="playPanel">
         <canvas id="playGround"></canvas>
-        <!-- Tuto -->
-        <!-- More Information -->
+
     </div>
 
     <div id="controlPanel">
@@ -63,19 +62,17 @@
             <!-- Button -->
             <div id="gameControler">
                 <button class="controlButton" onclick="pauseDraw(this)">Pause</button>
-                <button class="controlButton" onclick="EndScreenOne(this)">Download 1</button>
+                <button class="controlButton" onclick="EndScreenOne(this)">Download1</button>
                 <button class="controlButton" onclick="resetDraw(this)">Reset</button>
-
-                <!-- <input type="checkbox" id="drawMain" name="scales" class="checkbox" onclick="drawMainPaths(this)"
-                    checked> -->
                 <button class="controlButton" onclick="drawMainPaths(this)">All Path</button>
+
             </div>
             
             <div id="explanationControler">
 
-                <img  src="assets/tuto.png" alt="Button information" onclick="displayTexte(this, 'tutorial')">
-                <img src="assets/buttonInfo.png" alt="Button information" onclick="displayTexte(this, 'information')">
-                <img src="img/button_about_ant_with_text.png" alt="AButton : bout ant's mobility" onclick="displayTexte(this, 'aboutAnts')">
+                <img  src="img/button/orange_button_texted.png" alt="Button information" onclick="displayTexte(this, 'tutorial')">
+                <img src="img/button/blue_button_texted.png" alt="Button information" onclick="displayTexte(this, 'information')">
+                <img src="img/button/green_button_texted.png" alt="AButton : bout ant's mobility" onclick="displayTexte(this, 'aboutAnts')">
             </div>
             
             <div class="displayTexteDiv" id="tutorial">

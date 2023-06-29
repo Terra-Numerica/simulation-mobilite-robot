@@ -37,29 +37,46 @@ canvas:not(#curve){
     height: 100%;
     width: 25%;
     left: 75%;
+    /* Permet surement de réafficher après mini screen */
+    /* display: block; */ 
 }
 
 #inputControler {
     border-bottom: 10px solid black;
-    height: 50%;
+    /* height: 50%; */
+    min-height: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    
+    /* justify-content: center; */
+    justify-content: space-evenly;
     text-align: center;
     /* justify-items: center; */
     align-items:center;
     width: 100%;
 }
 
+#inputControler > * {
+    width: 100%;
+    margin: 7px;
+}
+
+
 /* ==============================EXPLANATION======================================= */
 
+#gameControler {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#gameControler > button {
+    width: calc(75% / 4);
+}
+
 #explanationControler{
-    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    justify-items: center;
-    /* align-items:center; */
+    justify-content: space-evenly;
     height: 10%;
 }
 
@@ -77,7 +94,7 @@ canvas:not(#curve){
 }
 
 #explanationControler > img{
-    max-width: calc(100%/3);
+    max-width: calc(75%/3);
 } 
 
 /* ============================= CURVE ====================================*/
@@ -107,6 +124,8 @@ canvas:not(#curve){
         width: 100%;
     }
 
+    /* ========================== CONTROLE =======================================*/
+
     #controlPanel{
         position: absolute ;
         background-color: white ;
@@ -116,7 +135,6 @@ canvas:not(#curve){
         height: 100% ;
         left: 0;
         border-left: none;
-
     }
 
 }

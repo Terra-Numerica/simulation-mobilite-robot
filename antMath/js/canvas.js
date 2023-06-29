@@ -53,6 +53,8 @@ var DrawingApp = /** @class */ (function () {
         
         canvas.width = document.getElementById("playPanel").offsetWidth;
         canvas.height = document.getElementById("playPanel").offsetHeight;
+        // canvas.width = document.getElementById("playGround").offsetWidth;
+        // canvas.height = document.getElementById("playGround").offsetHeight;
         
         var context = canvas.getContext("2d");
         context.lineCap = 'round';

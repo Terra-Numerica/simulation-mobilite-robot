@@ -52,7 +52,7 @@ function pauseDraw(element) {
 }
 function drawPath(element) {
     // document.getElementById('drawMain').checked = false;
-    document.getElementById('drawAll').checked = false;
+    // document.getElementById('drawAll').checked = false;
     for (var i_1 = 0; i_1 < canvasTab.length; i_1++) {
         canvasTab[i_1].style.opacity = '0';
         
@@ -363,8 +363,12 @@ function EndScreenOne(element) {
         quality: 100,
         transparent: "#0x00FF00"
     });
+
+    
     var canvasFinal = document.createElement('canvas');
-    canvasFinal.width = window.innerWidth * 0.75;
+
+    let originalCanvas = document.getElementById("playGround");
+    canvasFinal.width = window.innerWidth * 0.75
     canvasFinal.height = window.innerHeight * 0.9;
 
     // canvasFinal.style.width = "auto";
