@@ -8,11 +8,6 @@ function displayTexte(button, id){
     if(element.style.display == "block"){
         // Cache le texte
         element.style.display = "none";
-        // Fais réapparaitre les autres bouttons
-        // let textButtons = document.getElementsByClassName("textButton");
-        // for (let i = 0; i < textButtons.length; i++) {
-        //     textButtons[i].style.display = "block";
-        // }
     }
     else {
         // Cache les autres textes
@@ -23,17 +18,20 @@ function displayTexte(button, id){
         }
         // Affiche texte
         element.style.display = "block";
-        
-        
-
-
-        // Cache les autres boutons
-        // let textButtons = document.getElementsByClassName("textButton");
-        // for (let i = 0; i < textButtons.length; i++) {
-        //     if (textButtons[i] != button) {
-        //         textButtons[i].style.display = "none";
-        //     }
-        // }
     }
-
 } 
+
+function displayControlPanel(){
+    let controlPanel = document.getElementById("controlPanel");
+    let playPanel = document.getElementById("playPanel");
+    
+    if(controlPanel.style.display == "block"){
+        // Hide
+        controlPanel.style.display = "none";
+        console.log("Hide control panel")
+    }
+    else {
+        controlPanel.style.display = "block";
+        console.log("Show control panel")
+    }
+}

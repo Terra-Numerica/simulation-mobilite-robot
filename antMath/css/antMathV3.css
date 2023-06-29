@@ -5,7 +5,7 @@
 }
 
 html, body{
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
     flex: auto;
 }
@@ -41,8 +41,6 @@ canvas:not(#curve){
 
 #inputControler {
     border-bottom: 10px solid black;
-    /* height: auto;
-    min-height: 50%; */
     height: 50%;
     display: flex;
     flex-direction: column;
@@ -92,12 +90,14 @@ canvas:not(#curve){
 /* ========================= LITTLE SCREEN ==================*/
 /* ==========================================================*/
 
-@media screen and (max-width : 900px    ) {
+@media (max-width : 900px) {
     #menuButton{
         position: absolute;
-        display: block;
-        width: 5%;
-        z-index: 9999;
+        display: flex; /* pour le réafficher*/
+        width: 50px;
+        left:10px;
+        top: 10px;
+        z-index: 999;
     }
 
     /* ========================== PLAY =======================================*/
@@ -108,7 +108,15 @@ canvas:not(#curve){
     }
 
     #controlPanel{
+        position: absolute ;
+        background-color: white ;
+        z-index: 1 ;
         display: none;
+        width: 100% ;
+        height: 100% ;
+        left: 0;
+        border-left: none;
+
     }
 
 }
