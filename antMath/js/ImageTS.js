@@ -27,14 +27,14 @@ let drawAllPathOn = true;
 
 
 //Change the space between two ants with html
-function changeGap(element) {
+function changeAntSpacing(element) {
     gap = parseInt(element.value);
 }
-function changeGap2(element) {
+function changeAntSpacing2(element) {
     gap2 = Math.abs(parseInt(element.value) * 10);
 }
 //Change the execution speed with html
-function changeSpeed(element) {
+function changeAntSpeed(element) {
     speedAnt = Math.abs(parseInt(element.value));
 }
 //Reset the simulation with html
@@ -172,11 +172,11 @@ window.onload = function () {
     
     let speedInput = document.getElementById('antSpeed');
     speedInput.value = defaultValueRange(speedInput);
-    changeSpeed(speedInput); 
+    changeAntSpeed(speedInput); 
 
     let gapInput = document.getElementById("antSpacing");
     gapInput.value = defaultValueRange(gapInput);
-    changeGap(gapInput);
+    changeAntSpacing(gapInput);
     
     // Pas touche au path selection 
 };

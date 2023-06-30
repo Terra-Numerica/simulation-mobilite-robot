@@ -1,18 +1,1 @@
-Pour le responsive : 
-
-Pour mouve les points de la courbe, il faux modifier les clickX et clickY de la drawing App associated*
-MAIS ATTENTION :
-
-Il faut penser après la modif à téléporter les fourmis relativement aux modifications de la courbes
-AND les resizer !
-
-Transformer "Space" en var global pour pas se faire chier avec l'event listenenr "resize"
-
-
-ABSOLUMENT TOUT EST EN ABSOLUE --> RIEN NE SE D2PLACE LA OU IL FAUT !!!
-
-
-
-
-
-Les canvas sont trop grand
+Le 1st chemin disparait quand resize

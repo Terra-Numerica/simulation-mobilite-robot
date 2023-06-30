@@ -19,16 +19,16 @@ let green:number = 0;
 
 
 //Change the space between two ants with html
-function changeGap(element:HTMLOptionElement): void{
+function changeAntSpacing(element:HTMLOptionElement): void{
     gap = parseInt(element.value);
 }
 
-function changeGap2(element:HTMLOptionElement): void{
+function changeAntSpacing2(element:HTMLOptionElement): void{
     gap2 = Math.abs(parseInt(element.value) * 10);
 }
 
 //Change the execution speed with html
-function changeSpeed(element:HTMLOptionElement): void{
+function changeAntSpeed(element:HTMLOptionElement): void{
     speedAnt = Math.abs(parseInt(element.value));
 }
 

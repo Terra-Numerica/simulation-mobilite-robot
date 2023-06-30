@@ -37,6 +37,9 @@ canvas:not(#curve){
     height: 100%;
     width: 25%;
     left: 75%;
+    position: absolute ;
+    z-index: 999999999;
+    background-color: white;
     /* Permet surement de réafficher après mini screen */
     /* display: block; */ 
 }
@@ -130,7 +133,7 @@ canvas:not(#curve){
 
     #controlPanel{
         position: absolute ;
-        background-color: white ;
+        background-color: rgba(255, 255, 255, 0.8);
         z-index: 1 ;
         display: none;
         width: 100% ;
