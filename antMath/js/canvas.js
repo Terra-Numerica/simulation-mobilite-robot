@@ -60,6 +60,7 @@ var DrawingApp = /** @class */ (function () {
         context.lineCap = 'round';
         context.lineJoin = 'round';
         context.strokeStyle = '#EE5A24';
+        
         context.lineWidth = 4;
         // context.fillStyle = '#009432';
         // context.fillRect(0,0,canvas.width,canvas.height);

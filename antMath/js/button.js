@@ -33,7 +33,8 @@ function displayControlPanel() {
 
 window.addEventListener("resize", () => {
     // this listener has been made to replaced the CSS that does'not work
-    console.log("resize")
+
+    // console.log("resize")
     if (window.innerWidth >= 900) {
         let controlPanel = document.getElementById("controlPanel");
         if (controlPanel.style.display != "block") {
@@ -49,8 +50,15 @@ window.addEventListener("resize", () => {
     // console.log("Before");
     // console.log("playGround.width", playGround.width)
 
-    playGround.width = playPanel.offsetWidth;
-    playGround.height = playPanel.offsetHeight;
+    playGround.style.display = "none";
+
+    setTimeout(() => {
+        playGround.width = playPanel.offsetWidth;
+        playGround.height = playPanel.offsetHeight;
+        playGround.style.display ="block";
+    }, 100);
+    
+
 
     // console.log("After")
     // console.log("playGround.width", playGround.width)

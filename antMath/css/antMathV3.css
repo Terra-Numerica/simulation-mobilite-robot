@@ -37,11 +37,9 @@ canvas:not(#curve){
     height: 100%;
     width: 25%;
     left: 75%;
-    position: absolute ;
-    z-index: 999999999;
     background-color: white;
     /* Permet surement de réafficher après mini screen */
-    /* display: block; */ 
+    /* display: block; */
 }
 
 #inputControler {
