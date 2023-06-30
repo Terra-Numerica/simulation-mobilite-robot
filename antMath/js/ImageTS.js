@@ -185,9 +185,6 @@ function defaultValueRange(element){
     return Math.round((element.max < element.min) ? element.min : Number(element.min) + ((element.max - element.min)/2))
 }
 
-window.addEventListener("resize", function (e) {
-    console.log("resize");
-})
 
 
 /**
