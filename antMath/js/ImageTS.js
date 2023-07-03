@@ -236,6 +236,10 @@ window.addEventListener("resize", () => {
 
 });
 
+// évite d'afficher 1 millipns de path qaund différence minime
+let previousPathLength = Infinity;
+let deltaPathLength = Infinity  ;
+const DELTA_MIN = 0.002;
 
 /**
  * 
@@ -267,6 +271,19 @@ function startAnts(First, Space, firstX, firstY) {
                 First.img.style.height = 80 + 'px';
                 First.img.style.transform = 'translateX(' + -50 + '%) translateY(' + -50 + '%) rotate(' + (0) + 'deg) ';
                 updateSample(First.distance);
+
+                // évite d'afficher 1 millipns de path qaund différence minime
+                deltaPathLength = previousPathLength - First.distance;
+
+                
+
+                if(deltaPathLength < DELTA_MIN && deltaPathLength > 0){
+                    console.log("Delta too low to show path");
+                }
+                else{
+                    previousPathLength = First.distance;
+                }
+                
             }
         }
         else {
@@ -292,7 +309,8 @@ function startAnts(First, Space, firstX, firstY) {
                 }
                 red = Math.max(0, red - 45);
                 drawingGap = Math.round(drawingGap * 2 - drawingGap / 2);
-                if(drawAllPathOn){
+                // if(drawAllPathOn){
+                if(drawAllPathOn && (deltaPathLength > DELTA_MIN || deltaPathLength < 0) ){
                 // if (document.getElementById('drawMain').checked) {
                     futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
                 }
@@ -313,6 +331,17 @@ function startAnts(First, Space, firstX, firstY) {
         if (futurAnts[0].x == First.x && futurAnts[0].y == First.y) {
             updateSample(futurAnts[0].distance);
             document.body.removeChild(futurAnts.shift().img);
+
+            // évite d'afficher 1 millipns de path qaund différence minime
+            deltaPathLength = previousPathLength -futurAnts[0].distance;
+            if(deltaPathLength < DELTA_MIN && deltaPathLength > 0){
+                
+                console.log("Delta too low to show path");
+            }
+            else{
+                previousPathLength = futurAnts[0].distance;
+            }
+            
         }
         //move all the other ants, from the closest to the farest
         for (var i_6 = 1; i_6 < futurAnts.length; i_6++) {
@@ -349,7 +378,8 @@ function delayFirst(Space, First, firstX, firstY) {
             }
             red = Math.max(0, red - 45);
             drawingGap = Math.round(drawingGap * 2 - drawingGap / 2);
-            if(drawAllPathOn){
+            // if(drawAllPathOn){
+            if(drawAllPathOn && (deltaPathLength > DELTA_MIN || deltaPathLength < 0) ){
             // if (document.getElementById('drawMain').checked) {
                 futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
             }
@@ -391,17 +421,15 @@ function EndScreenOne(element) {
     canvasFinal.width = window.innerWidth * 0.75
     canvasFinal.height = window.innerHeight * 0.9;
 
-    // canvasFinal.style.width = "auto";
-    // canvasFinal.style.height = "auto";
-    // canvasFinal.style.margin = '0';
-    // canvasFinal.style.position = 'absolute';
+
     canvasFinal.style.opacity = '0';
 
 
 
     canvasFinal.getContext('2d').drawImage(d.canvas, 0, 0);
     gif.addFrame(canvasFinal, { delay: 200 });
-    for (var i_9 = 0; i_9 < (nbIteration - 1); i_9++) {
+    // for (var i_9 = 0; i_9 < (nbIteration - 1); i_9++) {
+    for (var i_9 = 0; i_9 < canvasTab.length; i_9++) {    
         canvasFinal.getContext('2d').drawImage(canvasTab[i_9], 0, 0);
         gif.addFrame(canvasFinal, {
             delay: Math.max(40, 200 - 10 * i_9),

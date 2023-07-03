@@ -19,30 +19,30 @@ var DrawingAnt = /** @class */ (function (_super) {
         var _this = _super.call(this, link, x, y) || this;
         _this.canvas = document.createElement('canvas');
         _this.draw = false;
-        // _this.style.display = 'none';
-
-        // _this.canvas.width = document.getElementById("playPanel").offsetWidth;
-        // _this.canvas.height = document.getElementById("playPanel").offsetHeight;
 
         _this.canvas.width = document.getElementById("playGround").offsetWidth;
         _this.canvas.height = document.getElementById("playGround").offsetHeight;
         
-        // _this.canvas.style.width = "auto";
-        // _this.canvas.style.height = "auto";
-        // _this.canvas.style.margin = '0';
-        // _this.canvas.style.position = 'absolute';
         if (!draw) {
-            _this.canvas.style.opacity = '0';
+            _this.canvas.style.display = 'none';
         }
+
+        
+
+
         var context = _this.canvas.getContext("2d");
         context.lineCap = 'round';
         context.lineJoin = 'round';
         context.strokeStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
         context.lineWidth = 1;
-        document.body.appendChild(_this.canvas);
-        canvasTab.push(_this.canvas);
-        var pathSelect = document.getElementById('pathDrawing');
-        pathSelect.max = parseInt(pathSelect.max) + 1;
+        if(draw){
+            document.body.appendChild(_this.canvas);
+            canvasTab.push(_this.canvas);
+            var pathSelect = document.getElementById('pathDrawing');
+            pathSelect.max = parseInt(pathSelect.max) + 1;
+        }
+        
+        
         return _this;
     }
     DrawingAnt.prototype.move = function (x, y) {
