@@ -21,8 +21,11 @@ var DrawingAnt = /** @class */ (function (_super) {
         _this.draw = false;
         // _this.style.display = 'none';
 
-        _this.canvas.width = document.getElementById("playPanel").offsetWidth;
-        _this.canvas.height = document.getElementById("playPanel").offsetHeight;
+        // _this.canvas.width = document.getElementById("playPanel").offsetWidth;
+        // _this.canvas.height = document.getElementById("playPanel").offsetHeight;
+
+        _this.canvas.width = document.getElementById("playGround").offsetWidth;
+        _this.canvas.height = document.getElementById("playGround").offsetHeight;
         
         // _this.canvas.style.width = "auto";
         // _this.canvas.style.height = "auto";
