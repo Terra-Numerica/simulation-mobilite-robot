@@ -92,9 +92,6 @@ function drawAllPaths(element) {
 }
 window.onload = function () {
 
-    // sert à sauvegarder le chemin d'origine
-    saveFirstDrawApp = new DrawingApp();
-
     //create canvas and set background
     d = new DrawingApp();
     //creation of the chart
@@ -140,6 +137,10 @@ window.onload = function () {
             }
         }
     });
+
+    saveFirstDrawApp = new DrawingApp();
+    Object.assign(saveFirstDrawApp, d);
+
     //detect click on canvas once
     document.getElementById("playGround").addEventListener('click', function (event) {
         if (draw) {
@@ -164,7 +165,21 @@ window.onload = function () {
 
             // Functipon unfound ???
             // saveFirstDrawApp = structuredClone(d); 
-            Object.assign(saveFirstDrawApp, d);
+            // sert à sauvegarder le chemin d'origine
+
+        //     let canvas = document.getElementById("playGround");
+
+
+        //     let context = canvas.getContext("2d");
+        // context.lineCap = 'round';
+        // context.lineJoin = 'round';
+        // context.strokeStyle = '#EE5A24';
+        
+        // context.lineWidth = 4;
+
+
+            
+            // saveFirstDrawApp.context = context;
 
             setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
         }
@@ -193,8 +208,6 @@ function defaultValueRange(element){
     return Math.round((element.max < element.min) ? element.min : Number(element.min) + ((element.max - element.min)/2))
 }
 
-let resizeEvent = false;
-
 window.addEventListener("resize", () => {
     // this listener has been made to replaced the CSS that does'not work
     // le canvas doit être entièremenet reconstuit pour évider de graphiquement disparaitre
@@ -206,31 +219,20 @@ window.addEventListener("resize", () => {
         }
     }
 
-    resizeEvent = true;
-
-    // let saveX = d.clickX;
-    // let saveY = d.clickY;
-    // d = new DrawingApp();
-    // d.clickX = saveX;
-    // d.clickY = saveY;
-
-    // let d = new DrawingApp();
     let playPanel = document.getElementById("playPanel");
     let playGround = document.getElementById("playGround");
     playGround.width = playPanel.offsetWidth;
     playGround.height = playPanel.offsetHeight;
     
+    // redessine le chemin dans le canvas resized
+    // on doit redonné le contexte je sais pas pourquoi
+    saveFirstDrawApp.context.strokeStyle = '#EE5A24';
+    saveFirstDrawApp.context.lineCap = 'round';
+    saveFirstDrawApp.context.lineJoin = 'round';
+    saveFirstDrawApp.context.strokeStyle = '#EE5A24';
+        
+    saveFirstDrawApp.context.lineWidth = 4;
     saveFirstDrawApp.redraw()
-
-    // let playPanel = document.getElementById("playPanel");
-    // let newPlayGround = document.getElementById("playGround");
-    // console.log("newPlayGround", newPlayGround);
-    // newPlayGround.width = playPanel.offsetWidth;
-    // newPlayGround.height = playPanel.offsetHeight;
-    // console.log("newPlayGround", newPlayGround);
-    // document.getElementById("playGround").remove();
-    // document.getElementById("playPanel").appendChild(newPlayGround);
-    
 
 });
 

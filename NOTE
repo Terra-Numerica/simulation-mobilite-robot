@@ -2,4 +2,4 @@ Le 1st chemin disparait quand resize
 
 BUG : pause iompossible tant que la hanthill n'est pas apparue
 
-il semble que le redraw ne concer
+il semble que le redraw ne concerve pas le contexte
