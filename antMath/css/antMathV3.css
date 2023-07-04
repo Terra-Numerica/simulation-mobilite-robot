@@ -97,9 +97,28 @@ canvas:not(#curve){
     display: none;
 }
 
-#explanationControler > img{
+#explanationControler > div{
     max-width: calc(75%/3);
-} 
+}
+
+#explanationControler > div > img {
+    width:100%;
+}
+
+/* Centered text */
+.buttonTexted {
+    position: relative;
+    text-align: center;
+    color: black;
+  }
+
+.buttonTexted > h4 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8vw
+}
 
 /* ============================= CURVE ====================================*/
 #dataViewer{
@@ -141,6 +160,14 @@ canvas:not(#curve){
         height: 100% ;
         left: 0;
         border-left: none;
+    }
+
+    .buttonTexted > h4 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3.2vw
     }
 
 }

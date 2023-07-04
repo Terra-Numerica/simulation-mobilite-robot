@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<!-- <html lang="fr"> -->
+<html>
 
 <head>
     <meta charset="UTF-8">
-    <title>Ant simulation : Math</title>
+    <!-- <title lang="en">Ant simulation : Math</title> -->
     <link rel="icon" type="image/x-icon" href="./../favicon.png">
     <!-- Parameters to import library -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,10 @@
     <script type="text/javascript" src="library/granim.min.js"></script>
     <!-- Library to translate -->
     <script src="library/jquery-3.7.0.min.js"></script>
-    <script src="library/jquery.cookie.js"></script>
+    <script src="library/carhartl-jquery-cookie-92b7715/jquery.cookie.js"></script>
+
+    <script src="js/langSwitch.js"></script>
+
     <!-- My Library -->
     <script src="./js/Ant.js"></script>
     <script src="./js/DrawingAnt.js"></script>
@@ -23,12 +27,15 @@
     <script src="./js/curve.js"></script>
     <script src="./js/button.js"></script>
     <!-- CSS -->
-    <link rel="stylesheet" href="./css/antMathV3.css">  
+    <link rel="stylesheet" href="./css/antMathV3.css">
 
 </head>
 
 <body>
-    
+
+
+    <!-- <button id="switch-lang">Switch Language Icon Here</button> -->
+
 
     <!-- Menu for Smartphone -->
     <img src="/antMath/img/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
@@ -42,51 +49,72 @@
     <div id="controlPanel">
         <!-- Input -->
         <div id="inputControler">
-            <h1> Control Panel</h1>
+
+            <!-- <h1> <span lang="en">Control Panel</span><span lang="fr">Panneau de Contôle</span>  </h1> -->
+            <h1 id="controlPanelTitle" lang="en">Control Panel</h1>
             <!-- Slider -->
             <div id="antControler">
                 <div>
-                    <label for="antSpeed">Ant's Speed</label>
+                    <label id="antSpeedLabel" for="antSpeed" lang="en">Ant's Speed</label>
                     <input type="range" id="antSpeed" name="antSpeed" min="1" max="10" value="5" step="1"
                         oninput="changeAntSpeed(this)">
                 </div>
                 <div>
-                    <label for="antSpacing">Ant's Spacing</label>
+                    <label lang="en" id="antSpacingLabel" for="antSpacing">Ant's Spacing</label>
                     <input type="range" id="antSpacing" name="antSpacing" min="30" max="90" value="30" step="30"
                         oninput="changeAntSpacing(this)">
                 </div>
                 <div>
-                    <label for="pathDrawing">Ant's path selected</label>
+                    <label lang="en" id="antPathLabel" for="pathDrawing">Ant's path selected</label>
                     <input type="range" id="pathDrawing" name="pathDrawing" min="-1" max="-1" value="-1" step="1"
                         oninput="drawPath(this)">
                 </div>
             </div>
             <!-- Button -->
             <div id="gameControler">
-                <button class="controlButton" onclick="pauseDraw(this)">Stop</button>
+                <!-- TODO : Trouver une solution pour la traduction -->
+                <button lang="en" id="stopButton" class="controlButton" onclick="pauseDraw(this)">Stop</button>
                 <button class="controlButton" onclick="EndScreenOne(this)">GIF</button>
-                <button class="controlButton" onclick="resetDraw(this)">Reset</button>
-                <button class="controlButton" onclick="drawMainPaths(this)">All Path</button>
+                <button lang="en" id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button>
+                <button lang="en" id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">All
+                    Path</button>
 
             </div>
-            
+
             <div id="explanationControler">
+                <div class="buttonTexted" onclick="displayTexte(this, 'tutorial')">
+                    <h4 lang="en" id="tutorialButton" >Tutorial</h4>
+                    <img src="img/button/orange_button.png" alt="Button information">
+                </div>
 
-                <img  src="img/button/orange_button_texted.png" alt="Button information" onclick="displayTexte(this, 'tutorial')">
-                <img src="img/button/blue_button_texted.png" alt="Button information" onclick="displayTexte(this, 'information')">
-                <img src="img/button/green_button_texted.png" alt="AButton : bout ant's mobility" onclick="displayTexte(this, 'aboutAnts')">
+                <div class="buttonTexted" onclick="displayTexte(this, 'information')">
+                    <h4 lang="en" id="informationButton" >Information</h4>
+                    <img src="img/button/blue_button.png" alt="Button information"
+                        >
+                </div>
+                <div class="buttonTexted" onclick="displayTexte(this, 'aboutAnts')">
+                    <h4 lang="en" id="moreButton" >More</h4>
+                    <img src="img/button/green_button.png" alt="A Button : bout ant's mobility" >
+
+                </div>
+                <!-- <img src="img/button/orange_button_texted.png" alt="Button information" onclick="displayTexte(this, 'tutorial')">
+                
+                <img src="img/button/green_button_texted.png" alt="AButton : bout ant's mobility" onclick="displayTexte(this, 'aboutAnts')"> -->
             </div>
-            
+
             <div class="displayTexteDiv" id="tutorial">
                 <!-- <a href="#close" title="Close" class="close">X</a> -->
                 <h2><u>Tutorial about the simulation</u></h2>
                 <p>This is a tutorial to understand this simulation</p>
                 <p>The brown part is where the simulation will take place.
-                To start it, just draw a line which will represent the path taken by the first ant.<br>
-                Clicking on the mouse will therefore define the starting point and releasing it will place the end point for all ants.</p>
-                <p>At the top right is the Control Panel which will allow you to modify the parameters of the simulation.</p>
+                    To start it, just draw a line which will represent the path taken by the first ant.<br>
+                    Clicking on the mouse will therefore define the starting point and releasing it will place the end
+                    point for all ants.</p>
+                <p>At the top right is the Control Panel which will allow you to modify the parameters of the
+                    simulation.</p>
                 <p>At the bottom right is a graph which, depending on the number of the ant,
-                shows you the number of steps it has taken to go from the starting point to the finishing point. </p>
+                    shows you the number of steps it has taken to go from the starting point to the finishing point.
+                </p>
             </div>
 
             <div class="displayTexteDiv" id="aboutAnts">
@@ -96,9 +124,11 @@
                 <p>The first ant is the one who will lead the group and each ant follows the one in front of it.
                     So the 100th ant will probably not take the same path as the 1st.</p>
                 <p>Moreover, the ants are not moving at the same speed, the gap between the ants fluctuate.<br>
-                    And as we can see in this simulation, the greater the gap is between two ants, the faster the shortest path will be found.</p>
-                <p>This simulation is interesting from an algorithmic point of view because it reflects part of the shortest path problem in Computer Science.</p>
-    
+                    And as we can see in this simulation, the greater the gap is between two ants, the faster the
+                    shortest path will be found.</p>
+                <p>This simulation is interesting from an algorithmic point of view because it reflects part of the
+                    shortest path problem in Computer Science.</p>
+
             </div>
 
             <div class="displayTexteDiv" id="information">
@@ -110,7 +140,8 @@
                 <p><u>All Path:</u> Allows you to display all the paths of each ants</p>
                 <p><u>Pause Button:</u> Allows you to pause the simulation</p>
                 <p><u>Reset Button:</u> Allows you to reset the simulation</p>
-                <p><u>Download:</u> Allows you to download the current simulation in Gif format with 2 different links</p>
+                <p><u>Download:</u> Allows you to download the current simulation in Gif format with 2 different links
+                </p>
             </div>
 
 
@@ -118,12 +149,94 @@
 
         <div id="dataViewer">
             <!-- Graph -->
-            <canvas id="curve"></canvas>
+            <canvas lang="en" id="curve"></canvas>
         </div>
 
     </div>
 
-
+    <!-- TRANSLATE -->
+    <!-- <script>$(function () {
+        ///// Language Switching (2 languages: English and FR). /////
+      
+        // Initially disable language switching button.
+        $('#switch-lang').css({'pointer-events':'none',
+         'cursor':'default'}).attr('disabled','disabled');
+      
+        function langButtonListen() {
+          $('#switch-lang').click(function (event) {
+            event.preventDefault();
+            $('[lang="fr"]').toggle();
+            $('[lang="en"]').toggle();
+            // Switch cookie stored language.
+            if ($.cookie('lang') === 'en') {
+              $.cookie('lang', 'fr', { expires: 7 });
+            } else {
+              $.cookie('lang', 'en', { expires: 7 });
+            }
+          });
+          // Enable lang switching button.
+          $('#switch-lang').css({'pointer-events':'auto',
+           'cursor':'pointer'}).removeAttr('disabled');
+        }
+      
+        // Check if language cookie already exists.
+        if ($.cookie('lang')) {
+          var lang = $.cookie('lang');
+          if (lang === 'en') {
+            $('[lang="fr"]').hide();
+            langButtonListen();
+          } else {
+            $('[lang="en"]').hide();
+            langButtonListen();
+          }
+        } else {
+          // no cookie set, so detect language based on location.
+          if ("geolocation" in navigator) {
+            // geolocation is available
+            navigator.geolocation.getCurrentPosition(function (position) {
+              // accepted geolocation so figure out which country
+              var lat = position.coords.latitude,
+                  lng = position.coords.longitude;
+              $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&sensor=true', null, function (response) {
+                var country = response.results[response.results.length-1].formatted_address;
+                if (country ===  'Taiwan' || country === 'China') {
+                  $('[lang="en"]').hide();
+                  $.cookie('lang', 'fr', { expires: 7 });
+                  langButtonListen();
+                } else {
+                  $('[lang="fr"]').hide();
+                  $.cookie('lang', 'en', { expires: 7 });
+                  langButtonListen();
+                }
+              }).fail(function (err) {
+                console.log('error: '+err);
+                $('[lang="fr"]').hide();
+                $.cookie('lang', 'en', { expires: 7 });
+                langButtonListen();
+              });
+            },
+            function (error) {
+              if (error.code == error.PERMISSION_DENIED) {
+                // denied geolocation
+                $('[lang="fr"]').hide();
+                $.cookie('lang', 'en', { expires: 7 });
+                langButtonListen();
+              } else {
+                console.log('Unknown error. Defaulting to English!');
+                $('[lang="fr"]').hide();
+                $.cookie('lang', 'en', { expires: 7 });
+                langButtonListen();
+              }
+            });
+          } else {
+            // geolocation IS NOT available
+            $('[lang="fr"]').hide();
+            $.cookie('lang', 'en', { expires: 7 });
+            langButtonListen();
+          }
+        }
+      });
+      </script> -->
 
 
 
