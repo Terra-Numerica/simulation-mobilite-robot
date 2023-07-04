@@ -76,7 +76,5 @@ const TRAD =  {
         "en" : "More",
         "fr" : "Plus"
     }
-
-    
 }
 ;
