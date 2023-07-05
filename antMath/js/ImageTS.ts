@@ -100,7 +100,7 @@ window.onload = () => {
                 backgroundColor: [
                     'rgba(0, 0, 0)'
                 ],
-                label: 'Path\'s lenght',
+                label: 'Path lenght',
                 data: []
             }]
         },
