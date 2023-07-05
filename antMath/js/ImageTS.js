@@ -113,6 +113,7 @@ window.onload = function () {
         options: {
             responsive: true,
             maintainAspectRatio : false,
+            ratio : 1|6,
             tension: 0.4,
             pointRadius: 2,
             pointBackgroundColor: 'rgba(255,0,0,1)',
