@@ -3,152 +3,155 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <!-- <title lang="en">Ant simulation : Math</title> -->
-    <link rel="icon" type="image/x-icon" href="./../favicon.png">
-    <!-- Parameters to import library -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Library  Graphique-->
-    <script type="text/javascript" src="./library/gif.js.optimized/dist/gif.js"></script>
-    <script type="text/javascript" src="library/chart.min.js"></script>
-    <script type="text/javascript" src="library/granim.min.js"></script>
-    <script src="js/langSwitch.js"></script>
-    <!-- My Library -->
-    <script src="./js/Ant.js"></script>
-    <script src="./js/DrawingAnt.js"></script>
-    <script src="./js/ImageTS.js"></script>
-    <script src="./js/canvas.js"></script>
-    <script src="./js/curve.js"></script>
-    <script src="./js/button.js"></script>
-    <!-- CSS -->
-    <link rel="stylesheet" href="./css/antMath.css">
+  <meta charset="UTF-8">
+  <!-- <title lang="en">Ant simulation : Math</title> -->
+  <link rel="icon" type="image/x-icon" href="./../favicon.png">
+  <!-- Parameters to import library -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Library  Graphique-->
+  <script type="text/javascript" src="./library/gif.js.optimized/dist/gif.js"></script>
+  <script type="text/javascript" src="library/chart.min.js"></script>
+  <script type="text/javascript" src="library/granim.min.js"></script>
+  <script src="js/langSwitch.js"></script>
+  <!-- My Library -->
+  <script src="./js/Ant.js"></script>
+  <script src="./js/DrawingAnt.js"></script>
+  <script src="./js/ImageTS.js"></script>
+  <script src="./js/canvas.js"></script>
+  <script src="./js/curve.js"></script>
+  <script src="./js/button.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/antMathV2.css">
 
 </head>
 
 <body>
 
-    <!-- <button id="switch-lang">Switch Language Icon Here</button> -->
+  <!-- <button id="switch-lang">Switch Language Icon Here</button> -->
 
-    <!-- Menu for Smartphone -->
-    <img src="/antMath/img/button/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
+  <!-- Menu for Smartphone -->
+  <img src="/antMath/img/button/menu_boutton_opaque.png" alt="Menu button" id="menuButton"
+    onclick="displayControlPanel()">
 
-    <!-- PlayGround -->
-    <div id="playPanel">
-        <canvas id="playGround"></canvas>
+  <!-- PLAYGROUND -->
+  <div id="playPanel">
+    <canvas id="playGround"></canvas>
+
+  </div>
+
+  <!-- CONTROL PANEL -->
+  <div id="controlPanel">
+
+   <!-- INPUT PANEL -->
+    <div id="inputControler">
+      
+      <!-- Slider -->
+      <div id="antControler">
+        <!-- Label -->
+        <div>
+          <label id="antSpeedLabel" for="antSpeed" lang="en">Ant's Speed</label>
+          <label lang="en" id="antSpacingLabel" for="antSpacing">Ant's Spacing</label>
+          <label lang="en" id="antPathLabel" for="pathDrawing">Ant's path selected</label>
+        </div>
+        <!-- Input range -->
+        <div>
+          <input type="range" id="antSpeed" name="antSpeed" min="1" max="10" value="5" step="1"
+            oninput="changeAntSpeed(this)">
+          <input type="range" id="pathDrawing" name="pathDrawing" min="-1" max="-1" value="-1" step="1"
+            oninput="drawPath(this)">
+          <input type="range" id="antSpacing" name="antSpacing" min="30" max="90" value="30" step="30"
+            oninput="changeAntSpacing(this)">
+        </div>
+
+      </div>
+
+      <!-- Button -->
+      <div id="gameControler">
+        <!-- TODO : Trouver une solution pour la traduction -->
+        <button lang="en" id="stopButton" class="controlButton" onclick="pauseDraw(this)">Stop</button>
+        <button class="controlButton" onclick="EndScreenOne(this)">GIF</button>
+        <button lang="en" id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button>
+        <button lang="en" id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">All
+          Path</button>
+
+      </div>
 
     </div>
 
-    <div id="controlPanel">
-        <!-- Input -->
-        <div id="inputControler">
+    <!-- EXPLANATION PANEL -->
+    <div id="explanationControler">
+      <!-- BUTTON -->
 
-            <!-- <h1> <span lang="en">Control Panel</span><span lang="fr">Panneau de Contôle</span>  </h1> -->
-            <h1 id="controlPanelTitle" lang="en">Control Panel</h1>
-            <!-- Slider -->
-            <div id="antControler">
-                <div>
-                    <label id="antSpeedLabel" for="antSpeed" lang="en">Ant's Speed</label>
-                    <input type="range" id="antSpeed" name="antSpeed" min="1" max="10" value="5" step="1"
-                        oninput="changeAntSpeed(this)">
-                </div>
-                <div>
-                    <label lang="en" id="antSpacingLabel" for="antSpacing">Ant's Spacing</label>
-                    <input type="range" id="antSpacing" name="antSpacing" min="30" max="90" value="30" step="30"
-                        oninput="changeAntSpacing(this)">
-                </div>
-                <div>
-                    <label lang="en" id="antPathLabel" for="pathDrawing">Ant's path selected</label>
-                    <input type="range" id="pathDrawing" name="pathDrawing" min="-1" max="-1" value="-1" step="1"
-                        oninput="drawPath(this)">
-                </div>
-            </div>
-            <!-- Button -->
-            <div id="gameControler">
-                <!-- TODO : Trouver une solution pour la traduction -->
-                <button lang="en" id="stopButton" class="controlButton" onclick="pauseDraw(this)">Stop</button>
-                <button class="controlButton" onclick="EndScreenOne(this)">GIF</button>
-                <button lang="en" id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button>
-                <button lang="en" id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">All
-                    Path</button>
-
-            </div>
-
-            <div id="explanationControler">
-                <div class="buttonTexted" onclick="displayTexte(this, 'tutorial')">
-                    <h4 lang="en" id="tutorialButton" >Tutorial</h4>
-                    <img src="img/button/orange_button.png" alt="Button information">
-                </div>
-
-                <div class="buttonTexted" onclick="displayTexte(this, 'information')">
-                    <h4 lang="en" id="informationButton" >Information</h4>
-                    <img src="img/button/blue_button.png" alt="Button information"
-                        >
-                </div>
-                <div class="buttonTexted" onclick="displayTexte(this, 'aboutAnts')">
-                    <h4 lang="en" id="moreButton" >More</h4>
-                    <img src="img/button/green_button.png" alt="A Button : bout ant's mobility" >
-
-                </div>
-                <!-- <img src="img/button/orange_button_texted.png" alt="Button information" onclick="displayTexte(this, 'tutorial')">
-                
-                <img src="img/button/green_button_texted.png" alt="AButton : bout ant's mobility" onclick="displayTexte(this, 'aboutAnts')"> -->
-            </div>
-
-            <div class="displayTexteDiv" id="tutorial">
-                <!-- <a href="#close" title="Close" class="close">X</a> -->
-                <h2><u>Tutorial about the simulation</u></h2>
-                <p>This is a tutorial to understand this simulation</p>
-                <p>The brown part is where the simulation will take place.
-                    To start it, just draw a line which will represent the path taken by the first ant.<br>
-                    Clicking on the mouse will therefore define the starting point and releasing it will place the end
-                    point for all ants.</p>
-                <p>At the top right is the Control Panel which will allow you to modify the parameters of the
-                    simulation.</p>
-                <p>At the bottom right is a graph which, depending on the number of the ant,
-                    shows you the number of steps it has taken to go from the starting point to the finishing point.
-                </p>
-            </div>
-
-            <div class="displayTexteDiv" id="aboutAnts">
-                <!-- <a href="#close" title="Close" class="close">X</a> -->
-                <h2><u>About ants mobility</u></h2>
-                <p>Ants are able to choose the shortest path to access a food source.</p>
-                <p>The first ant is the one who will lead the group and each ant follows the one in front of it.
-                    So the 100th ant will probably not take the same path as the 1st.</p>
-                <p>Moreover, the ants are not moving at the same speed, the gap between the ants fluctuate.<br>
-                    And as we can see in this simulation, the greater the gap is between two ants, the faster the
-                    shortest path will be found.</p>
-                <p>This simulation is interesting from an algorithmic point of view because it reflects part of the
-                    shortest path problem in Computer Science.</p>
-
-            </div>
-
-            <div class="displayTexteDiv" id="information">
-                <!-- <a href="#close" title="Close" class="close">X</a> -->
-                <h2><u>Information about the Control Panel</u></h2>
-                <p>This Control Panel will allow you to modify the parameters on the Simulation</p>
-                <p><u>Speed Selection:</u> Allows you to change the speed of the ants</p>
-                <p><u>Spacing Selection:</u> Allows you to modify the space between each ant (small, medium, large)</p>
-                <p><u>All Path:</u> Allows you to display all the paths of each ants</p>
-                <p><u>Pause Button:</u> Allows you to pause the simulation</p>
-                <p><u>Reset Button:</u> Allows you to reset the simulation</p>
-                <p><u>Download:</u> Allows you to download the current simulation in Gif format with 2 different links
-                </p>
-            </div>
-
-
+      <div id="explainationButton">
+        <div class="buttonTexted" onclick="displayTexte(this, 'tutorial')">
+          <h4 lang="en" id="tutorialButton">Tutorial</h4>
+          <img src="img/button/orange_button.png" alt="Button information">
         </div>
 
-        <div id="dataViewer">
-            <!-- Graph -->
-            <canvas lang="en" id="curve"></canvas>
+        <div class="buttonTexted" onclick="displayTexte(this, 'information')">
+          <h4 lang="en" id="informationButton">Information</h4>
+          <img src="img/button/blue_button.png" alt="Button information">
         </div>
+        <div class="buttonTexted" onclick="displayTexte(this, 'aboutAnts')">
+          <h4 lang="en" id="moreButton">More</h4>
+          <img src="img/button/green_button.png" alt="A Button : bout ant's mobility">
+        </div>
+      </div>
+      <!-- TEXTE -->
+      <div id="explainationTexte">
+        <div class="displayTexteDiv" id="tutorial">
+          <!-- <a href="#close" title="Close" class="close">X</a> -->
+          <h2><u>Tutorial about the simulation</u></h2>
+          <p>This is a tutorial to understand this simulation</p>
+          <p>The brown part is where the simulation will take place.
+            To start it, just draw a line which will represent the path taken by the first ant.<br>
+            Clicking on the mouse will therefore define the starting point and releasing it will place the end
+            point for all ants.</p>
+          <p>At the top right is the Control Panel which will allow you to modify the parameters of the
+            simulation.</p>
+          <p>At the bottom right is a graph which, depending on the number of the ant,
+            shows you the number of steps it has taken to go from the starting point to the finishing point.
+          </p>
+        </div>
+        <div class="displayTexteDiv" id="aboutAnts">
+          <!-- <a href="#close" title="Close" class="close">X</a> -->
+          <h2><u>About ants mobility</u></h2>
+          <p>Ants are able to choose the shortest path to access a food source.</p>
+          <p>The first ant is the one who will lead the group and each ant follows the one in front of it.
+            So the 100th ant will probably not take the same path as the 1st.</p>
+          <p>Moreover, the ants are not moving at the same speed, the gap between the ants fluctuate.<br>
+            And as we can see in this simulation, the greater the gap is between two ants, the faster the
+            shortest path will be found.</p>
+          <p>This simulation is interesting from an algorithmic point of view because it reflects part of the
+            shortest path problem in Computer Science.</p>
 
+        </div>
+        <div class="displayTexteDiv" id="information">
+          <!-- <a href="#close" title="Close" class="close">X</a> -->
+          <h2><u>Information about the Control Panel</u></h2>
+          <p>This Control Panel will allow you to modify the parameters on the Simulation</p>
+          <p><u>Speed Selection:</u> Allows you to change the speed of the ants</p>
+          <p><u>Spacing Selection:</u> Allows you to modify the space between each ant (small, medium, large)</p>
+          <p><u>All Path:</u> Allows you to display all the paths of each ants</p>
+          <p><u>Pause Button:</u> Allows you to pause the simulation</p>
+          <p><u>Reset Button:</u> Allows you to reset the simulation</p>
+          <p><u>Download:</u> Allows you to download the current simulation in Gif format with 2 different links
+          </p>
+        </div>
+      </div>
     </div>
 
-    <!-- TRANSLATE -->
-    <!-- <script>$(function () {
+
+    <!-- CURVE PANEL -->
+    <div id="dataViewer">
+      <canvas lang="en" id="curve"></canvas>
+    </div>
+
+  </div>
+
+  <!-- TRANSLATE -->
+  <!-- <script>$(function () {
         ///// Language Switching (2 languages: English and FR). /////
       
         // Initially disable language switching button.
