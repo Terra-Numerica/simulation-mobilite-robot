@@ -23,15 +23,15 @@ const TRAD =  {
         "fr":"Panneau de Contrôle"
     },
     "antSpeedLabel":{
-        "en":"Ant's Speed",
+        "en":"Ant Speed",
         "fr":"Vitesse des Fourmis"
     },
     "antSpacingLabel":{
-        "en":"Ant's Spacing",
+        "en":"Ant Spacing",
         "fr":"Espacement des Fourmis"
     },
     "antPathLabel":{
-        "en":"Ant's path Selected",
+        "en":"Ant path Selected",
         "fr":"Fourmi sélectionnée"
     },
     "stopButton":{
