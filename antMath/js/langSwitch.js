@@ -52,7 +52,7 @@ const TRAD =  {
     },
     "curve":{
         "title":{
-            "en":"Path's length of each ant",
+            "en":"Path length of each ant",
             "fr":"Longueur du chemin de chaque fourmi"
         },
         "axeX":{
@@ -60,7 +60,7 @@ const TRAD =  {
             "fr":"Fourmis"
         },
         "axeY":{
-            "en":"Path's length",
+            "en":"Path length",
             "fr" : "Longueur du Chemin (UA)"
         }
     },

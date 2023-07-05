@@ -106,7 +106,7 @@ window.onload = function () {
                     backgroundColor: [
                         'rgba(0, 0, 0)'
                     ],
-                    label: 'Path\'s length of each ant',
+                    label: 'Path length of each ant',
                     data: []
                 }]
         },
@@ -130,7 +130,7 @@ window.onload = function () {
                 y: {
                     title: {
                         display: true,
-                        text: 'Path\'s length (AU)' // Arbitrary Unit
+                        text: 'Path length (AU)' // Arbitrary Unit
                       },
                     min: 0
                 },
