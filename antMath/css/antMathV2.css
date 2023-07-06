@@ -22,7 +22,7 @@ html, body{
 /* ========================== PLAY PANEL =======================================*/
 #playPanel
 {
-    background-image: url("./../img/ground2.jpg");
+    background-image: url("./../img/ground3.jpg");
     height: 100vh;
     width: calc(100% - (var(--controlPanelSize)) );
 }
@@ -163,6 +163,13 @@ canvas:not(#curve){
 
 
 
+@media (min-width : 900px){
+    /* QUatrième tab for curve */
+    #tab4, .tab-wrap > label:nth-child(8), div.tab__content:nth-child(12) {
+        display: none;
+    }
+}
+
 
 /* ==========================================================*/
 /* ========================= LITTLE SCREEN ==================*/
@@ -211,5 +218,12 @@ canvas:not(#curve){
     #antControler{
         margin: 0 15px 0 70px;
     }
+
+
+    /* QUatrième tab for curve */
+/* #tab4, .tab-wrap > label:nth-child(8), div.tab__content:nth-child(12) {
+    display: flex; 
+}*/
+
 
 }
