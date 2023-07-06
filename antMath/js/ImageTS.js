@@ -336,13 +336,18 @@ function startAnts(First, Space, firstX, firstY) {
             document.body.removeChild(futurAnts.shift().img);
 
             // évite d'afficher 1 millipns de path qaund différence minime
-            deltaPathLength = previousPathLength -futurAnts[0].distance;
+            // le undef est au cas où l'utilisteur créé un chmin si court que pas de futur ant
+
+            
+            deltaPathLength = previousPathLength - ((futurAnts[0] == undefined) ? 0 : futurAnts[0].distance );
+            
+
             if(deltaPathLength < DELTA_MIN && deltaPathLength > 0){
                 
                 console.log("Delta too low to show path");
             }
             else{
-                previousPathLength = futurAnts[0].distance;
+                previousPathLength = ((futurAnts[0] == undefined) ? 0 : futurAnts[0].distance );
             }
             
         }
