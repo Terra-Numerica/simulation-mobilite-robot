@@ -113,7 +113,7 @@ window.onload = function () {
         options: {
             responsive: true,
             maintainAspectRatio : false,
-            ratio : 1|6,
+            aspectRatio : 1|2,
             tension: 0.4,
             pointRadius: 2,
             pointBackgroundColor: 'rgba(255,0,0,1)',
@@ -215,15 +215,20 @@ window.addEventListener("resize", () => {
 
    
     let graph = document.getElementById("dataViewer");
+    let curve = document.getElementById("curve");
 
     // hasChildren ne marche pas -> renvoie toujours true
     if(window.innerWidth < 900 && document.querySelector(".tab__content:last-child").children.length == 0){
-        graph.remove();
-        document.querySelector(".tab__content:last-child").appendChild(graph);
+        // graph.remove();
+        // document.querySelector(".tab__content:last-child").appendChild(graph);
+        curve.remove();
+        document.querySelector(".tab__content:last-child").appendChild(curve);
     }
     if(window.innerWidth >= 900 && document.querySelector(".tab__content:last-child").children.length != 0){
-        graph.remove();
-        document.getElementById("controlPanel").appendChild(graph);
+        // graph.remove();
+        // document.getElementById("controlPanel").appendChild(graph);
+        curve.remove();
+        document.getElementById("dataViewer").appendChild(curve);
         document.getElementById("tab1").checked = true;
     }
 
