@@ -82,8 +82,6 @@ canvas:not(#curve){
     flex-direction: row;
     justify-content: space-evenly;
     height: 10%;
-
-
 }
 
 #tutorial * , #information * , #aboutAnts * {
