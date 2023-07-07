@@ -9,9 +9,10 @@
 }
 
 html, body{
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
     flex: auto;
+    background-image: url("./../img/ground3.jpg");
 }
 
 /* Hide for big screen */
@@ -22,7 +23,7 @@ html, body{
 /* ========================== PLAY PANEL =======================================*/
 #playPanel
 {
-    background-image: url("./../img/ground3.jpg");
+    /* background-image: url("./../img/ground3.jpg"); */
     height: 100vh;
     width: calc(100% - (var(--controlPanelSize)) );
 }
