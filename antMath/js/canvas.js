@@ -87,6 +87,13 @@ var DrawingApp = /** @class */ (function () {
         canvas.addEventListener("touchend", this.releaseEventHandler);
         canvas.addEventListener("touchcancel", this.cancelEventHandler);
         //  document.body.addEventListener("click", this.clearEventHandler);
+    
+        
+        // FOR SMARTPHONE
+        canvas.addEventListener("touchstart", this.pressEventHandler);
+        canvas.addEventListener("touchmove", this.dragEventHandler);
+        canvas.addEventListener("touchend", this.releaseEventHandler);
+    
     };
     //refresh
     DrawingApp.prototype.redraw = function () {

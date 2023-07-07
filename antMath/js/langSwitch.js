@@ -12,6 +12,7 @@ function switchLang(lang){
 
     let lst = document.querySelectorAll("[lang]");
 
+    // lang accepted : en, fr, default : en
     if(lang != "en" && lang != "fr"){
         lang = "en";
     }
@@ -53,7 +54,6 @@ const TRAD =  {
         "en":"Start",
         "fr":"Départ"
     },
-
 
     "resetButton":{
         "en":"Reset",
