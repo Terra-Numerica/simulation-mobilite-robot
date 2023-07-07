@@ -9,7 +9,7 @@
 }
 
 html, body{
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
     flex: auto;
 }
@@ -222,8 +222,11 @@ canvas:not(#curve){
 
 
     #dataViewer{
+        /* bien que le dataViewer n'est pas affiché, il détermine la taille du canvas curve */
         height: 80%;
         width: 90%;
+        /* display: none; */
+
     }
 
 
