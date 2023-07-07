@@ -208,6 +208,8 @@ window.onload = function () {
 
 
     showHideDataViewer();
+    
+    switchLang(language);
 };
 
 function defaultValueRange(element){

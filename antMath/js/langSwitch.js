@@ -1,7 +1,20 @@
+// USe cookie / location to set the language
+
+// Take the language from the navigator
+var language = window.navigator.userLanguage || window.navigator.language;
+// Remove the country code
+language = language.split("-")[0];
+console.log("Language : " + language);
 
 function switchLang(lang){
 
+    console.log("Switching to " + lang);
+
     let lst = document.querySelectorAll("[lang]");
+
+    if(lang != "en" && lang != "fr"){
+        lang = "en";
+    }
 
     lst.forEach(elt => {
         if(elt.id =="curve"){
@@ -18,10 +31,6 @@ function switchLang(lang){
 }
 
 const TRAD =  {
-    "controlPanelTitle": {
-        "en":"Control Panel",
-        "fr":"Panneau de Contrôle"
-    },
     "antSpeedLabel":{
         "en":"Ant Speed",
         "fr":"Vitesse des Fourmis"
@@ -34,6 +43,8 @@ const TRAD =  {
         "en":"Ant path Selected",
         "fr":"Fourmi sélectionnée"
     },
+
+    // TODO : traduire les labels
     "stopButton":{
         "en":"Stop",
         "fr":"Arrêt"
@@ -42,6 +53,8 @@ const TRAD =  {
         "en":"Start",
         "fr":"Départ"
     },
+
+
     "resetButton":{
         "en":"Reset",
         "fr":"Réinitialisation"
@@ -64,17 +77,21 @@ const TRAD =  {
             "fr" : "Longueur du Chemin (UA)"
         }
     },
-    "tutorialButton":{
+    "tutorialTab":{
         "en":"Tutorial",
         "fr":"Tutoriel"
     },
-    "informationButton":{
+    "informationTab":{
         "en":"Information",
         "fr":"Information"
     },
-    "moreButton":{
+    "aboutTab":{
         "en" : "More",
         "fr" : "Plus"
+    },
+    "curveTab":{
+        "en" : "Curve",
+        "fr" : "Courbe"
     }
 }
 ;
