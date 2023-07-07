@@ -225,6 +225,14 @@ function showHideDataViewer(){
         // document.querySelector(".tab__content:last-child").appendChild(graph);
         curve.remove();
         document.querySelector(".tab__content:last-child").appendChild(curve);
+
+        // console.log("document.getElementById('dataViewer').style", document.getElementById("dataViewer").style.width);
+        // console.log("document.getElementById('dataViewer').style", document.getElementById("dataViewer").width);
+
+        // setTimeout(() => {
+        //     // Hide the data viewer
+        //     document.getElementById("dataViewer").style.display = "none";
+        // },5000);
     }
     if(window.innerWidth >= 900 && document.querySelector(".tab__content:last-child").children.length != 0){
         // graph.remove();

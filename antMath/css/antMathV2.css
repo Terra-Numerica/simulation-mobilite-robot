@@ -225,6 +225,15 @@ canvas:not(#curve){
         /* bien que le dataViewer n'est pas affiché, il détermine la taille du canvas curve */
         height: 80%;
         width: 90%;
+
+        /* Warning : code déguelasse :
+           la division est littéralement caché en haut à gauche de l'écran
+         */
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
         /* display: none; */
 
     }
