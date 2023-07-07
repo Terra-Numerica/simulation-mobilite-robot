@@ -58,6 +58,13 @@ canvas:not(#curve){
 #inputControler, #explanationControler{
     border-bottom: 1px solid black;
     padding: 10px 0 10px 0 ;
+    
+}
+
+/* TOutes les divisions de #inputControler */
+#inputControler > div{
+    padding: 5px 0 5px 0 ;
+    /* border-bottom: 1px solid black; */
 }
 
 /* ######## INPUT PANEL ######## */

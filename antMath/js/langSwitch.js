@@ -10,6 +10,11 @@ if (!lang_support.includes(language)) {
     language = "en";
 }
 
+function updateLanguage(elt){
+    language = elt.value;
+    switchLang();
+    includeAllHTML();
+}
 
 console.log("Language : " + language);
 

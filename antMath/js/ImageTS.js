@@ -211,6 +211,7 @@ window.onload = function () {
     showHideDataViewer();
     switchLang();
     includeAllHTML();
+    document.querySelector("[value=" + language + "]").selected = true;
 };
 
 function defaultValueRange(element){
