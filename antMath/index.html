@@ -32,8 +32,7 @@
   <!-- <button id="switch-lang">Switch Language Icon Here</button> -->
 
   <!-- Menu for Smartphone -->
-  <img src="img/button/menu_boutton_opaque.png" alt="Menu button" id="menuButton"
-    onclick="displayControlPanel()">
+  <img src="img/button/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
 
   <!-- PLAYGROUND -->
   <div id="playPanel">
@@ -44,9 +43,9 @@
   <!-- CONTROL PANEL -->
   <div id="controlPanel">
 
-   <!-- INPUT PANEL -->
+    <!-- INPUT PANEL -->
     <div id="inputControler">
-      
+
       <!-- Slider -->
       <div id="antControler">
         <!-- Label -->
@@ -58,12 +57,12 @@
         <!-- Input range -->
         <div>
           <input type="range" id="antSpeed" name="antSpeed" min="1" max="10" value="5" step="1"
-          oninput="changeAntSpeed(this)">
+            oninput="changeAntSpeed(this)">
           <input type="range" id="antSpacing" name="antSpacing" min="30" max="90" value="30" step="30"
-          oninput="changeAntSpacing(this)">
+            oninput="changeAntSpacing(this)">
           <input type="range" id="pathDrawing" name="pathDrawing" min="-1" max="-1" value="-1" step="1"
             oninput="drawPath(this)">
-          
+
 
         </div>
 
@@ -77,7 +76,6 @@
         <button lang="en" id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button>
         <button lang="en" id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">All
           Path</button>
-
       </div>
 
     </div>
@@ -87,62 +85,34 @@
 
       <div class="tab-wrap">
 
-          <!-- active tab on page load gets checked attribute -->
-          <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
-          <label lang="en" id="tutorialTab" for="tab1">Tutorial</label>
+        <!-- active tab on page load gets checked attribute -->
+        <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
+        <label lang="en" id="tutorialTab" for="tab1">Tutorial</label>
 
-          <input type="radio" id="tab2" name="tabGroup1" class="tab">
-          <label lang="en" id="informationTab" for="tab2">Control Panel</label>
+        <input type="radio" id="tab2" name="tabGroup1" class="tab">
+        <label lang="en" id="informationTab" for="tab2">Control Panel</label>
 
-          <input type="radio" id="tab3" name="tabGroup1" class="tab">
-          <label lang="en" id="aboutTab" for="tab3">About</label>
+        <input type="radio" id="tab3" name="tabGroup1" class="tab">
+        <label lang="en" id="aboutTab" for="tab3">About</label>
 
-          <input type="radio" id="tab4" name="tabGroup1" class="tab">
-          <label lang="en" id="curveTab" for="tab4">Curve</label>
+        <input type="radio" id="tab4" name="tabGroup1" class="tab">
+        <label lang="en" id="curveTab" for="tab4">Curve</label>
 
-          <div class="tab__content">
-              <h3>Tutorial about the simulation</h3>
-              <p>This is a tutorial to understand this simulation</p>
-              <p>The brown part is where the simulation will take place.
-                  To start it, just draw a line which will represent the path taken by the first ant.<br>
-                  Clicking on the mouse will therefore define the starting point and releasing it will place the end
-                  point for all ants.</p>
-              <p>At the top right is the Control Panel which will allow you to modify the parameters of the
-                  simulation.</p>
-              <p>At the bottom right is a graph which, depending on the number of the ant,
-                  shows you the number of steps it has taken to go from the starting point to the finishing point.
-              </p>
-          </div>
+        <div includeHTML="tutorial.html" class="tab__content">
+        </div>
 
-          <div class="tab__content">
-              <h3>Control Panel</h3>
-              <p>This Control Panel will allow you to modify the parameters on the Simulation</p>
-              <p><u>Speed Selection:</u> Allows you to change the speed of the ants</p>
-              <p><u>Spacing Selection:</u> Allows you to modify the space between each ant (small, medium, large)</p>
-              <p><u>All Path:</u> Allows you to display all the paths of each ants</p>
-              <p><u>Pause Button:</u> Allows you to pause the simulation</p>
-              <p><u>Reset Button:</u> Allows you to reset the simulation</p>
-              <p><u>Download:</u> Allows you to download the current simulation in Gif format with 2 different links
-              </p>
-          </div>
+        <div includeHTML="controlPanel.html" class="tab__content">
+        </div>
 
-          <div class="tab__content">
-              <h3>About ants mobility</h3>
-              <p>Ants are able to choose the shortest path to access a food source.</p>
-              <p>The first ant is the one who will lead the group and each ant follows the one in front of it.
-                  So the 100th ant will probably not take the same path as the 1st.</p>
-              <p>Moreover, the ants are not moving at the same speed, the gap between the ants fluctuate.<br>
-                  And as we can see in this simulation, the greater the gap is between two ants, the faster the
-                  shortest path will be found.</p>
-              <p>This simulation is interesting from an algorithmic point of view because it reflects part of the
-                  shortest path problem in Computer Science.</p>
-          </div>
-          <div class="tab__content">
-            
-          </div>
+        <div includeHTML="more.html" class="tab__content">
+
+        </div>
+        <div class="tab__content">
+
+        </div>
       </div>
 
-  </div>
+    </div>
 
 
     <!-- CURVE PANEL -->

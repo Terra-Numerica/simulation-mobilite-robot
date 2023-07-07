@@ -44,12 +44,13 @@ function resetDraw(element) {
 function pauseDraw(element) {
     if (Pause) {
         Pause = false;
-        element.innerText = "Stop";
+        element.innerText = TRAD.stopButton[language];
+        
         setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
     }
     else {
         Pause = true;
-        element.innerText = "Start";
+        element.innerText = TRAD.startButton[language];
     }
 }
 function drawPath(element) {
@@ -208,8 +209,8 @@ window.onload = function () {
 
 
     showHideDataViewer();
-    
-    switchLang(language);
+    switchLang();
+    includeAllHTML();
 };
 
 function defaultValueRange(element){
