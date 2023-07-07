@@ -205,15 +205,17 @@ window.onload = function () {
     changeAntSpacing(gapInput);
     
     // Pas touche au path selection 
+
+
+    showHideDataViewer();
 };
 
 function defaultValueRange(element){
     return Math.round((element.max < element.min) ? element.min : Number(element.min) + ((element.max - element.min)/2))
 }
 
-window.addEventListener("resize", () => {
-
-   
+// Function to make appear / desapppear the data viewer
+function showHideDataViewer(){
     let graph = document.getElementById("dataViewer");
     let curve = document.getElementById("curve");
 
@@ -232,8 +234,13 @@ window.addEventListener("resize", () => {
         document.getElementById("tab1").checked = true;
     }
 
+    
+}
 
+window.addEventListener("resize", () => {
 
+    showHideDataViewer();
+    
     // this listener has been made to replaced the CSS that does'not work
     // le canvas doit être entièremenet reconstuit pour évider de graphiquement disparaitre
     if (window.innerWidth >= 900) {
