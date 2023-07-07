@@ -58,11 +58,13 @@
         <!-- Input range -->
         <div>
           <input type="range" id="antSpeed" name="antSpeed" min="1" max="10" value="5" step="1"
+          oninput="changeAntSpeed(this)">
+          <input type="range" id="antSpacing" name="antSpacing" min="30" max="90" value="30" step="30"
           oninput="changeAntSpacing(this)">
           <input type="range" id="pathDrawing" name="pathDrawing" min="-1" max="-1" value="-1" step="1"
             oninput="drawPath(this)">
-          <input type="range" id="antSpacing" name="antSpacing" min="30" max="90" value="30" step="30"
-          oninput="changeAntSpeed(this)">
+          
+
         </div>
 
       </div>

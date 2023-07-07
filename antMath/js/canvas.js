@@ -88,8 +88,9 @@ var DrawingApp = /** @class */ (function () {
         canvas.addEventListener("touchcancel", this.cancelEventHandler);
         //  document.body.addEventListener("click", this.clearEventHandler);
     
-        
+
         // FOR SMARTPHONE
+        // TODO : vérifier si ça marche
         canvas.addEventListener("touchstart", this.pressEventHandler);
         canvas.addEventListener("touchmove", this.dragEventHandler);
         canvas.addEventListener("touchend", this.releaseEventHandler);
