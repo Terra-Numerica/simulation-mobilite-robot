@@ -191,8 +191,8 @@ window.onload = function () {
     });
 
     // saveFirstDrawApp = new DrawingApp();
-
     Object.assign(saveFirstDrawApp, d);
+    saveFirstDrawApp.redraw = d.redraw;
 
     // TWO handlers : one for PC, one for smartphone
 
