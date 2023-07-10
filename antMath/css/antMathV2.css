@@ -156,7 +156,7 @@ canvas:not(#curve){
 }
 
 #dataViewer{
-    height: 30%;
+    height: 33%;
     
 }
 
@@ -231,7 +231,7 @@ canvas:not(#curve){
 
     #dataViewer{
         /* bien que le dataViewer n'est pas affiché, il détermine la taille du canvas curve */
-        height: 80%;
+        height: 60%;
         width: 90%;
 
         /* Warning : code déguelasse :
