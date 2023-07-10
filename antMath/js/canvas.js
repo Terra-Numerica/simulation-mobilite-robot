@@ -9,6 +9,7 @@ var DrawingApp = /** @class */ (function () {
             _this.clearCanvas();
         };
         this.releaseEventHandler = function () {
+            // console.log("releaseEventHandler");
             _this.paint = false;
             _this.redraw();
         };
@@ -17,7 +18,9 @@ var DrawingApp = /** @class */ (function () {
         };
         //when pressed
         this.pressEventHandler = function (e) {
+            // console.log("pressEventHandler");
             if (draw) {
+                // console.log("draw");
                 var mouseX = e.changedTouches ?
                     e.changedTouches[0].pageX :
                     e.pageX;
@@ -33,7 +36,9 @@ var DrawingApp = /** @class */ (function () {
         };
         //when dragged
         this.dragEventHandler = function (e) {
+            // console.log("dragEventHandler");
             if (draw) {
+                // console.log("draw");
                 var mouseX = e.changedTouches ?
                     e.changedTouches[0].pageX :
                     e.pageX;
@@ -77,23 +82,20 @@ var DrawingApp = /** @class */ (function () {
     }
     //create events
     DrawingApp.prototype.createUserEvents = function () {
+        console.log("createUserEvents");
         var canvas = this.canvas;
         canvas.addEventListener("mousedown", this.pressEventHandler);
         canvas.addEventListener("mousemove", this.dragEventHandler);
         canvas.addEventListener("mouseup", this.releaseEventHandler);
         //canvas.addEventListener("mouseout", this.cancelEventHandler);
+
+
         canvas.addEventListener("touchstart", this.pressEventHandler);
         canvas.addEventListener("touchmove", this.dragEventHandler);
         canvas.addEventListener("touchend", this.releaseEventHandler);
         canvas.addEventListener("touchcancel", this.cancelEventHandler);
         //  document.body.addEventListener("click", this.clearEventHandler);
     
-
-        // FOR SMARTPHONE
-        // TODO : vérifier si ça marche
-        canvas.addEventListener("touchstart", this.pressEventHandler);
-        canvas.addEventListener("touchmove", this.dragEventHandler);
-        canvas.addEventListener("touchend", this.releaseEventHandler);
     
     };
     //refresh

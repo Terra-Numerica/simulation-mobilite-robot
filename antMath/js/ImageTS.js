@@ -24,7 +24,7 @@ let sizeScreenHeight;
 // Allow use button instead of checkbox
 let drawAllPathOn = true;
 
-let saveFirstDrawApp;
+let saveFirstDrawApp = Object();
 
 //Change the space between two ants with html
 function changeAntSpacing(element) {
@@ -93,6 +93,54 @@ function drawAllPaths(element) {
         }
     }
 }
+
+function myEventHandler(){
+    if (draw) {
+        draw = false;
+        //add the first ant at the begining and on the page
+        firstAnt.move(d.clickX[0], d.clickY[0]);
+        document.body.appendChild(firstAnt.img);
+        //Save the first location
+        firstX = d.clickX[0];
+        firstY = d.clickY[0];
+        //Print the anthill
+        // var anthill = new Ant('./assets/anthill.png', 50, 50);
+        var anthill = new Ant('./img/fourmiliere_cut.png', 50, 50);
+        anthill.move(firstX, firstY);
+        document.body.appendChild(anthill.img);
+        //init array containing all the ants
+        futurAnts = new Array();
+        //start main prg, with the speed choosen by the user
+
+        sizeScreenHeight = window.innerHeight;
+        sizeScreenWidth = window.innerWidth;
+
+        // Functipon unfound ???
+        // saveFirstDrawApp = structuredClone(d); 
+        // sert à sauvegarder le chemin d'origine
+
+    //     let canvas = document.getElementById("playGround");
+
+
+    //     let context = canvas.getContext("2d");
+    // context.lineCap = 'round';
+    // context.lineJoin = 'round';
+    // context.strokeStyle = '#EE5A24';
+    
+    // context.lineWidth = 4;
+
+
+        
+        // saveFirstDrawApp.context = context;
+
+        setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
+    }
+    else {
+        //d.clearCanvas();
+        //draw = true;
+    }
+}
+
 window.onload = function () {
 
     //create canvas and set background
@@ -142,55 +190,19 @@ window.onload = function () {
         }
     });
 
-    saveFirstDrawApp = new DrawingApp();
+    // saveFirstDrawApp = new DrawingApp();
+
     Object.assign(saveFirstDrawApp, d);
+
+    // TWO handlers : one for PC, one for smartphone
 
     //detect click on canvas once
     document.getElementById("playGround").addEventListener('click', function (event) {
-        if (draw) {
-            draw = false;
-            //add the first ant at the begining and on the page
-            firstAnt.move(d.clickX[0], d.clickY[0]);
-            document.body.appendChild(firstAnt.img);
-            //Save the first location
-            firstX = d.clickX[0];
-            firstY = d.clickY[0];
-            //Print the anthill
-            // var anthill = new Ant('./assets/anthill.png', 50, 50);
-            var anthill = new Ant('./img/fourmiliere_cut.png', 50, 50);
-            anthill.move(firstX, firstY);
-            document.body.appendChild(anthill.img);
-            //init array containing all the ants
-            futurAnts = new Array();
-            //start main prg, with the speed choosen by the user
-
-            sizeScreenHeight = window.innerHeight;
-            sizeScreenWidth = window.innerWidth;
-
-            // Functipon unfound ???
-            // saveFirstDrawApp = structuredClone(d); 
-            // sert à sauvegarder le chemin d'origine
-
-        //     let canvas = document.getElementById("playGround");
-
-
-        //     let context = canvas.getContext("2d");
-        // context.lineCap = 'round';
-        // context.lineJoin = 'round';
-        // context.strokeStyle = '#EE5A24';
-        
-        // context.lineWidth = 4;
-
-
-            
-            // saveFirstDrawApp.context = context;
-
-            setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
-        }
-        else {
-            //d.clearCanvas();
-            //draw = true;
-        }
+        myEventHandler();
+    });
+    // For smartphone : detect release of finger on canvas once
+    document.getElementById("playGround").addEventListener('touchend', function (event) {
+        myEventHandler();
     });
 
 

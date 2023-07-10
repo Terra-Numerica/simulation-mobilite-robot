@@ -47,11 +47,11 @@ function switchLang(){
 }
 
 function includeAllHTML(){
-    console.log("includeAllHTML")
+    // console.log("includeAllHTML")
     let lst = document.querySelectorAll("[includeHTML]");
     lst.forEach(elt => {
         includeHTML(elt);
-        console.log("elt", elt);
+        // console.log("elt", elt);
     })
 
 }
@@ -70,7 +70,6 @@ function includeHTML(elmnt) {
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4) {
             if (this.status == 200) {elmnt.innerHTML = this.responseText;
-                console.log("this.responseText", this.responseText);
             }
             if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
             }
@@ -83,7 +82,7 @@ function includeHTML(elmnt) {
 }
 
 function includeHTMLAAA() {
-    console.log("includeHTML");
+    // console.log("includeHTML");
     var z, i, elmnt, file, xhttp;
     /* Loop through a collection of all HTML elements: */
     z = document.getElementsByTagName("*");
