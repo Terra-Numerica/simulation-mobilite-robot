@@ -17,7 +17,7 @@
 }
 
 html, body{
-    /* overflow: hidden; */
+    overflow: hidden;
     display: flex;
     flex: auto;
     background-image: url("./../img/ground3.jpg");
