@@ -22,10 +22,12 @@ var DrawingAnt = /** @class */ (function (_super) {
 
         _this.canvas.width = document.getElementById("playGround").offsetWidth;
         _this.canvas.height = document.getElementById("playGround").offsetHeight;
+
+        // let max_size = Math.max(document.getElementById("playGround").width, document.getElementById("playGround").height);
+        // _this.canvas.width = max_size;
+        // _this.canvas.height = max_size;
         
-        if (!draw) {
-            _this.canvas.style.display = 'none';
-        }
+        
 
         
 
@@ -36,7 +38,7 @@ var DrawingAnt = /** @class */ (function (_super) {
         context.strokeStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
         context.lineWidth = 1;
         if(draw){
-            document.body.appendChild(_this.canvas);
+            document.getElementById("playPanel").appendChild(_this.canvas);
             canvasTab.push(_this.canvas);
             var pathSelect = document.getElementById('pathDrawing');
             pathSelect.max = parseInt(pathSelect.max) + 1;

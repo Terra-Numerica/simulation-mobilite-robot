@@ -44,13 +44,13 @@ function resetDraw(element) {
 function pauseDraw(element) {
     if (Pause) {
         Pause = false;
-        element.innerText = TRAD.stopButton[language];
+        document.getElementById('stopButton').innerText = TRAD.stopButton[language];
         
         setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
     }
     else {
         Pause = true;
-        element.innerText = TRAD.startButton[language];
+        document.getElementById('stopButton').innerText = TRAD.startButton[language];
     }
 }
 function drawPath(element) {
@@ -94,12 +94,31 @@ function drawAllPaths(element) {
     }
 }
 
+let orientationDrawVertical;
+
 function myEventHandler(){
-    if (draw) {
+
+    let distPath = Math.sqrt((d.clickX[0] - d.clickX[d.clickX.length-1])**2 + (d.clickY[0] - d.clickY[d.clickY.length-1])**2);
+    console.log("distPath : " + distPath)
+
+    if(distPath < 100){
+        alert("Le chemin est trop court, veuillez le prolonger");
+        return;
+    }
+
+    else if (draw) {
         draw = false;
+
+        console.log("draw ended");
+
+        orientationDrawVertical = (window.innerHeight > window.innerWidth) ? true : false;
+
+
         //add the first ant at the begining and on the page
         firstAnt.move(d.clickX[0], d.clickY[0]);
-        document.body.appendChild(firstAnt.img);
+
+        document.getElementById("playPanel").appendChild(firstAnt.img);
+        // document.body.appendChild(firstAnt.img);
         //Save the first location
         firstX = d.clickX[0];
         firstY = d.clickY[0];
@@ -107,7 +126,9 @@ function myEventHandler(){
         // var anthill = new Ant('./assets/anthill.png', 50, 50);
         var anthill = new Ant('./img/fourmiliere_cut.png', 50, 50);
         anthill.move(firstX, firstY);
-        document.body.appendChild(anthill.img);
+
+        document.getElementById("playPanel").appendChild(anthill.img);
+        // document.body.appendChild(anthill.img);
         //init array containing all the ants
         futurAnts = new Array();
         //start main prg, with the speed choosen by the user
@@ -261,6 +282,9 @@ function showHideDataViewer(){
     
 }
 
+let previousWidth = window.innerWidth;
+let previousHeight = window.innerHeight;
+
 window.addEventListener("resize", () => {
 
     showHideDataViewer();
@@ -276,18 +300,46 @@ window.addEventListener("resize", () => {
 
     let playPanel = document.getElementById("playPanel");
     let playGround = document.getElementById("playGround");
-    playGround.width = playPanel.offsetWidth;
-    playGround.height = playPanel.offsetHeight;
+
+    if(!draw){ // si le chemin est tracé
+        if(previousWidth == window.innerHeight && previousHeight == window.innerWidth){
+            // l'orienté en fonction de la rotation
+            playPanel.style.transformOrigin =playGround.height / 2 + "px " + playGround.height / 2 + "px";
+            if(window.innerWidth < window.innerHeight){
+                
+                playPanel.style.rotate = orientationDrawVertical ? "0deg" : "90deg";
+            }
+            else{
+                playPanel.style.rotate = orientationDrawVertical ? "90deg" : "0deg";
+            }
+            
+        }
+    }
+    else{
+        // Resize le canvas pour qu'il prenne toute la place
+            console.log("playGround.width", playGround.width);
+            console.log("playGround.height", playGround.height);
+
+            playGround.width = window.innerWidth;
+            playGround.height = window.innerHeight;
+    }
     
-    // redessine le chemin dans le canvas resized
-    // on doit redonné le contexte je sais pas pourquoi
+
+
+    
+    
+    // // redessine le chemin dans le canvas resized
+    // // on doit redonné le contexte je sais pas pourquoi
     saveFirstDrawApp.context.strokeStyle = '#EE5A24';
     saveFirstDrawApp.context.lineCap = 'round';
     saveFirstDrawApp.context.lineJoin = 'round';
     saveFirstDrawApp.context.strokeStyle = '#EE5A24';
         
     saveFirstDrawApp.context.lineWidth = 4;
-    saveFirstDrawApp.redraw()
+    saveFirstDrawApp.redraw();
+
+    previousWidth = window.innerWidth;
+    previousHeight = window.innerHeight;
 
 });
 
@@ -305,11 +357,16 @@ const DELTA_MIN = 0.002;
  */
 function startAnts(First, Space, firstX, firstY) {
 
+    
+
     //create an ant if none are left
     if (futurAnts.length == 0) {
-        futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
-        futurAnts[futurAnts.length - 1].move(firstX, firstY);
-        document.body.appendChild(futurAnts[futurAnts.length - 1].img);
+
+        
+            futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
+            futurAnts[futurAnts.length - 1].move(firstX, firstY);
+            document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
+        
     }
     //While the first ant is still mooving
     if (Space.clickX.length > 0) {
@@ -373,19 +430,19 @@ function startAnts(First, Space, firstX, firstY) {
                     futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, false));
                 }
                 futurAnts[futurAnts.length - 1].move(firstX, firstY);
-                document.body.appendChild(futurAnts[futurAnts.length - 1].img);
+                document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
             }
             else {
                 futurAnts.push(new DrawingAnt('./assets/ant.png', 30, 30, false));
                 futurAnts[futurAnts.length - 1].move(firstX, firstY);
-                document.body.appendChild(futurAnts[futurAnts.length - 1].img);
+                document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
             }
             i++;
         }
         //if the first reached the end, add its distance to the curve then delete it from the array and the html
         if (futurAnts[0].x == First.x && futurAnts[0].y == First.y) {
             updateSample(futurAnts[0].distance);
-            document.body.removeChild(futurAnts.shift().img);
+            document.getElementById("playPanel").removeChild(futurAnts.shift().img);
 
             // évite d'afficher 1 millipns de path qaund différence minime
             // le undef est au cas où l'utilisteur créé un chmin si court que pas de futur ant
@@ -424,7 +481,7 @@ function delayFirst(Space, First, firstX, firstY) {
     if (futurAnts.length == 0) {
         futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
         futurAnts[futurAnts.length - 1].move(firstX, firstY);
-        document.body.appendChild(futurAnts[futurAnts.length - 1].img);
+        document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
         //create new ants
     }
     else if (Math.sqrt((futurAnts[futurAnts.length - 1].x - firstX) * (futurAnts[futurAnts.length - 1].x - firstX) + (futurAnts[futurAnts.length - 1].y - firstY) * (futurAnts[futurAnts.length - 1].y - firstY)) > gap) {
@@ -447,12 +504,12 @@ function delayFirst(Space, First, firstX, firstY) {
                 futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, false));
             }
             futurAnts[futurAnts.length - 1].move(firstX, firstY);
-            document.body.appendChild(futurAnts[futurAnts.length - 1].img);
+            document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
         }
         else {
             futurAnts.push(new DrawingAnt('./assets/ant.png', 30, 30, false));
             futurAnts[futurAnts.length - 1].move(firstX, firstY);
-            document.body.appendChild(futurAnts[futurAnts.length - 1].img);
+            document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
         }
         i++;
     }
@@ -521,13 +578,13 @@ function EndScreenOne(element) {
             load.style.display = 'block';
             loader.appendChild(text);
             loader.appendChild(load);
-            document.body.appendChild(loader);
+            document.getElementById("playPanel").appendChild(loader);
             once = false;
         }
         text.innerText = Math.round(p * 100) + '%';
     });
     gif.on('finished', function (blob) {
-        document.body.removeChild(loader);
+        document.getElementById("playPanel").removeChild(loader);
         window.open(URL.createObjectURL(blob));
     });
     gif.render();
@@ -575,13 +632,13 @@ function EndScreenTwo(element) {
             load.style.display = 'block';
             loader.appendChild(text);
             loader.appendChild(load);
-            document.body.appendChild(loader);
+            document.getElementById("playPanel").appendChild(loader);
             once = false;
         }
         text.innerText = Math.round(p * 100) + '%';
     });
     gif.on('finished', function (blob) {
-        document.body.removeChild(loader);
+        document.getElementById("playPanel").removeChild(loader);
         window.open(URL.createObjectURL(blob));
     });
     gif.render();

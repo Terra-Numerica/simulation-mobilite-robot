@@ -33,7 +33,7 @@ var DrawingAnt = /** @class */ (function (_super) {
         context.lineJoin = 'round';
         context.strokeStyle = 'rgb(' + 255 + ',0,' + 255 + ')';
         context.lineWidth = 1;
-        document.body.appendChild(_this.canvas);
+        document.getElementById("playPanel").appendChild(_this.canvas);
         return _this;
     }
     DrawingAnt.prototype.move = function (x, y) {
