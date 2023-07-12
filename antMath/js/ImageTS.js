@@ -34,8 +34,9 @@ function changeAntSpacing2(element) {
     gap2 = Math.abs(parseInt(element.value) * 10);
 }
 //Change the execution speed with html
-function changeAntSpeed(element) {
-    speedAnt = Math.abs(parseInt(element.value));
+function changeAntSpeed() {
+
+    speedAnt = Math.abs(parseInt(document.getElementById('antSpeed').value));
 }
 //Reset the simulation with html
 function resetDraw(element) {
