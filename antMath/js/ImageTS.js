@@ -103,7 +103,8 @@ function myEventHandler(){
     console.log("distPath : " + distPath)
 
     if(distPath < 100){
-        alert("Le chemin est trop court, veuillez le prolonger");
+        alert(TRAD.alertPathTooShort[language]);
+        d.clearCanvas();
         return;
     }
 
@@ -226,7 +227,6 @@ window.onload = function () {
     document.getElementById("playGround").addEventListener('touchend', function (event) {
         myEventHandler();
     });
-
 
 
     // //Re Set la valeur de speed/gap value par défaut au chargement pour être égale à celle du curseur

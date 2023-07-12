@@ -172,6 +172,10 @@ const TRAD =  {
     "curveTab":{
         "en" : "Curve",
         "fr" : "Courbe"
+    },
+    "alertPathTooShort":{
+        "en" : "Path too short",
+        "fr" : "Chemin trop court"
     }
 }
 ;
