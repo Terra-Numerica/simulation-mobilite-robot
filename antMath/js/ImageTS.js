@@ -99,10 +99,22 @@ let orientationDrawVertical;
 
 function myEventHandler(){
 
-    let distPath = Math.sqrt((d.clickX[0] - d.clickX[d.clickX.length-1])**2 + (d.clickY[0] - d.clickY[d.clickY.length-1])**2);
-    console.log("distPath : " + distPath)
+    // Check if there is a distance > 100px between the first and another point
 
-    if(distPath < 100){
+    let pathTooshort = true;
+
+    for(let i = 1; i < d.clickX.length; i++){
+        let dist = Math.sqrt((d.clickX[0] - d.clickX[i])**2 + (d.clickY[0] - d.clickY[i])**2);
+        console.log("dist : " + dist)
+        if(dist > 100){
+            pathTooshort = false;
+            break;
+        }
+    }
+        
+
+
+    if(pathTooshort){
         alert(TRAD.alertPathTooShort[language]);
         d.clearCanvas();
         return;
