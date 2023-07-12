@@ -304,6 +304,7 @@ window.addEventListener("resize", () => {
 
     if(!draw){ // si le chemin est tracé
         if(previousWidth == window.innerHeight && previousHeight == window.innerWidth){
+            alert("Rotation")
             // l'orienté en fonction de la rotation
             playPanel.style.transformOrigin =playGround.height / 2 + "px " + playGround.height / 2 + "px";
             if(window.innerWidth < window.innerHeight){
