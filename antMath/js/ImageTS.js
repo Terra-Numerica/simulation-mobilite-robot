@@ -178,6 +178,8 @@ function myEventHandler(){
 
 window.onload = function () {
 
+    previousOrientation = window.orientation;
+
     //create canvas and set background
     d = new DrawingApp();
     //creation of the chart
@@ -298,7 +300,15 @@ function showHideDataViewer(){
 let previousWidth = window.innerWidth;
 let previousHeight = window.innerHeight;
 
+let previousOrientation;
+
+function getOrientation() {
+    return window.matchMedia("(orientation: landscape)").matches ? 'landscape' : 'portrait';
+}
+
 window.addEventListener("resize", () => {
+
+    const currentOrientation = getOrientation();
 
     showHideDataViewer();
     
@@ -314,9 +324,13 @@ window.addEventListener("resize", () => {
     let playPanel = document.getElementById("playPanel");
     let playGround = document.getElementById("playGround");
 
+    if(previousOrientation != currentOrientation){
+        console.log("orientation changed");
+    }
+
     if(!draw){ // si le chemin est tracé
-        if(previousWidth == window.innerHeight && previousHeight == window.innerWidth){
-            alert("Rotation")
+        if(previousOrientation != currentOrientation){
+            
             // l'orienté en fonction de la rotation
             playPanel.style.transformOrigin =playGround.height / 2 + "px " + playGround.height / 2 + "px";
             if(window.innerWidth < window.innerHeight){
@@ -354,6 +368,7 @@ window.addEventListener("resize", () => {
 
     previousWidth = window.innerWidth;
     previousHeight = window.innerHeight;
+    previousOrientation = currentOrientation;
 
 });
 
