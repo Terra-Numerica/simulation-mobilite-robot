@@ -550,10 +550,6 @@ function EndScreenOne(element) {
     canvasFinal.width = originalCanvas.width;
     canvasFinal.height = originalCanvas.height;
 
-    canvasFinal.style.opacity = '0';
-
-
-
     canvasFinal.getContext('2d').drawImage(d.canvas, 0, 0);
     gif.addFrame(canvasFinal, { delay: 200 });
     // for (var i_9 = 0; i_9 < (nbIteration - 1); i_9++) {
@@ -565,35 +561,55 @@ function EndScreenOne(element) {
         });
     }
     var load;
-    var once = true;
     var loader;
     var text;
+
+    // at the creation of the gif
+    
+
+    gif.on('start', function (p) {
+
+        loader = document.createElement('div');
+        text = document.createElement('span');
+
+        // Division de chargement
+        loader.style.textAlign = 'center';
+        loader.style.position = 'absolute';
+        loader.style.transform = 'translateX(' + -50 + '%) translateY(' + -50 + '%)';
+        loader.style.top = '50%';
+        loader.style.left = '50%';
+        loader.style.zIndex = '1000';
+        loader.style.rotate = '0';
+        
+        
+
+        // Texte de chargement
+        text.style.position = 'absolute';
+        text.style.left = '50%';
+        text.style.top = '50%';
+        text.style.transform = 'translateX(-50%) translateY(-50%)';
+        // text.style.backgroundColor = 'rgb(255,255,255)';
+        text.style.backgroundColor = 'none';
+        text.style.fontSize = '30px';
+
+        // Image de chargement
+        load = document.createElement('img');
+        load.src = "./assets/loading.svg";
+        load.style.width = 100 + 'px';
+        load.style.height = 100 + 'px';
+        load.style.display = 'block';
+
+        loader.appendChild(text);
+        loader.appendChild(load);
+        document.getElementById("playPanel").appendChild(loader);
+        console.log(loader)
+        
+    });
+
     gif.on('progress', function (p) {
-        if (once) {
-            loader = document.createElement('div');
-            text = document.createElement('span');
-            text.style.position = 'absolute';
-            text.style.left = '50%';
-            text.style.top = '50%';
-            text.style.transform = 'translateX(-50%) translateY(-50%)';
-            text.style.backgroundColor = 'rgb(255,255,255)';
-            loader.style.textAlign = 'center';
-            loader.style.position = 'absolute';
-            loader.style.transform = 'translateX(' + -50 + '%) translateY(' + -50 + '%)';
-            loader.style.top = '45%';
-            loader.style.left = '37.5%';
-            load = document.createElement('img');
-            load.src = "./assets/loading.svg";
-            load.style.width = 100 + 'px';
-            load.style.height = 100 + 'px';
-            load.style.display = 'block';
-            loader.appendChild(text);
-            loader.appendChild(load);
-            document.getElementById("playPanel").appendChild(loader);
-            once = false;
-        }
         text.innerText = Math.round(p * 100) + '%';
     });
+    
     gif.on('finished', function (blob) {
         document.getElementById("playPanel").removeChild(loader);
         window.open(URL.createObjectURL(blob));
