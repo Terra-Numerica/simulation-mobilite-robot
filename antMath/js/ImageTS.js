@@ -176,7 +176,7 @@ function myEventHandler() {
 
 window.onload = function () {
 
-    previousOrientation = window.orientation;
+    previousOrientation = getOrientation();
 
     //create canvas and set background
     d = new DrawingApp();
@@ -314,7 +314,7 @@ window.addEventListener("resize", () => {
     let playGround = document.getElementById("playGround");
 
     if (!draw) { // si le chemin est tracé
-        if (previousOrientation != currentOrientation) {
+        if (previousOrientation != currentOrientation && window.innerWidth < 900 ) { // et sur smartphone
 
             // l'orienté en fonction de la rotation
             playPanel.style.transformOrigin = playGround.height / 2 + "px " + playGround.height / 2 + "px";
@@ -325,7 +325,6 @@ window.addEventListener("resize", () => {
             else {
                 playPanel.style.rotate = orientationDrawVertical ? "90deg" : "0deg";
             }
-
         }
     }
     else {
@@ -547,9 +546,9 @@ function EndScreenOne(element) {
     var canvasFinal = document.createElement('canvas');
 
     let originalCanvas = document.getElementById("playGround");
-    canvasFinal.width = window.innerWidth * 0.75
-    canvasFinal.height = window.innerHeight * 0.9;
 
+    canvasFinal.width = originalCanvas.width;
+    canvasFinal.height = originalCanvas.height;
 
     canvasFinal.style.opacity = '0';
 

@@ -23,7 +23,6 @@ var DrawingAnt = /** @class */ (function (_super) {
         _this.draw = false;
 
 
-
         if (draw &&
             chart.data.datasets[0].data[chart.data.datasets[0].data.length - 1] / chart.data.datasets[0].data[chart.data.datasets[0].data.length - 2] != 1) {
 
@@ -36,20 +35,13 @@ var DrawingAnt = /** @class */ (function (_super) {
             context.strokeStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
             context.lineWidth = 1;
 
-
-
             document.getElementById("playPanel").appendChild(_this.canvas);
 
-
-
             canvasTab.push(_this.canvas);
-
-
 
             var pathSelect = document.getElementById('pathDrawing');
             pathSelect.max = parseInt(pathSelect.max) + 1;
         }
-
 
         return _this;
     }
