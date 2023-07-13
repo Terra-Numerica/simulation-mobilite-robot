@@ -17,34 +17,40 @@ var DrawingAnt = /** @class */ (function (_super) {
     __extends(DrawingAnt, _super);
     function DrawingAnt(link, x, y, draw) {
         var _this = _super.call(this, link, x, y) || this;
+
+        // Besoin du contexte du canvas dans la  fonction move je sais pas pourquoi
         _this.canvas = document.createElement('canvas');
         _this.draw = false;
 
-        _this.canvas.width = document.getElementById("playGround").offsetWidth;
-        _this.canvas.height = document.getElementById("playGround").offsetHeight;
-
-        // let max_size = Math.max(document.getElementById("playGround").width, document.getElementById("playGround").height);
-        // _this.canvas.width = max_size;
-        // _this.canvas.height = max_size;
-        
-        
-
-        
 
 
-        var context = _this.canvas.getContext("2d");
-        context.lineCap = 'round';
-        context.lineJoin = 'round';
-        context.strokeStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
-        context.lineWidth = 1;
-        if(draw){
+        if (draw &&
+            chart.data.datasets[0].data[chart.data.datasets[0].data.length - 1] / chart.data.datasets[0].data[chart.data.datasets[0].data.length - 2] != 1) {
+
+            _this.canvas.width = document.getElementById("playGround").offsetWidth;
+            _this.canvas.height = document.getElementById("playGround").offsetHeight;
+
+            var context = _this.canvas.getContext("2d");
+            context.lineCap = 'round';
+            context.lineJoin = 'round';
+            context.strokeStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
+            context.lineWidth = 1;
+
+
+
             document.getElementById("playPanel").appendChild(_this.canvas);
+
+
+
             canvasTab.push(_this.canvas);
+
+
+
             var pathSelect = document.getElementById('pathDrawing');
             pathSelect.max = parseInt(pathSelect.max) + 1;
         }
-        
-        
+
+
         return _this;
     }
     DrawingAnt.prototype.move = function (x, y) {

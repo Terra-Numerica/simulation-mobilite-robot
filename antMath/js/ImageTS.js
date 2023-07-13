@@ -46,7 +46,7 @@ function pauseDraw(element) {
     if (Pause) {
         Pause = false;
         document.getElementById('stopButton').innerText = TRAD.stopButton[language];
-        
+
         setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
     }
     else {
@@ -59,7 +59,7 @@ function drawPath(element) {
     // document.getElementById('drawAll').checked = false;
     for (var i_1 = 0; i_1 < canvasTab.length; i_1++) {
         canvasTab[i_1].style.opacity = '0';
-        
+
     }
     if (canvasTab.length > 0 && parseInt(element.value) >= 0) {
         canvasTab[parseInt(element.value)].style.opacity = '1';
@@ -70,8 +70,8 @@ function drawMainPaths(element) {
     for (var i_2 = 0; i_2 < canvasTab.length; i_2++) {
         canvasTab[i_2].style.opacity = '0';
     }
-    if(drawAllPathOn){
-    // if (element.checked) {
+    if (drawAllPathOn) {
+        // if (element.checked) {
         // document.getElementById('drawAll').checked = false;
         for (var i_3 = 0; i_3 < canvasTab.length; i_3 = i_3 * 2 + 1) {
             canvasTab[i_3].style.opacity = '1';
@@ -85,7 +85,7 @@ function drawAllPaths(element) {
 
     for (var i_4 = 0; i_4 < limite; i_4++) {
         canvasTab[i_4].style.opacity = '0';
-        
+
     }
     if (element.checked) {
         document.getElementById('drawMain').checked = false;
@@ -97,24 +97,22 @@ function drawAllPaths(element) {
 
 let orientationDrawVertical;
 
-function myEventHandler(){
+function myEventHandler() {
 
     // Check if there is a distance > 100px between the first and another point
 
     let pathTooshort = true;
 
-    for(let i = 1; i < d.clickX.length; i++){
-        let dist = Math.sqrt((d.clickX[0] - d.clickX[i])**2 + (d.clickY[0] - d.clickY[i])**2);
+    for (let i = 1; i < d.clickX.length; i++) {
+        let dist = Math.sqrt((d.clickX[0] - d.clickX[i]) ** 2 + (d.clickY[0] - d.clickY[i]) ** 2);
         console.log("dist : " + dist)
-        if(dist > 100){
+        if (dist > 100) {
             pathTooshort = false;
             break;
         }
     }
-        
 
-
-    if(pathTooshort){
+    if (pathTooshort) {
         alert(TRAD.alertPathTooShort[language]);
         d.clearCanvas();
         return;
@@ -154,18 +152,18 @@ function myEventHandler(){
         // saveFirstDrawApp = structuredClone(d); 
         // sert à sauvegarder le chemin d'origine
 
-    //     let canvas = document.getElementById("playGround");
+        //     let canvas = document.getElementById("playGround");
 
 
-    //     let context = canvas.getContext("2d");
-    // context.lineCap = 'round';
-    // context.lineJoin = 'round';
-    // context.strokeStyle = '#EE5A24';
-    
-    // context.lineWidth = 4;
+        //     let context = canvas.getContext("2d");
+        // context.lineCap = 'round';
+        // context.lineJoin = 'round';
+        // context.strokeStyle = '#EE5A24';
+
+        // context.lineWidth = 4;
 
 
-        
+
         // saveFirstDrawApp.context = context;
 
         setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
@@ -189,17 +187,17 @@ window.onload = function () {
         data: {
             labels: [],
             datasets: [{
-                    backgroundColor: [
-                        'rgba(0, 0, 0)'
-                    ],
-                    label: 'Path length of each ant',
-                    data: []
-                }]
+                backgroundColor: [
+                    'rgba(0, 0, 0)'
+                ],
+                label: 'Path length of each ant',
+                data: []
+            }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio : false,
-            aspectRatio : 1|2,
+            maintainAspectRatio: false,
+            aspectRatio: 1 | 2,
             tension: 0.4,
             pointRadius: 2,
             pointBackgroundColor: 'rgba(255,0,0,1)',
@@ -207,7 +205,7 @@ window.onload = function () {
             borderColor: 'rgb(0,0,0,1)',
 
             scales: {
-                x:{
+                x: {
                     title: {
                         display: true,
                         text: "Ant"
@@ -217,7 +215,7 @@ window.onload = function () {
                     title: {
                         display: true,
                         text: 'Path length (AU)' // Arbitrary Unit
-                      },
+                    },
                     min: 0
                 },
             },
@@ -244,15 +242,15 @@ window.onload = function () {
 
 
     // //Re Set la valeur de speed/gap value par défaut au chargement pour être égale à celle du curseur
-    
+
     let speedInput = document.getElementById('antSpeed');
     speedInput.value = defaultValueRange(speedInput);
-    changeAntSpeed(speedInput); 
+    changeAntSpeed(speedInput);
 
     let gapInput = document.getElementById("antSpacing");
     gapInput.value = defaultValueRange(gapInput);
     changeAntSpacing(gapInput);
-    
+
     // Pas touche au path selection 
 
 
@@ -262,31 +260,23 @@ window.onload = function () {
     document.querySelector("[value=" + language + "]").selected = true;
 };
 
-function defaultValueRange(element){
-    return Math.round((element.max < element.min) ? element.min : Number(element.min) + ((element.max - element.min)/2))
+function defaultValueRange(element) {
+    return Math.round((element.max < element.min) ? element.min : Number(element.min) + ((element.max - element.min) / 2))
 }
 
 // Function to make appear / desapppear the data viewer
-function showHideDataViewer(){
+function showHideDataViewer() {
     let graph = document.getElementById("dataViewer");
     let curve = document.getElementById("curve");
 
     // hasChildren ne marche pas -> renvoie toujours true
-    if(window.innerWidth < 900 && document.querySelector(".tab__content:last-child").children.length == 0){
-        // graph.remove();
-        // document.querySelector(".tab__content:last-child").appendChild(graph);
+    if (window.innerWidth < 900 && document.querySelector(".tab__content:last-child").children.length == 0) {
+
         curve.remove();
         document.querySelector(".tab__content:last-child").appendChild(curve);
 
-        // console.log("document.getElementById('dataViewer').style", document.getElementById("dataViewer").style.width);
-        // console.log("document.getElementById('dataViewer').style", document.getElementById("dataViewer").width);
-
-        // setTimeout(() => {
-        //     // Hide the data viewer
-        //     document.getElementById("dataViewer").style.display = "none";
-        // },5000);
     }
-    if(window.innerWidth >= 900 && document.querySelector(".tab__content:last-child").children.length != 0){
+    if (window.innerWidth >= 900 && document.querySelector(".tab__content:last-child").children.length != 0) {
         // graph.remove();
         // document.getElementById("controlPanel").appendChild(graph);
         curve.remove();
@@ -294,7 +284,6 @@ function showHideDataViewer(){
         document.getElementById("tab1").checked = true;
     }
 
-    
 }
 
 let previousWidth = window.innerWidth;
@@ -311,7 +300,7 @@ window.addEventListener("resize", () => {
     const currentOrientation = getOrientation();
 
     showHideDataViewer();
-    
+
     // this listener has been made to replaced the CSS that does'not work
     // le canvas doit être entièremenet reconstuit pour évider de graphiquement disparaitre
     if (window.innerWidth >= 900) {
@@ -324,45 +313,34 @@ window.addEventListener("resize", () => {
     let playPanel = document.getElementById("playPanel");
     let playGround = document.getElementById("playGround");
 
-    if(previousOrientation != currentOrientation){
-        console.log("orientation changed");
-    }
+    if (!draw) { // si le chemin est tracé
+        if (previousOrientation != currentOrientation) {
 
-    if(!draw){ // si le chemin est tracé
-        if(previousOrientation != currentOrientation){
-            
             // l'orienté en fonction de la rotation
-            playPanel.style.transformOrigin =playGround.height / 2 + "px " + playGround.height / 2 + "px";
-            if(window.innerWidth < window.innerHeight){
-                
+            playPanel.style.transformOrigin = playGround.height / 2 + "px " + playGround.height / 2 + "px";
+            if (window.innerWidth < window.innerHeight) {
+
                 playPanel.style.rotate = orientationDrawVertical ? "0deg" : "90deg";
             }
-            else{
+            else {
                 playPanel.style.rotate = orientationDrawVertical ? "90deg" : "0deg";
             }
-            
+
         }
     }
-    else{
+    else {
         // Resize le canvas pour qu'il prenne toute la place
-            console.log("playGround.width", playGround.width);
-            console.log("playGround.height", playGround.height);
-
-            playGround.width = window.innerWidth;
-            playGround.height = window.innerHeight;
+        playGround.width = window.innerWidth;
+        playGround.height = window.innerHeight;
     }
-    
 
-
-    
-    
     // // redessine le chemin dans le canvas resized
     // // on doit redonné le contexte je sais pas pourquoi
     saveFirstDrawApp.context.strokeStyle = '#EE5A24';
     saveFirstDrawApp.context.lineCap = 'round';
     saveFirstDrawApp.context.lineJoin = 'round';
     saveFirstDrawApp.context.strokeStyle = '#EE5A24';
-        
+
     saveFirstDrawApp.context.lineWidth = 4;
     saveFirstDrawApp.redraw();
 
@@ -374,7 +352,7 @@ window.addEventListener("resize", () => {
 
 // évite d'afficher 1 millipns de path qaund différence minime
 let previousPathLength = Infinity;
-let deltaPathLength = Infinity  ;
+let deltaPathLength = Infinity;
 const DELTA_MIN = 0.002;
 
 /**
@@ -386,16 +364,19 @@ const DELTA_MIN = 0.002;
  */
 function startAnts(First, Space, firstX, firstY) {
 
-    
+
 
     //create an ant if none are left
     if (futurAnts.length == 0) {
 
+        // TEst use data
         
-            futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
-            futurAnts[futurAnts.length - 1].move(firstX, firstY);
-            document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
-        
+
+
+        futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
+        futurAnts[futurAnts.length - 1].move(firstX, firstY);
+        document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
+
     }
     //While the first ant is still mooving
     if (Space.clickX.length > 0) {
@@ -416,15 +397,15 @@ function startAnts(First, Space, firstX, firstY) {
                 // évite d'afficher 1 millipns de path qaund différence minime
                 deltaPathLength = previousPathLength - First.distance;
 
-                
 
-                if(deltaPathLength < DELTA_MIN && deltaPathLength > 0){
-                    console.log("Delta too low to show path");
-                }
-                else{
-                    previousPathLength = First.distance;
-                }
-                
+
+                // if (deltaPathLength < DELTA_MIN && deltaPathLength > 0) {
+                //     console.log("Delta too low to show path");
+                // }
+                // else {
+                //     previousPathLength = First.distance;
+                // }
+
             }
         }
         else {
@@ -451,8 +432,9 @@ function startAnts(First, Space, firstX, firstY) {
                 red = Math.max(0, red - 45);
                 drawingGap = Math.round(drawingGap * 2 - drawingGap / 2);
                 // if(drawAllPathOn){
-                if(drawAllPathOn && (deltaPathLength > DELTA_MIN || deltaPathLength < 0) ){
-                // if (document.getElementById('drawMain').checked) {
+                // if (drawAllPathOn && (deltaPathLength > DELTA_MIN || deltaPathLength < 0)) {
+                if (drawAllPathOn) {
+                    // if (document.getElementById('drawMain').checked) {
                     futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
                 }
                 else {
@@ -476,18 +458,18 @@ function startAnts(First, Space, firstX, firstY) {
             // évite d'afficher 1 millipns de path qaund différence minime
             // le undef est au cas où l'utilisteur créé un chmin si court que pas de futur ant
 
-            
-            deltaPathLength = previousPathLength - ((futurAnts[0] == undefined) ? 0 : futurAnts[0].distance );
-            
 
-            if(deltaPathLength < DELTA_MIN && deltaPathLength > 0){
-                
-                console.log("Delta too low to show path");
-            }
-            else{
-                previousPathLength = ((futurAnts[0] == undefined) ? 0 : futurAnts[0].distance );
-            }
-            
+            deltaPathLength = previousPathLength - ((futurAnts[0] == undefined) ? 0 : futurAnts[0].distance);
+
+
+            // if (deltaPathLength < DELTA_MIN && deltaPathLength > 0) {
+
+            //     console.log("Delta too low to show path");
+            // }
+            // else {
+            //     previousPathLength = ((futurAnts[0] == undefined) ? 0 : futurAnts[0].distance);
+            // }
+
         }
         //move all the other ants, from the closest to the farest
         for (var i_6 = 1; i_6 < futurAnts.length; i_6++) {
@@ -499,7 +481,7 @@ function startAnts(First, Space, firstX, firstY) {
         setTimeout(startAnts, 10, firstAnt, Space, firstX, firstY);
     }
 
-    
+
 }
 
 
@@ -525,8 +507,9 @@ function delayFirst(Space, First, firstX, firstY) {
             red = Math.max(0, red - 45);
             drawingGap = Math.round(drawingGap * 2 - drawingGap / 2);
             // if(drawAllPathOn){
-            if(drawAllPathOn && (deltaPathLength > DELTA_MIN || deltaPathLength < 0) ){
-            // if (document.getElementById('drawMain').checked) {
+            // if (drawAllPathOn && (deltaPathLength > DELTA_MIN || deltaPathLength < 0)) {
+            if (drawAllPathOn ) {
+                // if (document.getElementById('drawMain').checked) {
                 futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
             }
             else {
@@ -560,7 +543,7 @@ function EndScreenOne(element) {
         transparent: "#0x00FF00"
     });
 
-    
+
     var canvasFinal = document.createElement('canvas');
 
     let originalCanvas = document.getElementById("playGround");
@@ -575,7 +558,7 @@ function EndScreenOne(element) {
     canvasFinal.getContext('2d').drawImage(d.canvas, 0, 0);
     gif.addFrame(canvasFinal, { delay: 200 });
     // for (var i_9 = 0; i_9 < (nbIteration - 1); i_9++) {
-    for (var i_9 = 0; i_9 < canvasTab.length; i_9++) {    
+    for (var i_9 = 0; i_9 < canvasTab.length; i_9++) {
         canvasFinal.getContext('2d').drawImage(canvasTab[i_9], 0, 0);
         gif.addFrame(canvasFinal, {
             delay: Math.max(40, 200 - 10 * i_9),
