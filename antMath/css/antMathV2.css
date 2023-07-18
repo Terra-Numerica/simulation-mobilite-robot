@@ -12,7 +12,7 @@ html, body{
     overflow: hidden;
     display: flex;
     flex: auto;
-    background-image: url("./../img/ground3.jpg");
+    background-image: url("./../img/background/ground3.jpg");
 }
 
 /* Hide for big screen */

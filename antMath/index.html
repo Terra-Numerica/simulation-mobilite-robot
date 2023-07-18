@@ -23,6 +23,7 @@
   <script src="./js/button.js"></script>
   <script src="js/langSwitch.js"></script>
   <script src="./js/KeyListener.js"></script>
+  <script src="./js/backGroundChange.js"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="./css/antMathV2.css">
   <link rel="stylesheet" href="./css/radioInput.css">
@@ -30,8 +31,6 @@
 </head>
 
 <body>
-
-  <!-- <div id="test" >Test</div> -->
 
   <!-- Menu for Smartphone -->
   <img src="img/button/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
@@ -42,7 +41,6 @@
 
   </div>
 
-  <!-- <div id="toSeeUpdate">c</div> -->
 
   <!-- CONTROL PANEL -->
   <div id="controlPanel">
@@ -78,17 +76,24 @@
         <button lang="en" id="stopButton" class="controlButton" onclick="pauseDraw(this)">Stop</button>
         <button class="controlButton" onclick="EndScreenOne(this)">GIF</button>
         <button lang="en" id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button>
-        <button lang="en" id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">All
-          Path</button>
+        <button lang="en" id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">All Path</button>
 
-          <select name="language-picker-select" id="language-picker-select" onchange="updateLanguage(this)">
-            <!-- <option value="de">Deutsch</option> -->
-            <option value="en">English</option>
-            <option value="fr">Français</option>
-            <!-- <option value="it">Italiano</option> -->
-            
-            <!-- other language options -->
-          </select>
+        <select name="language-picker-select" id="language-picker-select" onchange="updateLanguage(this)">
+          <option value="en">English</option>
+          <option value="fr">Français</option>
+          <!-- other language options -->
+        </select>
+
+        <select name="backgroundPicker" id="backgroundPicker">
+          <option onclick="changeBackground(this)" value="grass" selected="true">Grass</option>
+          <option onclick="changeBackground(this)" value="sand" >Sand</option>
+          <option onclick="changeBackground(this)" value="dirt">Dirt</option>
+          <option onclick="changeBackground(this)" value="personalized">Personalized</option>
+          <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized" 
+          oninput="onInputBackgroundInput(this)"
+          >
+
+        </select>
         
       </div>
 
