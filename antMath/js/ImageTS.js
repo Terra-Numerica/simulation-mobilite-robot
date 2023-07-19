@@ -26,151 +26,55 @@ let drawAllPathOn = true;
 
 let saveFirstDrawApp = Object();
 
-//Change the space between two ants with html
-function changeAntSpacing(element) {
-    gap = parseInt(element.value);
-}
-function changeAntSpacing2(element) {
-    gap2 = Math.abs(parseInt(element.value) * 10);
-}
-//Change the execution speed with html
-function changeAntSpeed() {
-
-    speedAnt = Math.abs(parseInt(document.getElementById('antSpeed').value));
-}
-//Reset the simulation with html
-function resetDraw(element) {
-    location.reload();
-}
-function pauseDraw(element) {
-    if (Pause) {
-        Pause = false;
-        document.getElementById('stopButton').innerText = TRAD.stopButton[language];
-
-        setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
-    }
-    else {
-        Pause = true;
-        document.getElementById('stopButton').innerText = TRAD.startButton[language];
-    }
-}
-function drawPath(element) {
-    // document.getElementById('drawMain').checked = false;
-    // document.getElementById('drawAll').checked = false;
-    for (var i_1 = 0; i_1 < canvasTab.length; i_1++) {
-        canvasTab[i_1].style.opacity = '0';
-
-    }
-    if (canvasTab.length > 0 && parseInt(element.value) >= 0) {
-        canvasTab[parseInt(element.value)].style.opacity = '1';
-    }
-}
-function drawMainPaths(element) {
-    drawAllPathOn = !drawAllPathOn;
-    for (var i_2 = 0; i_2 < canvasTab.length; i_2++) {
-        canvasTab[i_2].style.opacity = '0';
-    }
-    if (drawAllPathOn) {
-        // if (element.checked) {
-        // document.getElementById('drawAll').checked = false;
-        for (var i_3 = 0; i_3 < canvasTab.length; i_3 = i_3 * 2 + 1) {
-            canvasTab[i_3].style.opacity = '1';
-        }
-    }
-}
-function drawAllPaths(element) {
-    // pour éviter de surcharger -> pas plus de 200 path
-    // TODO : y a un problème , ça en affiche x, puis la limite est doublé si on reclick ???
-    let limite = (canvasTab.length < 1000) ? canvasTab.length : 1000;
-
-    for (var i_4 = 0; i_4 < limite; i_4++) {
-        canvasTab[i_4].style.opacity = '0';
-
-    }
-    if (element.checked) {
-        document.getElementById('drawMain').checked = false;
-        for (var i_5 = 0; i_5 < limite; i_5++) {
-            canvasTab[i_5].style.opacity = '1';
-        }
-    }
-}
-
 let orientationDrawVertical;
 
-function myEventHandler() {
+/**
+ * Handle the draw of the path made by the user on click / touch screen
+ */
+function drawHandler() {
 
     // Check if there is a distance > 100px between the first and another point
-
     let pathTooshort = true;
-
+    // Si au moins 1 point est suffisament loin, pathTooshort = false
     for (let i = 1; i < d.clickX.length; i++) {
         let dist = Math.sqrt((d.clickX[0] - d.clickX[i]) ** 2 + (d.clickY[0] - d.clickY[i]) ** 2);
-        console.log("dist : " + dist)
         if (dist > 100) {
             pathTooshort = false;
             break;
         }
     }
-
+    // Si path trop court, on alerte et on ne dessine pas
     if (pathTooshort) {
         alert(TRAD.alertPathTooShort[language]);
         d.clearCanvas();
         return;
     }
-
+    // Si path assez long, on dessine
     else if (draw) {
         draw = false;
 
-        console.log("draw ended");
-
         orientationDrawVertical = (window.innerHeight > window.innerWidth) ? true : false;
-
 
         //add the first ant at the begining and on the page
         firstAnt.move(d.clickX[0], d.clickY[0]);
-
         document.getElementById("playPanel").appendChild(firstAnt.img);
-        // document.body.appendChild(firstAnt.img);
         //Save the first location
         firstX = d.clickX[0];
         firstY = d.clickY[0];
         //Print the anthill
-        // var anthill = new Ant('./assets/anthill.png', 50, 50);
         var anthill = new Ant('./img/fourmiliere_cut.png', 50, 50);
         anthill.move(firstX, firstY);
 
         document.getElementById("playPanel").appendChild(anthill.img);
-        // document.body.appendChild(anthill.img);
         //init array containing all the ants
         futurAnts = new Array();
         //start main prg, with the speed choosen by the user
 
         sizeScreenHeight = window.innerHeight;
         sizeScreenWidth = window.innerWidth;
-
-        // Functipon unfound ???
-        // saveFirstDrawApp = structuredClone(d); 
-        // sert à sauvegarder le chemin d'origine
-
-        //     let canvas = document.getElementById("playGround");
-
-
-        //     let context = canvas.getContext("2d");
-        // context.lineCap = 'round';
-        // context.lineJoin = 'round';
-        // context.strokeStyle = '#EE5A24';
-
-        // context.lineWidth = 4;
-
-
-
         // saveFirstDrawApp.context = context;
 
         setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
-    }
-    else {
-        //d.clearCanvas();
-        //draw = true;
     }
 }
 
@@ -233,11 +137,11 @@ window.onload = function () {
 
     //detect click on canvas once
     document.getElementById("playGround").addEventListener('click', function (event) {
-        myEventHandler();
+        drawHandler();
     });
     // For smartphone : detect release of finger on canvas once
     document.getElementById("playGround").addEventListener('touchend', function (event) {
-        myEventHandler();
+        drawHandler();
     });
 
 
@@ -253,7 +157,6 @@ window.onload = function () {
 
     // Pas touche au path selection 
 
-
     showHideDataViewer();
     switchLang();
     includeAllHTML();
@@ -264,9 +167,10 @@ function defaultValueRange(element) {
     return Math.round((element.max < element.min) ? element.min : Number(element.min) + ((element.max - element.min) / 2))
 }
 
-// Function to make appear / desapppear the data viewer
+/**
+ * Function to make appear / desapppear the data viewer div
+ */
 function showHideDataViewer() {
-    let graph = document.getElementById("dataViewer");
     let curve = document.getElementById("curve");
 
     // hasChildren ne marche pas -> renvoie toujours true
@@ -285,10 +189,6 @@ function showHideDataViewer() {
     }
 
 }
-
-let previousWidth = window.innerWidth;
-let previousHeight = window.innerHeight;
-
 let previousOrientation;
 
 function getOrientation() {
@@ -343,8 +243,6 @@ window.addEventListener("resize", () => {
     saveFirstDrawApp.context.lineWidth = 4;
     saveFirstDrawApp.redraw();
 
-    previousWidth = window.innerWidth;
-    previousHeight = window.innerHeight;
     previousOrientation = currentOrientation;
 
 });
@@ -363,8 +261,6 @@ const DELTA_MIN = 0.002;
  */
 function startAnts(First, Space, firstX, firstY) {
 
-
-
     //create an ant if none are left
     if (futurAnts.length == 0) {
 
@@ -382,8 +278,6 @@ function startAnts(First, Space, firstX, firstY) {
                 Space.removeFirstOne();
                 // First.img.src = './assets/strawberry.png';
                 First.img.src = './img/fraise_trans.png';
-                // First.img.style.width = 70 + 'px';
-                // First.img.style.height = 55 + 'px';
                 First.img.style.width = 80 + 'px';
                 First.img.style.height = 80 + 'px';
                 First.img.style.transform = 'translateX(' + -50 + '%) translateY(' + -50 + '%) rotate(' + (0) + 'deg) ';
@@ -391,15 +285,6 @@ function startAnts(First, Space, firstX, firstY) {
 
                 // évite d'afficher 1 millipns de path qaund différence minime
                 deltaPathLength = previousPathLength - First.distance;
-
-
-
-                // if (deltaPathLength < DELTA_MIN && deltaPathLength > 0) {
-                //     console.log("Delta too low to show path");
-                // }
-                // else {
-                //     previousPathLength = First.distance;
-                // }
 
             }
         }
@@ -427,7 +312,6 @@ function startAnts(First, Space, firstX, firstY) {
                 red = Math.max(0, red - 45);
                 drawingGap = Math.round(drawingGap * 2 - drawingGap / 2);
                 // if(drawAllPathOn){
-                // if (drawAllPathOn && (deltaPathLength > DELTA_MIN || deltaPathLength < 0)) {
                 if (drawAllPathOn) {
                     // if (document.getElementById('drawMain').checked) {
                     futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
@@ -455,15 +339,6 @@ function startAnts(First, Space, firstX, firstY) {
 
 
             deltaPathLength = previousPathLength - ((futurAnts[0] == undefined) ? 0 : futurAnts[0].distance);
-
-
-            // if (deltaPathLength < DELTA_MIN && deltaPathLength > 0) {
-
-            //     console.log("Delta too low to show path");
-            // }
-            // else {
-            //     previousPathLength = ((futurAnts[0] == undefined) ? 0 : futurAnts[0].distance);
-            // }
 
         }
         //move all the other ants, from the closest to the farest
@@ -526,143 +401,4 @@ function delayFirst(Space, First, firstX, firstY) {
         futurAnts[i_7].follow(futurAnts[i_7 - 1]);
     }
 }
-function EndScreenOne(element) {
-    Pause = true;
-    for (var i_8 = 0; i_8 < canvasTab.length; i_8++) {
-        canvasTab[i_8].style.opacity = '0';
-    }
-    var gif = new GIF({
-        workerScript: './library/gif.js.optimized/dist/gif.worker.js',
-        workers: navigator.hardwareConcurrency,
-        quality: 100,
-        transparent: "#0x00FF00"
-    });
 
-
-    var canvasFinal = document.createElement('canvas');
-
-    let originalCanvas = document.getElementById("playGround");
-
-    canvasFinal.width = originalCanvas.width;
-    canvasFinal.height = originalCanvas.height;
-
-    canvasFinal.getContext('2d').drawImage(d.canvas, 0, 0);
-    gif.addFrame(canvasFinal, { delay: 200 });
-    // for (var i_9 = 0; i_9 < (nbIteration - 1); i_9++) {
-    for (var i_9 = 0; i_9 < canvasTab.length; i_9++) {
-        canvasFinal.getContext('2d').drawImage(canvasTab[i_9], 0, 0);
-        gif.addFrame(canvasFinal, {
-            delay: Math.max(40, 200 - 10 * i_9),
-            copy: true
-        });
-    }
-    var load;
-    var loader;
-    var text;
-
-    // at the creation of the gif
-    
-
-    gif.on('start', function (p) {
-
-        loader = document.createElement('div');
-        text = document.createElement('span');
-
-        // Division de chargement
-        loader.style.textAlign = 'center';
-        loader.style.position = 'absolute';
-        loader.style.transform = 'translateX(' + -50 + '%) translateY(' + -50 + '%)';
-        loader.style.top = '50%';
-        loader.style.left = '50%';
-        loader.style.zIndex = '1000';
-        loader.style.rotate = '0';
-        
-        
-
-        // Texte de chargement
-        text.style.position = 'absolute';
-        text.style.left = '50%';
-        text.style.top = '50%';
-        text.style.transform = 'translateX(-50%) translateY(-50%)';
-        // text.style.backgroundColor = 'rgb(255,255,255)';
-        text.style.backgroundColor = 'none';
-        text.style.fontSize = '30px';
-
-        // Image de chargement
-        load = document.createElement('img');
-        load.src = "./assets/loading.svg";
-        load.style.width = 100 + 'px';
-        load.style.height = 100 + 'px';
-        load.style.display = 'block';
-
-        loader.appendChild(text);
-        loader.appendChild(load);
-        document.getElementById("playPanel").appendChild(loader);
-        console.log(loader)
-        
-    });
-
-    gif.on('progress', function (p) {
-        text.innerText = Math.round(p * 100) + '%';
-    });
-    
-    gif.on('finished', function (blob) {
-        document.getElementById("playPanel").removeChild(loader);
-        window.open(URL.createObjectURL(blob));
-    });
-    gif.render();
-}
-function EndScreenTwo(element) {
-    Pause = true;
-    for (var i_10 = 0; i_10 < canvasTab.length; i_10++) {
-        canvasTab[i_10].style.opacity = '0';
-    }
-    var gif = new GIF({
-        workerScript: './library/gif.js.optimized/dist/gif.worker.js',
-        workers: navigator.hardwareConcurrency,
-        quality: 100,
-        transparent: "#0x00FF00"
-    });
-    gif.addFrame(d.canvas.getContext('2d'), { delay: 200 });
-    for (var i_11 = 0; i_11 < (nbIteration - 1); i_11++) {
-        gif.addFrame(canvasTab[i_11], {
-            delay: Math.max(40, 200 - 10 * i_11),
-            copy: true
-        });
-    }
-    var load;
-    var once = true;
-    var loader;
-    var text;
-    gif.on('progress', function (p) {
-        if (once) {
-            loader = document.createElement('div');
-            text = document.createElement('span');
-            text.style.position = 'absolute';
-            text.style.left = '50%';
-            text.style.top = '50%';
-            text.style.transform = 'translateX(-50%) translateY(-50%)';
-            text.style.backgroundColor = 'rgb(255,255,255)';
-            loader.style.textAlign = 'center';
-            loader.style.position = 'absolute';
-            loader.style.transform = 'translateX(' + -50 + '%) translateY(' + -50 + '%)';
-            loader.style.top = '45%';
-            loader.style.left = '37.5%';
-            load = document.createElement('img');
-            load.src = "./assets/loading.svg";
-            load.style.width = 100 + 'px';
-            load.style.height = 100 + 'px';
-            load.style.display = 'block';
-            loader.appendChild(text);
-            loader.appendChild(load);
-            document.getElementById("playPanel").appendChild(loader);
-            once = false;
-        }
-        text.innerText = Math.round(p * 100) + '%';
-    });
-    gif.on('finished', function (blob) {
-        document.getElementById("playPanel").removeChild(loader);
-        window.open(URL.createObjectURL(blob));
-    });
-    gif.render();
-}

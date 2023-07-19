@@ -14,16 +14,17 @@
   <script type="text/javascript" src="library/chart.min.js"></script>
   <script type="text/javascript" src="library/granim.min.js"></script>
 
-  <!-- My Library -->
+  <!-- My App -->
   <script src="./js/Ant.js"></script>
   <script src="./js/DrawingAnt.js"></script>
+  <script src="./js/DrawingApp.js"></script>
+  <!-- Script -->
   <script src="./js/ImageTS.js"></script>
-  <script src="./js/canvas.js"></script>
   <script src="./js/curve.js"></script>
-  <script src="./js/button.js"></script>
   <script src="js/langSwitch.js"></script>
   <script src="./js/KeyListener.js"></script>
   <script src="./js/backGroundChange.js"></script>
+  <script src="./js/inputControler.js"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="./css/antMathV2.css">
   <link rel="stylesheet" href="./css/radioInput.css">
@@ -33,7 +34,7 @@
 <body>
 
   <!-- Menu for Smartphone -->
-  <img src="img/button/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
+  <img src="img/icon/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
 
   <!-- PLAYGROUND -->
   <div id="playPanel">
@@ -73,7 +74,7 @@
       <div id="gameControler">
         <!-- TODO : Trouver une solution pour la traduction -->
         <button lang="en" id="stopButton" class="controlButton" onclick="pauseDraw(this)">Stop</button>
-        <button class="controlButton" onclick="EndScreenOne(this)">GIF</button>
+        <button class="controlButton" onclick="creatGIF(this)">GIF</button>
         <button lang="en" id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button>
         <button lang="en" id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">All Path</button>
 

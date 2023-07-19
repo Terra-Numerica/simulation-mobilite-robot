@@ -13,6 +13,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+
 var DrawingAnt = /** @class */ (function (_super) {
     __extends(DrawingAnt, _super);
     function DrawingAnt(link, x, y, draw) {

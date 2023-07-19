@@ -1,9 +1,6 @@
 window.addEventListener("keydown", function (event) {
-    console.log(event);
+    // console.log(event);
 
-    let speedInput = document.getElementById('antSpeed');
-    let spaceInput = document.getElementById('antSpacing');
-  
     switch (event.key) {
 
       case " ":
