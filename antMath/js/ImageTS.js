@@ -55,6 +55,11 @@ let compter = 2;
 
 var canvasTab = new Array();
 var isGameStopped = false;
+
+/**
+ * Coordonnées du premier point du path
+ * Pourquoi juste récupérer les coordonnées de d.clickX[0] ne marche pas ??
+ */
 var firstX;
 var firstY;
 
@@ -105,8 +110,10 @@ function drawHandler() {
         firstAnt.move(d.clickX[0], d.clickY[0]);
         document.getElementById("playPanel").appendChild(firstAnt.img);
         //Save the first location
+
         firstX = d.clickX[0];
         firstY = d.clickY[0];
+
         //Print the anthill
         var anthill = new Ant('./img/fourmiliere_cut.png', 50, 50);
         anthill.move(firstX, firstY);
@@ -383,7 +390,6 @@ function startAnts(First, Space, firstX, firstY) {
 
             // évite d'afficher 1 millipns de path qaund différence minime
             // le undef est au cas où l'utilisteur créé un chmin si court que pas de futur ant
-
 
             deltaPathLength = previousPathLength - ((futurAnts[0] == undefined) ? 0 : futurAnts[0].distance);
 

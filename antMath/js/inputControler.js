@@ -6,25 +6,36 @@ function displayControlPanel() {
     controlPanel.style.display = (controlPanel.style.display == "flex") ? "none" : "flex";
 }
 
-//Change the space between two ants with html
+/**
+ * Change the space between two ants with html
+ * @param {HTMLElement} element 
+ */
 function changeAntSpacing(element) {
     spacingAnt = parseInt(element.value);
 }
 
-//Change the execution speed with html
+/**
+ * Change the execution speed with html
+ */
 function changeAntSpeed() {
     speedAnt = Math.abs(parseInt(document.getElementById('antSpeed').value));
 }
 
-//Reset the simulation with html
-function resetDraw(element) {
+/**
+ * Reset the page by reloading it
+ */
+function resetDraw() {
     location.reload();
 }
-function pauseDraw(element) {
+
+/**
+ * Stop the game
+ */
+function pauseDraw() {
     if (isGameStopped) {
         isGameStopped = false;
         document.getElementById('stopButton').innerText = TRAD.stopButton[language];
-        setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
+        setTimeout(startAnts, 10, firstAnt, d, d.clickX[0], firstY);
     }
     else {
         isGameStopped = true;

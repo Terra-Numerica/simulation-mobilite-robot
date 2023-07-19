@@ -61,7 +61,7 @@ function includeHTML(elmnt) {
         elmnt.removeChild(child);
     });
 
-    file = language + "_" +  elmnt.getAttribute( "includeHTML");
+    file = "html/" + language + "_" +  elmnt.getAttribute( "includeHTML");
     if (file) {
         /* Make an HTTP request using the attribute value as the file name: */
         xhttp = new XMLHttpRequest();
