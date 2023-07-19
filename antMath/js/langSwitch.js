@@ -10,6 +10,10 @@ if (!lang_support.includes(language)) {
     language = "en";
 }
 
+/**
+ * Switch the language of the page to the one given in parameter
+ * @param {HTMLElement} elt 
+ */
 function updateLanguage(elt){
     language = elt.value;
     switchLang();
@@ -18,7 +22,9 @@ function updateLanguage(elt){
 
 console.log("Language : " + language);
 
-
+/**
+ * Switch the language of the page
+ */
 function switchLang(){
 
     if (!lang_support.includes(language)) {
@@ -46,6 +52,9 @@ function switchLang(){
 
 }
 
+/**
+ * Include all html file in div with the attribute includeHTML
+ */
 function includeAllHTML(){
     let lst = document.querySelectorAll("[includeHTML]");
     lst.forEach(elt => {
@@ -54,6 +63,10 @@ function includeAllHTML(){
 
 }
 
+/**
+ * Include the html file in the div given in parameter
+ * @param {HTMLElement} elmnt 
+ */
 function includeHTML(elmnt) {
 
     // suppr each child
