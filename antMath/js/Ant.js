@@ -22,22 +22,7 @@ var Ant = /** @class */ (function () {
     };
     //follow the given ant at with gap as distance
     Ant.prototype.follow = function (Ant) {
-        // let dx:number = Ant.x - this.x;
-        // let dy:number = Ant.y - this.y;
-        // let angl:number = Math.atan(dy/dx)  * 180/Math.PI;
-        // if(dx < 0){
-        //     this.img.style.transform = 'translateX('+-50+'%) translateY('+-50+'%) rotate(' + (-90+angl) + 'deg) '; 
-        // } else {
-        //     this.img.style.transform = 'translateX('+-50+'%) translateY('+-50+'%) rotate(' + ((-90-angl) * (-1)) + 'deg) '; 
-        // }
-        // if(Math.abs(dx) < 30 && Math.abs(dy) < 30) {
-        //     this.speedX = 0;
-        //     this.speedY = 0;
-        // } else {
-        //     this.speedX = dx / gap;
-        //     this.speedY = dy / gap;
-        //     this.move(this.x + this.speedX, this.y + this.speedY);
-        // } 
+        
         var dx = Ant.x - this.x;
         var dy = Ant.y - this.y;
         if (Math.abs(dx) < gap && Math.abs(dy) < gap) {

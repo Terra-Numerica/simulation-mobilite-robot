@@ -368,10 +368,6 @@ function startAnts(First, Space, firstX, firstY) {
     //create an ant if none are left
     if (futurAnts.length == 0) {
 
-        // TEst use data
-        
-
-
         futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
         futurAnts[futurAnts.length - 1].move(firstX, firstY);
         document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);

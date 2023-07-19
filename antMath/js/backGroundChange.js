@@ -52,8 +52,6 @@ function onInputBackgroundInput(elt){
         optionPerso.selected = true;
         previousOption = "personalized";
 
-        // console.log('Fichier sélectionné :', selectedFile.name);
-
         let personalizedPath = URL.createObjectURL(selectedFile);
         console.log("personalizedPath" ,personalizedPath);
         document.body.style.backgroundImage = "url('" + personalizedPath + "')";

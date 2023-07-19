@@ -66,13 +66,7 @@ var DrawingApp = /** @class */ (function () {
         context.strokeStyle = '#EE5A24';
         
         context.lineWidth = 4;
-        // context.fillStyle = '#009432';
-        // context.fillRect(0,0,canvas.width,canvas.height);
-        // let img = new Image();
-        // img.onload = function() {
-        //     context.drawImage(img,0,0,img.width,img.height);
-        // }
-        // img.src ='./assets/green.jpg';
+
         this.canvas = canvas;
         this.context = context;
         this.redraw();
@@ -90,14 +84,6 @@ var DrawingApp = /** @class */ (function () {
         canvas.addEventListener("touchmove", this.dragEventHandler);
         canvas.addEventListener("touchend", this.releaseEventHandler);
         canvas.addEventListener("touchcancel", this.cancelEventHandler);
-        //  document.body.addEventListener("click", this.clearEventHandler);
-    
-
-        // FOR SMARTPHONE
-        // TODO : vérifier si ça marche
-        // canvas.addEventListener("touchstart", this.pressEventHandler);
-        // canvas.addEventListener("touchmove", this.dragEventHandler);
-        // canvas.addEventListener("touchend", this.releaseEventHandler);
     
     };
     //refresh
