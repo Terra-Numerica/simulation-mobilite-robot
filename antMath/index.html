@@ -13,7 +13,7 @@
   <script type="text/javascript" src="./library/gif.js.optimized/dist/gif.js"></script>
   <script type="text/javascript" src="library/chart.min.js"></script>
   <script type="text/javascript" src="library/granim.min.js"></script>
-  
+
   <!-- My Library -->
   <script src="./js/Ant.js"></script>
   <script src="./js/DrawingAnt.js"></script>
@@ -38,7 +38,6 @@
   <!-- PLAYGROUND -->
   <div id="playPanel">
     <canvas id="playGround"></canvas>
-
   </div>
 
 
@@ -81,20 +80,18 @@
         <select name="language-picker-select" id="language-picker-select" onchange="updateLanguage(this)">
           <option value="en">English</option>
           <option value="fr">Français</option>
-          <!-- other language options -->
         </select>
 
         <select name="backgroundPicker" id="backgroundPicker">
           <option onclick="changeBackground(this)" value="grass" selected="true">Grass</option>
-          <option onclick="changeBackground(this)" value="sand" >Sand</option>
+          <option onclick="changeBackground(this)" value="sand">Sand</option>
           <option onclick="changeBackground(this)" value="dirt">Dirt</option>
           <option onclick="changeBackground(this)" value="personalized">Personalized</option>
-          <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized" 
-          oninput="onInputBackgroundInput(this)"
-          >
+          <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized"
+            oninput="onInputBackgroundInput(this)">
 
         </select>
-        
+
       </div>
 
     </div>
@@ -140,90 +137,6 @@
     </div>
 
   </div>
-
-  <!-- TRANSLATE -->
-  <!-- <script>$(function () {
-        ///// Language Switching (2 languages: English and FR). /////
-      
-        // Initially disable language switching button.
-        $('#switch-lang').css({'pointer-events':'none',
-         'cursor':'default'}).attr('disabled','disabled');
-      
-        function langButtonListen() {
-          $('#switch-lang').click(function (event) {
-            event.preventDefault();
-            $('[lang="fr"]').toggle();
-            $('[lang="en"]').toggle();
-            // Switch cookie stored language.
-            if ($.cookie('lang') === 'en') {
-              $.cookie('lang', 'fr', { expires: 7 });
-            } else {
-              $.cookie('lang', 'en', { expires: 7 });
-            }
-          });
-          // Enable lang switching button.
-          $('#switch-lang').css({'pointer-events':'auto',
-           'cursor':'pointer'}).removeAttr('disabled');
-        }
-      
-        // Check if language cookie already exists.
-        if ($.cookie('lang')) {
-          var lang = $.cookie('lang');
-          if (lang === 'en') {
-            $('[lang="fr"]').hide();
-            langButtonListen();
-          } else {
-            $('[lang="en"]').hide();
-            langButtonListen();
-          }
-        } else {
-          // no cookie set, so detect language based on location.
-          if ("geolocation" in navigator) {
-            // geolocation is available
-            navigator.geolocation.getCurrentPosition(function (position) {
-              // accepted geolocation so figure out which country
-              var lat = position.coords.latitude,
-                  lng = position.coords.longitude;
-              $.getJSON('http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&sensor=true', null, function (response) {
-                var country = response.results[response.results.length-1].formatted_address;
-                if (country ===  'Taiwan' || country === 'China') {
-                  $('[lang="en"]').hide();
-                  $.cookie('lang', 'fr', { expires: 7 });
-                  langButtonListen();
-                } else {
-                  $('[lang="fr"]').hide();
-                  $.cookie('lang', 'en', { expires: 7 });
-                  langButtonListen();
-                }
-              }).fail(function (err) {
-                console.log('error: '+err);
-                $('[lang="fr"]').hide();
-                $.cookie('lang', 'en', { expires: 7 });
-                langButtonListen();
-              });
-            },
-            function (error) {
-              if (error.code == error.PERMISSION_DENIED) {
-                // denied geolocation
-                $('[lang="fr"]').hide();
-                $.cookie('lang', 'en', { expires: 7 });
-                langButtonListen();
-              } else {
-                console.log('Unknown error. Defaulting to English!');
-                $('[lang="fr"]').hide();
-                $.cookie('lang', 'en', { expires: 7 });
-                langButtonListen();
-              }
-            });
-          } else {
-            // geolocation IS NOT available
-            $('[lang="fr"]').hide();
-            $.cookie('lang', 'en', { expires: 7 });
-            langButtonListen();
-          }
-        }
-      });
-      </script> -->
 
 
 </body>
