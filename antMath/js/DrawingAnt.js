@@ -21,6 +21,7 @@ var DrawingAnt = /** @class */ (function (_super) {
 
         // Besoin du contexte du canvas dans la  fonction move je sais pas pourquoi
         _this.canvas = document.createElement('canvas');
+        // A QUOI SERT CETTE LIGNE ??
         _this.draw = false;
 
 
@@ -33,7 +34,7 @@ var DrawingAnt = /** @class */ (function (_super) {
             var context = _this.canvas.getContext("2d");
             context.lineCap = 'round';
             context.lineJoin = 'round';
-            context.strokeStyle = 'rgb(' + red + ',' + green + ',' + blue + ')';
+            context.strokeStyle = 'rgb(' + pathColorRedValue + ',' + pathColorGreenValue + ',' + pathColorBlueValue + ')';
             context.lineWidth = 1;
 
             document.getElementById("playPanel").appendChild(_this.canvas);

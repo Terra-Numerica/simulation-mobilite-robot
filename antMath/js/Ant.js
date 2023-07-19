@@ -20,12 +20,12 @@ var Ant = /** @class */ (function () {
         this.y = y;
         this.distance += Math.sqrt(this.speedX * this.speedX + this.speedY * this.speedY);
     };
-    //follow the given ant at with gap as distance
+    //follow the given ant at with spacingAnt as distance
     Ant.prototype.follow = function (Ant) {
         
         var dx = Ant.x - this.x;
         var dy = Ant.y - this.y;
-        if (Math.abs(dx) < gap && Math.abs(dy) < gap) {
+        if (Math.abs(dx) < spacingAnt && Math.abs(dy) < spacingAnt) {
             this.speedX = 0;
             this.speedY = 0;
         }

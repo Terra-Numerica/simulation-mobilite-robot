@@ -1,31 +1,77 @@
-var i = 2;
-var firstAnt = new Ant('./assets/ant.png', 30, 30);
-var futurAnts = new Array();
-var draw = true;
-var gap = 30;
 
+var firstAnt = new Ant('./assets/ant.png', 30, 30);
+
+/**
+ * Array containing all the ants
+ * @type {Array<DrawingAnt>}
+ */
+var futurAnts = new Array();
+
+/**
+ * Equal waiting for the user to draw a path
+ * @type {boolean}
+ */
+var draw = true;
+
+/**
+ * Space between two ants
+ */
+var spacingAnt = 30;
+
+/**
+ * Speed of the ants
+ */
 var speedAnt = 1;
 
+/**
+ * DrawingApp object
+ * ????
+ * @type {DrawingApp}
+ */
 var d;
-var firstAntDelay;
+
+/**
+ * Chart object
+ * Save me data for ther curv, ect...
+ * @type {Chart}
+ */
 var chart;
-var drawingGap = 4;
+
+/**
+ * Nombre d'exécution de la fonction delayFirst avant de dessiner un nouveau path
+ * Je crois ???
+ * On augmente sa value expodentiellement pour pas avoir 1 millions de chemins quand les tracets sont quasi identiques
+ * @type {number}
+ */
+let drawingGap = 4;
+
+/**
+ * Compteur du drawing spacingAnt
+ * Je sais pas à quoi ça correspond exactement : le nombre de chemin dessiner ??
+ * Pourquoi commence à 2 ??
+ * @type {number}
+ */
+let compter = 2;
+
 var canvasTab = new Array();
-var Pause = false;
+var isGameStopped = false;
 var firstX;
 var firstY;
-var red = 255;
-var blue = 0;
-var green = 0;
 
-let sizeScreenWidth;
-let sizeScreenHeight;
+// RGB : Color of the path draw by the ants
+var pathColorRedValue = 255;
+var pathColorBlueValue = 0;
+var pathColorGreenValue = 0;
 
 // Allow use button instead of checkbox
 let drawAllPathOn = true;
 
 let saveFirstDrawApp = Object();
 
+/**
+ * Say if the path has be draw vertically or horizontally
+ * @type {boolean}
+ */
 let orientationDrawVertical;
 
 /**
@@ -69,9 +115,6 @@ function drawHandler() {
         //init array containing all the ants
         futurAnts = new Array();
         //start main prg, with the speed choosen by the user
-
-        sizeScreenHeight = window.innerHeight;
-        sizeScreenWidth = window.innerWidth;
         // saveFirstDrawApp.context = context;
 
         setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
@@ -145,7 +188,7 @@ window.onload = function () {
     });
 
 
-    // //Re Set la valeur de speed/gap value par défaut au chargement pour être égale à celle du curseur
+    // //Re Set la valeur de speed/spacingAnt value par défaut au chargement pour être égale à celle du curseur
 
     let speedInput = document.getElementById('antSpeed');
     speedInput.value = defaultValueRange(speedInput);
@@ -299,18 +342,22 @@ function startAnts(First, Space, firstX, firstY) {
     else {
         //new first follow the never changing First with special function with no slow
         futurAnts[0].followEnd(First);
-        //add a new ant every time the last one is farther than 'gap'
-        if (Math.sqrt((futurAnts[futurAnts.length - 1].x - firstX) * (futurAnts[futurAnts.length - 1].x - firstX) + (futurAnts[futurAnts.length - 1].y - firstY) * (futurAnts[futurAnts.length - 1].y - firstY)) > gap) {
-            if (i == drawingGap) {
-                if (red > 0) {
-                    blue = Math.min(255, blue + 45);
+        //add a new ant every time the last one is farther than 'spacingAnt'
+        if (Math.sqrt((futurAnts[futurAnts.length - 1].x - firstX) * (futurAnts[futurAnts.length - 1].x - firstX) + (futurAnts[futurAnts.length - 1].y - firstY) * (futurAnts[futurAnts.length - 1].y - firstY)) > spacingAnt) {
+            if (compter == drawingGap) {
+                if (pathColorRedValue > 0) {
+                    pathColorBlueValue = Math.min(255, pathColorBlueValue + 45);
                 }
                 else {
-                    blue = Math.max(0, blue - 45);
-                    green = Math.min(255, green + 45);
+                    pathColorBlueValue = Math.max(0, pathColorBlueValue - 45);
+                    pathColorGreenValue = Math.min(255, pathColorGreenValue + 45);
                 }
-                red = Math.max(0, red - 45);
+                pathColorRedValue = Math.max(0, pathColorRedValue - 45);
+
+                // compter = 2;
                 drawingGap = Math.round(drawingGap * 2 - drawingGap / 2);
+
+
                 // if(drawAllPathOn){
                 if (drawAllPathOn) {
                     // if (document.getElementById('drawMain').checked) {
@@ -327,7 +374,7 @@ function startAnts(First, Space, firstX, firstY) {
                 futurAnts[futurAnts.length - 1].move(firstX, firstY);
                 document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
             }
-            i++;
+            compter++;
         }
         //if the first reached the end, add its distance to the curve then delete it from the array and the html
         if (futurAnts[0].x == First.x && futurAnts[0].y == First.y) {
@@ -347,7 +394,7 @@ function startAnts(First, Space, firstX, firstY) {
         }
     }
     //repeat the function
-    if (!Pause) {
+    if (!isGameStopped) {
         setTimeout(startAnts, 10, firstAnt, Space, firstX, firstY);
     }
 
@@ -365,17 +412,21 @@ function delayFirst(Space, First, firstX, firstY) {
         document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
         //create new ants
     }
-    else if (Math.sqrt((futurAnts[futurAnts.length - 1].x - firstX) * (futurAnts[futurAnts.length - 1].x - firstX) + (futurAnts[futurAnts.length - 1].y - firstY) * (futurAnts[futurAnts.length - 1].y - firstY)) > gap) {
-        if (i == drawingGap) {
-            if (red > 0) {
-                blue = Math.min(255, blue + 45);
+    else if (Math.sqrt((futurAnts[futurAnts.length - 1].x - firstX) * (futurAnts[futurAnts.length - 1].x - firstX) + (futurAnts[futurAnts.length - 1].y - firstY) * (futurAnts[futurAnts.length - 1].y - firstY)) > spacingAnt) {
+        if (compter == drawingGap) {
+            if (pathColorRedValue > 0) {
+                pathColorBlueValue = Math.min(255, pathColorBlueValue + 45);
             }
             else {
-                blue = Math.max(0, blue - 45);
-                green = Math.min(255, green + 45);
+                pathColorBlueValue = Math.max(0, pathColorBlueValue - 45);
+                pathColorGreenValue = Math.min(255, pathColorGreenValue + 45);
             }
-            red = Math.max(0, red - 45);
+            pathColorRedValue = Math.max(0, pathColorRedValue - 45);
+
+            // compter = 0;
+            // On augmente le drawing spacingAnt expodentiellement pour pas avoir 1 millions de chemins quand les tracets sont quasi identiques
             drawingGap = Math.round(drawingGap * 2 - drawingGap / 2);
+
             // if(drawAllPathOn){
             // if (drawAllPathOn && (deltaPathLength > DELTA_MIN || deltaPathLength < 0)) {
             if (drawAllPathOn ) {
@@ -393,7 +444,7 @@ function delayFirst(Space, First, firstX, firstY) {
             futurAnts[futurAnts.length - 1].move(firstX, firstY);
             document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
         }
-        i++;
+        compter++;
     }
     //make other ants follow the first
     futurAnts[0].follow(First);

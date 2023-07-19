@@ -8,7 +8,7 @@ function displayControlPanel() {
 
 //Change the space between two ants with html
 function changeAntSpacing(element) {
-    gap = parseInt(element.value);
+    spacingAnt = parseInt(element.value);
 }
 
 //Change the execution speed with html
@@ -21,13 +21,13 @@ function resetDraw(element) {
     location.reload();
 }
 function pauseDraw(element) {
-    if (Pause) {
-        Pause = false;
+    if (isGameStopped) {
+        isGameStopped = false;
         document.getElementById('stopButton').innerText = TRAD.stopButton[language];
         setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
     }
     else {
-        Pause = true;
+        isGameStopped = true;
         document.getElementById('stopButton').innerText = TRAD.startButton[language];
     }
 }
@@ -70,7 +70,7 @@ function drawAllPaths(element) {
 
 
 function creatGIF() {
-    Pause = true;
+    isGameStopped = true;
     for (var i_8 = 0; i_8 < canvasTab.length; i_8++) {
         canvasTab[i_8].style.opacity = '0';
     }
