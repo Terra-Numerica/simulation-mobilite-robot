@@ -4,9 +4,33 @@
     --iconHeight : 50px;
 }
 
+@font-face {
+    font-family: 'Poppins';
+    src: url('./Poppins/Poppins-Black.ttf') format('truetype'),
+         url('./Poppins/Poppins-BlackItalic.ttf') format('truetype'),
+         url('./Poppins/Poppins-Bold.ttf') format('truetype'),
+         url('./Poppins/Poppins-BoldItalic.ttf') format('truetype'),
+         url('./Poppins/Poppins-ExtraBold.ttf') format('truetype'),
+         url('./Poppins/Poppins-ExtraBoldItalic.ttf') format('truetype'),
+         url('./Poppins/Poppins-ExtraLight.ttf') format('truetype'),
+         url('./Poppins/Poppins-ExtraLightItalic.ttf') format('truetype'),
+         url('./Poppins/Poppins-Italic.ttf') format('truetype'),
+         url('./Poppins/Poppins-Light.ttf') format('truetype'),
+         url('./Poppins/Poppins-LightItalic.ttf') format('truetype'),
+         url('./Poppins/Poppins-Medium.ttf') format('truetype'),
+         url('./Poppins/Poppins-MediumItalic.ttf') format('truetype'),
+         url('./Poppins/Poppins-Regular.ttf') format('truetype'),
+         url('./Poppins/Poppins-SemiBold.ttf') format('truetype'),
+         url('./Poppins/Poppins-SemiBoldItalic.ttf') format('truetype'),
+         url('./Poppins/Poppins-Thin.ttf') format('truetype'),
+         url('./Poppins/Poppins-ThinItalic.ttf') format('truetype');
+  }
+  
+
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 html, body{
@@ -14,12 +38,13 @@ html, body{
     display: flex;
     flex: auto;
     background-image: url("./../img/background/ground3.jpg");
+    /* height :100%; */
 }
 
 /* Hide for big screen */
-#menuButton{
+/* #menuButton{
     display: none;
-}
+} */
 
 #iconDiv{
     display: none;
@@ -175,6 +200,34 @@ canvas:not(#curve){
     display: none;
 }
 
+/*=========================== ICON DIV =====================================  */
+#iconDiv{
+        
+    position: absolute;
+    z-index: 999;
+    height: calc(var(--iconHeight) + 20px);
+    width: calc(100% - (var(--controlPanelSize)) );
+    background-color: rgba(26, 24, 45);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#iconDiv img{
+    height: var(--iconHeight);
+    width: auto;
+    margin: 10px;
+    cursor: pointer;
+}
+
+#iconDiv img:not(#menuButton){
+    display: flex;
+}
+
+#menuButton{
+    display: none;
+}
+
 
 
 @media (min-width : 900px){
@@ -198,27 +251,30 @@ canvas:not(#curve){
 
     /*=========================== ICON DIV =====================================  */
 
+    /* Icon div est placé en absolue pour éviter de casser la positio des fourmies codé avec le cul */
+
     #iconDiv{
-        height: calc(var(--iconHeight) + 20px);
+        position: absolute;
         width: 100%;
-        background-color: rgb(26, 24, 45);
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
+        background: none;
     }
 
-    #iconDiv > img{
-    
-        display: flex;
-        height: var(--iconHeight);
-        width: auto;
-        margin: 10px;
+    #iconDiv img:not(#menuButton){
+        opacity: 0;
+        z-index: -1;
     }
+
+    #menuButton{
+        display: flex;
+    }
+
+    
 
     /* ========================== PLAY =======================================*/
     #playPanel
     {
-        height: calc(100vh - var(--iconHeight)) ;
+        /* height: calc(100vh - var(--iconHeight)) ; */
+        height: 100vh;
         width: 100%;
     }
 
@@ -229,6 +285,8 @@ canvas:not(#curve){
     #controlPanel{
         position: absolute ;
         background-color: rgba(255, 255, 255, 0.8);
+        /*         background-image: linear-gradient(to bottom, #F9BB12, #00A19A, #24A1EB);
+ */
         /* background-color: rgba(36, 161, 235, 0.8); CHARTE GRAPHIQUE */
         
         z-index: 1 ;
@@ -249,11 +307,6 @@ canvas:not(#curve){
         font-size: 2.2vw
     }
 
-    /* #antControler{
-        margin: 0 15px 0 70px;
-    } */
-
-
     #dataViewer{
         /* bien que le dataViewer n'est pas affiché, il détermine la taille du canvas curve */
         height: 60%;
@@ -267,8 +320,6 @@ canvas:not(#curve){
         top: 0;
         left: 0;
         z-index: -1;
-        /* display: none; */
-
     }
 
 }
