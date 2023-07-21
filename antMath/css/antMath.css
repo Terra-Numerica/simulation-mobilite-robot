@@ -3,6 +3,7 @@
     --controlPanelSize : 450px;
     --iconHeight : 50px;
     --marginTopIcon : 10px;
+    --darkColorTN:rgba(26, 24, 45);
 }
 
 @font-face {
@@ -191,13 +192,13 @@ canvas:not(#curve){
     z-index: 999;
     height: calc(var(--iconHeight) + 20px);
     width: calc(100% - (var(--controlPanelSize)) );
-    background-color: rgba(26, 24, 45);
+    background-color: var(--darkColorTN);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-#iconDiv img{
+#iconDiv *{
     height: var(--iconHeight);
     width: auto;
     margin: var(--marginTopIcon);
