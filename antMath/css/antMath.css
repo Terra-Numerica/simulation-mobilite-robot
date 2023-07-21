@@ -2,6 +2,7 @@
 :root{
     --controlPanelSize : 450px;
     --iconHeight : 50px;
+    --marginTopIcon : 10px;
 }
 
 @font-face {
@@ -41,19 +42,9 @@ html, body{
     /* height :100%; */
 }
 
-/* Hide for big screen */
-/* #menuButton{
-    display: none;
-} */
-
-#iconDiv{
-    display: none;
-}
-
 /* ========================== PLAY PANEL =======================================*/
 #playPanel
 {
-    /* background-image: url("./../img/ground3.jpg"); */
     height: 100vh;
     width: calc(100% - (var(--controlPanelSize)) );
 }
@@ -76,6 +67,9 @@ canvas:not(#curve){
     /* left: 75%; */
     left: calc(100% - var(--controlPanelSize));
     background-color: white;
+    /* Dégradé de TN : Horrible */
+    /* background-image: linear-gradient(rgba(249, 187, 18, 1), rgba(0, 161, 154, 1), rgba(36, 161, 235, 1)); */
+
     /* Permet de l'afficher par dessus les fourmis si réduction */
     position: absolute;
     z-index: 999;
@@ -177,9 +171,6 @@ canvas:not(#curve){
 
 /* Explanation TEXTE */
 
-/* #explainationTexte {
-    display: none;
-} */
 .displayTexteDiv{
     text-align: justify;
     margin: 0px 20px 0px 20px;
@@ -190,19 +181,12 @@ canvas:not(#curve){
     
 }
 
-
-/* Default : unvisisible */
-/* #tutorial , #information , #aboutAnts {
-    display: none;
-} */
-
 #information , #aboutAnts {
     display: none;
 }
 
 /*=========================== ICON DIV =====================================  */
 #iconDiv{
-        
     position: absolute;
     z-index: 999;
     height: calc(var(--iconHeight) + 20px);
@@ -216,18 +200,19 @@ canvas:not(#curve){
 #iconDiv img{
     height: var(--iconHeight);
     width: auto;
-    margin: 10px;
+    margin: var(--marginTopIcon);
     cursor: pointer;
 }
 
-#iconDiv img:not(#menuButton){
+
+#iconDiv img:not(#menuButton, #bigTN, #miniTN){
     display: flex;
 }
 
-#menuButton{
+/* par défaut : hidden */
+#menuButton, #miniTN{
     display: none;
 }
-
 
 
 @media (min-width : 900px){
@@ -256,16 +241,19 @@ canvas:not(#curve){
     #iconDiv{
         position: absolute;
         width: 100%;
-        background: none;
+        /* background: none; */
     }
 
-    #iconDiv img:not(#menuButton){
-        opacity: 0;
+    #iconDiv img:not(#menuButton, #bigTN, #miniTN){
+        /* opacity: 0; */
         z-index: -1;
     }
 
-    #menuButton{
+    #menuButton, #miniTN{
         display: flex;
+    }
+    #bigTN{
+        display: none;
     }
 
     
@@ -285,18 +273,24 @@ canvas:not(#curve){
     #controlPanel{
         position: absolute ;
         background-color: rgba(255, 255, 255, 0.8);
-        /*         background-image: linear-gradient(to bottom, #F9BB12, #00A19A, #24A1EB);
- */
-        /* background-color: rgba(36, 161, 235, 0.8); CHARTE GRAPHIQUE */
+    
+        /* background-image: linear-gradient(rgba(249, 187, 18, 0.2), rgba(0, 161, 154, 0.2), rgba(36, 161, 235, 0.2)); */
+          
+          
         
+
         z-index: 1 ;
         display: none;
         width: 100% ;
         /* height: 100% ; */
-        height: calc(100% - var(--iconHeight) - 20px) ;
-        top:calc(var(--iconHeight) + 20px);
+        height: calc(100% - var(--iconHeight) - 2 * var(--marginTopIcon) );
+
         left: 0;
-        border-left: none;
+        top: calc(2 * var(--marginTopIcon) + var(--iconHeight));
+/*         
+        top:calc(var(--iconHeight) + 20px);
+        
+        border-left: none; */
     }
 
     .buttonTexted > h4 {

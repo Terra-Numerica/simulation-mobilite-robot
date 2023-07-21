@@ -249,6 +249,7 @@ window.addEventListener("resize", () => {
 
     const currentOrientation = getOrientation();
 
+    // Affiche / cache le data viewer si nécessaire
     showHideDataViewer();
 
     // this listener has been made to replaced the CSS that does'not work
@@ -263,6 +264,7 @@ window.addEventListener("resize", () => {
     let playPanel = document.getElementById("playPanel");
     let playGround = document.getElementById("playGround");
 
+    // Si le chemine est tracé, on doit resize le canvas pour qu'il prenne toute la place
     if (!draw) { // si le chemin est tracé
         if (previousOrientation != currentOrientation && window.innerWidth < 900 ) { // et sur smartphone
 
