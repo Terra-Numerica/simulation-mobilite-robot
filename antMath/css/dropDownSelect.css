@@ -4,7 +4,7 @@
 
 #image-dropdown {
     /*style the "box" in its minimzed state*/
-    border:1px solid black; width:var(--iconHeight); height:var(--iconHeight); overflow:hidden;
+    border:1px solid white; width:var(--iconHeight); height:var(--iconHeight); overflow:hidden;
     /*animate the dropdown collapsing*/
     transition: height 0.1s;
 }
