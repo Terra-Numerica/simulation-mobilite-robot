@@ -21,11 +21,11 @@ function changeBackground(elt){
             break;
         case "personalized":
             // For the moment, consider the option selected is the previous one
-            let previousOptionElement = document.querySelector("option[value=" + previousOption + "]");
-            previousOptionElement.selected = true;
+            // let previousOptionElement = document.querySelector("option[value=" + previousOption + "]");
+            // previousOptionElement.selected = true;
             // console.log("previousOptionElement selected=true", previousOption);
-            let optionPerso = document.querySelector("option[value=personalized]");
-            optionPerso.selected = false;
+            // let optionPerso = document.querySelector("option[value=personalized]");
+            // optionPerso.selected = false;
             // console.log("optionPerso : selected=false", optionPerso);
 
             let inputFile = document.getElementById("backgroundPickerPersonalized");
@@ -46,11 +46,11 @@ function onInputBackgroundInput(elt){
         // Un fichier a été sélectionné
         // Mettre à jour l'arrière-plan avec l'image personnalisée
 
-        let previousOptionElement = document.querySelector("option[value=" + previousOption + "]");
-        previousOptionElement.selected = false;
-        let optionPerso = document.querySelector("option[value=personalized]");
-        optionPerso.selected = true;
-        previousOption = "personalized";
+        // let previousOptionElement = document.querySelector("option[value=" + previousOption + "]");
+        // previousOptionElement.selected = false;
+        // let optionPerso = document.querySelector("option[value=personalized]");
+        // optionPerso.selected = true;
+        // previousOption = "personalized"; 
 
         let personalizedPath = URL.createObjectURL(selectedFile);
         console.log("personalizedPath" ,personalizedPath);

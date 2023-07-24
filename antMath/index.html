@@ -42,24 +42,40 @@
     <!-- Menu for Smartphone -->
     <img src="img/icon/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
 
-    <img src="../favicon.png" alt="Mini logo TerraNumerica" id="miniTN">
-    <img src="img/logoTN.png" alt="Logo Terra Numerica" id="bigTN">
+    <!-- <img src="../favicon.png" alt="Mini logo TerraNumerica" id="miniTN"> -->
+    <a href="https://terra-numerica.org/" target="_blank" id="bigTN"><img src="img/logoTN.png" alt="Go to Terra Numerica" ></a>
 
-    
-    <div id="image-dropdown">
-        <input type="radio" id="line1" name="line-style" value="1" checked="checked" />
-        <label for="line1"></label>
-        <input type="radio" id="line2" name="line-style" value="2" />
-        <label for="line2"></label>
-        <input type="radio" id="line3" name="line-style" value="3" />
-        <label for="line3"></label>
+    <!-- Drop-down : select background -->
+    <div class="dropdown-square" id="background-picker" title="background picker">
+        <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass" checked="checked" onclick="changeBackground(this)"/>
+        <label title="Grass" for="choiceBackgroundGrass"></label>
+        <input type="radio" id="choiceBackgroundSand" name="line-background-picker" title="Sand" value="sand" onclick="changeBackground(this)" />
+        <label title="Sand" for="choiceBackgroundSand"></label>
+        <input type="radio" id="choiceBackgroundDirt" name="line-background-picker" value="dirt" onclick="changeBackground(this)"/>
+        <label title="Dirt" for="choiceBackgroundDirt"></label>
+        <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized" onclick="changeBackground(this)"/>
+        <label title="Personalized" for="choiceBackgroundPersonalized"></label>
+        <!-- Input hidden for choice file -->
+        <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized"
+        oninput="onInputBackgroundInput(this)">
     </div>
 
-    <img src="img/icon/translate_icon.jpeg" alt="translate" >
+    <!-- <img src="img/icon/translate_icon.jpeg" alt="translate" > -->
+
+    <div class="dropdown-square" id="lang-picker">
+      <input type="radio" id="choiceLangFR"  name="line-lang-picker" value="fr" onclick="updateLanguage(this)" >
+      <label title="Français" for="choiceLangFR">FR</label>
+      <!-- &#127467; -->
+      <input type="radio" id="choiceLangEN"  name="line-lang-picker" value="en" onclick="updateLanguage(this)" >
+      <label title="English" for="choiceLangEN">EN</label>
+      <!-- &#127466; -->
+    </div>
+
+
     <!-- <img src="img/icon/background_icon.png" alt="change background"> -->
     <!-- <img src="img/icon/changeBG1.png" alt="change background"> -->
-    <img src="img/icon/dowload_icon.jpeg" alt="Download GIF">
-    <img src="img/icon/reset_icon.jpeg" alt="Reset page">
+    <img src="img/icon/dowload_icon.jpeg" alt="Download GIF" onclick="creatGIF(this)">
+    <img src="img/icon/reset_icon.jpeg" alt="Reset page" onclick="resetDraw(this)">
   </div>
 
   <!-- PLAYGROUND -->
@@ -70,8 +86,6 @@
 
   <!-- CONTROL PANEL -->
   <div id="controlPanel">
-
-    
 
     <!-- EXPLANATION PANEL -->
     <div class="container">
@@ -108,7 +122,7 @@
     </div>
 
     <!-- INPUT PANEL -->
-<div id="inputControler">
+<div id="inputControler"> 
 
   <!-- Slider -->
   <div id="antControler">
@@ -126,7 +140,6 @@
         oninput="changeAntSpacing(this)">
       <input type="range" id="pathDrawing" name="pathDrawing" min="-1" max="-1" value="-1" step="1"
         oninput="drawPath(this)">
-
     </div>
 
   </div>

@@ -4,6 +4,7 @@
     --iconHeight : 50px;
     --marginTopIcon : 10px;
     --darkColorTN:rgba(26, 24, 45);
+    --blueColorTN: rgba(36, 161, 235);
 }
 
 @font-face {
@@ -198,11 +199,19 @@ canvas:not(#curve){
     justify-content: space-around;
 }
 
-#iconDiv *{
+#iconDiv * {
+    cursor: pointer;
+}
+
+#iconDiv img {
     height: var(--iconHeight);
     width: auto;
     margin: var(--marginTopIcon);
-    cursor: pointer;
+    
+}
+
+#iconDiv div {
+    margin: var(--marginTopIcon);
 }
 
 
