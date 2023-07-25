@@ -1,34 +1,40 @@
 /* =============================== GLOBAL ================================== */
-:root{
-    --controlPanelSize : 450px;
-    --iconHeight : 50px;
-    --marginTopIcon : 10px;
-    --darkColorTN:rgba(26, 24, 45);
+:root {
+    --controlPanelSize: 450px;
+    --iconHeight: 50px;
+    --marginTopIcon: 10px;
+    --topBannerHeight: calc(var(--iconHeight) + 2 * var(--marginTopIcon));
+    
+    --yellowColorTN: rgba(249, 187, 18);
+    --greenColorTN: rgba(0, 161, 154);
     --blueColorTN: rgba(36, 161, 235);
+    --navyColorTN: rgba(26, 24, 45);
+    
+
 }
 
 @font-face {
     font-family: 'Poppins';
     src: url('./Poppins/Poppins-Black.ttf') format('truetype'),
-         url('./Poppins/Poppins-BlackItalic.ttf') format('truetype'),
-         url('./Poppins/Poppins-Bold.ttf') format('truetype'),
-         url('./Poppins/Poppins-BoldItalic.ttf') format('truetype'),
-         url('./Poppins/Poppins-ExtraBold.ttf') format('truetype'),
-         url('./Poppins/Poppins-ExtraBoldItalic.ttf') format('truetype'),
-         url('./Poppins/Poppins-ExtraLight.ttf') format('truetype'),
-         url('./Poppins/Poppins-ExtraLightItalic.ttf') format('truetype'),
-         url('./Poppins/Poppins-Italic.ttf') format('truetype'),
-         url('./Poppins/Poppins-Light.ttf') format('truetype'),
-         url('./Poppins/Poppins-LightItalic.ttf') format('truetype'),
-         url('./Poppins/Poppins-Medium.ttf') format('truetype'),
-         url('./Poppins/Poppins-MediumItalic.ttf') format('truetype'),
-         url('./Poppins/Poppins-Regular.ttf') format('truetype'),
-         url('./Poppins/Poppins-SemiBold.ttf') format('truetype'),
-         url('./Poppins/Poppins-SemiBoldItalic.ttf') format('truetype'),
-         url('./Poppins/Poppins-Thin.ttf') format('truetype'),
-         url('./Poppins/Poppins-ThinItalic.ttf') format('truetype');
-  }
-  
+        url('./Poppins/Poppins-BlackItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-Bold.ttf') format('truetype'),
+        url('./Poppins/Poppins-BoldItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-ExtraBold.ttf') format('truetype'),
+        url('./Poppins/Poppins-ExtraBoldItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-ExtraLight.ttf') format('truetype'),
+        url('./Poppins/Poppins-ExtraLightItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-Italic.ttf') format('truetype'),
+        url('./Poppins/Poppins-Light.ttf') format('truetype'),
+        url('./Poppins/Poppins-LightItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-Medium.ttf') format('truetype'),
+        url('./Poppins/Poppins-MediumItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-Regular.ttf') format('truetype'),
+        url('./Poppins/Poppins-SemiBold.ttf') format('truetype'),
+        url('./Poppins/Poppins-SemiBoldItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-Thin.ttf') format('truetype'),
+        url('./Poppins/Poppins-ThinItalic.ttf') format('truetype');
+}
+
 
 * {
     margin: 0;
@@ -36,7 +42,8 @@
     font-family: 'Poppins', sans-serif;
 }
 
-html, body{
+html,
+body {
     overflow: hidden;
     display: flex;
     flex: auto;
@@ -44,74 +51,138 @@ html, body{
     /* height :100%; */
 }
 
+button {
+    background-color: var(--blueColorTN);
+    color: white;
+    border: var(--navyColorTN);
+    border-radius: 5px;
+    padding: 5px;
+    transition: background-color 0.3s; /* Ajouter une transition d'une seconde pour la couleur de fond */
+  }
+  
+button:hover {
+background-color: var(--navyColorTN); /* Changer la couleur de fond lorsqu'on survole le bouton */
+}
+  
+
 /* ========================== PLAY PANEL =======================================*/
-#playPanel
-{
+#playPanel {
     height: 100vh;
-    width: calc(100% - (var(--controlPanelSize)) );
+    /* width: calc(100% - (var(--controlPanelSize)) ); */
+    width: 100%;
 }
 
 
 /* traces les autres chemins */
-canvas:not(#curve){
+canvas:not(#curve) {
     position: absolute;
+}
+
+
+/*=========================== ICON DIV =====================================  */
+#iconDiv {
+    position: absolute;
+    z-index: 999;
+    height: calc(var(--iconHeight) + 20px);
+    /* width: calc(100% - (var(--controlPanelSize)) ); */
+    width: 100%;
+    background-color: var(--navyColorTN);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: white;
+}
+
+
+/* Réinitialiser le style par défaut des boutons */
+#iconDiv>button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-size: 1.5vw;
+}
+
+#iconDiv>button:hover {
+    color: var(--blueColorTN);
+}
+
+#iconDiv * {
+    cursor: pointer;
+}
+
+#iconDiv img {
+    height: var(--iconHeight);
+    width: auto;
+    margin: var(--marginTopIcon);
+}
+
+#iconDiv div {
+    margin: var(--marginTopIcon);
+}
+
+#iconDiv img:not(#menuButton, #bigTN, #miniTN) {
+    display: flex;
+}
+
+/* par défaut : hidden */
+#menuButton,
+#miniTN {
+    display: none;
 }
 
 /* ========================== CONTROLE PANEL =======================================*/
 
 
-#controlPanel{
-    /* border-left: 2px solid black; */
-    height: 100%;
-    /* width: 25%; */
+#controlPanel {
+    
     width: var(--controlPanelSize);
-    /* min-width: 450px; */
-    /* left: 75%; */
+    top: var(--topBannerHeight);
     left: calc(100% - var(--controlPanelSize));
     background-color: white;
-    /* Dégradé de TN : Horrible */
-    /* background-image: linear-gradient(rgba(249, 187, 18, 1), rgba(0, 161, 154, 1), rgba(36, 161, 235, 1)); */
-
+    border-radius: 0 0 0 15px;
+    
     /* Permet de l'afficher par dessus les fourmis si réduction */
     position: absolute;
     z-index: 999;
-
     display: flex;
     flex-direction: column;
     flex-grow: inherit;
+
+    /* Try TN border */
+    /* border-bottom: 5px solid;
+    border-left: 5px solid;
+    border-image: linear-gradient(to bottom right, var(--yellowColorTN), var(--greenColorTN), var(--blueColorTN)) 1; */
+
 }
 
-#inputControler, #explanationControler{
-    border-bottom: 1px solid black;
-    padding: 10px 0 10px 0 ;
-    
-}
 
 /* TOutes les divisions de #inputControler */
-#inputControler > div{
-    padding: 5px 0 5px 0 ;
-    /* border-bottom: 1px solid black; */
+#inputControler>div {
+    padding: 5px 0 5px 0;
 }
 
 /* ######## INPUT PANEL ######## */
 
 
-#inputControler{
-    
-    display: flex;
+#inputControler {
+    padding: 10px 0 10px 0;
+    border-top: 1px solid var(--navyColorTN);
+    display: none;
     flex-direction: column;
 }
 
 /* antControler */
 
-#antControler{
+#antControler {
     display: flex;
     flex-direction: row;
     /* Les deux colonnes label / range sont espacé horsitontalement */
     justify-content: space-around;
-}   
+}
 
-#antControler > div {
+#antControler>div {
     display: flex;
     flex-direction: column;
     /* les lignes (label ou input) sont espacé verticalement */
@@ -119,7 +190,7 @@ canvas:not(#curve){
 }
 
 /* button */
-#gameControler{
+#gameControler {
     /* align les boutons avec espacements */
     display: flex;
     flex-direction: row;
@@ -130,30 +201,29 @@ canvas:not(#curve){
 
 /* ######## EXPLANATION CONTROLER ######## */
 
-/* Explanation BUTTON */
-#explanationControler{
-    min-height: calc(100% / 3);
+#information, #more{
+    display: none;
 }
 
-#explainationButton{
+#explainationButton {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    
+
 }
 
 /* Centered text */
 .buttonTexted {
-    
+
     /* button sous le texte */
     position: relative;
     /* Taille de la division = taille du panel / nb_bouton */
-    width:calc(75% / 3);
+    width: calc(75% / 3);
     /* Au centre (need aussi le left:50% de h4 */
     text-align: center;
 }
 
-.buttonTexted > h4 {
+.buttonTexted>h4 {
     /* Texte par dessus le bouton */
     position: absolute;
     /* Au centre */
@@ -166,68 +236,37 @@ canvas:not(#curve){
     font-size: 10px;
 }
 
-.buttonTexted > img {
+.buttonTexted>img {
     /* taille du bouton = taille du contenaire */
     width: 75%;
 }
 
 /* Explanation TEXTE */
 
-.displayTexteDiv{
+#tutorial, #information, #more {
     text-align: justify;
     margin: 0px 20px 0px 20px;
 }
 
 #dataViewer{
-    height: 33%;
-    
+    height: 33vh;
+    border-top: 1px solid var(--navyColorTN);
 }
 
-#information , #aboutAnts {
-    display: none;
-}
-
-/*=========================== ICON DIV =====================================  */
-#iconDiv{
-    position: absolute;
-    z-index: 999;
-    height: calc(var(--iconHeight) + 20px);
-    width: calc(100% - (var(--controlPanelSize)) );
-    background-color: var(--darkColorTN);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-#iconDiv * {
-    cursor: pointer;
-}
-
-#iconDiv img {
-    height: var(--iconHeight);
-    width: auto;
-    margin: var(--marginTopIcon);
-    
-}
-
-#iconDiv div {
-    margin: var(--marginTopIcon);
-}
-
-
-#iconDiv img:not(#menuButton, #bigTN, #miniTN){
-    display: flex;
-}
-
-/* par défaut : hidden */
-#menuButton, #miniTN{
+#information,
+#aboutAnts {
     display: none;
 }
 
 
-@media (min-width : 900px){
+
+
+@media (min-width : 900px) {
+
     /* QUatrième tab for curve */
-    #tab4, .tab-wrap > label:nth-child(8), div.tab__content:nth-child(12) {
+    #tab4,
+    .tab-wrap>label:nth-child(8),
+    div.tab__content:nth-child(12) {
         display: none;
     }
 }
@@ -239,7 +278,8 @@ canvas:not(#curve){
 
 @media (max-width : 900px) {
 
-    html, body {
+    html,
+    body {
         display: flex;
         flex-direction: column;
     }
@@ -248,62 +288,55 @@ canvas:not(#curve){
 
     /* Icon div est placé en absolue pour éviter de casser la positio des fourmies codé avec le cul */
 
-    #iconDiv{
+    #iconDiv {
         position: absolute;
         width: 100%;
         /* background: none; */
     }
 
-    #iconDiv img:not(#menuButton, #bigTN, #miniTN){
+    #iconDiv img:not(#menuButton, #bigTN, #miniTN) {
         /* opacity: 0; */
         z-index: -1;
     }
 
-    #menuButton, #miniTN{
+    #menuButton,
+    #miniTN {
         display: flex;
     }
-    #bigTN{
+
+    #bigTN {
         display: none;
     }
 
-    
-
     /* ========================== PLAY =======================================*/
-    #playPanel
-    {
-        /* height: calc(100vh - var(--iconHeight)) ; */
-        height: 100vh;
+    #playPanel {
+        /* height: 100vh; */
+        height: 100%;
         width: 100%;
     }
 
-    
+
 
     /* ========================== CONTROLE =======================================*/
 
-    #controlPanel{
-        position: absolute ;
+    #controlPanel {
+        position: absolute;
         background-color: rgba(255, 255, 255, 0.8);
-    
-        /* background-image: linear-gradient(rgba(249, 187, 18, 0.2), rgba(0, 161, 154, 0.2), rgba(36, 161, 235, 0.2)); */
-          
-          
-        
 
-        z-index: 1 ;
+        /* background-image: linear-gradient(rgba(249, 187, 18, 0.2), rgba(0, 161, 154, 0.2), rgba(36, 161, 235, 0.2)); */
+
+        z-index: 1;
         display: none;
-        width: 100% ;
+        width: 100%;
         /* height: 100% ; */
-        height: calc(100% - var(--iconHeight) - 2 * var(--marginTopIcon) );
+        height: calc(100% - var(--iconHeight) - 2 * var(--marginTopIcon));
 
         left: 0;
         top: calc(2 * var(--marginTopIcon) + var(--iconHeight));
-/*         
-        top:calc(var(--iconHeight) + 20px);
-        
-        border-left: none; */
+
     }
 
-    .buttonTexted > h4 {
+    .buttonTexted>h4 {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -311,7 +344,7 @@ canvas:not(#curve){
         font-size: 2.2vw
     }
 
-    #dataViewer{
+    #dataViewer {
         /* bien que le dataViewer n'est pas affiché, il détermine la taille du canvas curve */
         height: 60%;
         width: 90%;

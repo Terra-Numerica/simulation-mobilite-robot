@@ -25,17 +25,21 @@
   <script src="./js/KeyListener.js"></script>
   <script src="./js/backGroundChange.js"></script>
   <script src="./js/inputControler.js"></script>
+
+  <script src="./js/contropPanelDisplay.js"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="./css/antMath.css">
   <link rel="stylesheet" href="./css/radioInput.css">
 
   <link rel="stylesheet" href="./css/dropDownSelect.css">
 
+  <link rel="stylesheet" href="./css/checkBox.css">
+
 </head>
 
 <body>
 
-  
+
 
   <!-- IconDiv -->
   <div id="iconDiv">
@@ -43,30 +47,35 @@
     <img src="img/icon/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
 
     <!-- <img src="../favicon.png" alt="Mini logo TerraNumerica" id="miniTN"> -->
-    <a href="https://terra-numerica.org/" target="_blank" id="bigTN"><img src="img/logoTN.png" alt="Go to Terra Numerica" ></a>
+    <a href="https://terra-numerica.org/" target="_blank" id="bigTN"><img src="img/logoTN.png"
+        alt="Go to Terra Numerica"></a>
 
     <!-- Drop-down : select background -->
     <div class="dropdown-square" id="background-picker" title="background picker">
-        <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass" checked="checked" onclick="changeBackground(this)"/>
-        <label title="Grass" for="choiceBackgroundGrass"></label>
-        <input type="radio" id="choiceBackgroundSand" name="line-background-picker" title="Sand" value="sand" onclick="changeBackground(this)" />
-        <label title="Sand" for="choiceBackgroundSand"></label>
-        <input type="radio" id="choiceBackgroundDirt" name="line-background-picker" value="dirt" onclick="changeBackground(this)"/>
-        <label title="Dirt" for="choiceBackgroundDirt"></label>
-        <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized" onclick="changeBackground(this)"/>
-        <label title="Personalized" for="choiceBackgroundPersonalized"></label>
-        <!-- Input hidden for choice file -->
-        <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized"
+      <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass"
+        checked="checked" onclick="changeBackground(this)" />
+      <label title="Grass" for="choiceBackgroundGrass"></label>
+      <input type="radio" id="choiceBackgroundSand" name="line-background-picker" title="Sand" value="sand"
+        onclick="changeBackground(this)" />
+      <label title="Sand" for="choiceBackgroundSand"></label>
+      <input type="radio" id="choiceBackgroundDirt" name="line-background-picker" value="dirt"
+        onclick="changeBackground(this)" />
+      <label title="Dirt" for="choiceBackgroundDirt"></label>
+      <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized"
+        onclick="changeBackground(this)" />
+      <label title="Personalized" for="choiceBackgroundPersonalized"></label>
+      <!-- Input hidden for choice file -->
+      <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized"
         oninput="onInputBackgroundInput(this)">
     </div>
 
     <!-- <img src="img/icon/translate_icon.jpeg" alt="translate" > -->
 
     <div class="dropdown-square" id="lang-picker">
-      <input type="radio" id="choiceLangFR"  name="line-lang-picker" value="fr" onclick="updateLanguage(this)" >
+      <input type="radio" id="choiceLangFR" name="line-lang-picker" value="fr" onclick="updateLanguage(this)">
       <label title="Français" for="choiceLangFR">FR</label>
       <!-- &#127467; -->
-      <input type="radio" id="choiceLangEN"  name="line-lang-picker" value="en" onclick="updateLanguage(this)" >
+      <input type="radio" id="choiceLangEN" name="line-lang-picker" value="en" onclick="updateLanguage(this)">
       <label title="English" for="choiceLangEN">EN</label>
       <!-- &#127466; -->
     </div>
@@ -76,100 +85,76 @@
     <!-- <img src="img/icon/changeBG1.png" alt="change background"> -->
     <img src="img/icon/dowload_icon.jpeg" alt="Download GIF" onclick="creatGIF(this)">
     <img src="img/icon/reset_icon.jpeg" alt="Reset page" onclick="resetDraw(this)">
-  </div>
 
-  <!-- PLAYGROUND -->
-  <div id="playPanel">
-    <canvas id="playGround"></canvas>
-  </div>
 
+    <!-- NEW CHOICE -->
+
+    <button name="tutorialTab" onclick="displayHideID('tutorial')">
+      Tutoriel
+    </button>
+
+    <button name="informationTab" onclick="displayHideID('information')">
+      Information
+    </button>
+
+    <button name="moreTab" onclick="displayHideID('more')">
+      Plus
+    </button>
+
+    <button name="curveTab" onclick="displayHideID('dataViewer')">
+      Graphique
+    </button>
+
+    <button name="cursorTab" onclick="displayHideID('inputControler')">
+      Curseurs
+    </button>
+
+  </div>
 
   <!-- CONTROL PANEL -->
   <div id="controlPanel">
 
     <!-- EXPLANATION PANEL -->
-    <div class="container">
 
-      <div class="tab-wrap">
 
-        <!-- active tab on page load gets checked attribute -->
-        <input type="radio" id="tab1" name="tabGroup1" class="tab" checked>
-        <label lang="en" id="tutorialTab" for="tab1">Tutorial</label>
+    <div includeHTML="tutorial.html" id="tutorial"></div>
+    <div includeHTML="controlPanel.html" id="information"></div>
+    <div includeHTML="more.html" id="more"></div>
 
-        <input type="radio" id="tab2" name="tabGroup1" class="tab">
-        <label lang="en" id="informationTab" for="tab2">Control Panel</label>
+    <!-- INPUT PANEL -->
+    <div id="inputControler">
 
-        <input type="radio" id="tab3" name="tabGroup1" class="tab">
-        <label lang="en" id="aboutTab" for="tab3">About</label>
-
-        <input type="radio" id="tab4" name="tabGroup1" class="tab">
-        <label lang="en" id="curveTab" for="tab4">Curve</label>
-
-        <div includeHTML="tutorial.html" class="tab__content">
+      <!-- Slider -->
+      <div id="antControler">
+        <!-- Label -->
+        <div>
+          <label id="antSpeedLabel" for="antSpeed" lang="en">Ant Speed</label>
+          <label lang="en" id="antSpacingLabel" for="antSpacing">Ant Spacing</label>
+          <label lang="en" id="antPathLabel" for="pathDrawing">Ant path selected</label>
+        </div>
+        <!-- Input range -->
+        <div>
+          <input type="range" id="antSpeed" name="antSpeed" min="1" max="10" value="5" step="1"
+            oninput="changeAntSpeed(this)">
+          <input type="range" id="antSpacing" name="antSpacing" min="30" max="90" value="30" step="30"
+            oninput="changeAntSpacing(this)">
+          <input type="range" id="pathDrawing" name="pathDrawing" min="-1" max="-1" value="-1" step="1"
+            oninput="drawPath(this)">
         </div>
 
-        <div includeHTML="controlPanel.html" class="tab__content">
-        </div>
+      </div>
 
-        <div includeHTML="more.html" class="tab__content">
+      <!-- Button -->
+      <div id="gameControler">
+        <!-- TODO : Trouver une solution pour la traduction -->
+        <button lang="en" id="stopButton" class="controlButton" onclick="pauseDraw(this)">Stop</button>
+        <!-- <button class="controlButton" onclick="creatGIF(this)">GIF</button> -->
+        <!-- <button lang="en" id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button> -->
+        <button lang="en" id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">All Path</button>
 
-        </div>
-        <div class="tab__content">
-
-        </div>
       </div>
 
     </div>
-
-    <!-- INPUT PANEL -->
-<div id="inputControler"> 
-
-  <!-- Slider -->
-  <div id="antControler">
-    <!-- Label -->
-    <div>
-      <label id="antSpeedLabel" for="antSpeed" lang="en">Ant Speed</label>
-      <label lang="en" id="antSpacingLabel" for="antSpacing">Ant Spacing</label>
-      <label lang="en" id="antPathLabel" for="pathDrawing">Ant path selected</label>
-    </div>
-    <!-- Input range -->
-    <div>
-      <input type="range" id="antSpeed" name="antSpeed" min="1" max="10" value="5" step="1"
-        oninput="changeAntSpeed(this)">
-      <input type="range" id="antSpacing" name="antSpacing" min="30" max="90" value="30" step="30"
-        oninput="changeAntSpacing(this)">
-      <input type="range" id="pathDrawing" name="pathDrawing" min="-1" max="-1" value="-1" step="1"
-        oninput="drawPath(this)">
-    </div>
-
-  </div>
-
-  <!-- Button -->
-  <div id="gameControler">
-    <!-- TODO : Trouver une solution pour la traduction -->
-    <button lang="en" id="stopButton" class="controlButton" onclick="pauseDraw(this)">Stop</button>
-    <!-- <button class="controlButton" onclick="creatGIF(this)">GIF</button> -->
-    <!-- <button lang="en" id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button> -->
-    <button lang="en" id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">All Path</button>
-
-    <!-- <select name="language-picker-select" id="language-picker-select" onchange="updateLanguage(this)">
-      <option value="en">English</option>
-      <option value="fr">Français</option>
-    </select> -->
-
-    <!-- <select name="backgroundPicker" id="backgroundPicker">
-      <option onclick="changeBackground(this)" value="grass" selected="true">Grass</option>
-      <option onclick="changeBackground(this)" value="sand">Sand</option>
-      <option onclick="changeBackground(this)" value="dirt">Dirt</option>
-      <option onclick="changeBackground(this)" value="personalized">Personalized</option>
-      <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized"
-        oninput="onInputBackgroundInput(this)">
-
-    </select> -->
-
-  </div>
-
-</div>
 
     <!-- CURVE PANEL -->
     <div id="dataViewer">
@@ -178,6 +163,10 @@
 
   </div>
 
+  <!-- PLAYGROUND -->
+  <div id="playPanel">
+    <canvas id="playGround"></canvas>
+  </div>
 
 </body>
 

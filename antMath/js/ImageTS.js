@@ -207,9 +207,11 @@ window.onload = function () {
 
     // Pas touche au path selection 
 
-    showHideDataViewer();
     switchLang();
     includeAllHTML();
+
+    showHideDataViewer();
+    
     document.querySelector("[value=" + language + "]").selected = true;
 };
 

@@ -56,6 +56,7 @@ function switchLang(){
  * Include all html file in div with the attribute includeHTML
  */
 function includeAllHTML(){
+    console.log("includeAllHTML");
     let lst = document.querySelectorAll("[includeHTML]");
     lst.forEach(elt => {
         includeHTML(elt);
