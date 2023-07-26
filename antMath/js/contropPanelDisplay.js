@@ -15,13 +15,9 @@ function displayHideID(id){
 
     console.log("displayHideID", id);
     let elt = document.getElementById(id);
-    elt.style.display = (elt.style.display == 'flex') ? 'none' : 'flex';
+    elt.style.display = (elt.style.display == 'block') ? 'none' : 'block';
 
 }
-
-
-
-
 
 // Fonction pour activer ou désactiver le mode plein écran
 function toggleFullscreen() {

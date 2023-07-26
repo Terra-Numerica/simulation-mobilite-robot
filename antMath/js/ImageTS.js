@@ -210,7 +210,7 @@ window.onload = function () {
     switchLang();
     includeAllHTML();
 
-    showHideDataViewer();
+    // showHideDataViewer();
     
     document.querySelector("[value=" + language + "]").selected = true;
 };
@@ -252,7 +252,7 @@ window.addEventListener("resize", () => {
     const currentOrientation = getOrientation();
 
     // Affiche / cache le data viewer si nécessaire
-    showHideDataViewer();
+    // showHideDataViewer();
 
     // this listener has been made to replaced the CSS that does'not work
     // le canvas doit être entièremenet reconstuit pour évider de graphiquement disparaitre

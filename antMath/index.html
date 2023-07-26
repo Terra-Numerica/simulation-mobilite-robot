@@ -43,71 +43,78 @@
 
   <!-- IconDiv -->
   <div id="iconDiv">
-    <!-- Menu for Smartphone -->
-    <img src="img/icon/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
 
-    <!-- <img src="../favicon.png" alt="Mini logo TerraNumerica" id="miniTN"> -->
-    <a href="https://terra-numerica.org/" target="_blank" id="bigTN"><img src="img/logoTN.png"
-        alt="Go to Terra Numerica"></a>
+    <div id="iconBar-vignetteDiv">
+      <!-- Menu for Smartphone -->
+      <img src="img/icon/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
 
-    <!-- Drop-down : select background -->
-    <div class="dropdown-square" id="background-picker" title="background picker">
-      <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass"
-        checked="checked" onclick="changeBackground(this)" />
-      <label title="Grass" for="choiceBackgroundGrass"></label>
-      <input type="radio" id="choiceBackgroundSand" name="line-background-picker" title="Sand" value="sand"
-        onclick="changeBackground(this)" />
-      <label title="Sand" for="choiceBackgroundSand"></label>
-      <input type="radio" id="choiceBackgroundDirt" name="line-background-picker" value="dirt"
-        onclick="changeBackground(this)" />
-      <label title="Dirt" for="choiceBackgroundDirt"></label>
-      <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized"
-        onclick="changeBackground(this)" />
-      <label title="Personalized" for="choiceBackgroundPersonalized"></label>
-      <!-- Input hidden for choice file -->
-      <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized"
-        oninput="onInputBackgroundInput(this)">
+      <!-- <img src="../favicon.png" alt="Mini logo TerraNumerica" id="miniTN"> -->
+      <a href="https://terra-numerica.org/" target="_blank" id="bigTN"><img src="img/logoTN.png"
+          alt="Go to Terra Numerica"></a>
+
+      <!-- Drop-down : select background -->
+      <div class="dropdown-square" id="background-picker" title="background picker">
+        <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass" class="dropdown-input"
+          checked="checked" onclick="changeBackground(this)" />
+        <label title="Grass" for="choiceBackgroundGrass"></label>
+        <input type="radio" id="choiceBackgroundSand" name="line-background-picker" title="Sand" value="sand" class="dropdown-input"
+          onclick="changeBackground(this)" />
+        <label title="Sand" for="choiceBackgroundSand"></label>
+        <input type="radio" id="choiceBackgroundDirt" name="line-background-picker" value="dirt" class="dropdown-input"
+          onclick="changeBackground(this)" />
+        <label title="Dirt" for="choiceBackgroundDirt"></label>
+        <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized" class="dropdown-input"
+          onclick="changeBackground(this)" />
+        <label title="Personalized" for="choiceBackgroundPersonalized"></label>
+        <!-- Input hidden for choice file -->
+        <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized"
+          oninput="onInputBackgroundInput(this)">
+      </div>
+
+      <!-- <img src="img/icon/translate_icon.jpeg" alt="translate" > -->
+
+      <div class="dropdown-square" id="lang-picker">
+        <input type="radio" id="choiceLangFR" name="line-lang-picker" value="fr" onclick="updateLanguage(this)">
+        <label title="Français" for="choiceLangFR">FR</label>
+        <!-- &#127467; -->
+        <input type="radio" id="choiceLangEN" name="line-lang-picker" value="en" onclick="updateLanguage(this)">
+        <label title="English" for="choiceLangEN">EN</label>
+        <!-- &#127466; -->
+      </div>
+
+
+      <!-- <img src="img/icon/background_icon.png" alt="change background"> -->
+      <!-- <img src="img/icon/changeBG1.png" alt="change background"> -->
+      <img src="img/icon/dowload_icon.jpeg" alt="Download GIF" onclick="creatGIF(this)">
+      <!-- <img src="img/icon/reset_icon.jpeg" alt="Reset page" onclick="resetDraw(this)"> -->
+    </div>
+    
+
+
+    <!-- NEW CHOICE : ROW 2 -->
+    <div id="iconBar-buttonDiv">
+
+      <button name="tutorialTab" onclick="displayHideID('tutorial')" class="iconBar-button">
+        Tutoriel
+      </button>
+
+      <button name="informationTab" onclick="displayHideID('information')" class="iconBar-button">
+        Information
+      </button>
+
+      <button name="moreTab" onclick="displayHideID('more')" class="iconBar-button">
+        Plus
+      </button>
+
+      <button name="curveTab" onclick="displayHideID('dataViewer')" class="iconBar-button">
+        Graphique
+      </button>
+
     </div>
 
-    <!-- <img src="img/icon/translate_icon.jpeg" alt="translate" > -->
-
-    <div class="dropdown-square" id="lang-picker">
-      <input type="radio" id="choiceLangFR" name="line-lang-picker" value="fr" onclick="updateLanguage(this)">
-      <label title="Français" for="choiceLangFR">FR</label>
-      <!-- &#127467; -->
-      <input type="radio" id="choiceLangEN" name="line-lang-picker" value="en" onclick="updateLanguage(this)">
-      <label title="English" for="choiceLangEN">EN</label>
-      <!-- &#127466; -->
-    </div>
-
-
-    <!-- <img src="img/icon/background_icon.png" alt="change background"> -->
-    <!-- <img src="img/icon/changeBG1.png" alt="change background"> -->
-    <img src="img/icon/dowload_icon.jpeg" alt="Download GIF" onclick="creatGIF(this)">
-    <img src="img/icon/reset_icon.jpeg" alt="Reset page" onclick="resetDraw(this)">
-
-
-    <!-- NEW CHOICE -->
-
-    <button name="tutorialTab" onclick="displayHideID('tutorial')">
-      Tutoriel
-    </button>
-
-    <button name="informationTab" onclick="displayHideID('information')">
-      Information
-    </button>
-
-    <button name="moreTab" onclick="displayHideID('more')">
-      Plus
-    </button>
-
-    <button name="curveTab" onclick="displayHideID('dataViewer')">
-      Graphique
-    </button>
-
-    <button name="cursorTab" onclick="displayHideID('inputControler')">
+    <!-- <button name="cursorTab" onclick="displayHideID('inputControler')">
       Curseurs
-    </button>
+    </button> -->
 
   </div>
 
@@ -148,8 +155,9 @@
       <div id="gameControler">
         <!-- TODO : Trouver une solution pour la traduction -->
         <button lang="en" id="stopButton" class="controlButton" onclick="pauseDraw(this)">Stop</button>
+        
         <!-- <button class="controlButton" onclick="creatGIF(this)">GIF</button> -->
-        <!-- <button lang="en" id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button> -->
+        <button lang="en" id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button>
         <button lang="en" id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">All Path</button>
 
       </div>

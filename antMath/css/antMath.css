@@ -5,12 +5,14 @@
     --marginTopIcon: 10px;
     --topBannerHeight: calc(var(--iconHeight) + 2 * var(--marginTopIcon));
     
+    --buttonFontSizePC: 1.3rem;
+    --buttonFontSizeTEL: 1.1rem;
+
     --yellowColorTN: rgba(249, 187, 18);
     --greenColorTN: rgba(0, 161, 154);
     --blueColorTN: rgba(36, 161, 235);
     --navyColorTN: rgba(26, 24, 45);
     
-
 }
 
 @font-face {
@@ -42,9 +44,8 @@
     font-family: 'Poppins', sans-serif;
 }
 
-html,
 body {
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
     flex: auto;
     background-image: url("./../img/background/ground3.jpg");
@@ -61,7 +62,7 @@ button {
   }
   
 button:hover {
-background-color: var(--navyColorTN); /* Changer la couleur de fond lorsqu'on survole le bouton */
+    background-color: var(--navyColorTN); /* Changer la couleur de fond lorsqu'on survole le bouton */
 }
   
 
@@ -81,30 +82,37 @@ canvas:not(#curve) {
 
 /*=========================== ICON DIV =====================================  */
 #iconDiv {
+    display: flex;
     position: absolute;
-    z-index: 999;
-    height: calc(var(--iconHeight) + 20px);
-    /* width: calc(100% - (var(--controlPanelSize)) ); */
+    /* Over the playPanel */
+    z-index: 2; 
+    height: calc(var(--topBannerHeight));
     width: 100%;
     background-color: var(--navyColorTN);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     color: white;
+
+    align-items: center; /* Centrer les éléments horizontalement */
 }
 
 
 /* Réinitialiser le style par défaut des boutons */
-#iconDiv>button {
+button.iconBar-button {
     background: none;
     border: none;
     padding: 0;
     margin: 0;
     color: white;
-    font-size: 1.5vw;
+    font-size: var(--buttonFontSizePC);
+    height: fit-content;
+
+    
+    
 }
 
-#iconDiv>button:hover {
+button.iconBar-button:hover {
     color: var(--blueColorTN);
 }
 
@@ -118,7 +126,7 @@ canvas:not(#curve) {
     margin: var(--marginTopIcon);
 }
 
-#iconDiv div {
+#iconDiv div > div {
     margin: var(--marginTopIcon);
 }
 
@@ -126,11 +134,23 @@ canvas:not(#curve) {
     display: flex;
 }
 
+
+    /* Permet de considéré la division comme la somme de ses items --> applique les super(flex) normalement */
+
+#iconBar-buttonDiv, #iconBar-vignetteDiv{
+    display: flex; 
+    display: contents;
+    flex-direction: row;
+}
+
+
+
 /* par défaut : hidden */
 #menuButton,
 #miniTN {
     display: none;
 }
+
 
 /* ========================== CONTROLE PANEL =======================================*/
 
@@ -145,7 +165,8 @@ canvas:not(#curve) {
     
     /* Permet de l'afficher par dessus les fourmis si réduction */
     position: absolute;
-    z-index: 999;
+    /* Over the playPanel */
+    z-index: 1;
     display: flex;
     flex-direction: column;
     flex-grow: inherit;
@@ -169,7 +190,7 @@ canvas:not(#curve) {
 #inputControler {
     padding: 10px 0 10px 0;
     border-top: 1px solid var(--navyColorTN);
-    display: none;
+    display: block;
     flex-direction: column;
 }
 
@@ -200,10 +221,6 @@ canvas:not(#curve) {
 
 
 /* ######## EXPLANATION CONTROLER ######## */
-
-#information, #more{
-    display: none;
-}
 
 #explainationButton {
     display: flex;
@@ -244,32 +261,28 @@ canvas:not(#curve) {
 /* Explanation TEXTE */
 
 #tutorial, #information, #more {
+    display: none;
     text-align: justify;
     margin: 0px 20px 0px 20px;
 }
 
 #dataViewer{
-    height: 33vh;
+    min-height: 33vh;
     border-top: 1px solid var(--navyColorTN);
 }
 
-#information,
-#aboutAnts {
-    display: none;
-}
 
 
+/* QUatrième tab for curve */
+/* @media (min-width : 900px) {
 
-
-@media (min-width : 900px) {
-
-    /* QUatrième tab for curve */
+    
     #tab4,
     .tab-wrap>label:nth-child(8),
     div.tab__content:nth-child(12) {
         display: none;
     }
-}
+} */
 
 
 /* ==========================================================*/
@@ -278,25 +291,46 @@ canvas:not(#curve) {
 
 @media (max-width : 900px) {
 
-    html,
+    /* html,
     body {
         display: flex;
         flex-direction: column;
-    }
+    } */
 
     /*=========================== ICON DIV =====================================  */
 
     /* Icon div est placé en absolue pour éviter de casser la positio des fourmies codé avec le cul */
 
     #iconDiv {
-        position: absolute;
+        
+        flex-direction: column;
+        /* position: absolute; */
         width: 100%;
-        /* background: none; */
+        height: fit-content;
+       
     }
 
-    #iconDiv img:not(#menuButton, #bigTN, #miniTN) {
-        /* opacity: 0; */
-        z-index: -1;
+
+  
+
+    #iconBar-buttonDiv, #iconBar-vignetteDiv{
+        /* Permet de considéré la division comme la somme de ses items --> applique les super(flex) normalement */
+        
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        
+    }
+
+    #iconBar-buttonDiv{
+        height: fit-content ;
+    }
+    #iconBar-vignetteDiv{
+        height: var(--topBannerHeight);
+    }
+    button.iconBar-button{
+        font-size: var(--buttonFontSizeTEL);
     }
 
     #menuButton,
@@ -320,43 +354,36 @@ canvas:not(#curve) {
     /* ========================== CONTROLE =======================================*/
 
     #controlPanel {
-        position: absolute;
+        /* position: absolute; */
         background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 0;
 
         /* background-image: linear-gradient(rgba(249, 187, 18, 0.2), rgba(0, 161, 154, 0.2), rgba(36, 161, 235, 0.2)); */
 
-        z-index: 1;
         display: none;
         width: 100%;
         /* height: 100% ; */
-        height: calc(100% - var(--iconHeight) - 2 * var(--marginTopIcon));
+        /* height: calc(100% - var(--iconHeight) - 2 * var(--marginTopIcon)); */
+        height: fit-content;
 
         left: 0;
-        top: calc(2 * var(--marginTopIcon) + var(--iconHeight));
+        top: calc(var(--topBannerHeight) + var(--buttonFontSizeTEL) + 4px * 2  );
 
     }
 
-    .buttonTexted>h4 {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 2.2vw
-    }
 
     #dataViewer {
         /* bien que le dataViewer n'est pas affiché, il détermine la taille du canvas curve */
         height: 60%;
-        width: 90%;
+        /* width: 90%; */
 
         /* Warning : code déguelasse :
            la division est littéralement caché en haut à gauche de l'écran
          */
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
+        /* opacity: 0; */
+        /* position: absolute; */
+        /* top: 0; */
+        /* left: 0; */
     }
 
 }

@@ -4,6 +4,9 @@
 function displayControlPanel() {
     let controlPanel = document.getElementById("controlPanel");
     controlPanel.style.display = (controlPanel.style.display == "flex") ? "none" : "flex";
+
+        let iconBar_buttonDiv = document.getElementById("iconBar-buttonDiv");
+        iconBar_buttonDiv.style.display = (iconBar_buttonDiv.style.display == "flex") ? "none" : "flex";
 }
 
 /**
