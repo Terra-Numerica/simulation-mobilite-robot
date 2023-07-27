@@ -204,6 +204,8 @@ window.onload = function () {
     switchLang();
     includeAllHTML();
     document.querySelector("[value=" + language + "]").selected = true;
+
+    handleSize();
 };
 
 function defaultValueRange(element) {
@@ -238,11 +240,10 @@ function getOrientation() {
     return window.matchMedia("(orientation: landscape)").matches ? 'landscape' : 'portrait';
 }
 
-window.addEventListener("resize", () => {
-
+function handleSize(){
     const currentOrientation = getOrientation();
 
-    showHideDataViewer();
+    // showHideDataViewer();
 
     // this listener has been made to replaced the CSS that does'not work
     // le canvas doit être entièremenet reconstuit pour évider de graphiquement disparaitre
@@ -251,6 +252,16 @@ window.addEventListener("resize", () => {
         if (controlPanel.style.display != "block") {
             controlPanel.style.display = "block";
         }
+        let iconBar_buttonDiv = document.getElementById("iconBar-buttonDiv");
+        iconBar_buttonDiv.style.display = "contents";
+    }
+
+    if(window.innerWidth <= 900){
+        let iconBar_buttonDiv = document.getElementById("iconBar-buttonDiv");
+        iconBar_buttonDiv.style.display = "none";
+
+        let controlPanel = document.getElementById("controlPanel");
+        controlPanel.style.display = "none";
     }
 
     let playPanel = document.getElementById("playPanel");
@@ -287,6 +298,11 @@ window.addEventListener("resize", () => {
     saveFirstDrawApp.redraw();
 
     previousOrientation = currentOrientation;
+}
+
+window.addEventListener("resize", () => {
+
+    handleSize();
 
 });
 
@@ -453,3 +469,22 @@ function delayFirst(Space, First, firstX, firstY) {
     }
 }
 
+// TODO : found a file to place this function
+function displayHideID(id){
+    // const lst = ["tutorial", "information", "more"];
+    // if(lst.includes(id)){
+    //     // caché tous les autres
+    //     lst.forEach(eltID =>{
+    //         if(eltID != id){
+    //             let elt = document.getElementById(eltID);
+    //             elt.style.display = 'none';
+    //         }
+    //         }
+    //     );
+    // }
+
+    console.log("displayHideID", id);
+    let elt = document.getElementById(id);
+    elt.style.display = (elt.style.display == 'block') ? 'none' : 'block';
+
+}
