@@ -94,7 +94,9 @@ canvas:not(#curve) {
     justify-content: space-around;
     color: white;
 
-    align-items: center; /* Centrer les éléments horizontalement */
+    /* TODO : bouger ce align item qui fait quer les drop down sont aussi aligné */
+    /* Centrer les éléments horizontalement */
+    align-items: center; 
 }
 
 
@@ -135,10 +137,13 @@ button.iconBar-button:hover {
 }
 
 
+.dropdown-square{
+    align-self: flex-start;
+}
+
     /* Permet de considéré la division comme la somme de ses items --> applique les super(flex) normalement */
 
 #iconBar-buttonDiv, #iconBar-vignetteDiv{
-    display: flex; 
     display: contents;
     flex-direction: row;
 }
@@ -165,9 +170,8 @@ button.iconBar-button:hover {
     
     /* Permet de l'afficher par dessus les fourmis si réduction */
     position: absolute;
-    /* Over the playPanel */
     z-index: 1;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     flex-grow: inherit;
 
@@ -175,7 +179,10 @@ button.iconBar-button:hover {
     /* border-bottom: 5px solid;
     border-left: 5px solid;
     border-image: linear-gradient(to bottom right, var(--yellowColorTN), var(--greenColorTN), var(--blueColorTN)) 1; */
+}
 
+#controlPanel>div{
+    z-index: 0;
 }
 
 
@@ -309,9 +316,6 @@ button.iconBar-button:hover {
         height: fit-content;
        
     }
-
-
-  
 
     #iconBar-buttonDiv, #iconBar-vignetteDiv{
         /* Permet de considéré la division comme la somme de ses items --> applique les super(flex) normalement */

@@ -42,6 +42,10 @@ function changeBackground(elt){
     }
 }
 
+/**
+ * When the user select a file for the background by clicking on the hidden input button #backgroundPickerPersonalized
+ * @param {HTMLElement} elt 
+ */
 function onInputBackgroundInput(elt){
     const selectedFile = elt.files[0];
     if (selectedFile) {     

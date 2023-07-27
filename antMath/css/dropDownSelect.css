@@ -3,6 +3,11 @@
     --nbBGChoice: 4;
 }
 
+.dropdown-square{
+    z-index: 999;
+}
+
+
 
 .dropdown-square {
     /*style the "box" in its minimzed state*/
@@ -13,7 +18,7 @@
     /*animate the dropdown collapsing*/
     transition: height 0.1s;
     /* Over the iconDiv */
-    z-index: 2;
+    
 }
 .dropdown-square:hover {
     /*when expanded, the dropdown will get native means of scrolling*/
@@ -35,7 +40,7 @@
 }
 .dropdown-square label {
     /*style the labels to look like dropdown options*/
-    display:none;
+    /* display:none; */
     margin:2px;
     /* height:46px;  */
     height:calc(var(--iconHeight) - 2px);
