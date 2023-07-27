@@ -91,13 +91,31 @@ canvas:not(#curve) {
     background-color: var(--navyColorTN);
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    /* justify-content: space-around; */
+    justify-content: right;
     color: white;
 
     /* TODO : bouger ce align item qui fait quer les drop down sont aussi aligné */
     /* Centrer les éléments horizontalement */
     align-items: center; 
 }
+
+
+#bigTN{ 
+    height: calc(var(--topBannerHeight));
+    position: absolute;
+    left: var(--marginTopIcon);
+    top: var(--marginTopIcon);
+    z-index: 99999999;
+    align-items: center;
+    
+}
+
+#bigTN>img{
+  
+    height: var(--iconHeight);
+}
+
 
 
 /* Réinitialiser le style par défaut des boutons */
