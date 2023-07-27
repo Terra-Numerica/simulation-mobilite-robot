@@ -2,7 +2,8 @@ let previousOption = "grass"; // Variable pour stocker l'option précédente
 let personalizedChoice = false;
 
 function changeBackground(elt){
-    // console.log("elt.value", elt.value);
+    console.log("elt.value", elt.value);
+   
     switch (elt.value) {
         case "grass":
             previousOption = "grass";
@@ -21,11 +22,11 @@ function changeBackground(elt){
             break;
         case "personalized":
             // For the moment, consider the option selected is the previous one
-            let previousOptionElement = document.querySelector("option[value=" + previousOption + "]");
-            previousOptionElement.selected = true;
+            // let previousOptionElement = document.querySelector("option[value=" + previousOption + "]");
+            // previousOptionElement.selected = true;
             // console.log("previousOptionElement selected=true", previousOption);
-            let optionPerso = document.querySelector("option[value=personalized]");
-            optionPerso.selected = false;
+            // let optionPerso = document.querySelector("option[value=personalized]");
+            // optionPerso.selected = false;
             // console.log("optionPerso : selected=false", optionPerso);
 
             let inputFile = document.getElementById("backgroundPickerPersonalized");
@@ -36,24 +37,36 @@ function changeBackground(elt){
             // console.log("default");
             path = "./img/background/ground3.jpg";
             document.body.style.backgroundImage = "url('" + path + "')";
+            
             break;
     }
 }
 
+/**
+ * When the user select a file for the background by clicking on the hidden input button #backgroundPickerPersonalized
+ * @param {HTMLElement} elt 
+ */
 function onInputBackgroundInput(elt){
     const selectedFile = elt.files[0];
-    if (selectedFile) {
-        // Un fichier a été sélectionné
-        // Mettre à jour l'arrière-plan avec l'image personnalisée
+    if (selectedFile) {     
 
-        let previousOptionElement = document.querySelector("option[value=" + previousOption + "]");
-        previousOptionElement.selected = false;
-        let optionPerso = document.querySelector("option[value=personalized]");
-        optionPerso.selected = true;
-        previousOption = "personalized";
+        let img = new Image();
+        img.src = URL.createObjectURL(selectedFile);
 
-        let personalizedPath = URL.createObjectURL(selectedFile);
-        console.log("personalizedPath" ,personalizedPath);
-        document.body.style.backgroundImage = "url('" + personalizedPath + "')";
+        // If we want to resize the image
+        
+        // console.log("img.src", img.src);
+        // img.onload = function() {
+        //     // Récupérer les dimensions de l'image
+        //     let imgWidth = img.width;
+        //     let imgHeight = img.height;
+        //     console.log("imgWidth", imgWidth);
+        //     console.log("imgHeight", imgHeight);
+        // }
+
+
+        document.body.style.backgroundImage = "url('" + img.src + "')";
+
+
     }
 }

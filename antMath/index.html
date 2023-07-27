@@ -45,6 +45,7 @@
   <link rel="stylesheet" href="./css/radioInput.css">
 
   <link rel="stylesheet" href="./css/dropDownSelect.css">
+  <link rel="stylesheet" href="./css/hamburger.css">
 
   <!-- <link rel="stylesheet" href="./css/checkBox.css"> -->
 
@@ -61,6 +62,14 @@
       <!-- Menu for Smartphone -->
       <img src="img/icon/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
 
+      <!-- <input class="checkbox" type="checkbox" name="" id="" />
+      <div class="hamburger-lines">
+        <span class="line line1"></span>
+        <span class="line line2"></span>
+        <span class="line line3"></span>
+      </div> -->
+
+
       <!-- <img src="../favicon.png" alt="Mini logo TerraNumerica" id="miniTN"> -->
       <a href="https://terra-numerica.org/" target="_blank" id="bigTN"><img src="img/logoTN.png"
           alt="Go to Terra Numerica"></a>
@@ -68,7 +77,8 @@
       <!-- Drop-down : select background -->
       <div class="dropdown-square" id="background-picker" title="background picker">
         <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass" class="dropdown-input"
-          checked="checked" onclick="changeBackground(this)" />
+         onclick="changeBackground(this)" checked="checked"/>
+         <!-- checked="checked"  -->
         <label title="Grass" for="choiceBackgroundGrass"></label>
         <input type="radio" id="choiceBackgroundSand" name="line-background-picker" title="Sand" value="sand" class="dropdown-input"
           onclick="changeBackground(this)" />
