@@ -1,17 +1,17 @@
 
 
 function displayHideID(id){
-    const lst = ["tutorial", "information", "more"];
-    if(lst.includes(id)){
-        // caché tous les autres
-        lst.forEach(eltID =>{
-            if(eltID != id){
-                let elt = document.getElementById(eltID);
-                elt.style.display = 'none';
-            }
-            }
-        );
-    }
+    // const lst = ["tutorial", "information", "more"];
+    // if(lst.includes(id)){
+    //     // caché tous les autres
+    //     lst.forEach(eltID =>{
+    //         if(eltID != id){
+    //             let elt = document.getElementById(eltID);
+    //             elt.style.display = 'none';
+    //         }
+    //         }
+    //     );
+    // }
 
     console.log("displayHideID", id);
     let elt = document.getElementById(id);

@@ -101,7 +101,7 @@ canvas:not(#curve) {
 
 
 /* Réinitialiser le style par défaut des boutons */
-button.iconBar-button {
+label.iconBar-button {
     background: none;
     border: none;
     padding: 0;
@@ -109,13 +109,24 @@ button.iconBar-button {
     color: white;
     font-size: var(--buttonFontSizePC);
     height: fit-content;
-
-    
-    
 }
 
-button.iconBar-button:hover {
-    color: var(--blueColorTN);
+input.iconBar-button {
+    display: none;
+}
+
+.iconBar-button{
+    transition: color 0.2s;
+}
+
+
+.iconBar-button:hover {
+    color: var(--blueColorTN) /* Couleur de votre choix pour les labels sélectionnés */;
+}
+
+/* Styles des labels lorsqu'ils sont cochés */
+.iconBar-button:checked + label.iconBar-button {
+    color: var(--yellowColorTN) /* Couleur de votre choix pour les labels sélectionnés */;
 }
 
 #iconDiv * {
@@ -333,7 +344,7 @@ button.iconBar-button:hover {
     #iconBar-vignetteDiv{
         height: var(--topBannerHeight);
     }
-    button.iconBar-button{
+    .iconBar-button{
         font-size: var(--buttonFontSizeTEL);
     }
 

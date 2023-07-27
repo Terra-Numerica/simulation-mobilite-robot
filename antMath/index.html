@@ -94,7 +94,7 @@
     <!-- NEW CHOICE : ROW 2 -->
     <div id="iconBar-buttonDiv">
 
-      <button name="tutorialTab" onclick="displayHideID('tutorial')" class="iconBar-button">
+      <!-- <button name="tutorialTab" onclick="displayHideID('tutorial')" class="iconBar-button">
         Tutoriel
       </button>
 
@@ -108,7 +108,39 @@
 
       <button name="curveTab" onclick="displayHideID('dataViewer')" class="iconBar-button">
         Graphique
-      </button>
+      </button> -->
+
+      <!-- Try version with checkbox instead of button -->
+
+      <!-- <input type="radio" id="choiceTutorial" name="line-iconBar-buttonDiv" value="tutorial" class="iconBar-button"
+        onclick="displayHideID('tutorial')"/>
+      <label title="Tutorial" for="choiceTutorial" class="iconBar-button" >Tutoriel</label>
+
+      <input type="radio" id="choiceInformation" name="line-iconBar-buttonDiv" value="information" class="iconBar-button"
+        onclick="displayHideID('information')" />
+      <label title="Information" for="choiceInformation" class="iconBar-button" >Information</label>
+      
+      <input type="radio" id="choiceMore" name="line-iconBar-buttonDiv" value="more" class="iconBar-button"
+        onclick="displayHideID('more')" />
+      <label title="More" for="choiceMore" class="iconBar-button">Plus</label>
+
+      <input type="radio" id="choiceCurve" name="line-iconBar-buttonDiv" value="curve" class="iconBar-button"
+        onclick="displayHideID('dataViewer')" />
+      <label title="Curve" for="choiceCurve" class="iconBar-button">Graphique</label> -->
+
+      <input type="checkbox" id="choiceTutorial" name="line-iconBar-buttonDiv" value="tutorial" class="iconBar-button"
+        onclick="displayHideID('tutorial')"/>
+      <label title="Tutorial" for="choiceTutorial" class="iconBar-button" >Tutoriel</label>
+
+      <input type="checkbox" id="choiceInformation" name="line-iconBar-buttonDiv" value="information" class="iconBar-button"
+        onclick="displayHideID('information')" />
+      <label title="Information" for="choiceInformation" class="iconBar-button" >Médiation</label>
+  
+
+      <input type="checkbox" id="choiceCurve" name="line-iconBar-buttonDiv" value="curve" class="iconBar-button"
+        onclick="displayHideID('dataViewer') ; displayHideID('inputControler')" />
+      <label title="Curve" for="choiceCurve" class="iconBar-button">Controle</label>
+
 
     </div>
 

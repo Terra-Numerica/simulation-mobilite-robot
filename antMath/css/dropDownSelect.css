@@ -13,7 +13,9 @@
     /*style the "box" in its minimzed state*/
     background-color: var(--navyColorTN);
     text-align: center;
-    border:1px solid white; width:var(--iconHeight); height:var(--iconHeight); 
+    border:1px solid white;
+     width:var(--iconHeight); 
+     height:var(--iconHeight); 
     overflow:hidden;
     /*animate the dropdown collapsing*/
     transition: height 0.1s;
