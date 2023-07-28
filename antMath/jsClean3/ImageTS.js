@@ -254,6 +254,10 @@ function handleSize(){
         }
         let iconBar_buttonDiv = document.getElementById("iconBar-buttonDiv");
         iconBar_buttonDiv.style.display = "contents";
+
+        // hamburger input
+        let hamburgerInput = document.querySelector(".checkbox");
+        hamburgerInput.checked = false;
     }
 
     if(window.innerWidth <= 900){

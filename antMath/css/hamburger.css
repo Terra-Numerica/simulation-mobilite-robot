@@ -1,22 +1,25 @@
+#hamburger-container {
+  display: none;
+  align-items: center; /* Aligne les éléments enfants verticalement */
+  /* Ajoutez d'autres propriétés selon vos besoins */
+}
+
 .checkbox {
-  position: absolute;
   display: block;
-  height: 32px;
-  width: 32px;
-  top: 20px;
-  left: 20px;
+  /* height: 26px; 
+  width: 32px;  */
+  height: var(--iconHeight);
+  width: var(--iconHeight);
+  position: absolute; /* Permet de superposer l'input sur les lignes de hamburger */
   z-index: 5;
   opacity: 0;
   cursor: pointer;
 }
 
 .hamburger-lines {
-  display: block;
   height: 26px;
   width: 32px;
-  position: absolute;
-  top: 17px;
-  left: 20px;
+  position: relative; /* Ajout de position relative pour contenir les lignes de hamburger */
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -56,4 +59,13 @@
 
  input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
   transform: rotate(-45deg);
+}
+
+@media (max-width : 900px){
+  #hamburger-container {
+    display: flex;
+    align-items: center; /* Aligne les éléments enfants verticalement */
+    /* Ajoutez d'autres propriétés selon vos besoins */
+    
+  }
 }

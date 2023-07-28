@@ -127,11 +127,20 @@ input.iconBar-button {
 /* Styles des labels lorsqu'ils sont cochés */
 .iconBar-button:checked + label.iconBar-button {
     color: var(--yellowColorTN) /* Couleur de votre choix pour les labels sélectionnés */;
+    /* dark navy brigther */
+    /* background-color: rgba(52, 48, 90);  */
+    /* dark navy darker rgba(26, 24, 45) / 2*/ 
+    /* background-color: rgba(13, 12, 22);
+    border-color: rgba(26, 24, 45) ;
+    border-radius: 5px;
+    border: 0 5px; */
+
 }
 
 #iconDiv * {
     cursor: pointer;
 }
+
 
 #iconDiv img {
     height: var(--iconHeight);

@@ -49,8 +49,7 @@ function drawMainPaths(element) {
         canvasTab[i_2].style.opacity = '0';
     }
     if (drawAllPathOn) {
-        
-        for (var i_3 = 0; i_3 < canvasTab.length; i_3 = i_3 * 2 + 1) {
+        for (var i_3 = 0; i_3 < canvasTab.length; i_3++) {
             canvasTab[i_3].style.opacity = '1';
         }
     }
