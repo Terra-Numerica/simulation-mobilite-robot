@@ -83,7 +83,7 @@ function drawAllPaths(element) {
 }
 
 
-function creatGIF() {
+function createGIF() {
     isGameStopped = true;
     for (var i_8 = 0; i_8 < canvasTab.length; i_8++) {
         canvasTab[i_8].style.opacity = '0';

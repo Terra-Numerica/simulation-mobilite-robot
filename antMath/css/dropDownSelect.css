@@ -43,6 +43,7 @@
 .dropdown-square label {
     /*style the labels to look like dropdown options*/
     /* display:none; */
+    display: block;
     margin:2px;
     /* height:46px;  */
     height:calc(var(--iconHeight) - 2px);
