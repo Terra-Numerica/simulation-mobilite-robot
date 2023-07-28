@@ -217,7 +217,8 @@ input.iconBar-button {
 #inputControler {
     padding: 10px 0 10px 0;
     border-top: 1px solid var(--navyColorTN);
-    display: block;
+    /* display: block; */
+    display: none;
     flex-direction: column;
 }
 
@@ -294,6 +295,7 @@ input.iconBar-button {
 }
 
 #dataViewer{
+    display: none;
     min-height: 33vh;
     border-top: 1px solid var(--navyColorTN);
 }

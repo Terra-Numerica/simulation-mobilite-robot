@@ -55,11 +55,6 @@ let compter = 2;
 
 var canvasTab = new Array();
 var isGameStopped = false;
-
-/**
- * Coordonnées du premier point du path
- * Pourquoi juste récupérer les coordonnées de d.clickX[0] ne marche pas ??
- */
 var firstX;
 var firstY;
 
@@ -110,10 +105,8 @@ function drawHandler() {
         firstAnt.move(d.clickX[0], d.clickY[0]);
         document.getElementById("playPanel").appendChild(firstAnt.img);
         //Save the first location
-
         firstX = d.clickX[0];
         firstY = d.clickY[0];
-
         //Print the anthill
         var anthill = new Ant('./img/fourmiliere_cut.png', 50, 50);
         anthill.move(firstX, firstY);
@@ -207,12 +200,12 @@ window.onload = function () {
 
     // Pas touche au path selection 
 
+    // showHideDataViewer();
     switchLang();
     includeAllHTML();
-
-    // showHideDataViewer();
-    
     document.querySelector("[value=" + language + "]").selected = true;
+
+    handleSize();
 };
 
 function defaultValueRange(element) {
@@ -247,11 +240,9 @@ function getOrientation() {
     return window.matchMedia("(orientation: landscape)").matches ? 'landscape' : 'portrait';
 }
 
-window.addEventListener("resize", () => {
-
+function handleSize(){
     const currentOrientation = getOrientation();
 
-    // Affiche / cache le data viewer si nécessaire
     // showHideDataViewer();
 
     // this listener has been made to replaced the CSS that does'not work
@@ -261,12 +252,25 @@ window.addEventListener("resize", () => {
         if (controlPanel.style.display != "block") {
             controlPanel.style.display = "block";
         }
+        let iconBar_buttonDiv = document.getElementById("iconBar-buttonDiv");
+        iconBar_buttonDiv.style.display = "contents";
+
+        // hamburger input
+        let hamburgerInput = document.querySelector(".checkbox");
+        hamburgerInput.checked = false;
+    }
+
+    if(window.innerWidth <= 900){
+        let iconBar_buttonDiv = document.getElementById("iconBar-buttonDiv");
+        iconBar_buttonDiv.style.display = "none";
+
+        let controlPanel = document.getElementById("controlPanel");
+        controlPanel.style.display = "none";
     }
 
     let playPanel = document.getElementById("playPanel");
     let playGround = document.getElementById("playGround");
 
-    // Si le chemine est tracé, on doit resize le canvas pour qu'il prenne toute la place
     if (!draw) { // si le chemin est tracé
         if (previousOrientation != currentOrientation && window.innerWidth < 900 ) { // et sur smartphone
 
@@ -298,6 +302,11 @@ window.addEventListener("resize", () => {
     saveFirstDrawApp.redraw();
 
     previousOrientation = currentOrientation;
+}
+
+window.addEventListener("resize", () => {
+
+    handleSize();
 
 });
 
@@ -395,6 +404,7 @@ function startAnts(First, Space, firstX, firstY) {
             // évite d'afficher 1 millipns de path qaund différence minime
             // le undef est au cas où l'utilisteur créé un chmin si court que pas de futur ant
 
+
             deltaPathLength = previousPathLength - ((futurAnts[0] == undefined) ? 0 : futurAnts[0].distance);
 
         }
@@ -463,3 +473,22 @@ function delayFirst(Space, First, firstX, firstY) {
     }
 }
 
+// TODO : found a file to place this function
+function displayHideID(id){
+    // const lst = ["tutorial", "information", "more"];
+    // if(lst.includes(id)){
+    //     // caché tous les autres
+    //     lst.forEach(eltID =>{
+    //         if(eltID != id){
+    //             let elt = document.getElementById(eltID);
+    //             elt.style.display = 'none';
+    //         }
+    //         }
+    //     );
+    // }
+
+    console.log("displayHideID", id);
+    let elt = document.getElementById(id);
+    elt.style.display = (elt.style.display == 'block') ? 'none' : 'block';
+
+}
