@@ -58,6 +58,7 @@ canvas:not(#curve) {
     /* height: calc(var(--topBannerHeight)); */
     /* width: fit-content; */
     width: var(--controlPanelSize);
+    height: calc(var(--iconHeight) + 2 * var(--marginTopIcon));
     /* background-color: var(--navyColorTN); */
 
     flex-direction: row;
@@ -91,6 +92,7 @@ button.iconBar-button:hover {
 #iconDiv img {
     height: var(--iconHeight);
     min-height: var(--minIconHeight);
+    /* max-height: var(--maxIconHeight); */
     width: auto;
     margin: var(--marginTopIcon);
 }

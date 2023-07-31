@@ -1,4 +1,7 @@
-
+:root{
+    --nbLangChoice: 2;
+    --nbBGChoice: 4;
+}
 
 .dropdown-square{
     z-index: 999;
@@ -32,14 +35,8 @@
     ;
 }
 
-#background-picker:hover{
-    height: calc(var(--nbBGChoice) * var(--iconHeight));
-    min-height: calc(var(--nbBGChoice) * var(--minIconHeight));
-}
-#lang-picker:hover{
-    height: calc(var(--nbLangChoice) * var(--iconHeight));
-    min-height: calc(var(--nbLangChoice) * var(--minIconHeight));
-}
+#background-picker:hover{height: calc(var(--nbBGChoice) * var(--iconHeight));}
+#lang-picker:hover{height: calc(var(--nbLangChoice) * var(--iconHeight));}
 
 .dropdown-square input {
     /*hide the nasty default radio buttons!*/
@@ -50,10 +47,10 @@
 .dropdown-square label {
     /*style the labels to look like dropdown options*/
     /* display:none; */
+    display: block;
     margin:2px;
     /* height:46px;  */
     height:calc(var(--iconHeight) - 2px);
-    min-height: calc(var(--minIconHeight) - 2px);
     /* opacity:0.2;  */
     /* background-image: url("../img/icon/changeBG1.png"); */
     /* background-image:url("../img/background/ground.jpg"); */
@@ -96,13 +93,3 @@ label[for=choiceBackgroundDirt] {background-image:url("../img/background/ground.
 label[for=choiceBackgroundPersonalized] {background-image:url("../img/icon/changeBG1.png");}
 
 
-#iconDiv > img{
-    /* background-color: var(--blueColorTN); */
-    border-width: 2px;
-border-color: none;
-border-style: solid;
-}
-
-#iconDiv > img:hover{
-    border-color: var(--blueColorTN);
-}

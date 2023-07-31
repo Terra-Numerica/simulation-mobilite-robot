@@ -1,21 +1,22 @@
 
 
+// TODO : found a file to place this function
 function displayHideID(id){
-    const lst = ["tutorial", "information", "more"];
-    if(lst.includes(id)){
-        // caché tous les autres
-        lst.forEach(eltID =>{
-            if(eltID != id){
-                let elt = document.getElementById(eltID);
-                elt.style.display = 'none';
-            }
-            }
-        );
-    }
+  // const lst = ["tutorial", "information", "more"];
+  // if(lst.includes(id)){
+  //     // caché tous les autres
+  //     lst.forEach(eltID =>{
+  //         if(eltID != id){
+  //             let elt = document.getElementById(eltID);
+  //             elt.style.display = 'none';
+  //         }
+  //         }
+  //     );
+  // }
 
-    console.log("displayHideID", id);
-    let elt = document.getElementById(id);
-    elt.style.display = (elt.style.display == 'block') ? 'none' : 'block';
+  console.log("displayHideID", id);
+  let elt = document.getElementById(id);
+  elt.style.display = (elt.style.display == 'block') ? 'none' : 'block';
 
 }
 

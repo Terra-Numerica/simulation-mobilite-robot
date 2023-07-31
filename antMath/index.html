@@ -60,18 +60,24 @@
 
       <!-- Drop-down : select background -->
       <div class="dropdown-square" id="background-picker" title="background picker">
+        
         <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass" class="dropdown-input"
-          checked="checked" onclick="changeBackground(this)" />
+         onclick="changeBackground(this)" checked="checked"/>
+         <!-- checked="checked"  -->
         <label title="Grass" for="choiceBackgroundGrass"></label>
+
         <input type="radio" id="choiceBackgroundSand" name="line-background-picker" title="Sand" value="sand" class="dropdown-input"
           onclick="changeBackground(this)" />
         <label title="Sand" for="choiceBackgroundSand"></label>
+
         <input type="radio" id="choiceBackgroundDirt" name="line-background-picker" value="dirt" class="dropdown-input"
           onclick="changeBackground(this)" />
         <label title="Dirt" for="choiceBackgroundDirt"></label>
+
         <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized" class="dropdown-input"
           onclick="changeBackground(this)" />
         <label title="Personalized" for="choiceBackgroundPersonalized"></label>
+        
         <!-- Input hidden for choice file -->
         <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized"
           oninput="onInputBackgroundInput(this)">
