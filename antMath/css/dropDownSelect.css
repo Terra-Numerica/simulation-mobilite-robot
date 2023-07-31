@@ -82,3 +82,13 @@ label[for=choiceBackgroundDirt] {background-image:url("../img/background/ground.
 label[for=choiceBackgroundPersonalized] {background-image:url("../img/icon/changeBG1.png");}
 
 
+#iconDiv > img{
+    /* background-color: var(--blueColorTN); */
+    border-width: 2px;
+border-color: none;
+border-style: solid;
+}
+
+#iconDiv > img:hover{
+    border-color: var(--blueColorTN);
+}
