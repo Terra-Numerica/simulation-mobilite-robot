@@ -4,9 +4,6 @@
     --iconHeight: 50px;
     --marginTopIcon: 10px;
     --topBannerHeight: calc(var(--iconHeight) + 2 * var(--marginTopIcon));
-    
-    --buttonFontSizePC: 1.3rem;
-    --buttonFontSizeTEL: 1.1rem;
 
     --yellowColorTN: rgba(249, 187, 18);
     --greenColorTN: rgba(0, 161, 154);
@@ -14,6 +11,25 @@
     --navyColorTN: rgba(26, 24, 45);
     
 }
+
+@media screen and (max-width: 900px) {
+    :root{
+        --buttonFontSize: 1.1rem;
+    }
+}
+    
+@media screen and (min-width: 900px) {
+    :root{
+        --buttonFontSize: 1.3rem;
+    }
+}
+    
+#test {
+    position: absolute;
+    top: var(--testPosition);
+    left: var(--testPosition);
+}
+
 
 @font-face {
     font-family: 'Poppins';
@@ -107,7 +123,7 @@ label.iconBar-button {
     padding: 0;
     margin: 0;
     color: white;
-    font-size: var(--buttonFontSizePC);
+    font-size: var(--buttonFontSize);
     height: fit-content;
 }
 
@@ -356,7 +372,7 @@ input.iconBar-button {
         height: var(--topBannerHeight);
     }
     .iconBar-button{
-        font-size: var(--buttonFontSizeTEL);
+        font-size: var(--buttonFontSize);
     }
 
     #menuButton,
@@ -393,7 +409,7 @@ input.iconBar-button {
         height: fit-content;
 
         left: 0;
-        top: calc(var(--topBannerHeight) + var(--buttonFontSizeTEL) + 4px * 2  );
+        top: calc(var(--topBannerHeight) + var(--buttonFontSize) + 4px * 2  );
 
     }
 
