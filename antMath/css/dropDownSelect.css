@@ -1,7 +1,4 @@
-:root{
-    --nbLangChoice: 2;
-    --nbBGChoice: 4;
-}
+
 
 .dropdown-square{
     z-index: 999;
@@ -50,7 +47,8 @@
     background-size:contain;
 
     color: var(--blueColorTN);
-    font-size: 2.1em;
+    /* font-size: 2.1em; */
+    font-size: calc(var(--iconHeight) * 0.7);
 }
 
 

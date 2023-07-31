@@ -131,6 +131,9 @@ function drawHandler() {
 window.onload = function () {
 
     previousOrientation = getOrientation();
+    // set the hamburger input at false because keeped at true when reload
+    let hamburger_input = document.getElementById("hamburger-input");
+    hamburger_input.checked = false;
 
     //create canvas and set background
     d = new DrawingApp();

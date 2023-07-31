@@ -1,56 +1,3 @@
-/* =============================== GLOBAL ================================== */
-/* @media screen and (min-width: 900px) {
-    
-    
-}
-
-@media screen and (max-width: 900px) {
-    
-} */
-
-
-:root {
-    /* --controlPanelSize: 450px; */
-    --iconHeight: 50px;
-    --iconHeightTEL: 30px;
-    --marginTopIcon: 10px;
-    --topBannerHeight: calc(var(--iconHeight) + 2 * var(--marginTopIcon));
-    
-    --buttonFontSizePC: 1.3rem;
-    --buttonFontSizeTEL: 1.1rem;
-
-    --yellowColorTN: rgba(249, 187, 18);
-    --greenColorTN: rgba(0, 161, 154);
-    --blueColorTN: rgba(36, 161, 235);
-    --navyColorTN: rgba(26, 24, 45);
-
-    --nbIconInTopBanner: 7;
-    --controlPanelSize: calc(var(--nbIconInTopBanner) * (var(--iconHeight) + 2 * var(--marginTopIcon)));
-    
-}
-
-@font-face {
-    font-family: 'Poppins';
-    src: url('./Poppins/Poppins-Black.ttf') format('truetype'),
-        url('./Poppins/Poppins-BlackItalic.ttf') format('truetype'),
-        url('./Poppins/Poppins-Bold.ttf') format('truetype'),
-        url('./Poppins/Poppins-BoldItalic.ttf') format('truetype'),
-        url('./Poppins/Poppins-ExtraBold.ttf') format('truetype'),
-        url('./Poppins/Poppins-ExtraBoldItalic.ttf') format('truetype'),
-        url('./Poppins/Poppins-ExtraLight.ttf') format('truetype'),
-        url('./Poppins/Poppins-ExtraLightItalic.ttf') format('truetype'),
-        url('./Poppins/Poppins-Italic.ttf') format('truetype'),
-        url('./Poppins/Poppins-Light.ttf') format('truetype'),
-        url('./Poppins/Poppins-LightItalic.ttf') format('truetype'),
-        url('./Poppins/Poppins-Medium.ttf') format('truetype'),
-        url('./Poppins/Poppins-MediumItalic.ttf') format('truetype'),
-        url('./Poppins/Poppins-Regular.ttf') format('truetype'),
-        url('./Poppins/Poppins-SemiBold.ttf') format('truetype'),
-        url('./Poppins/Poppins-SemiBoldItalic.ttf') format('truetype'),
-        url('./Poppins/Poppins-Thin.ttf') format('truetype'),
-        url('./Poppins/Poppins-ThinItalic.ttf') format('truetype');
-}
-
 
 * {
     margin: 0;
@@ -61,9 +8,9 @@
 body {
     /* overflow: hidden; */
     display: flex;
-    flex: auto;
+    flex-direction: column; /* Pour aligner verticalement */
+    align-items: flex-end; /* Pour aligner à droite */
     background-image: url("./../img/background/ground3.jpg");
-    /* height :100%; */
 }
 
 button {
@@ -82,8 +29,9 @@ button:hover {
 
 /* ========================== PLAY PANEL =======================================*/
 #playPanel {
-    height: 100vh;
-    /* width: calc(100% - (var(--controlPanelSize)) ); */
+    /* évite d'être soumis à flex */
+    position: absolute;
+    height: 100% ;
     width: 100%;
 }
 
@@ -96,44 +44,30 @@ canvas:not(#curve) {
 
 /*=========================== ICON DIV =====================================  */
 #iconDiv {
+    color: white;background-color: white;
+    border-radius: 0 0 0 15px;
+    /* Add border bottom and left */
+    border-bottom: 1px solid var(--navyColorTN);
+    border-left: 1px solid var(--navyColorTN);
+
+
     display: flex;
-    position: absolute;
-    left:calc(100% - var(--controlPanelSize));
     
     /* Over the playPanel */
     z-index: 2; 
-    height: calc(var(--topBannerHeight));
-    width: fit-content;
+    /* height: calc(var(--topBannerHeight)); */
+    /* width: fit-content; */
+    width: var(--controlPanelSize);
     /* background-color: var(--navyColorTN); */
-    background-color: white;
-    display: flex;
+
     flex-direction: row;
     /* justify-content: space-around; */
     justify-content: right;
-    color: white;
-
     /* TODO : bouger ce align item qui fait quer les drop down sont aussi aligné */
     /* Centrer les éléments horizontalement */
-    align-items: center; 
-}
-
-
-#bigTN{ 
-    height: calc(var(--topBannerHeight));
-    position: absolute;
-    left: var(--marginTopIcon);
-    top: var(--marginTopIcon);
-    z-index: 99999999;
-    align-items: center;
+    align-items: baseline; 
     
 }
-
-#bigTN>img{
-  
-    height: var(--iconHeight);
-}
-
-
 
 /* Réinitialiser le style par défaut des boutons */
 button.iconBar-button {
@@ -144,9 +78,6 @@ button.iconBar-button {
     color: white;
     font-size: var(--buttonFontSizePC);
     height: fit-content;
-
-    
-    
 }
 
 button.iconBar-button:hover {
@@ -163,7 +94,7 @@ button.iconBar-button:hover {
     margin: var(--marginTopIcon);
 }
 
-#iconDiv div > div {
+#iconDiv > div {
     margin: var(--marginTopIcon);
 }
 
@@ -171,49 +102,22 @@ button.iconBar-button:hover {
     display: flex;
 }
 
-
-.dropdown-square{
-    align-self: flex-start;
+.dropdown-square, #hamburger-container{
+    align-self:self-start;
 }
-
-    /* Permet de considéré la division comme la somme de ses items --> applique les super(flex) normalement */
-
-#iconBar-buttonDiv, #iconBar-vignetteDiv{
-    display: contents;
-    flex-direction: row;
-}
-
-
-
-/* par défaut : hidden */
-#menuButton,
-#miniTN {
-    display: none;
-}
-
 
 /* ========================== CONTROLE PANEL =======================================*/
 
 
 #controlPanel {
-    
-    width: var(--controlPanelSize);
-    top: var(--topBannerHeight);
-    left: calc(100% - var(--controlPanelSize));
-    background-color: white;
-    border-radius: 0 0 0 15px;
-    
-    /* Permet de l'afficher par dessus les fourmis si réduction */
-    position: absolute;
-    z-index: 1;
-    /* display: flex; */
-    flex-direction: column;
-    flex-grow: inherit;
 
-    /* Try TN border */
-    /* border-bottom: 5px solid;
-    border-left: 5px solid;
-    border-image: linear-gradient(to bottom right, var(--yellowColorTN), var(--greenColorTN), var(--blueColorTN)) 1; */
+    width: var(--controlPanelSize);
+    background-color: white;
+    border-radius: 15px 0 0 15px;    
+    /* Permet de l'afficher par dessus les fourmis si réduction */
+    z-index: 1;
+    flex-direction: column;
+
 }
 
 #controlPanel>div{
@@ -231,7 +135,7 @@ button.iconBar-button:hover {
 
 #inputControler {
     padding: 10px 0 10px 0;
-    border-top: 1px solid var(--navyColorTN);
+    /* border-top: 1px solid var(--navyColorTN); */
     display: block;
     flex-direction: column;
 }
@@ -250,7 +154,10 @@ button.iconBar-button:hover {
     flex-direction: column;
     /* les lignes (label ou input) sont espacé verticalement */
     justify-content: space-around;
+    max-width: 50%;
 }
+
+
 
 /* button */
 #gameControler {
@@ -264,41 +171,7 @@ button.iconBar-button:hover {
 
 /* ######## EXPLANATION CONTROLER ######## */
 
-#explainationButton {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
 
-}
-
-/* Centered text */
-.buttonTexted {
-
-    /* button sous le texte */
-    position: relative;
-    /* Taille de la division = taille du panel / nb_bouton */
-    width: calc(75% / 3);
-    /* Au centre (need aussi le left:50% de h4 */
-    text-align: center;
-}
-
-.buttonTexted>h4 {
-    /* Texte par dessus le bouton */
-    position: absolute;
-    /* Au centre */
-    top: 50%;
-    left: 50%;
-    /* Position responsive */
-    transform: translate(-50%, -50%);
-    /* Font-size variable */
-    /* font-size: 0.8vw */
-    font-size: 10px;
-}
-
-.buttonTexted>img {
-    /* taille du bouton = taille du contenaire */
-    width: 75%;
-}
 
 /* Explanation TEXTE */
 
@@ -313,73 +186,31 @@ button.iconBar-button:hover {
     border-top: 1px solid var(--navyColorTN);
 }
 
-
-
-/* QUatrième tab for curve */
-/* @media (min-width : 900px) {
-
-    
-    #tab4,
-    .tab-wrap>label:nth-child(8),
-    div.tab__content:nth-child(12) {
-        display: none;
-    }
-} */
-
-
 /* ==========================================================*/
 /* ========================= LITTLE SCREEN ==================*/
 /* ==========================================================*/
 
 @media (max-width : 900px) {
 
-    /* html,
-    body {
-        display: flex;
-        flex-direction: column;
-    } */
-
     /*=========================== ICON DIV =====================================  */
 
     /* Icon div est placé en absolue pour éviter de casser la positio des fourmies codé avec le cul */
 
     #iconDiv {
-        left: 0;
-        flex-direction: column;
+        flex-direction: row;
         /* position: absolute; */
         width: 100%;
         height: fit-content;
-       
-    }
-
-    #iconBar-buttonDiv, #iconBar-vignetteDiv{
-        /* Permet de considéré la division comme la somme de ses items --> applique les super(flex) normalement */
-        
-        width: 100%;
-        display: flex;
-        flex-direction: row;
         justify-content: space-around;
+        align-items:baseline;
         flex-wrap: wrap;
-        
+        border: 0 1px 1px 1px solid var(--navyColorTN);
+        border-radius: 0 0 15px 15px;
     }
 
-    #iconBar-buttonDiv{
-        height: fit-content ;
-    }
-    #iconBar-vignetteDiv{
-        height: var(--topBannerHeight);
-    }
+    
     button.iconBar-button{
         font-size: var(--buttonFontSizeTEL);
-    }
-
-    #menuButton,
-    #miniTN {
-        display: flex;
-    }
-
-    #bigTN {
-        display: none;
     }
 
     /* ========================== PLAY =======================================*/
@@ -389,8 +220,6 @@ button.iconBar-button:hover {
         width: 100%;
     }
 
-
-
     /* ========================== CONTROLE =======================================*/
 
     #controlPanel {
@@ -398,15 +227,13 @@ button.iconBar-button:hover {
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 0;
         
-
-        /* background-image: linear-gradient(rgba(249, 187, 18, 0.2), rgba(0, 161, 154, 0.2), rgba(36, 161, 235, 0.2)); */
-
         display: none;
         width: 100%;
         height: fit-content;
 
         left: 0;
-        top: calc(var(--topBannerHeight) + var(--buttonFontSizeTEL) + 4px * 2  );
+        /* top: calc(var(--topBannerHeight) + var(--buttonFontSizeTEL) + 4px * 2  ); */
+        top: auto;
 
     }
 
@@ -414,16 +241,11 @@ button.iconBar-button:hover {
     #dataViewer {
         /* bien que le dataViewer n'est pas affiché, il détermine la taille du canvas curve */
         height: 60%;
-        /* width: 90%; */
-
-        /* Warning : code déguelasse :
-           la division est littéralement caché en haut à gauche de l'écran
-         */
-        /* opacity: 0; */
-        /* position: absolute; */
-        /* top: 0; */
-        /* left: 0; */
+    
     }
+
+    
+    
 
 }
 
