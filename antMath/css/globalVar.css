@@ -1,0 +1,60 @@
+/* =============================== GLOBAL ================================== */
+
+:root {
+    /* --controlPanelSize: 450px; */
+    --marginTopIcon: 10px;
+    --topBannerHeight: calc(var(--iconHeight) + 2 * var(--marginTopIcon));
+    
+    --buttonFontSizePC: 1.3rem;
+    --buttonFontSizeTEL: 1.1rem;
+
+    --yellowColorTN: rgba(249, 187, 18);
+    --greenColorTN: rgba(0, 161, 154);
+    --blueColorTN: rgba(36, 161, 235);
+    --navyColorTN: rgba(26, 24, 45);
+
+    --nbIconInTopBanner: 7;
+    --controlPanelSize: calc(var(--nbIconInTopBanner) * (var(--iconHeight) + 2 * var(--marginTopIcon)));
+
+    --nbLangChoice: 2;
+    --nbBGChoice: 4;
+    
+}
+
+
+@media screen and (min-width: 900px) {
+    :root{
+        --iconHeight: 50px;
+    }
+    
+}
+
+@media screen and (max-width: 900px) {
+    :root{
+        --iconHeight: 30px;
+    }
+}
+
+
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('./Poppins/Poppins-Black.ttf') format('truetype'),
+        url('./Poppins/Poppins-BlackItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-Bold.ttf') format('truetype'),
+        url('./Poppins/Poppins-BoldItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-ExtraBold.ttf') format('truetype'),
+        url('./Poppins/Poppins-ExtraBoldItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-ExtraLight.ttf') format('truetype'),
+        url('./Poppins/Poppins-ExtraLightItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-Italic.ttf') format('truetype'),
+        url('./Poppins/Poppins-Light.ttf') format('truetype'),
+        url('./Poppins/Poppins-LightItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-Medium.ttf') format('truetype'),
+        url('./Poppins/Poppins-MediumItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-Regular.ttf') format('truetype'),
+        url('./Poppins/Poppins-SemiBold.ttf') format('truetype'),
+        url('./Poppins/Poppins-SemiBoldItalic.ttf') format('truetype'),
+        url('./Poppins/Poppins-Thin.ttf') format('truetype'),
+        url('./Poppins/Poppins-ThinItalic.ttf') format('truetype');
+}
