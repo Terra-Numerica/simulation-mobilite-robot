@@ -161,7 +161,23 @@ function creatGIF() {
     
     gif.on('finished', function (blob) {
         document.getElementById("playPanel").removeChild(loader);
-        window.open(URL.createObjectURL(blob));
+
+        // Create an anchor element to trigger the download
+        var downloadLink = document.createElement('a');
+        downloadLink.href = URL.createObjectURL(blob);
+        downloadLink.download = 'generated_gif.gif'; // You can set the desired filename here
+        downloadLink.style.display = 'none'; // Hide the anchor element
+
+        // Add the anchor to the document
+        document.body.appendChild(downloadLink);
+
+        // Programmatically click the anchor to trigger the download
+        downloadLink.click();
+
+        // Clean up the created URL and remove the anchor from the document
+        URL.revokeObjectURL(downloadLink.href);
+        document.body.removeChild(downloadLink);
     });
+    
     gif.render();
 }

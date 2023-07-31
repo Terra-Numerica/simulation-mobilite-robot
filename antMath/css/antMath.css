@@ -1,7 +1,18 @@
 /* =============================== GLOBAL ================================== */
+/* @media screen and (min-width: 900px) {
+    
+    
+}
+
+@media screen and (max-width: 900px) {
+    
+} */
+
+
 :root {
-    --controlPanelSize: 450px;
+    /* --controlPanelSize: 450px; */
     --iconHeight: 50px;
+    --iconHeightTEL: 30px;
     --marginTopIcon: 10px;
     --topBannerHeight: calc(var(--iconHeight) + 2 * var(--marginTopIcon));
     
@@ -12,6 +23,9 @@
     --greenColorTN: rgba(0, 161, 154);
     --blueColorTN: rgba(36, 161, 235);
     --navyColorTN: rgba(26, 24, 45);
+
+    --nbIconInTopBanner: 7;
+    --controlPanelSize: calc(var(--nbIconInTopBanner) * (var(--iconHeight) + 2 * var(--marginTopIcon)));
     
 }
 
@@ -85,6 +99,7 @@ canvas:not(#curve) {
     display: flex;
     position: absolute;
     left:calc(100% - var(--controlPanelSize));
+    
     /* Over the playPanel */
     z-index: 2; 
     height: calc(var(--topBannerHeight));
@@ -329,7 +344,7 @@ button.iconBar-button:hover {
     /* Icon div est placé en absolue pour éviter de casser la positio des fourmies codé avec le cul */
 
     #iconDiv {
-        
+        left: 0;
         flex-direction: column;
         /* position: absolute; */
         width: 100%;
@@ -344,6 +359,7 @@ button.iconBar-button:hover {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        flex-wrap: wrap;
         
     }
 
@@ -381,13 +397,12 @@ button.iconBar-button:hover {
         /* position: absolute; */
         background-color: rgba(255, 255, 255, 0.8);
         border-radius: 0;
+        
 
         /* background-image: linear-gradient(rgba(249, 187, 18, 0.2), rgba(0, 161, 154, 0.2), rgba(36, 161, 235, 0.2)); */
 
         display: none;
         width: 100%;
-        /* height: 100% ; */
-        /* height: calc(100% - var(--iconHeight) - 2 * var(--marginTopIcon)); */
         height: fit-content;
 
         left: 0;
@@ -411,3 +426,4 @@ button.iconBar-button:hover {
     }
 
 }
+

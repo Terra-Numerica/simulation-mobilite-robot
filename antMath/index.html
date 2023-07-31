@@ -42,12 +42,15 @@
   <!-- <a href="https://terra-numerica.org/" target="_blank" id="bigTN"><img src="img/logoTN.png"
     alt="Go to Terra Numerica"></a> -->
 
+  
+    
 
+  <!-- CONTROL PANEL -->
+  <div id="controlPanel">
 
-  <!-- IconDiv -->
-  <div id="iconDiv">
+    <!-- IconDiv -->
 
-    <div id="iconBar-vignetteDiv">
+    <div id="iconBar">
       <!-- Menu for Smartphone -->
       <img src="img/icon/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
 
@@ -74,8 +77,6 @@
           oninput="onInputBackgroundInput(this)">
       </div>
 
-      <!-- <img src="img/icon/translate_icon.jpeg" alt="translate" > -->
-
       <div class="dropdown-square" id="lang-picker">
         <input type="radio" id="choiceLangFR" name="line-lang-picker" value="fr" onclick="updateLanguage(this)">
         <label title="Français" for="choiceLangFR">FR</label>
@@ -86,54 +87,15 @@
       </div>
 
 
-      <!-- <img src="img/icon/background_icon.png" alt="change background"> -->
-      <!-- <img src="img/icon/changeBG1.png" alt="change background"> -->
       <img src="img/lucIcon/GIF.png" alt="Download GIF" onclick="creatGIF(this)">
-      <!-- <img src="img/icon/reset_icon.jpeg" alt="Reset page" onclick="resetDraw(this)"> -->
-
-
-
 
       <!-- Design3 -->
       <img src="img/lucIcon/interrogation.png" alt="tutorial" onclick="displayHideID('tutorial')">
-      <img src="img/lucIcon/controle.png" alt="Curve" onclick="displayHideID('dataViewer')" >
-      <!-- <img src="img/lucIcon/i.png" alt="Documentation" onclick="displayHideID('information')"> -->
-      <img src="img/lucIcon/wave-graph.png" alt="More" onclick="displayHideID('more')">
-      <img src="img/icon/documentation.png" alt="">
+      <img src="img/lucIcon/controle.png" alt="inputControler" onclick="displayHideID('inputControler')" >
+      <img src="img/lucIcon/wave-graph.png" alt="dataViewer" onclick="displayHideID('dataViewer')">
+      <img src="img/icon/documentation.png" alt="documentation" onclick="displayHideID('more')">
 
     </div>
-    
-
-
-    <!-- NEW CHOICE : ROW 2 -->
-    <!-- <div id="iconBar-buttonDiv">
-
-      <button name="tutorialTab" onclick="displayHideID('tutorial')" class="iconBar-button">
-        Tutoriel
-      </button>
-
-      <button name="informationTab" onclick="displayHideID('information')" class="iconBar-button">
-        Information
-      </button>
-
-      <button name="moreTab" onclick="displayHideID('more')" class="iconBar-button">
-        Plus
-      </button>
-
-      <button name="curveTab" onclick="displayHideID('dataViewer')" class="iconBar-button">
-        Graphique
-      </button>
-
-    </div> -->
-
-    <!-- <button name="cursorTab" onclick="displayHideID('inputControler')">
-      Curseurs
-    </button> -->
-
-  </div>
-
-  <!-- CONTROL PANEL -->
-  <div id="controlPanel">
 
     <!-- EXPLANATION PANEL -->
 
