@@ -84,11 +84,13 @@ canvas:not(#curve) {
 #iconDiv {
     display: flex;
     position: absolute;
+    left:calc(100% - var(--controlPanelSize));
     /* Over the playPanel */
     z-index: 2; 
     height: calc(var(--topBannerHeight));
-    width: 100%;
-    background-color: var(--navyColorTN);
+    width: fit-content;
+    /* background-color: var(--navyColorTN); */
+    background-color: white;
     display: flex;
     flex-direction: row;
     /* justify-content: space-around; */
