@@ -51,7 +51,7 @@ function changeBackground(elt){
  */
 function onInputBackgroundInput(elt){
 
-    console.log("onInputBackgroundInput");
+
 
     const selectedFile = elt.files[0];
     if (selectedFile) {     
@@ -70,13 +70,11 @@ function onInputBackgroundInput(elt){
         //     console.log("imgHeight", imgHeight);
         // }
 
-
         document.body.style.backgroundImage = "url('" + img.src + "')";
 
         moveInputToFirstPosition(document.getElementById("choiceBackgroundPersonalized"));
-    }
-    else{
-        console.log("No file selected");
+
+
     }
 }
 

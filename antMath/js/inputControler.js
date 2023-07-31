@@ -5,40 +5,29 @@ function displayControlPanel() {
     let controlPanel = document.getElementById("controlPanel");
     controlPanel.style.display = (controlPanel.style.display == "flex") ? "none" : "flex";
 
-        // let iconBar_buttonDiv = document.getElementById("iconBar-buttonDiv");
-        // iconBar_buttonDiv.style.display = (iconBar_buttonDiv.style.display == "flex") ? "none" : "flex";
+    let iconBar_buttonDiv = document.getElementById("iconBar-buttonDiv");
+        iconBar_buttonDiv.style.display = (iconBar_buttonDiv.style.display == "flex") ? "none" : "flex";
 }
 
-/**
- * Change the space between two ants with html
- * @param {HTMLElement} element 
- */
+//Change the space between two ants with html
 function changeAntSpacing(element) {
     spacingAnt = parseInt(element.value);
 }
 
-/**
- * Change the execution speed with html
- */
+//Change the execution speed with html
 function changeAntSpeed() {
     speedAnt = Math.abs(parseInt(document.getElementById('antSpeed').value));
 }
 
-/**
- * Reset the page by reloading it
- */
-function resetDraw() {
+//Reset the simulation with html
+function resetDraw(element) {
     location.reload();
 }
-
-/**
- * Stop the game
- */
-function pauseDraw() {
+function pauseDraw(element) {
     if (isGameStopped) {
         isGameStopped = false;
         document.getElementById('stopButton').innerText = TRAD.stopButton[language];
-        setTimeout(startAnts, 10, firstAnt, d, d.clickX[0], firstY);
+        setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
     }
     else {
         isGameStopped = true;
@@ -46,6 +35,7 @@ function pauseDraw() {
     }
 }
 function drawPath(element) {
+    
     for (var i_1 = 0; i_1 < canvasTab.length; i_1++) {
         canvasTab[i_1].style.opacity = '0';
 
@@ -60,8 +50,7 @@ function drawMainPaths(element) {
         canvasTab[i_2].style.opacity = '0';
     }
     if (drawAllPathOn) {
-        
-        for (var i_3 = 0; i_3 < canvasTab.length; i_3 = i_3 * 2 + 1) {
+        for (var i_3 = 0; i_3 < canvasTab.length; i_3++) {
             canvasTab[i_3].style.opacity = '1';
         }
     }
@@ -83,11 +72,8 @@ function drawAllPaths(element) {
 }
 
 
-function creatGIF() {
-    isGameStopped = true;
-    for (var i_8 = 0; i_8 < canvasTab.length; i_8++) {
-        canvasTab[i_8].style.opacity = '0';
-    }
+function createGIF() {
+   
     var gif = new GIF({
         workerScript: './library/gif.js.optimized/dist/gif.worker.js',
         workers: navigator.hardwareConcurrency,
@@ -102,82 +88,105 @@ function creatGIF() {
     canvasFinal.width = originalCanvas.width;
     canvasFinal.height = originalCanvas.height;
 
-    canvasFinal.getContext('2d').drawImage(d.canvas, 0, 0);
-    gif.addFrame(canvasFinal, { delay: 200 });
-    // for (var i_9 = 0; i_9 < (nbIteration - 1); i_9++) {
-    for (var i_9 = 0; i_9 < canvasTab.length; i_9++) {
-        canvasFinal.getContext('2d').drawImage(canvasTab[i_9], 0, 0);
-        gif.addFrame(canvasFinal, {
-            delay: Math.max(40, 200 - 10 * i_9),
-            copy: true
-        });
+    // Get the background image of the body
+    var bodyBackgroundImage = getComputedStyle(document.body).backgroundImage;
+
+    // Load the background image
+    var bgImage = new Image();
+    bgImage.onload = function () {
+        canvasFinal.getContext('2d').drawImage(bgImage, 0, 0, canvasFinal.width, canvasFinal.height);
+        addFramesToGif(gif, canvasFinal);
+    };
+    
+    // Extract the URL from the background image property (removing quotes if present)
+    var bgImageUrl = bodyBackgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+    bgImage.src = bgImageUrl;
+
+    function addFramesToGif(gif, canvas) {
+        gif.addFrame(canvas, { delay: 200 });
+        for (var i_9 = 0; i_9 < canvasTab.length; i_9++) {
+            canvas.getContext('2d').drawImage(canvasTab[i_9], 0, 0);
+            gif.addFrame(canvas, {
+                delay: Math.max(40, 200 - 10 * i_9),
+                copy: true
+            });
+        }
+        gifRender(gif);
     }
-    var load;
-    var loader;
-    var text;
 
-    // Init the GIF
+    function gifRender(gif) {
+        var load;
+        var loader;
+        var text;
 
-    gif.on('start', function (p) {
+        // Arrêt le temps de la génération du GIF
+        if(!isGameStopped){
+            document.getElementById('stopButton').click();
+        }
 
-        loader = document.createElement('div');
-        text = document.createElement('span');
+        // Init the GIF
+        gif.on('start', function (p) {
+            loader = document.createElement('div');
+            text = document.createElement('span');
 
-        // Division de chargement
-        loader.style.textAlign = 'center';
-        loader.style.position = 'absolute';
-        loader.style.transform = 'translateX(' + -50 + '%) translateY(' + -50 + '%)';
-        loader.style.top = '50%';
-        loader.style.left = '50%';
-        loader.style.zIndex = '1000';
-        loader.style.rotate = '0';
-        
-        // Texte de chargement
-        text.style.position = 'absolute';
-        text.style.left = '50%';
-        text.style.top = '50%';
-        text.style.transform = 'translateX(-50%) translateY(-50%)';
-        // text.style.backgroundColor = 'rgb(255,255,255)';
-        text.style.backgroundColor = 'none';
-        text.style.fontSize = '30px';
+            // Division de chargement
+            loader.style.textAlign = 'center';
+            loader.style.position = 'absolute';
+            loader.style.transform = 'translateX(' + -50 + '%) translateY(' + -50 + '%)';
+            loader.style.top = '50%';
+            loader.style.left = '50%';
+            loader.style.zIndex = '1000';
+            loader.style.rotate = '0';
 
-        // Image de chargement
-        load = document.createElement('img');
-        load.src = "./assets/loading.svg";
-        load.style.width = 100 + 'px';
-        load.style.height = 100 + 'px';
-        load.style.display = 'block';
+            // Texte de chargement
+            text.style.position = 'absolute';
+            text.style.left = '50%';
+            text.style.top = '50%';
+            text.style.transform = 'translateX(-50%) translateY(-50%)';
+            // text.style.backgroundColor = 'rgb(255,255,255)';
+            text.style.backgroundColor = 'none';
+            text.style.fontSize = '30px';
 
-        loader.appendChild(text);
-        loader.appendChild(load);
-        document.getElementById("playPanel").appendChild(loader);
-        console.log(loader)
-        
-    });
+            // Image de chargement
+            load = document.createElement('img');
+            load.src = "./assets/loading.svg";
+            load.style.width = 100 + 'px';
+            load.style.height = 100 + 'px';
+            load.style.display = 'block';
 
-    gif.on('progress', function (p) {
-        text.innerText = Math.round(p * 100) + '%';
-    });
+            loader.appendChild(text);
+            loader.appendChild(load);
+            document.getElementById("playPanel").appendChild(loader);
+            console.log(loader)
+        });
+
+        gif.on('progress', function (p) {
+            text.innerText = Math.round(p * 100) + '%';
+        });
+
+        gif.on('finished', function (blob) {
+            document.getElementById("playPanel").removeChild(loader);
     
-    gif.on('finished', function (blob) {
-        document.getElementById("playPanel").removeChild(loader);
-
-        // Create an anchor element to trigger the download
-        var downloadLink = document.createElement('a');
-        downloadLink.href = URL.createObjectURL(blob);
-        downloadLink.download = 'generated_gif.gif'; // You can set the desired filename here
-        downloadLink.style.display = 'none'; // Hide the anchor element
-
-        // Add the anchor to the document
-        document.body.appendChild(downloadLink);
-
-        // Programmatically click the anchor to trigger the download
-        downloadLink.click();
-
-        // Clean up the created URL and remove the anchor from the document
-        URL.revokeObjectURL(downloadLink.href);
-        document.body.removeChild(downloadLink);
-    });
+            // Create an anchor element to trigger the download
+            var downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = 'generated_gif.gif'; // You can set the desired filename here
+            downloadLink.style.display = 'none'; // Hide the anchor element
     
-    gif.render();
+            // Add the anchor to the document
+            document.body.appendChild(downloadLink);
+    
+            // Programmatically click the anchor to trigger the download
+            downloadLink.click();
+    
+            // Clean up the created URL and remove the anchor from the document
+            URL.revokeObjectURL(downloadLink.href);
+            document.body.removeChild(downloadLink);
+        });
+
+        gif.render();
+        
+    }
 }
+
+

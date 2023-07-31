@@ -18,6 +18,7 @@ function updateLanguage(elt){
     language = elt.value;
     switchLang();
     includeAllHTML();
+    moveInputToFirstPosition(elt);
 }
 
 console.log("Language : " + language);
