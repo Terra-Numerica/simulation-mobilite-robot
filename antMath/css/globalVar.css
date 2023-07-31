@@ -2,7 +2,7 @@
 
 :root {
     /* --controlPanelSize: 450px; */
-    --marginTopIcon: 10px;
+    
     --topBannerHeight: calc(var(--iconHeight) + 2 * var(--marginTopIcon));
     
     --buttonFontSizePC: 1.3rem;
@@ -14,10 +14,12 @@
     --navyColorTN: rgba(26, 24, 45);
 
     --nbIconInTopBanner: 7;
-    --controlPanelSize: calc(var(--nbIconInTopBanner) * (var(--iconHeight) + 2 * var(--marginTopIcon)));
+    --controlPanelSize: calc(var(--nbIconInTopBanner) * (var(--iconHeight) + 2 * var(--marginTopIcon)) + 2*var(--marginTopIcon));
 
     --nbLangChoice: 2;
     --nbBGChoice: 4;
+
+    --minIconHeight: 30px;
     
 }
 
@@ -25,13 +27,16 @@
 @media screen and (min-width: 900px) {
     :root{
         --iconHeight: 50px;
+        --marginTopIcon: 10px;
     }
     
 }
 
 @media screen and (max-width: 900px) {
     :root{
-        --iconHeight: 30px;
+        /* --iconHeight: 30px; */
+        --iconHeight: 10vw;
+        --marginTopIcon: 3px;
     }
 }
 

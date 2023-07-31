@@ -90,6 +90,7 @@ button.iconBar-button:hover {
 
 #iconDiv img {
     height: var(--iconHeight);
+    min-height: var(--minIconHeight);
     width: auto;
     margin: var(--marginTopIcon);
 }
@@ -136,7 +137,7 @@ button.iconBar-button:hover {
 #inputControler {
     padding: 10px 0 10px 0;
     /* border-top: 1px solid var(--navyColorTN); */
-    display: block;
+    display: none;
     flex-direction: column;
 }
 
@@ -182,6 +183,7 @@ button.iconBar-button:hover {
 }
 
 #dataViewer{
+    display: none;
     min-height: 33vh;
     border-top: 1px solid var(--navyColorTN);
 }
@@ -224,14 +226,14 @@ button.iconBar-button:hover {
 
     #controlPanel {
         /* position: absolute; */
-        background-color: rgba(255, 255, 255, 0.8);
-        border-radius: 0;
+        background-color: rgba(245, 245, 245, 0.8);
+        border-radius: 15px;
         
         /* display: none; */
         width: 100%;
         height: fit-content;
 
-        left: 0;
+        /* left: 0; */
         /* top: calc(var(--topBannerHeight) + var(--buttonFontSizeTEL) + 4px * 2  ); */
         top: auto;
 
