@@ -135,18 +135,23 @@ button.iconBar-button:hover {
 
     width: var(--controlPanelSize);
     max-height: calc(100vh - var(--topBannerHeight));
-    background-color: white;
-    border-radius: 15px 0 0 15px;    
+        
     /* Permet de l'afficher par dessus les fourmis si réduction */
     z-index: 1;
     flex-direction: column;
 
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    
 
 }
 
 #controlPanel>div{
     z-index: 0;
+    background-color: white;
+    border-radius: 15px 0 0 15px;
+    max-width: 100%;
+    border: 1px solid var(--navyColorTN);
 }
 
 
@@ -203,13 +208,12 @@ button.iconBar-button:hover {
 #tutorial, #information, #more {
     display: none;
     text-align: justify;
-    margin: 0px 20px 0px 20px;
+    padding: 0px 20px 0px 20px;
 }
 
 #dataViewer{
     display: none;
     min-height: 33vh;
-    border-top: 1px solid var(--navyColorTN);
 }
 
 /* ==========================================================*/

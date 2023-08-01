@@ -12,9 +12,9 @@
 .dropdown-square {
     /*style the "box" in its minimzed state*/
     /* background-color: var(--navyColorTN); */
-    background-color: black;
+    background-color: white;
     text-align: center;
-    border:1px solid white; 
+    border:3px solid black; 
     width:var(--iconHeight); 
     height:var(--iconHeight); 
 
@@ -49,15 +49,17 @@
     /*style the labels to look like dropdown options*/
     /* display:none; */
     display: block;
-    margin:2px;
+    /* margin:2px; */
     /* height:46px;  */
-    height:calc(var(--iconHeight) - 2px);
+    /* height:calc(var(--iconHeight) - 2px); */
+    height:var(--iconHeight);
     /* opacity:0.2;  */
     /* background-image: url("../img/icon/changeBG1.png"); */
     /* background-image:url("../img/background/ground.jpg"); */
     background-size:contain;
 
-    color: var(--blueColorTN);
+    /* color: var(--blueColorTN); */
+    color: black;
     /* font-size: 2.1em; */
     font-size: calc(var(--iconHeight) * 0.7);
     

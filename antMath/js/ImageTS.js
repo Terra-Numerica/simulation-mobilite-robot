@@ -91,7 +91,7 @@ function drawHandler() {
     }
     // Si path trop court, on alerte et on ne dessine pas
     if (pathTooshort) {
-        alert(TRAD.alertPathTooShort[language]);
+        // alert(TRAD.alertPathTooShort[language]);
         d.clearCanvas();
         return;
     }
