@@ -35,6 +35,7 @@ function switchLang(){
     console.log("Switching to " + language);
 
     // let lst = document.querySelectorAll("[lang]");
+    document.querySelector("html").lang = language;
     let lst = document.querySelectorAll("[translate]");
 
 

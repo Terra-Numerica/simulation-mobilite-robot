@@ -6,11 +6,13 @@
 }
 
 body {
-    /* overflow: hidden; */
     display: flex;
-    flex-direction: column; /* Pour aligner verticalement */
-    align-items: flex-end; /* Pour aligner à droite */
+     /* Pour aligner verticalement */
+    flex-direction: column;
+     /* Pour aligner à droite */
+    /* align-items: flex-end; */
     background-image: url("./../img/background/ground3.jpg");
+    
 }
 
 button {
@@ -44,6 +46,12 @@ canvas:not(#curve) {
 
 /*=========================== ICON DIV =====================================  */
 #iconDiv {
+    position: fixed;
+    right: 0;
+
+
+
+
     color: white;background-color: white;
     border-radius: 0 0 0 15px;
     /* Add border bottom and left */
@@ -62,8 +70,7 @@ canvas:not(#curve) {
     /* background-color: var(--navyColorTN); */
 
     flex-direction: row;
-    /* justify-content: space-around; */
-    justify-content: right;
+    justify-content: space-around;
     /* TODO : bouger ce align item qui fait quer les drop down sont aussi aligné */
     /* Centrer les éléments horizontalement */
     align-items: baseline; 
@@ -114,12 +121,19 @@ button.iconBar-button:hover {
 
 #controlPanel {
 
+    position: fixed;
+    top:var(--topBannerHeight);
+    right: 0;
+
     width: var(--controlPanelSize);
+    max-height: calc(100vh - var(--topBannerHeight));
     background-color: white;
     border-radius: 15px 0 0 15px;    
     /* Permet de l'afficher par dessus les fourmis si réduction */
     z-index: 1;
     flex-direction: column;
+
+    overflow: scroll;
 
 }
 
@@ -227,6 +241,7 @@ button.iconBar-button:hover {
     /* ========================== CONTROLE =======================================*/
 
     #controlPanel {
+
         /* position: absolute; */
         background-color: rgba(245, 245, 245, 0.8);
         border-radius: 15px;
@@ -234,10 +249,6 @@ button.iconBar-button:hover {
         /* display: none; */
         width: 100%;
         height: fit-content;
-
-        /* left: 0; */
-        /* top: calc(var(--topBannerHeight) + var(--buttonFontSizeTEL) + 4px * 2  ); */
-        top: auto;
 
     }
 
