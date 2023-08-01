@@ -11,7 +11,8 @@
 
 .dropdown-square {
     /*style the "box" in its minimzed state*/
-    background-color: var(--navyColorTN);
+    /* background-color: var(--navyColorTN); */
+    background-color: black;
     text-align: center;
     border:1px solid white; 
     width:var(--iconHeight); 

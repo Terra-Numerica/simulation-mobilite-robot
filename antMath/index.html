@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!-- <html lang="fr"> -->
-<html>
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
@@ -10,9 +9,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
   <!-- Library  Graphique-->
-  <script type="text/javascript" src="./library/gif.js.optimized/dist/gif.js"></script>
-  <script type="text/javascript" src="library/chart.min.js"></script>
-  <script type="text/javascript" src="library/granim.min.js"></script>
+  <script src="./library/gif.js.optimized/dist/gif.js"></script>
+  <script src="library/chart.min.js"></script>
+  <script src="library/granim.min.js"></script>
 
   <!-- My App -->
   <script src="./js/Ant.js"></script>
@@ -35,8 +34,7 @@
 
   <link rel="stylesheet" href="./css/hamburger.css">
   <link rel="stylesheet" href="./css/globalVar.css">
-
-  <!-- <link rel="stylesheet" href="./css/checkBox.css"> -->
+  <link rel="stylesheet" href="./css/rangeInput.css">
 
 </head>
 
@@ -62,20 +60,20 @@
       <div class="dropdown-square" id="background-picker" title="background picker">
         
         <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass" class="dropdown-input"
-         onclick="changeBackground(this)" checked="checked"/>
+         onclick="changeBackground(this)" checked="checked">
          <!-- checked="checked"  -->
         <label title="Grass" for="choiceBackgroundGrass"></label>
 
         <input type="radio" id="choiceBackgroundSand" name="line-background-picker" title="Sand" value="sand" class="dropdown-input"
-          onclick="changeBackground(this)" />
+          onclick="changeBackground(this)">
         <label title="Sand" for="choiceBackgroundSand"></label>
 
         <input type="radio" id="choiceBackgroundDirt" name="line-background-picker" value="dirt" class="dropdown-input"
-          onclick="changeBackground(this)" />
+          onclick="changeBackground(this)">
         <label title="Dirt" for="choiceBackgroundDirt"></label>
 
         <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized" class="dropdown-input"
-          onclick="changeBackground(this)" />
+          onclick="changeBackground(this)">
         <label title="Personalized" for="choiceBackgroundPersonalized"></label>
         
         <!-- Input hidden for choice file -->
@@ -120,9 +118,9 @@
       <div id="antControler">
         <!-- Label -->
         <div>
-          <label id="antSpeedLabel" for="antSpeed" lang="en">Ant Speed</label>
-          <label lang="en" id="antSpacingLabel" for="antSpacing">Ant Spacing</label>
-          <label lang="en" id="antPathLabel" for="pathDrawing">Ant path selected</label>
+          <label id="antSpeedLabel" for="antSpeed" translate>Ant Speed</label>
+          <label translate id="antSpacingLabel" for="antSpacing">Ant Spacing</label>
+          <label translate id="antPathLabel" for="pathDrawing">Ant path selected</label>
         </div>
         <!-- Input range -->
         <div>
@@ -139,11 +137,11 @@
       <!-- Button -->
       <div id="gameControler">
         <!-- TODO : Trouver une solution pour la traduction -->
-        <button lang="en" id="stopButton" class="controlButton" onclick="pauseDraw(this)">Stop</button>
+        <button translate id="stopButton" class="controlButton" onclick="pauseDraw(this)">Stop</button>
         
         <!-- <button class="controlButton" onclick="creatGIF(this)">GIF</button> -->
-        <button lang="en" id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button>
-        <button lang="en" id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">All Path</button>
+        <button translate id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button>
+        <button translate id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">Show all path</button>
 
       </div>
 
@@ -151,7 +149,7 @@
 
     <!-- CURVE PANEL -->
     <div id="dataViewer">
-      <canvas lang="en" id="curve"></canvas>
+      <canvas translate id="curve"></canvas>
     </div>
 
   </div>

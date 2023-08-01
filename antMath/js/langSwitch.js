@@ -34,7 +34,8 @@ function switchLang(){
 
     console.log("Switching to " + language);
 
-    let lst = document.querySelectorAll("[lang]");
+    // let lst = document.querySelectorAll("[lang]");
+    let lst = document.querySelectorAll("[translate]");
 
 
     lst.forEach(elt => {
@@ -46,7 +47,7 @@ function switchLang(){
         }
         else{
             elt.innerText =  TRAD[elt.id][language];
-            elt.lang = language;
+            // elt.lang = language;
         }
     });
     includeAllHTML();
@@ -122,8 +123,8 @@ const TRAD =  {
         "fr":"Réinitialisation"
     },
     "allPathButton":{
-        "en":"All Path",
-        "fr":"Tous"
+        "en":"Show all path",
+        "fr":"Affiché tous les chemins"
     },
     "curve":{
         "title":{
