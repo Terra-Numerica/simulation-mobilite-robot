@@ -96,12 +96,20 @@ button.iconBar-button:hover {
     cursor: pointer;
 }
 
+
 #iconDiv img {
     height: var(--iconHeight);
     min-height: var(--minIconHeight);
     /* max-height: var(--maxIconHeight); */
     width: auto;
-    margin: var(--marginTopIcon);
+    /* margin: var(--marginTopIcon); */
+    border: var(--marginTopIcon) solid transparent;
+    border-radius: 5px;
+}
+
+#iconDiv img:hover {
+    background-color: rgb(221, 221, 221);
+
 }
 
 #iconDiv > div {

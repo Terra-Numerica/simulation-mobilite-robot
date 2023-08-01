@@ -73,6 +73,12 @@ function drawAllPaths(element) {
 
 
 function createGIF() {
+
+    // si l'utilisateur n'a pas dessiné, on ne fait rien
+    if(canvasTab.length == 0){
+        alert("Please draw something before creating a GIF");
+        return;
+    }
    
     var gif = new GIF({
         workerScript: './library/gif.js.optimized/dist/gif.worker.js',
@@ -182,6 +188,8 @@ function createGIF() {
             // Clean up the created URL and remove the anchor from the document
             URL.revokeObjectURL(downloadLink.href);
             document.body.removeChild(downloadLink);
+
+            document.getElementById('stopButton').click();
         });
 
         gif.render();

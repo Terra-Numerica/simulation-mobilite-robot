@@ -474,7 +474,13 @@ function delayFirst(Space, First, firstX, firstY) {
 }
 
 // TODO : found a file to place this function
-function displayHideID(id){
+/**
+ * 
+ * @param {HTMLElement} icon icon qui a été cliquée
+ * @param {string} id id de l'élément à afficher / cacher
+ * Bricolage pour éviter du css et par flemme de transformer les images en checkboxs
+ */
+function displayHideID(icon, id){
     // const lst = ["tutorial", "information", "more"];
     // if(lst.includes(id)){
     //     // caché tous les autres
@@ -489,6 +495,14 @@ function displayHideID(id){
 
     console.log("displayHideID", id);
     let elt = document.getElementById(id);
-    elt.style.display = (elt.style.display == 'block') ? 'none' : 'block';
-
+    if(elt.style.display == 'block'){
+        elt.style.display = 'none';
+        icon.style.backgroundColor = 'transparent'; 
+    }
+    else{
+        elt.style.display = 'block';
+        icon.style.backgroundColor = 'rgb(221, 221, 221)';
+    }
+    
+    
 }
