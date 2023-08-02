@@ -151,7 +151,10 @@ button.iconBar-button:hover {
     background-color: white;
     border-radius: 15px 0 0 15px;
     max-width: 100%;
-    border: 1px solid var(--navyColorTN);
+    border-left: 1px solid var(--navyColorTN);
+    border-bottom: 1px solid var(--navyColorTN);
+    border-top: 1px solid var(--navyColorTN);
+    /* border: 0 0 1px 1px solid var(--navyColorTN); */
 }
 
 
@@ -165,7 +168,6 @@ button.iconBar-button:hover {
 
 #inputControler {
     padding: 10px 0 10px 0;
-    /* border-top: 1px solid var(--navyColorTN); */
     display: none;
     flex-direction: column;
 }
@@ -234,8 +236,10 @@ button.iconBar-button:hover {
         justify-content: space-around;
         align-items:baseline;
         flex-wrap: wrap;
-        border: 0 1px 1px 1px solid var(--navyColorTN);
+        border-right: 1px solid var(--navyColorTN);
         border-radius: 0 0 15px 15px;
+
+        
     }
 
     
@@ -252,16 +256,21 @@ button.iconBar-button:hover {
 
     /* ========================== CONTROLE =======================================*/
 
-    #controlPanel {
+    #controlPanel{
 
         /* position: absolute; */
-        background-color: rgba(245, 245, 245, 0.8);
-        border-radius: 15px;
+        /* background-color: rgba(245, 245, 245, 0.8); */
+        
+    
         
         /* display: none; */
         width: 100%;
         height: fit-content;
 
+    }
+    #controlPanel>div{
+        border-radius: 15px;
+        border: 1px solid var(--navyColorTN);
     }
 
 
