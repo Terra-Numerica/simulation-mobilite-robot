@@ -1,3 +1,5 @@
 PErmet juste d'être rapidement sûr d'être sur la bonne branche
 
 Design avec un max de truc dans la bannière du haut
+
+Le setTimeout sert juste à forcer la fonction startAnts à être placer en fin de pile d'appel ou un truc comme ça

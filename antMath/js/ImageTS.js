@@ -1,41 +1,41 @@
 
-var firstAnt = new Ant('./assets/ant.png', 30, 30);
+let firstAnt = new Ant('./assets/ant.png', 30, 30);
 
 /**
  * Array containing all the ants
  * @type {Array<DrawingAnt>}
  */
-var futurAnts = new Array();
+let futurAnts = new Array();
 
 /**
  * Equal waiting for the user to draw a path
  * @type {boolean}
  */
-var draw = true;
+let draw = true;
 
 /**
  * Space between two ants
  */
-var spacingAnt = 30;
+let spacingAnt = 30;
 
 /**
  * Speed of the ants
  */
-var speedAnt = 1;
+let speedAnt = 1;
 
 /**
  * DrawingApp object
  * ????
  * @type {DrawingApp}
  */
-var d;
+let d;
 
 /**
  * Chart object
  * Save me data for ther curv, ect...
  * @type {Chart}
  */
-var chart;
+let chart;
 
 /**
  * Nombre d'exécution de la fonction delayFirst avant de dessiner un nouveau path
@@ -53,15 +53,20 @@ let drawingGap = 4;
  */
 let compter = 2;
 
-var canvasTab = new Array();
-var isGameStopped = false;
-var firstX;
-var firstY;
+let canvasTab = new Array();
+let isGameStopped = false;
+let firstX;
+let firstY;
 
 // RGB : Color of the path draw by the ants
-var pathColorRedValue = 255;
-var pathColorBlueValue = 0;
-var pathColorGreenValue = 0;
+let pathColorRedValue = 255;
+let pathColorBlueValue = 0;
+let pathColorGreenValue = 0;
+
+/**
+ * Minimum size path to be draw
+ */
+const MIN_PATH_SIZE = 100;
 
 // Allow use button instead of checkbox
 let drawAllPathOn = true;
@@ -74,27 +79,31 @@ let saveFirstDrawApp = Object();
  */
 let orientationDrawVertical;
 
+// Check if the path is too short
+function isPathTooShort() {
+    // Check if there is a distance > 100px between the first and another point
+    for (let i = 1; i < d.clickX.length; i++) {
+        let dist = Math.sqrt((d.clickX[0] - d.clickX[i]) ** 2 + (d.clickY[0] - d.clickY[i]) ** 2);
+            // Si au moins 1 point est suffisament loin, pathTooshort = false
+        if (dist > MIN_PATH_SIZE) {
+            return false;
+        }
+    }
+    return true;
+}
+
 /**
  * Handle the draw of the path made by the user on click / touch screen
  */
 function drawHandler() {
 
-    // Check if there is a distance > 100px between the first and another point
-    let pathTooshort = true;
-    // Si au moins 1 point est suffisament loin, pathTooshort = false
-    for (let i = 1; i < d.clickX.length; i++) {
-        let dist = Math.sqrt((d.clickX[0] - d.clickX[i]) ** 2 + (d.clickY[0] - d.clickY[i]) ** 2);
-        if (dist > 100) {
-            pathTooshort = false;
-            break;
-        }
-    }
     // Si path trop court, on alerte et on ne dessine pas
-    if (pathTooshort) {
+    if (isPathTooShort()) {
         // alert(TRAD.alertPathTooShort[language]);
         d.clearCanvas();
         return;
     }
+    
     // Si path assez long, on dessine
     else if (draw) {
         draw = false;
@@ -108,7 +117,7 @@ function drawHandler() {
         firstX = d.clickX[0];
         firstY = d.clickY[0];
         //Print the anthill
-        var anthill = new Ant('./img/fourmiliere_cut.png', 50, 50);
+        let anthill = new Ant('./img/fourmiliere_cut.png', 50, 50);
         anthill.move(firstX, firstY);
 
         document.getElementById("playPanel").appendChild(anthill.img);
@@ -117,18 +126,17 @@ function drawHandler() {
         //start main prg, with the speed choosen by the user
         // saveFirstDrawApp.context = context;
 
-        setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
+        startAnts(firstAnt, d, firstX, firstY);
     }
 }
 
-window.onload = function () {
-
+function initGame(){
     previousOrientation = getOrientation();
 
     //create canvas and set background
     d = new DrawingApp();
     //creation of the chart
-    var canvasCurve = document.getElementById('curve');
+    let canvasCurve = document.getElementById('curve');
     chart = new Chart(canvasCurve.getContext('2d'), {
         type: 'line',
         data: {
@@ -186,7 +194,11 @@ window.onload = function () {
     document.getElementById("playGround").addEventListener('touchend', function (event) {
         drawHandler();
     });
+}
 
+function initPage(){
+
+    initGame();
 
     // //Re Set la valeur de speed/spacingAnt value par défaut au chargement pour être égale à celle du curseur
 
@@ -203,9 +215,15 @@ window.onload = function () {
     // showHideDataViewer();
     switchLang();
     includeAllHTML();
-    document.querySelector("[value=" + language + "]").selected = true;
 
+    // Je sais pas si cette linge est encore utile
+    document.querySelector("[value=" + language + "]").selected = true;
     handleSize();
+}
+
+window.onload = function () {
+    initPage(); 
+    
 };
 
 function defaultValueRange(element) {
@@ -324,7 +342,11 @@ const DELTA_MIN = 0.002;
  */
 function startAnts(First, Space, firstX, firstY) {
 
-    //create an ant if none are left
+    if(shouldReset) {
+        resetGame();
+    }
+    else{
+        //create an ant if none are left
     if (futurAnts.length == 0) {
 
         futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
@@ -409,18 +431,19 @@ function startAnts(First, Space, firstX, firstY) {
 
         }
         //move all the other ants, from the closest to the farest
-        for (var i_6 = 1; i_6 < futurAnts.length; i_6++) {
+        for (let i_6 = 1; i_6 < futurAnts.length; i_6++) {
             futurAnts[i_6].follow(futurAnts[i_6 - 1]);
         }
     }
     //repeat the function
     if (!isGameStopped) {
-        setTimeout(startAnts, 10, firstAnt, Space, firstX, firstY);
+        // setTimeout 0s permet de placer la fonction à la fin de la pile d'appel du navigateur. ou un truc comme ça
+        setTimeout(startAnts, 0, firstAnt, Space, firstX, firstY);
+    }
     }
 
 
 }
-
 
 function delayFirst(Space, First, firstX, firstY) {
     //follow next point on the line
@@ -468,7 +491,7 @@ function delayFirst(Space, First, firstX, firstY) {
     }
     //make other ants follow the first
     futurAnts[0].follow(First);
-    for (var i_7 = 1; i_7 < futurAnts.length; i_7++) {
+    for (let i_7 = 1; i_7 < futurAnts.length; i_7++) {
         futurAnts[i_7].follow(futurAnts[i_7 - 1]);
     }
 }
@@ -481,18 +504,6 @@ function delayFirst(Space, First, firstX, firstY) {
  * Bricolage pour éviter du css et par flemme de transformer les images en checkboxs
  */
 function displayHideID(icon, id){
-    // const lst = ["tutorial", "information", "more"];
-    // if(lst.includes(id)){
-    //     // caché tous les autres
-    //     lst.forEach(eltID =>{
-    //         if(eltID != id){
-    //             let elt = document.getElementById(eltID);
-    //             elt.style.display = 'none';
-    //         }
-    //         }
-    //     );
-    // }
-
     console.log("displayHideID", id);
     let elt = document.getElementById(id);
     if(elt.style.display == 'block'){
@@ -503,6 +514,81 @@ function displayHideID(icon, id){
         elt.style.display = 'block';
         icon.style.backgroundColor = 'rgb(221, 221, 221)';
     }
+}
+
+
+// attention stratégie déguelasse mais flemme de reprendre son code de zéro
+let shouldReset = false;
+
+function resetGame(){
+    shouldReset = false;
+    let dataViewer = document.getElementById("dataViewer");
+    let curve = document.getElementById("curve");
+    // suppr la curve
+    dataViewer.removeChild(curve);
+    // recréer la curve
+    curve = document.createElement("canvas");
+    curve.id = "curve";
+    dataViewer.appendChild(curve);
+
+
+    // je sais pas pourquoi l'ancien canvas concerve les anciens traits --> donc on le suppr
+    // TODO : code déguelasse à refaire
     
+    // On le suppr
+    let playGround = document.getElementById("playGround");
+    playGround.remove();
+    // On le recréer
+    playGround = document.createElement("canvas");
+    playGround.id = "playGround";
+    // add the canvas to the playPanel
+    document.getElementById("playPanel").appendChild(playGround);
+    handleSize();
+
+    
+    // Set to null to make sure the old object is deleted
+    firstAnt = null;
+    firstAnt = new Ant('./assets/ant.png', 30, 30);
+    
+    // suppr all old ants
+    for(let i = 0; i < futurAnts.length; i++){
+        futurAnts[i].img.remove();
+    }
+    draw = true;
+    d.clearCanvas();
+    d = null;
+    // suppr all old data
+    clearSample();
+    compter = 2;
+    // suppr all old canvas
+    for(let i = 0; i < canvasTab.length; i++){
+        canvasTab[i].remove();
+    }
+    isGameStopped = false;
+    firstX = null;
+    firstY = null;
+
+    pathColorRedValue = 255;
+    pathColorBlueValue = 0;
+    pathColorGreenValue = 0;
+
+    // Set to null to make sure the old object is deleted
+    saveFirstDrawApp = null;
+    saveFirstDrawApp = Object();
+    
+    orientationDrawVertical = null;
+    
+    previousOrientation = null;
+    previousPathLength = Infinity;
+    deltaPathLength = Infinity;
+
+    // remove all picture of the playPanel
+    let imgTab = document.querySelectorAll("#playPanel img");
+    imgTab.forEach(img =>  {
+        img.remove();
+    });
+
+    initGame();
+
     
 }

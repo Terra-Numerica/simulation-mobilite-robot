@@ -36,7 +36,7 @@ function pauseDraw(element) {
 }
 function drawPath(element) {
     
-    for (var i_1 = 0; i_1 < canvasTab.length; i_1++) {
+    for (let i_1 = 0; i_1 < canvasTab.length; i_1++) {
         canvasTab[i_1].style.opacity = '0';
 
     }
@@ -46,11 +46,11 @@ function drawPath(element) {
 }
 function drawMainPaths(element) {
     drawAllPathOn = !drawAllPathOn;
-    for (var i_2 = 0; i_2 < canvasTab.length; i_2++) {
+    for (let i_2 = 0; i_2 < canvasTab.length; i_2++) {
         canvasTab[i_2].style.opacity = '0';
     }
     if (drawAllPathOn) {
-        for (var i_3 = 0; i_3 < canvasTab.length; i_3++) {
+        for (let i_3 = 0; i_3 < canvasTab.length; i_3++) {
             canvasTab[i_3].style.opacity = '1';
         }
     }
@@ -59,13 +59,13 @@ function drawAllPaths(element) {
     
     let limite = (canvasTab.length < 1000) ? canvasTab.length : 1000;
 
-    for (var i_4 = 0; i_4 < limite; i_4++) {
+    for (let i_4 = 0; i_4 < limite; i_4++) {
         canvasTab[i_4].style.opacity = '0';
 
     }
     if (element.checked) {
         document.getElementById('drawMain').checked = false;
-        for (var i_5 = 0; i_5 < limite; i_5++) {
+        for (let i_5 = 0; i_5 < limite; i_5++) {
             canvasTab[i_5].style.opacity = '1';
         }
     }
@@ -80,14 +80,14 @@ function createGIF() {
         return;
     }
    
-    var gif = new GIF({
+    let gif = new GIF({
         workerScript: './library/gif.js.optimized/dist/gif.worker.js',
         workers: navigator.hardwareConcurrency,
         quality: 100,
         transparent: "#0x00FF00"
     });
 
-    var canvasFinal = document.createElement('canvas');
+    let canvasFinal = document.createElement('canvas');
 
     let originalCanvas = document.getElementById("playGround");
 
@@ -95,22 +95,22 @@ function createGIF() {
     canvasFinal.height = originalCanvas.height;
 
     // Get the background image of the body
-    var bodyBackgroundImage = getComputedStyle(document.body).backgroundImage;
+    let bodyBackgroundImage = getComputedStyle(document.body).backgroundImage;
 
     // Load the background image
-    var bgImage = new Image();
+    let bgImage = new Image();
     bgImage.onload = function () {
         canvasFinal.getContext('2d').drawImage(bgImage, 0, 0, canvasFinal.width, canvasFinal.height);
         addFramesToGif(gif, canvasFinal);
     };
     
     // Extract the URL from the background image property (removing quotes if present)
-    var bgImageUrl = bodyBackgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+    let bgImageUrl = bodyBackgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
     bgImage.src = bgImageUrl;
 
     function addFramesToGif(gif, canvas) {
         gif.addFrame(canvas, { delay: 200 });
-        for (var i_9 = 0; i_9 < canvasTab.length; i_9++) {
+        for (let i_9 = 0; i_9 < canvasTab.length; i_9++) {
             canvas.getContext('2d').drawImage(canvasTab[i_9], 0, 0);
             gif.addFrame(canvas, {
                 delay: Math.max(40, 200 - 10 * i_9),
@@ -121,9 +121,9 @@ function createGIF() {
     }
 
     function gifRender(gif) {
-        var load;
-        var loader;
-        var text;
+        let load;
+        let loader;
+        let text;
 
         // Arrêt le temps de la génération du GIF
         if(!isGameStopped){
@@ -174,7 +174,7 @@ function createGIF() {
             document.getElementById("playPanel").removeChild(loader);
     
             // Create an anchor element to trigger the download
-            var downloadLink = document.createElement('a');
+            let downloadLink = document.createElement('a');
             downloadLink.href = URL.createObjectURL(blob);
             downloadLink.download = 'generated_gif.gif'; // You can set the desired filename here
             downloadLink.style.display = 'none'; // Hide the anchor element

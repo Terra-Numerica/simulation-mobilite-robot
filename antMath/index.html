@@ -145,7 +145,9 @@
         <button translate id="stopButton" class="controlButton" onclick="pauseDraw(this)">Stop</button>
         
         <!-- <button class="controlButton" onclick="creatGIF(this)">GIF</button> -->
-        <button translate id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button>
+        <!-- <button translate id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button> -->
+        <!-- Reset only if there is a path draw -->
+        <button translate id="resetButton" class="controlButton" onclick="if(!draw) shouldReset = true">Reset</button>
         <button translate id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">Show all path</button>
 
       </div>

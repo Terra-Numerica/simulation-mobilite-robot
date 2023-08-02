@@ -7,8 +7,6 @@
     z-index: 999;
 }
 
-
-
 .dropdown-square {
     /*style the "box" in its minimzed state*/
     /* background-color: var(--navyColorTN); */
@@ -47,25 +45,16 @@
 }
 .dropdown-square label {
     /*style the labels to look like dropdown options*/
-    /* display:none; */
+
     display: block;
-    /* margin:2px; */
-    /* height:46px;  */
-    /* height:calc(var(--iconHeight) - 2px); */
+
     height:var(--iconHeight);
-    /* opacity:0.2;  */
-    /* background-image: url("../img/icon/changeBG1.png"); */
-    /* background-image:url("../img/background/ground.jpg"); */
     background-size:contain;
 
-    /* color: var(--blueColorTN); */
     color: black;
-    /* font-size: 2.1em; */
     font-size: calc(var(--iconHeight) * 0.7);
     
 }
-
-
 
 .dropdown-square:hover label{
     /*this is how labels render in the "expanded" state.
@@ -76,18 +65,12 @@
     
 }
 
-
 .dropdown-square input:checked + label {
     /*tricky! labels immediately following a checked radio button
       (with our markup they are semantically related) should be fully opaque
       and visible even in the collapsed menu*/
     opacity:1 !important; display:block;
 }
-
-/* .dropdown-input{
-    height: 0;
-    width: 0;
-} */
 
 
 label[for=choiceBackgroundGrass] {background-image:url("../img/background/ground3.jpg");}
