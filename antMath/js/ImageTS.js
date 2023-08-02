@@ -14,7 +14,7 @@ let futurAnts = new Array();
 let draw = true;
 
 /**
- * Space between two ants
+ * d between two ants
  */
 let spacingAnt = 30;
 
@@ -107,6 +107,7 @@ function drawHandler() {
     // Si path assez long, on dessine
     else if (draw) {
         draw = false;
+        shouldReset = false;
 
         orientationDrawVertical = (window.innerHeight > window.innerWidth) ? true : false;
 
@@ -126,7 +127,7 @@ function drawHandler() {
         //start main prg, with the speed choosen by the user
         // saveFirstDrawApp.context = context;
 
-        startAnts(firstAnt, d, firstX, firstY);
+        startAnts();
     }
 }
 
@@ -270,21 +271,10 @@ function handleSize(){
         if (controlPanel.style.display != "block") {
             controlPanel.style.display = "block";
         }
-        // let iconBar_buttonDiv = document.getElementById("iconBar-buttonDiv");
-        // iconBar_buttonDiv.style.display = "contents";
-
-        // // hamburger input
-        // let hamburgerInput = document.querySelector(".checkbox");
-        // hamburgerInput.checked = false;
     }
+        
 
-    // if(window.innerWidth <= 900){
-    //     let iconBar_buttonDiv = document.getElementById("iconBar-buttonDiv");
-    //     iconBar_buttonDiv.style.display = "none";
-
-    //     let controlPanel = document.getElementById("controlPanel");
-    //     controlPanel.style.display = "none";
-    // }
+  
 
     let playPanel = document.getElementById("playPanel");
     let playGround = document.getElementById("playGround");
@@ -335,12 +325,12 @@ const DELTA_MIN = 0.002;
 
 /**
  * 
- * @param {Ant} First First ant of the queue
- * @param {DrawingApp} Space The curb 
+ * @param {Ant} firstAnt firstAnt ant of the queue
+ * @param {DrawingApp} d The curb 
  * @param {number} firstX coord of thestart of  path 
  * @param {number} firstY coord of thestart of  path
  */
-function startAnts(First, Space, firstX, firstY) {
+function startAnts() {
 
     if(shouldReset) {
         resetGame();
@@ -355,35 +345,35 @@ function startAnts(First, Space, firstX, firstY) {
 
     }
     //While the first ant is still mooving
-    if (Space.clickX.length > 0) {
-        if (Space.clickX.length == 1) {
-            delayFirst(Space, First, firstX, firstY);
+    if (d.clickX.length > 0) {
+        if (d.clickX.length == 1) {
+            delayFirst();
             //change the first ant in food at the end and add the lenght of its path
-            if (!(Math.abs(First.x - Space.clickX[0]) > 1 && Math.abs(First.y - Space.clickY[0]) > 1)) {
-                Space.removeFirstOne();
-                // First.img.src = './assets/strawberry.png';
-                First.img.src = './img/fraise_trans.png';
-                First.img.style.width = 80 + 'px';
-                First.img.style.height = 80 + 'px';
-                First.img.style.transform = 'translateX(' + -50 + '%) translateY(' + -50 + '%) rotate(' + (0) + 'deg) ';
-                updateSample(First.distance);
+            if (!(Math.abs(firstAnt.x - d.clickX[0]) > 1 && Math.abs(firstAnt.y - d.clickY[0]) > 1)) {
+                d.removeFirstOne();
+                // firstAnt.img.src = './assets/strawberry.png';
+                firstAnt.img.src = './img/fraise_trans.png';
+                firstAnt.img.style.width = 80 + 'px';
+                firstAnt.img.style.height = 80 + 'px';
+                firstAnt.img.style.transform = 'translateX(' + -50 + '%) translateY(' + -50 + '%) rotate(' + (0) + 'deg) ';
+                updateSample(firstAnt.distance);
 
                 // évite d'afficher 1 millipns de path qaund différence minime
-                deltaPathLength = previousPathLength - First.distance;
+                deltaPathLength = previousPathLength - firstAnt.distance;
 
             }
         }
         else {
-            delayFirst(Space, firstAnt, firstX, firstY);
-            if (!(Math.abs(First.x - Space.clickX[0]) > 1 && Math.abs(First.y - Space.clickY[0]) > 1)) {
-                Space.removeFirstOne();
+            delayFirst();
+            if (!(Math.abs(firstAnt.x - d.clickX[0]) > 1 && Math.abs(firstAnt.y - d.clickY[0]) > 1)) {
+                d.removeFirstOne();
             }
         }
         //Once the first ant stopped, run forever
     }
     else {
-        //new first follow the never changing First with special function with no slow
-        futurAnts[0].followEnd(First);
+        //new first follow the never changing firstAnt with special function with no slow
+        futurAnts[0].followEnd(firstAnt);
         //add a new ant every time the last one is farther than 'spacingAnt'
         if (Math.sqrt((futurAnts[futurAnts.length - 1].x - firstX) * (futurAnts[futurAnts.length - 1].x - firstX) + (futurAnts[futurAnts.length - 1].y - firstY) * (futurAnts[futurAnts.length - 1].y - firstY)) > spacingAnt) {
             if (compter == drawingGap) {
@@ -419,7 +409,7 @@ function startAnts(First, Space, firstX, firstY) {
             compter++;
         }
         //if the first reached the end, add its distance to the curve then delete it from the array and the html
-        if (futurAnts[0].x == First.x && futurAnts[0].y == First.y) {
+        if (futurAnts[0].x == firstAnt.x && futurAnts[0].y == firstAnt.y) {
             updateSample(futurAnts[0].distance);
             document.getElementById("playPanel").removeChild(futurAnts.shift().img);
 
@@ -438,16 +428,16 @@ function startAnts(First, Space, firstX, firstY) {
     //repeat the function
     if (!isGameStopped) {
         // setTimeout 0s permet de placer la fonction à la fin de la pile d'appel du navigateur. ou un truc comme ça
-        setTimeout(startAnts, 0, firstAnt, Space, firstX, firstY);
+        setTimeout(startAnts, 0);
     }
     }
 
 
 }
 
-function delayFirst(Space, First, firstX, firstY) {
+function delayFirst() {
     //follow next point on the line
-    First.followN(Space.clickX[0], Space.clickY[0]);
+    firstAnt.followN(d.clickX[0], d.clickY[0]);
     //create a second ant to avoid bugs
     if (futurAnts.length == 0) {
         futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
@@ -490,7 +480,7 @@ function delayFirst(Space, First, firstX, firstY) {
         compter++;
     }
     //make other ants follow the first
-    futurAnts[0].follow(First);
+    futurAnts[0].follow(firstAnt);
     for (let i_7 = 1; i_7 < futurAnts.length; i_7++) {
         futurAnts[i_7].follow(futurAnts[i_7 - 1]);
     }
@@ -521,6 +511,7 @@ function displayHideID(icon, id){
 let shouldReset = false;
 
 function resetGame(){
+
     shouldReset = false;
     let dataViewer = document.getElementById("dataViewer");
     let curve = document.getElementById("curve");
@@ -559,6 +550,7 @@ function resetGame(){
     d = null;
     // suppr all old data
     clearSample();
+    drawingGap = 4;
     compter = 2;
     // suppr all old canvas
     for(let i = 0; i < canvasTab.length; i++){
@@ -587,6 +579,10 @@ function resetGame(){
     imgTab.forEach(img =>  {
         img.remove();
     });
+
+    
+    isGameStopped = false;
+    document.getElementById('stopButton').innerText = TRAD.stopButton[language];
 
     initGame();
 

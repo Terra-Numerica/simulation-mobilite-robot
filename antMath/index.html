@@ -36,13 +36,11 @@
   <link rel="stylesheet" href="./css/globalVar.css">
   <link rel="stylesheet" href="./css/rangeInput.css">
 
-  <!-- <link rel="stylesheet" href="./css/sideScrollSelect.css"> -->
+  <link rel="stylesheet" href="./css/sideScrollSelect.css">
 
 </head>
 
 <body>
-
-  <h1></h1>
 
   <!-- <a href="https://terra-numerica.org/" target="_blank" id="bigTN"><img src="img/logoTN.png"
     alt="Go to Terra Numerica"></a> -->
@@ -62,10 +60,6 @@
 
       <!-- Drop-down : select background -->
       <div class="dropdown-square" id="background-picker" title="background picker">
-
-        <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized" class="dropdown-input"
-          onclick="changeBackground(this)">
-        <label title="Personalized" for="choiceBackgroundPersonalized"></label>
         
         <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass" class="dropdown-input"
          onclick="changeBackground(this)" checked="checked">
@@ -161,7 +155,16 @@
         <!-- <button class="controlButton" onclick="creatGIF(this)">GIF</button> -->
         <!-- <button translate id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button> -->
         <!-- Reset only if there is a path draw -->
-        <button translate id="resetButton" class="controlButton" onclick="waitForReset=true">Reset</button>
+        <button translate id="resetButton" class="controlButton" onclick="
+        if(isGameStopped){
+          resetGame();
+        }else{
+          shouldReset = true;
+        }
+        shouldReset = true"
+        
+        
+        >Reset</button>
         <button translate id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">Show all path</button>
 
       </div>
