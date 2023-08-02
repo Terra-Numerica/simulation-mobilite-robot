@@ -112,7 +112,6 @@ var DrawingApp = /** @class */ (function () {
         this.clickDrag.push(dragging);
     };
     DrawingApp.prototype.clearCanvas = function () {
-        console.log("ok");
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.clickX = [];
         this.clickY = [];

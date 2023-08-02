@@ -36,9 +36,13 @@
   <link rel="stylesheet" href="./css/globalVar.css">
   <link rel="stylesheet" href="./css/rangeInput.css">
 
+  <!-- <link rel="stylesheet" href="./css/sideScrollSelect.css"> -->
+
 </head>
 
 <body>
+
+  <h1></h1>
 
   <!-- <a href="https://terra-numerica.org/" target="_blank" id="bigTN"><img src="img/logoTN.png"
     alt="Go to Terra Numerica"></a> -->
@@ -58,6 +62,10 @@
 
       <!-- Drop-down : select background -->
       <div class="dropdown-square" id="background-picker" title="background picker">
+
+        <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized" class="dropdown-input"
+          onclick="changeBackground(this)">
+        <label title="Personalized" for="choiceBackgroundPersonalized"></label>
         
         <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass" class="dropdown-input"
          onclick="changeBackground(this)" checked="checked">
@@ -72,9 +80,7 @@
           onclick="changeBackground(this)">
         <label title="Dirt" for="choiceBackgroundDirt"></label>
 
-        <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized" class="dropdown-input"
-          onclick="changeBackground(this)">
-        <label title="Personalized" for="choiceBackgroundPersonalized"></label>
+        
         
         <!-- Input hidden for choice file -->
         <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized"
@@ -97,7 +103,7 @@
       <input type="checkbox" name="data-viewer-checkbox" id="data-viewer-checkbox" onchange="displayHideID(this, 'dataViewer')">
       <input type="checkbox" name="more-checkbox" id="more-checkbox" onchange="displayHideID(this, 'more')"> -->
 
-
+        <!-- <img src="img/icon/gear.jpeg" alt="gear" onclick="displayHideID(this, 'test')" > -->
       <img src="img/lucIcon/GIF.png" alt="Download GIF" onclick="createGIF(this)">
       <img src="img/lucIcon/interrogation.png" alt="tutorial" onclick="displayHideID(this, 'tutorial')">
       <img src="img/lucIcon/controle.png" alt="inputControler" onclick="displayHideID(this, 'inputControler')" >
@@ -118,6 +124,14 @@
 
     <!-- INPUT PANEL -->
     <div id="inputControler">
+
+
+      <!-- <div class="dropdown-square-side" id="my-picker">
+        <input type="radio" id="" name="line-lang-picker" value="fr" >
+        <label title="Français" for="choiceLangFR">FR</label>
+        <input type="radio" id="" name="line-lang-picker" value="en">
+        <label title="English" for="">EN</label>
+      </div> -->
 
       <!-- Slider -->
       <div id="antControler">
@@ -147,7 +161,7 @@
         <!-- <button class="controlButton" onclick="creatGIF(this)">GIF</button> -->
         <!-- <button translate id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button> -->
         <!-- Reset only if there is a path draw -->
-        <button translate id="resetButton" class="controlButton" onclick="if(!draw) shouldReset = true">Reset</button>
+        <button translate id="resetButton" class="controlButton" onclick="waitForReset=true">Reset</button>
         <button translate id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">Show all path</button>
 
       </div>

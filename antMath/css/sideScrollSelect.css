@@ -1,12 +1,14 @@
 
 
-.dropdown-square{
+.dropdown-square-side{
     z-index: 999;
 }
 
-.dropdown-square {
+.dropdown-square-side {
     /*style the "box" in its minimzed state*/
     /* background-color: var(--navyColorTN); */
+    display: flex;
+    flex-direction: row;
     background-color: white;
     text-align: center;
     border:3px solid black; 
@@ -18,34 +20,36 @@
 
     overflow:hidden;
     /*animate the dropdown collapsing*/
-    transition: height 0.1s;
+    transition: width 0.1s;
     /* Over the iconDiv */
     
 }
-.dropdown-square:hover {
+.dropdown-square-side:hover {
     /*when expanded, the dropdown will get native means of scrolling*/
     /* height:200px;  */
     /* overflow-y:scroll; */
     /*animate the dropdown expanding*/
-    transition: height 0.5s;
+    transition: width 0.5s;
     ;
 }
 
-#background-picker:hover{height: calc(var(--nbBGChoice) * var(--iconHeight));}
-#lang-picker:hover{height: calc(var(--nbLangChoice) * var(--iconHeight));}
+#my-picker:hover{width: calc(2 * var(--iconHeight));}
 
-.dropdown-square input {
+
+.dropdown-square-side input {
     /*hide the nasty default radio buttons!*/
 
     position:absolute;top:0;left:0;opacity:0;
     
 }
-.dropdown-square label {
+.dropdown-square-side label {
     /*style the labels to look like dropdown options*/
 
-    display: block;
+    display:flex;
+    flex-direction: row;
 
     height:var(--iconHeight);
+    width: var(--iconHeight);
     background-size:contain;
 
     color: black;
@@ -53,26 +57,27 @@
     
 }
 
-.dropdown-square:hover label{
+.dropdown-square-side:hover label{
     /*this is how labels render in the "expanded" state.
      we want to see only the selected radio button in the collapsed menu,
      and all of them when expanded*/
-    display:block;
-    
+    display:flex;
+    flex-direction: row;
     
 }
 
-.dropdown-square input:checked + label {
+.dropdown-square-side input:checked + label {
     /*tricky! labels immediately following a checked radio button
       (with our markup they are semantically related) should be fully opaque
       and visible even in the collapsed menu*/
-    opacity:1 !important; display:block;
+    opacity:1 !important; display:flex;
+    flex-direction: row;
 }
 
 
 label[for=choiceBackgroundGrass] {background-image:url("../img/background/ground3.jpg");}
 label[for=choiceBackgroundSand] {background-image:url("../img/background/ground2.jpg");}
 label[for=choiceBackgroundDirt] {background-image:url("../img/background/ground.jpg");}
-label[for=choiceBackgroundPersonalized] {background-image:url("../img/icon/changeBG3.png");}
+label[for=choiceBackgroundPersonalized] {background-image:url("../img/icon/changeBG1.png");}
 
 
