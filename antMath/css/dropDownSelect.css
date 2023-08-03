@@ -24,8 +24,6 @@
 }
 .dropdown-square:hover {
     /*when expanded, the dropdown will get native means of scrolling*/
-    /* height:200px;  */
-    /* overflow-y:scroll; */
     /*animate the dropdown expanding*/
     transition: height 0.5s;
     ;
@@ -74,5 +72,11 @@ label[for=choiceBackgroundGrass] {background-image:url("../img/background/ground
 label[for=choiceBackgroundSand] {background-image:url("../img/background/ground2.jpg");}
 label[for=choiceBackgroundDirt] {background-image:url("../img/background/ground.jpg");}
 label[for=choiceBackgroundPersonalized] {background-image:url("../img/icon/changeBG3.png");}
+
+
+/* Hide input */
+.dropdown-square>input{
+    display: none;
+}
 
 

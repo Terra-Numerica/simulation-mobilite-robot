@@ -107,7 +107,7 @@ var Ant = /** @class */ (function () {
     Ant.prototype.updatePheromone = function (choosenkey, currentIsland) {
         if ((currentIsland instanceof IslandAnthill) && this.backward == true) {
             this.backward = false;
-            this.img.src = './assets/ant.png';
+            this.img.src = './img/insect/ant.png';
         }
         if (currentIsland instanceof IslandFood && this.backward == false) {
             this.backward = true;

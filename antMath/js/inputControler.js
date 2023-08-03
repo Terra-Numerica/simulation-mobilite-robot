@@ -26,12 +26,12 @@ function resetDraw(element) {
 function pauseDraw(element) {
     if (isGameStopped) {
         isGameStopped = false;
-        document.getElementById('stopButton').innerText = TRAD.stopButton[language];
+        document.getElementById('stopButton').innerText = TRANSLATE.stopButton.innerText[language];
         setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
     }
     else {
         isGameStopped = true;
-        document.getElementById('stopButton').innerText = TRAD.startButton[language];
+        document.getElementById('stopButton').innerText = TRANSLATE.startButton.innerText[language];
     }
 }
 function drawPath(element) {
@@ -76,9 +76,13 @@ function createGIF() {
 
     // si l'utilisateur n'a pas dessiné, on ne fait rien
     if(canvasTab.length == 0){
-        alert("Please draw something before creating a GIF");
+        // alert("Veuillez dessiner un chemin avant de générer un GIF");
+        let alert = document.getElementById("alertGenerateGIF");
+        fadeOut(alert, 2,  1000);
         return;
     }
+
+    
    
     let gif = new GIF({
         workerScript: './library/gif.js.optimized/dist/gif.worker.js',

@@ -1,5 +1,5 @@
 
-let firstAnt = new Ant('./assets/ant.png', 30, 30);
+let firstAnt = new Ant('./img/insect/ant.png', 30, 30);
 
 /**
  * Array containing all the ants
@@ -92,6 +92,38 @@ function isPathTooShort() {
     return true;
 }
 
+
+
+
+function fadeOut(element, fadeOutDuration=1, timeBeforeFadeOut = 1000) {
+    element.style.display = "block";
+    let opacity = 1;
+    element.style.opacity = opacity;
+  
+    // Wait for 1 seconde (1000 ms) before starting the fadeOut
+    setTimeout(function () {
+      function decreaseOpacity() {
+        opacity -= (0.02 / fadeOutDuration);
+        element.style.opacity = opacity;
+        if (opacity > 0) {
+          requestAnimationFrame(decreaseOpacity);
+        }
+      }
+  
+      requestAnimationFrame(decreaseOpacity);
+    }, timeBeforeFadeOut); // 1000 ms (1 second) delay before starting fadeOut
+
+    setTimeout(function () {
+        element.style.display = "none";
+        console.log("none");
+    }, timeBeforeFadeOut + 1000*fadeOutDuration); // 1000 ms (1 second) delay before starting fadeOut
+    // 1000 ms (1 second) delay before starting fadeOut
+    
+  }
+
+  
+
+
 /**
  * Handle the draw of the path made by the user on click / touch screen
  */
@@ -99,7 +131,8 @@ function drawHandler() {
 
     // Si path trop court, on alerte et on ne dessine pas
     if (isPathTooShort()) {
-        // alert(TRAD.alertPathTooShort[language]);
+        let alert = document.getElementById("alertPathTooShort");
+        fadeOut(alert, 1, 500);
         d.clearCanvas();
         return;
     }
@@ -214,7 +247,7 @@ function initPage(){
     // Pas touche au path selection 
 
     // showHideDataViewer();
-    switchLang();
+    switchLang2();
     includeAllHTML();
 
     // Je sais pas si cette linge est encore utile
@@ -339,7 +372,7 @@ function startAnts() {
         //create an ant if none are left
     if (futurAnts.length == 0) {
 
-        futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
+        futurAnts.push(new DrawingAnt('./img/insect/RedAnt.png', 30, 30, true));
         futurAnts[futurAnts.length - 1].move(firstX, firstY);
         document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
 
@@ -393,16 +426,16 @@ function startAnts() {
                 // if(drawAllPathOn){
                 if (drawAllPathOn) {
                     // if (document.getElementById('drawMain').checked) {
-                    futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
+                    futurAnts.push(new DrawingAnt('./img/insect/RedAnt.png', 30, 30, true));
                 }
                 else {
-                    futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, false));
+                    futurAnts.push(new DrawingAnt('./img/insect/RedAnt.png', 30, 30, false));
                 }
                 futurAnts[futurAnts.length - 1].move(firstX, firstY);
                 document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
             }
             else {
-                futurAnts.push(new DrawingAnt('./assets/ant.png', 30, 30, false));
+                futurAnts.push(new DrawingAnt('./img/insect/ant.png', 30, 30, false));
                 futurAnts[futurAnts.length - 1].move(firstX, firstY);
                 document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
             }
@@ -440,7 +473,7 @@ function delayFirst() {
     firstAnt.followN(d.clickX[0], d.clickY[0]);
     //create a second ant to avoid bugs
     if (futurAnts.length == 0) {
-        futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
+        futurAnts.push(new DrawingAnt('./img/insect/RedAnt.png', 30, 30, true));
         futurAnts[futurAnts.length - 1].move(firstX, firstY);
         document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
         //create new ants
@@ -464,16 +497,16 @@ function delayFirst() {
             // if (drawAllPathOn && (deltaPathLength > DELTA_MIN || deltaPathLength < 0)) {
             if (drawAllPathOn ) {
                 // if (document.getElementById('drawMain').checked) {
-                futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, true));
+                futurAnts.push(new DrawingAnt('./img/insect/RedAnt.png', 30, 30, true));
             }
             else {
-                futurAnts.push(new DrawingAnt('./assets/RedAnt.png', 30, 30, false));
+                futurAnts.push(new DrawingAnt('./img/insect/RedAnt.png', 30, 30, false));
             }
             futurAnts[futurAnts.length - 1].move(firstX, firstY);
             document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
         }
         else {
-            futurAnts.push(new DrawingAnt('./assets/ant.png', 30, 30, false));
+            futurAnts.push(new DrawingAnt('./img/insect/ant.png', 30, 30, false));
             futurAnts[futurAnts.length - 1].move(firstX, firstY);
             document.getElementById("playPanel").appendChild(futurAnts[futurAnts.length - 1].img);
         }
@@ -512,7 +545,15 @@ let shouldReset = false;
 
 function resetGame(){
 
+    document.getElementById("download-gif").style.cursor = "not-allowed";
+
+
     shouldReset = false;
+    let downloadGif = document.getElementById("download-gif");
+    downloadGif.alt = TRANSLATE.alertGenerateGIF.innerText[language];
+    downloadGif.title = TRANSLATE.alertGenerateGIF.innerText[language];
+
+
     let dataViewer = document.getElementById("dataViewer");
     let curve = document.getElementById("curve");
     // suppr la curve
@@ -539,7 +580,7 @@ function resetGame(){
     
     // Set to null to make sure the old object is deleted
     firstAnt = null;
-    firstAnt = new Ant('./assets/ant.png', 30, 30);
+    firstAnt = new Ant('./img/insect/ant.png', 30, 30);
     
     // suppr all old ants
     for(let i = 0; i < futurAnts.length; i++){
@@ -582,8 +623,7 @@ function resetGame(){
 
     
     isGameStopped = false;
-    document.getElementById('stopButton').innerText = TRAD.stopButton[language];
-
+    document.getElementById('stopButton').innerText = TRANSLATE.stopButton.innerText[language];
     initGame();
 
     

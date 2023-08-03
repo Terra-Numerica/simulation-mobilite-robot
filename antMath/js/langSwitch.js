@@ -1,7 +1,8 @@
-// USe cookie / location to set the language
 
 // Take the language from the navigator
-let lang_support = ["en", "fr"];
+let lang_support = ["en", "fr","zh","hi","es","ar","bn","ru"];
+
+// Use the language of the navigator
 var language = window.navigator.userLanguage || window.navigator.language;
 // Remove the country code
 language = language.split("-")[0];
@@ -16,44 +17,12 @@ if (!lang_support.includes(language)) {
  */
 function updateLanguage(elt){
     language = elt.value;
-    switchLang();
-    includeAllHTML();
+    switchLang2();
     moveInputToFirstPosition(elt);
 }
 
 console.log("Language : " + language);
 
-/**
- * Switch the language of the page
- */
-function switchLang(){
-
-    if (!lang_support.includes(language)) {
-        language = "en";
-    }
-
-    console.log("Switching to " + language);
-
-    // let lst = document.querySelectorAll("[lang]");
-    document.querySelector("html").lang = language;
-    let lst = document.querySelectorAll("[translate]");
-
-
-    lst.forEach(elt => {
-        if(elt.id =="curve"){
-            chart.data.datasets[0].label = TRAD.curve.title[language];
-            chart.options.scales.x.title.text = TRAD.curve.axeX[language];
-            chart.options.scales.y.title.text = TRAD.curve.axeY[language];
-            chart.update();
-        }
-        else{
-            elt.innerText =  TRAD[elt.id][language];
-            // elt.lang = language;
-        }
-    });
-    includeAllHTML();
-
-}
 
 /**
  * Include all html file in div with the attribute includeHTML
@@ -78,7 +47,9 @@ function includeHTML(elmnt) {
         elmnt.removeChild(child);
     });
 
-    file = "html/" + language + "_" +  elmnt.getAttribute( "includeHTML");
+    let doc_lang = (language == "en" || language == "fr") ? language : "en";
+
+    file = "html/" + doc_lang + "_" +  elmnt.getAttribute( "includeHTML");
     if (file) {
         /* Make an HTTP request using the attribute value as the file name: */
         xhttp = new XMLHttpRequest();
@@ -95,6 +66,401 @@ function includeHTML(elmnt) {
         return;
     }
 }
+
+
+
+
+
+
+
+function switchLang2() {
+    if (!lang_support.includes(language)) {
+        language = "en";
+    }
+
+    console.log("Switching to " + language);
+    document.querySelector("html").lang = language;
+
+    let lstTitle = document.querySelectorAll("[title]");
+    let lstAlt = document.querySelectorAll("[alt]");
+    let lstInnerText = document.querySelectorAll("[translate]");
+
+    // Translate the title
+    lstTitle.forEach(elt => {
+        // if label : same translation of the input associate to the input
+        // if id start with choiceLang, do not translate --> keep leasible for peapole
+        if (elt.tagName == "LABEL") {
+            let tagID = elt.htmlFor;
+            if (!tagID.startsWith("choiceLang")){
+                elt.title = TRANSLATE[elt.htmlFor].title[language];
+            }
+        }
+        else if(elt.id == "download-gif"){
+            elt.title = (allowDownload) ? TRANSLATE[elt.id].title[language] : TRANSLATE.alertGenerateGIF.innerText[language];
+        }
+        else {
+            elt.title = TRANSLATE[elt.id].title[language];
+        }
+        
+    });
+    // Translate the alt
+    lstAlt.forEach(elt => {
+        if(elt.id == "download-gif"){
+            elt.title = (allowDownload) ? TRANSLATE[elt.id].title[language] : TRANSLATE.alertGenerateGIF.innerText[language];
+        }
+        else{
+            elt.alt = TRANSLATE[elt.id].alt[language];
+        }
+        
+    });
+    // Translate the innerText
+    lstInnerText.forEach(elt => {
+        elt.innerText = TRANSLATE[elt.id].innerText[language];
+    });
+
+    // Translate the chart
+    chart.data.datasets[0].label = TRANSLATE.curve.title[language];
+    chart.options.scales.x.title.text = TRANSLATE.curve.axeX[language];
+    chart.options.scales.y.title.text = TRANSLATE.curve.axeY[language];
+    chart.update();
+
+    includeAllHTML();
+    
+}
+
+const TRANSLATE = {
+
+    "alertPathTooShort": {
+        "innerText": {
+            "en": "Please draw a longer path",
+            "fr": "Veuillez dessiner un chemin plus long",
+            "zh": "请绘制更长的路径",
+            "hi": "कृपया एक लंबा पथ बनाएं",
+            "es": "Por favor, dibuja un camino más largo",
+            "ar": "يرجى رسم مسار أطول",
+            "bn": "একটি লম্বা পথ আঁকুন দয়া করে",
+            "ru": "Пожалуйста, нарисуйте более длинный путь"
+        }
+    },
+
+    "alertGenerateGIF": {
+        "innerText": {
+            "en": "Please draw a path before generating a GIF",
+            "fr": "Veuillez dessiner un chemin avant de générer un GIF",
+            "zh": "在生成GIF之前，请绘制路径",
+            "hi": "GIF उत्पन्न करने से पहले कृपया एक पथ बनाएं",
+            "es": "Por favor, dibuja un camino antes de generar un GIF",
+            "ar": "يرجى رسم مسار قبل إنشاء ملف GIF",
+            "bn": "GIF তৈরি করার আগে দয়া করে একটি পথ আঁকুন",
+            "ru": "Пожалуйста, нарисуйте путь перед созданием GIF"
+        }
+    },
+
+
+    "background-picker": {
+        "title": {
+            "en": "Background picker",
+            "fr": "Sélection de l'arrière-plan",
+            "zh": "背景选择器",
+            "hi": "पृष्ठभूमि चुनें",
+            "es": "Selector de fondo",
+            "ar": "اختيار الخلفية",
+            "bn": "ব্যাকগ্রাউন্ড পিকার",
+            "ru": "Выбор фона"
+        }
+    },
+    "choiceBackgroundPersonalized": {
+        "title": {
+            "en": "Personalized",
+            "fr": "Personnalisé",
+            "zh": "个性化",
+            "hi": "व्यक्तिगत",
+            "es": "Personalizado",
+            "ar": "شخصي",
+            "bn": "ব্যক্তিগত",
+            "ru": "Персонализированный"
+        }
+    },
+    "choiceBackgroundGrass": {
+        "title": {
+            "en": "Grass",
+            "fr": "Herbe",
+            "zh": "草地",
+            "hi": "घास",
+            "es": "Hierba",
+            "ar": "عشب",
+            "bn": "ঘাস",
+            "ru": "Трава"
+        }
+    },
+    "choiceBackgroundSand": {
+        "title": {
+            "en": "Sand",
+            "fr": "Sable",
+            "zh": "沙滩",
+            "hi": "रेत",
+            "es": "Arena",
+            "ar": "رمل",
+            "bn": "বালু",
+            "ru": "Песок"
+        }
+    },
+    "choiceBackgroundDirt": {
+        "title": {
+            "en": "Dirt",
+            "fr": "Terre",
+            "zh": "泥土",
+            "hi": "मिट्टी",
+            "es": "Tierra",
+            "ar": "أتربة",
+            "bn": "মাটি",
+            "ru": "Грязь"
+        }
+    },
+    "backgroundPickerPersonalized": {
+        "title": {
+            "en": "Personalized Background Picker",
+            "fr": "Sélectionneur d'arrière-plan personnalisé",
+            "zh": "个性化背景选择器",
+            "hi": "व्यक्तिगत पृष्ठभूमि चयनकर्ता",
+            "es": "Selector de fondo personalizado",
+            "ar": "اختيار الخلفية الشخصي",
+            "bn": "ব্যক্তিগত ব্যাকগ্রাউন্ড পিকার",
+            "ru": "Персонализированный выбор фона"
+        }
+    },
+
+    "download-gif": {
+        "title": {
+            "en": "Download GIF",
+            "fr": "Télécharger le GIF",
+            "zh": "下载GIF",
+            "hi": "GIF डाउनलोड करें",
+            "es": "Descargar GIF",
+            "ar": "تحميل GIF",
+            "bn": "GIF ডাউনলোড করুন",
+            "ru": "Скачать GIF"
+        },
+        "alt": {
+            "en": "Download GIF",
+            "fr": "Télécharger le GIF",
+            "zh": "下载GIF",
+            "hi": "GIF डाउनलोड करें",
+            "es": "Descargar GIF",
+            "ar": "تحميل GIF",
+            "bn": "GIF ডাউনলোড করুন",
+            "ru": "Скачать GIF"
+        }
+    },
+    "tutorial-icon": {
+        "title": {
+            "en": "Tutorial",
+            "fr": "Tutoriel",
+            "zh": "教程",
+            "hi": "ट्यूटोरियल",
+            "es": "Tutorial",
+            "ar": "برنامج تعليمي",
+            "bn": "টিউটোরিয়াল",
+            "ru": "Учебник"
+        },
+        "alt": {
+            "en": "Tutorial",
+            "fr": "Tutoriel",
+            "zh": "教程",
+            "hi": "ट्यूटोरियल",
+            "es": "Tutorial",
+            "ar": "برنامج تعليمي",
+            "bn": "টিউটোরিয়াল",
+            "ru": "Учебник"
+        }
+    },
+    "control-icon": {
+        "title": {
+            "en": "Control",
+            "fr": "Contrôle",
+            "zh": "控制",
+            "hi": "नियंत्रण",
+            "es": "Control",
+            "ar": "مراقبة",
+            "bn": "কন্ট্রোল",
+            "ru": "Управление"
+        },
+        "alt": {
+            "en": "Control",
+            "fr": "Contrôle",
+            "zh": "控制",
+            "hi": "नियंत्रण",
+            "es": "Control",
+            "ar": "مراقبة",
+            "bn": "কন্ট্রোল",
+            "ru": "Управление"
+        }
+    },
+    "curve-icon": {
+        "title": {
+            "en": "Curve",
+            "fr": "Courbe",
+            "zh": "曲线",
+            "hi": "कर्व",
+            "es": "Curva",
+            "ar": "منحنى",
+            "bn": "বৃত্তাকার",
+            "ru": "Кривая"
+        },
+        "alt": {
+            "en": "Curve",
+            "fr": "Courbe",
+            "zh": "曲线",
+            "hi": "कर्व",
+            "es": "Curva",
+            "ar": "منحنى",
+            "bn": "বৃত্তাকার",
+            "ru": "Кривая"
+        }
+    },
+    "documentation-icon": {
+        "title": {
+            "en": "Documentation",
+            "fr": "Documentation",
+            "zh": "文档",
+            "hi": "दस्तावेज़ीकरण",
+            "es": "Documentación",
+            "ar": "توثيق",
+            "bn": "ডকুমেন্টেশন",
+            "ru": "Документация"
+        },
+        "alt": {
+            "en": "Documentation",
+            "fr": "Documentation",
+            "zh": "文档",
+            "hi": "दस्तावेज़ीकरण",
+            "es": "Documentación",
+            "ar": "توثيق",
+            "bn": "ডকুমেন্টেশন",
+            "ru": "Документация"
+        }
+    },
+
+    "antSpeedLabel": {
+        "innerText": {
+            "en": "Ant Speed",
+            "fr": "Vitesse des fourmis",
+            "zh": "蚂蚁速度",
+            "hi": "मच्छर की गति",
+            "es": "Velocidad de la hormiga",
+            "ar": "سرعة النملة",
+            "bn": "পিপড়ির গতি",
+            "ru": "Скорость муравья"
+        }
+    },
+    "antSpacingLabel": {
+        "innerText": {
+            "en": "Ant Spacing",
+            "fr": "Espacement des fourmis",
+            "zh": "蚂蚁间距",
+            "hi": "मच्छर के अंतराल",
+            "es": "Espaciado de la hormiga",
+            "ar": "تباعد النملة",
+            "bn": "পিপড়ির স্পেসিং",
+            "ru": "Интервал между муравьями"
+        }
+    },
+    "antPathLabel": {
+        "innerText": {
+            "en": "Ant path selected",
+            "fr": "Chemin de la fourmi sélectionnée",
+            "zh": "已选择蚂蚁路径",
+            "hi": "चयनित मच्छर पथ",
+            "es": "Camino de hormiga seleccionado",
+            "ar": "تم اختيار مسار النملة",
+            "bn": "পথ নির্বাচন করা পিপড়ি",
+            "ru": "Выбранный маршрут муравья"
+        }
+    },
+    "stopButton": {
+        "innerText": {
+            "en": "Stop",
+            "fr": "Arrêter",
+            "zh": "停止",
+            "hi": "रोकें",
+            "es": "Detener",
+            "ar": "توقف",
+            "bn": "থামো",
+            "ru": "Стоп"
+        }
+    },
+
+    "startButton":{
+        "innerText": {
+            "en":"Start",
+            "fr":"Départ",
+            "zh":"开始",
+            "hi":"प्रारंभ",
+            "es":"Comenzar",
+            "ar":"بداية",
+            "bn":"শুরু",
+            "ru":"Начать"
+        }
+    },
+    "resetButton": {
+        "innerText": {
+            "en": "Reset",
+            "fr": "Réinitialiser",
+            "zh": "重置",
+            "hi": "रीसेट",
+            "es": "Restablecer",
+            "ar": "إعادة تعيين",
+            "bn": "রিসেট",
+            "ru": "Сброс"
+        }
+    },
+    "allPathButton": {
+        "innerText": {
+            "en": "Show all path",
+            "fr": "Afficher tous les chemins",
+            "zh": "显示所有路径",
+            "hi": "सभी पथ दिखाएं",
+            "es": "Mostrar todos los caminos",
+            "ar": "إظهار جميع المسارات",
+            "bn": "সমস্ত পথ দেখাও",
+            "ru": "Показать все пути"
+        }
+    },
+    "curve": {
+        "title": {
+            "en": "Curve",
+            "fr": "Courbe",
+            "zh": "曲线",
+            "hi": "कर्व",
+            "es": "Curva",
+            "ar": "منحنى",
+            "bn": "বৃত্তাকার",
+            "ru": "Кривая"
+        },
+        "axeX": {
+            "en": "Iteration",
+            "fr": "Itération",
+            "zh": "迭代",
+            "hi": "पद",
+            "es": "Iteración",
+            "ar": "تكرار",
+            "bn": "পদ",
+            "ru": "Итерация"
+        },
+        "axeY": {
+            "en": "Path length",
+            "fr": "Longueur du chemin",
+            "zh": "路径长度",
+            "hi": "पथ लंबाई",
+            "es": "Longitud del camino",
+            "ar": "طول المسار",
+            "bn": "পথের দৈর্ঘ্য",
+            "ru": "Длина пути"
+        }
+    }
+};
+
+
 
 const TRAD =  {
     "antSpeedLabel":{

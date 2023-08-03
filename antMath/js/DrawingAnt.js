@@ -14,6 +14,8 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 
+let allowDownload = false;
+
 var DrawingAnt = /** @class */ (function (_super) {
     __extends(DrawingAnt, _super);
     function DrawingAnt(link, x, y, draw) {
@@ -40,6 +42,13 @@ var DrawingAnt = /** @class */ (function (_super) {
             document.getElementById("playPanel").appendChild(_this.canvas);
 
             canvasTab.push(_this.canvas);
+
+            // Allow to download the GIF
+            allowDownload = true;
+            document.getElementById("download-gif").style.cursor = "pointer";
+            let downloadGif = document.getElementById("download-gif");
+            downloadGif.alt = TRANSLATE[downloadGif.id].alt[language];
+            downloadGif.title = TRANSLATE[downloadGif.id].title[language];
 
             var pathSelect = document.getElementById('pathDrawing');
             pathSelect.max = parseInt(pathSelect.max) + 1;

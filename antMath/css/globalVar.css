@@ -16,7 +16,7 @@
     --nbIconInTopBanner: 7;
     --controlPanelSize: calc(var(--nbIconInTopBanner) * (var(--iconHeight) + 2 * var(--marginTopIcon)) + 2*var(--marginTopIcon));
 
-    --nbLangChoice: 2;
+    --nbLangChoice: 8;
     --nbBGChoice: 4;
 
     --minIconHeight: 30px;
@@ -63,4 +63,10 @@
         url('./Poppins/Poppins-SemiBoldItalic.ttf') format('truetype'),
         url('./Poppins/Poppins-Thin.ttf') format('truetype'),
         url('./Poppins/Poppins-ThinItalic.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
 }

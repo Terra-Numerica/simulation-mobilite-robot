@@ -41,71 +41,77 @@
 
 <body>
 
-  <!-- <a href="https://terra-numerica.org/" target="_blank" id="bigTN"><img src="img/logoTN.png"
-    alt="Go to Terra Numerica"></a> -->
+  <h1 translate class="alert" id="alertPathTooShort">Path too short</h1>
+  <h1 translate class="alert" id="alertGenerateGIF">Veuillez ...</h1>
 
   <!-- IconDiv -->
   <div id="iconDiv">
 
-    <!-- <div id="hamburger-container">
-      <input class="checkbox" type="checkbox" name="hamburger-input" id="hamburger-input" onclick="displayControlPanel()" unchecked/>
-      <div class="hamburger-lines">
-        <span class="line line1"></span>
-        <span class="line line2"></span>
-        <span class="line line3"></span>
-      </div>
-    </div> -->
+    <!-- Drop-down : select background -->
+    <div class="dropdown-square" id="background-picker" title="background picker">
 
+      <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized"
+        class="dropdown-input" onclick="changeBackground(this)">
+      <label title="Personalized" for="choiceBackgroundPersonalized"></label>
 
-      <!-- Drop-down : select background -->
-      <div class="dropdown-square" id="background-picker" title="background picker">
+      <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass"
+        class="dropdown-input" onclick="changeBackground(this)" checked="checked">
+      <!-- checked="checked"  -->
+      <label title="Grass" for="choiceBackgroundGrass"></label>
 
-        <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized" class="dropdown-input"
-          onclick="changeBackground(this)">
-        <label title="Personalized" for="choiceBackgroundPersonalized"></label>
-        
-        <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass" class="dropdown-input"
-         onclick="changeBackground(this)" checked="checked">
-         <!-- checked="checked"  -->
-        <label title="Grass" for="choiceBackgroundGrass"></label>
+      <input type="radio" id="choiceBackgroundSand" name="line-background-picker" title="Sand" value="sand"
+        class="dropdown-input" onclick="changeBackground(this)">
+      <label title="Sand" for="choiceBackgroundSand"></label>
 
-        <input type="radio" id="choiceBackgroundSand" name="line-background-picker" title="Sand" value="sand" class="dropdown-input"
-          onclick="changeBackground(this)">
-        <label title="Sand" for="choiceBackgroundSand"></label>
+      <input type="radio" id="choiceBackgroundDirt" name="line-background-picker" value="dirt"
+        class="dropdown-input" onclick="changeBackground(this)">
+      <label title="Dirt" for="choiceBackgroundDirt"></label>
 
-        <input type="radio" id="choiceBackgroundDirt" name="line-background-picker" value="dirt" class="dropdown-input"
-          onclick="changeBackground(this)">
-        <label title="Dirt" for="choiceBackgroundDirt"></label>
+      <!-- Input hidden for choice file -->
+      <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized"
+        oninput="onInputBackgroundInput(this)">
+    </div>
 
-        
-        
-        <!-- Input hidden for choice file -->
-        <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized"
-          oninput="onInputBackgroundInput(this)">
-      </div>
+    <div class="dropdown-square" id="lang-picker">
 
-      <div class="dropdown-square" id="lang-picker">
-        <input type="radio" id="choiceLangFR" name="line-lang-picker" value="fr" onclick="updateLanguage(this)">
-        <label title="Français" for="choiceLangFR">FR</label>
-        <!-- &#127467; -->
-        <input type="radio" id="choiceLangEN" name="line-lang-picker" value="en" onclick="updateLanguage(this)">
-        <label title="English" for="choiceLangEN">EN</label>
-        <!-- &#127466; -->
-      </div>
+      <!-- ["en", "fr","zh","hi","es","ar","bn","ru"] -->
 
+      <input type="radio" id="choiceLangFR" name="line-lang-picker" value="fr" onclick="updateLanguage(this)">
+      <label title="Français" for="choiceLangFR" id="lang-fr">FR</label>
+      <!-- &#127467; -->
+      <input type="radio" id="choiceLangEN" name="line-lang-picker" value="en" onclick="updateLanguage(this)">
+      <label title="English" for="choiceLangEN" id="lang-en">EN</label>
+      <!-- &#127466; -->
+      <input type="radio" id="choiceLangZH" name="line-lang-picker" value="zh" onclick="updateLanguage(this)">
+      <label title="中文" for="choiceLangZH" id="lang-zh">ZH</label>
+      <!-- &#127464; -->
+      <input type="radio" id="choiceLangHI" name="line-lang-picker" value="hi" onclick="updateLanguage(this)">
+      <label title="हिन्दी" for="choiceLangHI" id="lang-hi">HI</label>
+      <!-- &#127470; -->
+      <input type="radio" id="choiceLangES" name="line-lang-picker" value="es" onclick="updateLanguage(this)">
+      <label title="Español" for="choiceLangES" id="lang-es">ES</label>
+      <!-- &#127466; -->
+      <input type="radio" id="choiceLangAR" name="line-lang-picker" value="ar" onclick="updateLanguage(this)">
+      <label title="العربية" for="choiceLangAR" id="lang-ar">AR</label>
+      <!-- &#127462; -->
+      <input type="radio" id="choiceLangBN" name="line-lang-picker" value="bn" onclick="updateLanguage(this)">
+      <label title="বাংলা" for="choiceLangBN" id="lang-bn">BN</label>
+      <!-- &#127466; -->
+      <input type="radio" id="choiceLangRU" name="line-lang-picker" value="ru" onclick="updateLanguage(this)">
+      <label title="русский" for="choiceLangRU" id="lang-ru">RU</label>
+      <!-- &#127479; -->
 
-      <!-- <input type="checkbox" name="download-gif-checkbox" id="download-gif-checkbox" onchange="createGIF(this)"> -->
-      <!-- <input type="checkbox" name="tutorial-checkbox" id="tutorial-checkbox" onchange="displayHideID(this, 'tutorial')"> -->
-      <!-- <input type="checkbox" name="input-controler-checkbox" id="input-controler-checkbox" onchange="displayHideID(this, 'inputControler')">
-      <input type="checkbox" name="data-viewer-checkbox" id="data-viewer-checkbox" onchange="displayHideID(this, 'dataViewer')">
-      <input type="checkbox" name="more-checkbox" id="more-checkbox" onchange="displayHideID(this, 'more')"> -->
+    </div>
 
-        <!-- <img src="img/icon/gear.jpeg" alt="gear" onclick="displayHideID(this, 'test')" > -->
-      <img src="img/lucIcon/GIF.png" alt="Download GIF" onclick="createGIF(this)">
-      <img src="img/lucIcon/interrogation.png" alt="tutorial" onclick="displayHideID(this, 'tutorial')">
-      <img src="img/lucIcon/controle.png" alt="inputControler" onclick="displayHideID(this, 'inputControler')" >
-      <img src="img/lucIcon/wave-graph.png" alt="dataViewer" onclick="displayHideID(this, 'dataViewer')">
-      <img src="img/icon/documentation.png" alt="documentation" onclick="displayHideID(this, 'more')">    
+    <img src="img/lucIcon/GIF.png" alt="Download GIF" title="GIF" onclick="createGIF(this)" id="download-gif">
+    <img src="img/lucIcon/interrogation.png" alt="tutorial" title="Tutorial" onclick="displayHideID(this, 'tutorial')"
+      id="tutorial-icon">
+    <img src="img/lucIcon/controle.png" alt="inputControler" title="Control"
+      onclick="displayHideID(this, 'inputControler')" id="control-icon">
+    <img src="img/lucIcon/wave-graph.png" alt="dataViewer" title="Curve" onclick="displayHideID(this, 'dataViewer')"
+      id="curve-icon">
+    <img src="img/icon/documentation.png" alt="documentation" title="Documentation"
+      onclick="displayHideID(this, 'more')" id="documentation-icon">
 
   </div>
 
@@ -114,21 +120,12 @@
 
     <!-- EXPLANATION PANEL -->
 
-
     <div includeHTML="tutorial.html" id="tutorial"></div>
     <div includeHTML="controlPanel.html" id="information"></div>
     <div includeHTML="more.html" id="more"></div>
 
     <!-- INPUT PANEL -->
     <div id="inputControler">
-
-
-      <!-- <div class="dropdown-square-side" id="my-picker">
-        <input type="radio" id="" name="line-lang-picker" value="fr" >
-        <label title="Français" for="choiceLangFR">FR</label>
-        <input type="radio" id="" name="line-lang-picker" value="en">
-        <label title="English" for="">EN</label>
-      </div> -->
 
       <!-- Slider -->
       <div id="antControler">
@@ -153,21 +150,13 @@
       <!-- Button -->
       <div id="gameControler">
         <!-- TODO : Trouver une solution pour la traduction -->
-        <button translate id="stopButton" class="controlButton" onclick="pauseDraw(this)">Stop</button>
-        
-        <!-- <button class="controlButton" onclick="creatGIF(this)">GIF</button> -->
-        <!-- <button translate id="resetButton" class="controlButton" onclick="resetDraw(this)">Reset</button> -->
-        <!-- Reset only if there is a path draw -->
-        <button translate id="resetButton" class="controlButton" 
-        onclick="
-        if(isGameStopped){
-          resetGame();
-        }else{
-          shouldReset = true;
-        }"
-        >Reset</button>
+        <button translate id="stopButton" class="controlButton" onclick="pauseDraw(this)" id="stop-btn">Stop</button>
 
-        <button translate id="allPathButton" class="controlButton" onclick="drawMainPaths(this)">Show all path</button>
+        <button translate id="resetButton" class="controlButton"
+          onclick="if(isGameStopped){resetGame();}else{shouldReset = true;}" id="reset-btn">Reset</button>
+
+        <button translate id="allPathButton" class="controlButton" onclick="drawMainPaths(this)"
+          id="all-path-btn">Show all path</button>
 
       </div>
 
@@ -175,7 +164,8 @@
 
     <!-- CURVE PANEL -->
     <div id="dataViewer">
-      <canvas translate id="curve"></canvas>
+      <!-- <canvas translate id="curve"></canvas> -->
+        <canvas id="curve"></canvas>
     </div>
 
   </div>
@@ -186,5 +176,7 @@
   </div>
 
 </body>
+
+
 
 </html>
