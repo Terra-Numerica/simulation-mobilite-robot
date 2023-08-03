@@ -145,7 +145,7 @@ const TRANSLATE = {
 
     "alertGenerateGIF": {
         "innerText": {
-            "en": "Please draw a path before generating a GIF",
+            "en": "Please draw a path before generate a GIF",
             "fr": "Veuillez dessiner un chemin avant de générer un GIF",
             "zh": "在生成GIF之前，请绘制路径",
             "hi": "GIF उत्पन्न करने से पहले कृपया एक पथ बनाएं",
