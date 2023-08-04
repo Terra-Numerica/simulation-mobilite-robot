@@ -253,8 +253,6 @@ button.iconBar-button:hover {
         /* position: absolute; */
         width: 100%;
         height: fit-content;
-        max-height: ;
-
 
         justify-content: space-around;
         align-items:baseline;
