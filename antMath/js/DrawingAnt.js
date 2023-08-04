@@ -49,6 +49,8 @@ var DrawingAnt = /** @class */ (function (_super) {
             let downloadGif = document.getElementById("download-gif");
             downloadGif.alt = TRANSLATE[downloadGif.id].alt[language];
             downloadGif.title = TRANSLATE[downloadGif.id].title[language];
+            // remove filter
+            downloadGif.style.filter = "none";
 
             var pathSelect = document.getElementById('pathDrawing');
             pathSelect.max = parseInt(pathSelect.max) + 1;

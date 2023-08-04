@@ -3,19 +3,37 @@ body {
      /* Pour aligner verticalement */
     flex-direction: column;
      /* Pour aligner à droite */
-    /* align-items: flex-end; */
     background-image: url("./../img/background/ground3.jpg");
     
 }
 
-.alert{
+div.alert{
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     opacity: 0;
     display: none;
+    z-index: 3;
+
+    background-color: white;
+    border-radius: 15px;
+    border: 3px solid var(--navyColorTN);
+    text-align: center;
+
+    padding: 30px;
 }
+
+
+
+h1.alert{
+    opacity: 0;
+    display: none;
+    
+}
+
+
+
 
 button {
     background-color: var(--blueColorTN);
@@ -114,6 +132,8 @@ button.iconBar-button:hover {
 
 #download-gif{
     cursor: not-allowed;
+    filter: blur(2px);
+    
 }
 
 .dropdown-square, #hamburger-container{
@@ -139,18 +159,23 @@ button.iconBar-button:hover {
     overflow-x: hidden;
     overflow-y: scroll;
     
-
 }
 
 #controlPanel>div{
     z-index: 0;
-    background-color: white;
+    /* background-color: rgba(255, 255, 255, 0.85); */
+    background-color: rgba(255, 255, 255, 1);
+
     border-radius: 15px 0 0 15px;
     max-width: 100%;
     border-left: 1px solid var(--navyColorTN);
     border-bottom: 1px solid var(--navyColorTN);
     border-top: 1px solid var(--navyColorTN);
 }
+
+/* #controlPanel div:hover{
+    background-color: rgba(255, 255, 255, 1);
+} */
 
 
 /* TOutes les divisions de #inputControler */
@@ -228,6 +253,9 @@ button.iconBar-button:hover {
         /* position: absolute; */
         width: 100%;
         height: fit-content;
+        max-height: ;
+
+
         justify-content: space-around;
         align-items:baseline;
         flex-wrap: wrap;

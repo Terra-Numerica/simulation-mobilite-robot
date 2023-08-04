@@ -76,9 +76,7 @@ function createGIF() {
 
     // si l'utilisateur n'a pas dessiné, on ne fait rien
     if(canvasTab.length == 0){
-        // alert("Veuillez dessiner un chemin avant de générer un GIF");
-        let alert = document.getElementById("alertGenerateGIF");
-        fadeOut(alert, 2,  1000);
+        showAlert("alertGenerateGIF", 2, 750)
         return;
     }
 
