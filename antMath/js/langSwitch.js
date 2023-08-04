@@ -367,16 +367,17 @@ const TRANSLATE = {
     },
     "antPathLabel": {
         "innerText": {
-            "en": "Ant path selected",
-            "fr": "Chemin de la fourmi sélectionnée",
-            "zh": "已选择蚂蚁路径",
-            "hi": "चयनित मच्छर पथ",
-            "es": "Camino de hormiga seleccionado",
-            "ar": "تم اختيار مسار النملة",
-            "bn": "পথ নির্বাচন করা পিপড়ি",
-            "ru": "Выбранный маршрут муравья"
+            "en": "Number of hidden paths",
+            "fr": "Nombre de chemins cachés",
+            "zh": "隐藏路径数",
+            "hi": "छिपे हुए मार्गों की संख्या",
+            "es": "Número de caminos ocultos",
+            "ar": "عدد المسارات المخفية",
+            "bn": "লুকানো পথের সংখ্যা",
+            "ru": "Количество скрытых путей"
         }
     },
+    
     "stopButton": {
         "innerText": {
             "en": "Stop",
