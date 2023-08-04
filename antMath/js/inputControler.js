@@ -36,13 +36,27 @@ function pauseDraw(element) {
 }
 function drawPath(element) {
     
-    for (let i_1 = 0; i_1 < canvasTab.length; i_1++) {
-        canvasTab[i_1].style.opacity = '0';
-
+    // if (canvasTab.length > 0 && parseInt(element.value) >= 0) {
+    //     for (let i_1 = 0; i_1 < canvasTab.length; i_1++) {
+    //         canvasTab[i_1].style.opacity = '0';
+    //     }
+    //     canvasTab[parseInt(element.value)].style.opacity = '1';
+    // }
+    // else{
+    //     // si -1 : affiché tous les chemins
+    //     canvasTab.forEach(element => {
+    //         element.style.opacity = '1';
+    //     });
+    // }
+    for(let i = 0; i < canvasTab.length - parseInt(element.value); i++){
+        canvasTab[i].style.opacity = '1';
     }
-    if (canvasTab.length > 0 && parseInt(element.value) >= 0) {
-        canvasTab[parseInt(element.value)].style.opacity = '1';
+    for(let i = canvasTab.length - parseInt(element.value); i < canvasTab.length; i++){
+        canvasTab[i].style.opacity = '0';
     }
+    
+    
+    
 }
 function drawMainPaths(element) {
     drawAllPathOn = !drawAllPathOn;

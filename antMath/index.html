@@ -146,7 +146,7 @@
             oninput="changeAntSpeed(this)">
           <input type="range" id="antSpacing" name="antSpacing" min="30" max="90" value="30" step="30"
             oninput="changeAntSpacing(this)">
-          <input type="range" id="pathDrawing" name="pathDrawing" min="-1" max="-1" value="-1" step="1"
+          <input type="range" id="pathDrawing" name="pathDrawing" min="0" max="0" value="0" step="1"
             oninput="drawPath(this)">
         </div>
 
@@ -160,8 +160,9 @@
         <button translate id="resetButton" class="controlButton"
           onclick="if(isGameStopped){resetGame();}else{shouldReset = true;}" id="reset-btn">Reset</button>
 
-        <button translate id="allPathButton" class="controlButton" onclick="drawMainPaths(this)"
-          id="all-path-btn">Show all path</button>
+          <!-- Boutton dégagé car trop de confusion -->
+        <!-- <button translate id="allPathButton" class="controlButton" onclick="drawMainPaths(this)"
+          id="all-path-btn">Show all path</button> -->
 
       </div>
 
