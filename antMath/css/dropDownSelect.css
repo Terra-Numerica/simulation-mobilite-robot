@@ -9,6 +9,7 @@
     /* background-color: var(--navyColorTN); */
     background-color: white;
     text-align: center;
+    
     border:3px solid black; 
     width:var(--iconHeight); 
     height:var(--iconHeight); 
@@ -29,8 +30,15 @@
     ;
 }
 
-#background-picker:hover{height: calc(var(--nbBGChoice) * var(--iconHeight));}
-#lang-picker:hover{height: calc(var(--nbLangChoice) * var(--iconHeight));}
+#background-picker:hover{
+    height: calc(var(--nbBGChoice) * var(--iconHeight));
+    min-height: calc(var(--nbBGChoice) * var(--minIconHeight));
+}
+
+#lang-picker:hover{
+    height: calc(var(--nbLangChoice) * var(--iconHeight));
+    min-height: calc(var(--nbLangChoice) * var(--minIconHeight));
+}
 
 .dropdown-square input {
     /*hide the nasty default radio buttons!*/
@@ -41,13 +49,18 @@
 .dropdown-square label {
     /*style the labels to look like dropdown options*/
 
-    display: block;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
 
     height:var(--iconHeight);
     background-size:contain;
 
     color: black;
     font-size: calc(var(--iconHeight) * 0.7);
+
+    min-width:var(--minIconHeight);
+    min-height: var(--minIconHeight);
     
 }
 
@@ -55,7 +68,7 @@
     /*this is how labels render in the "expanded" state.
      we want to see only the selected radio button in the collapsed menu,
      and all of them when expanded*/
-    display:block;
+    display:flex;
     
     
 }
@@ -64,7 +77,7 @@
     /*tricky! labels immediately following a checked radio button
       (with our markup they are semantically related) should be fully opaque
       and visible even in the collapsed menu*/
-    opacity:1 !important; display:block;
+    opacity:1 !important; display:flex;
 }
 
 

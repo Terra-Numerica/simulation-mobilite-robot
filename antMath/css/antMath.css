@@ -253,10 +253,8 @@ button.iconBar-button:hover {
         border-right: 1px solid var(--navyColorTN);
         border-radius: 0 0 15px 15px;
 
-        height: fit-content !important;
-        /* max-height: calc(var(--iconHeight) + 2 * var(--marginTopIcon)); ; */
-        /* height: calc(var(--iconHeight) + 2 * var(--marginTopIcon)); */
-        /* min-height: var(--minIconHeight); */
+        height:calc(var(--iconHeight) + 2 * var(--marginTopIcon)); 
+        min-height: calc(var(--minIconHeight) + 2 * var(--marginTopIcon));
         
     }
 
