@@ -20,11 +20,6 @@ document.getElementById('lang-picker').addEventListener('mouseleave', () =>langP
 
 
 
-
-
-
-
-
 // Add change event listeners to the language and background inputs
 const langInputs = document.querySelectorAll('input[name="line-lang-picker"]');
 const backgroundInputs = document.querySelectorAll('input[name="line-background-picker"]');

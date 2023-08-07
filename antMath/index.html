@@ -76,9 +76,22 @@
         class="dropdown-input" onclick="changeBackground(this)">
       <label title="Personalized" for="choiceBackgroundPersonalized"></label>
 
+
+      <input type="radio" id="choiceColorPersonalized" name="line-background-picker" value="color"
+        class="dropdown-input" onclick="changeBackground(this)">
+      <label title="Color" for="choiceColorPersonalized"></label>
+
+
+    
+
+
       <!-- Input hidden for choice file -->
       <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized"
         oninput="onInputBackgroundInput(this)">
+
+        <!-- Input hidden for color selector -->
+      <input style="display: none;" type="color" id="colorPickerPersonalized" oninput="colorPersonalizer(this)">
+      
     </div>
 
     <div class="dropdown-square" id="lang-picker">

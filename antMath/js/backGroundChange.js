@@ -9,19 +9,35 @@ function changeBackground(elt){
             previousOption = "grass";
             path = "./img/background/ground3.jpg";
             document.body.style.backgroundImage = "url('" + path + "')";
+            document.body.style.backgroundColor = "none";
             // moveInputToFirstPosition(elt);
             break;
         case "sand":
             previousOption = "sand";
             path = "./img/background/ground2.jpg";
             document.body.style.backgroundImage = "url('" + path + "')";
+            document.body.style.backgroundColor = "none";
             // moveInputToFirstPosition(elt);
             break;
         case "dirt":
             previousOption = "dirt";
             path = "./img/background/ground.jpg";
             document.body.style.backgroundImage = "url('" + path + "')";
+            document.body.style.backgroundColor = "none";
             // moveInputToFirstPosition(elt);
+            break;
+
+        case "color":
+            previousOption = "color";
+
+
+            let inputColor= document.getElementById("colorPickerPersonalized");
+            document.body.style.backgroundColor = inputColor.value;
+            document.body.style.backgroundImage = "none";
+            inputColor.click();
+
+            // impossible de detecté un cancel sur le input color >:(
+            
             break;
         case "personalized":
             // For the moment, consider the option selected is the previous one
@@ -53,8 +69,10 @@ function onInputBackgroundInput(elt){
 
 
 
+
     const selectedFile = elt.files[0];
     if (selectedFile) {     
+        document.body.style.backgroundColor = "none";
 
         let img = new Image();
         img.src = URL.createObjectURL(selectedFile);
@@ -96,3 +114,24 @@ function moveInputToFirstPosition(inputElement) {
     // console.log("parentDiv.firstChild", parentDiv.firstChild);
     parentDiv.insertBefore(inputElement, parentDiv.firstChild);
   }
+
+/**
+ * Onclick sur le input caché de color
+ * @param {*} elt 
+ */
+function colorPersonalizer(elt){
+
+    const color = elt.value;
+    // Si la valeur est définie
+    if (color) {
+        console.log("color", color);
+        // On suppr l'image de fond
+        document.body.style.backgroundImage = "none";
+        console.log("document.body.style.backgroundImage", document.body.style.backgroundImage);
+        // On change la couleur du fond de la page
+        document.body.style.backgroundColor = color;
+        console.log("document.body.style.backgroundColor", document.body.style.backgroundColor);
+    }
+
+
+}

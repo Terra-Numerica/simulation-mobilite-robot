@@ -297,15 +297,6 @@ window.onload = function () {
 
     dropDownListener();
 
-
-
-
-
-
-
-
-
-
 };
 
 function defaultValueRange(element) {

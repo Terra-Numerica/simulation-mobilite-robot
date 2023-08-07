@@ -119,3 +119,6 @@ label[for=icon-background-picker] {background-image:url("../img/icon/changeBG3.p
 label[for=icon-lang-picker] {background-image:url("../img/icon/translate_icon.jpeg");}
 /* for background icon */
 label[for=choiceBackgroundPersonalized] {background-image:url("../img/icon/file_explorer_icon.png");}
+
+
+label[for=choiceColorPersonalized] {background-image:url("../img/icon/color-selection_icon2.png");}

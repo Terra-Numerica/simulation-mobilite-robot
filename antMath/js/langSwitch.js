@@ -208,16 +208,30 @@ const TRANSLATE = {
     },
     "choiceBackgroundPersonalized": {
         "title": {
-            "en": "Personalized",
-            "fr": "Personnalisé",
-            "zh": "个性化",
-            "hi": "व्यक्तिगत",
-            "es": "Personalizado",
-            "ar": "شخصي",
-            "bn": "ব্যক্তিগত",
-            "ru": "Персонализированный"
+            "en": "Custom Image",
+            "fr": "Image personnalisée",
+            "zh": "自定义图片",
+            "hi": "कस्टम छवि",
+            "es": "Imagen Personalizada",
+            "ar": "صورة مخصصة",
+            "bn": "কাস্টম ইমেজ",
+            "ru": "Пользовательское изображение"
         }
     },
+    "choiceColorPersonalized": {
+        "title": {
+            "en": "Custom Color",
+            "fr": "Couleur personnalisée",
+            "zh": "自定义颜色",
+            "hi": "कस्टम रंग",
+            "es": "Color Personalizado",
+            "ar": "لون مخصص",
+            "bn": "কাস্টম রঙ",
+            "ru": "Пользовательский цвет"
+        }
+    },
+    
+    
     "choiceBackgroundGrass": {
         "title": {
             "en": "Grass",
