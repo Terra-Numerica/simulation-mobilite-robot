@@ -21,8 +21,12 @@
 
     --minIconHeight: 30px;
     --maxIconHeight: 50px;
-    
-}
+    --borderRadius: 15px;
+
+
+
+    /* --iconHeight: 50px; */
+}   
 
 
 @media screen and (min-width: 900px) {
@@ -36,7 +40,7 @@
 @media screen and (max-width: 900px) {
     :root{
         /* --iconHeight: 30px; */
-        --iconHeight: 10vw;
+        --iconHeight: 5.555555556vw;
         --marginTopIcon: 3px;
     }
 }

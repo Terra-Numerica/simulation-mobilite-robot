@@ -158,7 +158,6 @@ button.iconBar-button:hover {
 
     overflow-x: hidden;
     overflow-y: scroll;
-    
 }
 
 #controlPanel>div{
@@ -171,23 +170,23 @@ button.iconBar-button:hover {
     border-left: 1px solid var(--navyColorTN);
     border-bottom: 1px solid var(--navyColorTN);
     border-top: 1px solid var(--navyColorTN);
+
+    
+    display: none;
+    /* text-align: left;    */
+    text-align: justify;
 }
 
-/* #controlPanel div:hover{
-    background-color: rgba(255, 255, 255, 1);
-} */
-
-
-/* TOutes les divisions de #inputControler */
-#inputControler>div {
-    padding: 5px 0 5px 0;
+#controlPanel>div>*{
+    margin: 10px 25px ;
 }
+
 
 /* ######## INPUT PANEL ######## */
 
 
 #inputControler {
-    padding: 10px 0 10px 0;
+    text-align: left;
     display: none;
     flex-direction: column;
 }
@@ -225,11 +224,7 @@ button.iconBar-button:hover {
 
 /* Explanation TEXTE */
 
-#tutorial, #information, #more {
-    display: none;
-    text-align: justify;
-    padding: 0px 20px 0px 20px;
-}
+
 
 #dataViewer{
     display: none;
@@ -250,16 +245,22 @@ button.iconBar-button:hover {
         flex-direction: row;
         /* position: absolute; */
         width: 100%;
-        height: fit-content;
+        /* height: fit-content; */
 
         justify-content: space-around;
         align-items:baseline;
-        flex-wrap: wrap;
+        /* flex-wrap: wrap; */
         border-right: 1px solid var(--navyColorTN);
         border-radius: 0 0 15px 15px;
 
+        height: fit-content !important;
+        /* max-height: calc(var(--iconHeight) + 2 * var(--marginTopIcon)); ; */
+        /* height: calc(var(--iconHeight) + 2 * var(--marginTopIcon)); */
+        /* min-height: var(--minIconHeight); */
         
     }
+
+    
 
     
     button.iconBar-button{

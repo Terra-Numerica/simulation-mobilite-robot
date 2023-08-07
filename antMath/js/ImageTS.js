@@ -597,15 +597,10 @@ function resetGame() {
     // je sais pas pourquoi l'ancien canvas concerve les anciens traits --> donc on le suppr
     // TODO : code déguelasse à refaire
 
-    // On le suppr
-    let playGround = document.getElementById("playGround");
-    playGround.remove();
-    // On le recréer
-    playGround = document.createElement("canvas");
-    playGround.id = "playGround";
-    // add the canvas to the playPanel
-    document.getElementById("playPanel").appendChild(playGround);
-    handleSize();
+
+
+    let oldPlayPanel = document.getElementById("playPanel");
+    oldPlayPanel.style = null;
 
 
     // Set to null to make sure the old object is deleted
@@ -627,6 +622,8 @@ function resetGame() {
     for (let i = 0; i < canvasTab.length; i++) {
         canvasTab[i].remove();
     }
+    canvasTab = new Array();
+    
     isGameStopped = false;
     firstX = null;
     firstY = null;
@@ -641,7 +638,7 @@ function resetGame() {
 
     orientationDrawVertical = null;
 
-    previousOrientation = null;
+    previousOrientation = getOrientation();
     previousPathLength = Infinity;
     deltaPathLength = Infinity;
 
@@ -654,7 +651,7 @@ function resetGame() {
 
     isGameStopped = false;
     document.getElementById('stopButton').innerText = TRANSLATE.stopButton.innerText[language];
-    initGame();
 
+    initGame();
 
 }
