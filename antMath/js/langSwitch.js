@@ -18,7 +18,7 @@ if (!lang_support.includes(language)) {
 function updateLanguage(elt){
     language = elt.value;
     switchLang2();
-    moveInputToFirstPosition(elt);
+    // moveInputToFirstPosition(elt);
 }
 
 console.log("Language : " + language);
@@ -155,6 +155,19 @@ const TRANSLATE = {
             "ru": "Пожалуйста, нарисуйте путь перед созданием GIF"
         }
     },
+
+    "icon-lang-picker": {
+        "title": {
+          "en": "Language Picker",
+          "fr": "Sélection de la langue",
+          "zh": "语言选择器",
+          "hi": "भाषा चुनें",
+          "es": "Selector de idioma",
+          "ar": "اختيار اللغة",
+          "bn": "ভাষা পিকার",
+          "ru": "Выбор языка"
+        }
+      },
 
 
     "background-picker": {

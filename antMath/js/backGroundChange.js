@@ -9,19 +9,19 @@ function changeBackground(elt){
             previousOption = "grass";
             path = "./img/background/ground3.jpg";
             document.body.style.backgroundImage = "url('" + path + "')";
-            moveInputToFirstPosition(elt);
+            // moveInputToFirstPosition(elt);
             break;
         case "sand":
             previousOption = "sand";
             path = "./img/background/ground2.jpg";
             document.body.style.backgroundImage = "url('" + path + "')";
-            moveInputToFirstPosition(elt);
+            // moveInputToFirstPosition(elt);
             break;
         case "dirt":
             previousOption = "dirt";
             path = "./img/background/ground.jpg";
             document.body.style.backgroundImage = "url('" + path + "')";
-            moveInputToFirstPosition(elt);
+            // moveInputToFirstPosition(elt);
             break;
         case "personalized":
             // For the moment, consider the option selected is the previous one
@@ -72,7 +72,7 @@ function onInputBackgroundInput(elt){
 
         document.body.style.backgroundImage = "url('" + img.src + "')";
 
-        moveInputToFirstPosition(document.getElementById("choiceBackgroundPersonalized"));
+        // moveInputToFirstPosition(document.getElementById("choiceBackgroundPersonalized"));
 
 
     }

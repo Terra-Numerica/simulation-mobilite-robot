@@ -13,11 +13,13 @@
     --blueColorTN: rgba(36, 161, 235);
     --navyColorTN: rgba(26, 24, 45);
 
+    /* +1 pour l'icon de translate */
     --nbIconInTopBanner: 7;
     --controlPanelSize: calc(var(--nbIconInTopBanner) * (var(--iconHeight) + 2 * var(--marginTopIcon)) + 2*var(--marginTopIcon));
 
-    --nbLangChoice: 8;
-    --nbBGChoice: 4;
+    /* +1 pour l'icon */
+    --nbLangChoice: 8 +1 ;
+    --nbBGChoice: 4 +1;
 
     --minIconHeight: 30px;
     --maxIconHeight: 50px;

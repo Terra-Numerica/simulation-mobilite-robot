@@ -53,9 +53,9 @@
     <!-- Drop-down : select background -->
     <div class="dropdown-square" id="background-picker" title="background picker">
 
-      <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized"
-        class="dropdown-input" onclick="changeBackground(this)">
-      <label title="Personalized" for="choiceBackgroundPersonalized"></label>
+      <label for="icon-background-picker" id="icon-background-picker"></label>
+
+      
 
       <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass"
         class="dropdown-input" onclick="changeBackground(this)" checked="checked">
@@ -70,6 +70,10 @@
         class="dropdown-input" onclick="changeBackground(this)">
       <label title="Dirt" for="choiceBackgroundDirt"></label>
 
+      <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized"
+        class="dropdown-input" onclick="changeBackground(this)">
+      <label title="Personalized" for="choiceBackgroundPersonalized"></label>
+
       <!-- Input hidden for choice file -->
       <input style="display: none;" type="file" accept="image/*" id="backgroundPickerPersonalized"
         oninput="onInputBackgroundInput(this)">
@@ -78,6 +82,8 @@
     <div class="dropdown-square" id="lang-picker">
 
       <!-- ["en", "fr","zh","hi","es","ar","bn","ru"] -->
+
+      <label for="icon-lang-picker" id="icon-lang-picker" title="Language Picker"></label>
 
       <input type="radio" id="choiceLangFR" name="line-lang-picker" value="fr" onclick="updateLanguage(this)">
       <label title="Français" for="choiceLangFR" id="lang-fr">FR</label>
