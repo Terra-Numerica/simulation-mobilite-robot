@@ -89,18 +89,16 @@ function drawAllPaths(element) {
 function createGIF() {
 
     // si l'utilisateur n'a pas dessiné, on ne fait rien
-    if(canvasTab.length == 0){
+    if (canvasTab.length == 0) {
         showAlert("alertGenerateGIF", 2, 750)
         return;
     }
 
-    
-   
     let gif = new GIF({
         workerScript: './library/gif.js.optimized/dist/gif.worker.js',
         workers: navigator.hardwareConcurrency,
         quality: 100,
-        transparent: "#0x00FF00"
+        transparent: null // Set transparent to null to avoid transparent background
     });
 
     let canvasFinal = document.createElement('canvas');
@@ -113,16 +111,25 @@ function createGIF() {
     // Get the background image of the body
     let bodyBackgroundImage = getComputedStyle(document.body).backgroundImage;
 
-    // Load the background image
+    // Load the background image or use the background color as a fallback
     let bgImage = new Image();
     bgImage.onload = function () {
         canvasFinal.getContext('2d').drawImage(bgImage, 0, 0, canvasFinal.width, canvasFinal.height);
         addFramesToGif(gif, canvasFinal);
     };
-    
+
     // Extract the URL from the background image property (removing quotes if present)
     let bgImageUrl = bodyBackgroundImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
-    bgImage.src = bgImageUrl;
+    if (bgImageUrl == "none") {
+        // Fallback: use background color instead
+        let bodyBackgroundColor = getComputedStyle(document.body).backgroundColor;
+        canvasFinal.getContext('2d').fillStyle = bodyBackgroundColor;
+        canvasFinal.getContext('2d').fillRect(0, 0, canvasFinal.width, canvasFinal.height);
+        addFramesToGif(gif, canvasFinal);
+    } else {
+        bgImage.src = bgImageUrl;
+    }
+    
 
     function addFramesToGif(gif, canvas) {
         gif.addFrame(canvas, { delay: 200 });
