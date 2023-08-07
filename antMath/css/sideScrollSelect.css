@@ -38,7 +38,6 @@
 
 .dropdown-square-side input {
     /*hide the nasty default radio buttons!*/
-
     position:absolute;top:0;left:0;opacity:0;
     
 }
@@ -73,7 +72,6 @@
     opacity:1 !important; display:flex;
     flex-direction: row;
 }
-
 
 label[for=choiceBackgroundGrass] {background-image:url("../img/background/ground3.jpg");}
 label[for=choiceBackgroundSand] {background-image:url("../img/background/ground2.jpg");}

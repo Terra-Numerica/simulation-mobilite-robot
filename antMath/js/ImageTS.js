@@ -263,8 +263,13 @@ function initPage() {
     switchLang2();
     includeAllHTML();
 
+    // Set as checked the input radio of the language associaate
+    console.log("lang-choice-" + language);
+    document.getElementById("lang-choice-" + language).checked = true;
+
+
     // Je sais pas si cette linge est encore utile
-    document.querySelector("[value=" + language + "]").selected = true;
+    // document.querySelector("[value=" + language + "]").selected = true;
     handleSize();
 
 }

@@ -117,7 +117,7 @@ button.iconBar-button:hover {
 }
 
 #iconDiv img:hover {
-    background-color: rgb(221, 221, 221);
+    background-color: var(--hoverIconColor);
 
 }
 

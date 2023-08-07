@@ -11,6 +11,7 @@ if (!lang_support.includes(language)) {
     language = "en";
 }
 
+
 /**
  * Switch the language of the page to the one given in parameter
  * @param {HTMLElement} elt 
@@ -18,7 +19,30 @@ if (!lang_support.includes(language)) {
 function updateLanguage(elt){
     language = elt.value;
     switchLang2();
+
+
+
     // moveInputToFirstPosition(elt);
+
+
+
+    // console.log("Après le choix, reset le style");
+    // Rappel : le style est défini dans le fichier css
+    // height:var(--iconHeight); 
+    // min-width:var(--minIconHeight);
+    // min-height: var(--minIconHeight);
+
+    // On reset le style de la division
+    // let div = document.getElementById("lang-picker");
+    // console.log("height : " + div.style.height);
+    // div.style.height = "var(--iconHeight)";
+    // console.log("height : " + div.style.height);
+    // div.style.minWidth = "var(--minIconHeight)";
+    // div.style.minHeight = "var(--minIconHeight)";
+
+
+
+
 }
 
 console.log("Language : " + language);
@@ -91,7 +115,7 @@ function switchLang2() {
         // if id start with choiceLang, do not translate --> keep leasible for peapole
         if (elt.tagName == "LABEL") {
             let tagID = elt.htmlFor;
-            if (!tagID.startsWith("choiceLang")){
+            if (!tagID.startsWith("lang-choice-")){
                 elt.title = TRANSLATE[elt.htmlFor].title[language];
             }
         }

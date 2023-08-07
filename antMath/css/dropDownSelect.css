@@ -85,6 +85,12 @@
     display: none;
 }
 
+/* .dropdown-square>input ~ label */
+
+.dropdown-square>input:checked + label{
+    background-color: var(--hoverIconColor);
+}
+
 
 label[for=choiceBackgroundGrass] {background-image:url("../img/background/ground3.jpg");}
 label[for=choiceBackgroundSand] {background-image:url("../img/background/ground2.jpg");}

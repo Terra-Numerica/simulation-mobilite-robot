@@ -45,7 +45,7 @@
     <h1 translate class="alert" id="alertPathTooShort">Path too short</h1>
     <h1 translate class="alert" id="alertGenerateGIF">Veuillez ...</h1>
   </div>
-  
+
 
   <!-- IconDiv -->
   <div id="iconDiv">
@@ -55,7 +55,7 @@
 
       <label for="icon-background-picker" id="icon-background-picker"></label>
 
-      
+
 
       <input type="radio" id="choiceBackgroundGrass" name="line-background-picker" title="Grass" value="grass"
         class="dropdown-input" onclick="changeBackground(this)" checked="checked">
@@ -66,8 +66,8 @@
         class="dropdown-input" onclick="changeBackground(this)">
       <label title="Sand" for="choiceBackgroundSand"></label>
 
-      <input type="radio" id="choiceBackgroundDirt" name="line-background-picker" value="dirt"
-        class="dropdown-input" onclick="changeBackground(this)">
+      <input type="radio" id="choiceBackgroundDirt" name="line-background-picker" value="dirt" class="dropdown-input"
+        onclick="changeBackground(this)">
       <label title="Dirt" for="choiceBackgroundDirt"></label>
 
       <input type="radio" id="choiceBackgroundPersonalized" name="line-background-picker" value="personalized"
@@ -81,34 +81,44 @@
 
     <div class="dropdown-square" id="lang-picker">
 
-      <!-- ["en", "fr","zh","hi","es","ar","bn","ru"] -->
-
       <label for="icon-lang-picker" id="icon-lang-picker" title="Language Picker"></label>
 
-      <input type="radio" id="choiceLangFR" name="line-lang-picker" value="fr" onclick="updateLanguage(this)">
-      <label title="Français" for="choiceLangFR" id="lang-fr">FR</label>
+      <!-- ["en", "fr","zh","hi","es","ar","bn","ru"] -->
+
+      <!-- ["en", "fr","zh","hi","es","ar","bn","ru"] -->
+
+      <input type="radio" id="lang-choice-fr" name="line-lang-picker" value="fr" onclick="updateLanguage(this)">
+      <label title="Français" for="lang-choice-fr" id="lang-fr">FR</label>
       <!-- &#127467; -->
-      <input type="radio" id="choiceLangEN" name="line-lang-picker" value="en" onclick="updateLanguage(this)">
-      <label title="English" for="choiceLangEN" id="lang-en">EN</label>
+
+      <input type="radio" id="lang-choice-en" name="line-lang-picker" value="en" onclick="updateLanguage(this)">
+      <label title="English" for="lang-choice-en" id="lang-en">EN</label>
       <!-- &#127466; -->
-      <input type="radio" id="choiceLangZH" name="line-lang-picker" value="zh" onclick="updateLanguage(this)">
-      <label title="中文" for="choiceLangZH" id="lang-zh">ZH</label>
+
+      <input type="radio" id="lang-choice-zh" name="line-lang-picker" value="zh" onclick="updateLanguage(this)">
+      <label title="中文" for="lang-choice-zh" id="lang-zh">ZH</label>
       <!-- &#127464; -->
-      <input type="radio" id="choiceLangHI" name="line-lang-picker" value="hi" onclick="updateLanguage(this)">
-      <label title="हिन्दी" for="choiceLangHI" id="lang-hi">HI</label>
+
+      <input type="radio" id="lang-choice-hi" name="line-lang-picker" value="hi" onclick="updateLanguage(this)">
+      <label title="हिन्दी" for="lang-choice-hi" id="lang-hi">HI</label>
       <!-- &#127470; -->
-      <input type="radio" id="choiceLangES" name="line-lang-picker" value="es" onclick="updateLanguage(this)">
-      <label title="Español" for="choiceLangES" id="lang-es">ES</label>
+
+      <input type="radio" id="lang-choice-es" name="line-lang-picker" value="es" onclick="updateLanguage(this)">
+      <label title="Español" for="lang-choice-es" id="lang-es">ES</label>
       <!-- &#127466; -->
-      <input type="radio" id="choiceLangAR" name="line-lang-picker" value="ar" onclick="updateLanguage(this)">
-      <label title="العربية" for="choiceLangAR" id="lang-ar">AR</label>
+
+      <input type="radio" id="lang-choice-ar" name="line-lang-picker" value="ar" onclick="updateLanguage(this)">
+      <label title="العربية" for="lang-choice-ar" id="lang-ar">AR</label>
       <!-- &#127462; -->
-      <input type="radio" id="choiceLangBN" name="line-lang-picker" value="bn" onclick="updateLanguage(this)">
-      <label title="বাংলা" for="choiceLangBN" id="lang-bn">BN</label>
+
+      <input type="radio" id="lang-choice-bn" name="line-lang-picker" value="bn" onclick="updateLanguage(this)">
+      <label title="বাংলা" for="lang-choice-bn" id="lang-bn">BN</label>
       <!-- &#127466; -->
-      <input type="radio" id="choiceLangRU" name="line-lang-picker" value="ru" onclick="updateLanguage(this)">
-      <label title="русский" for="choiceLangRU" id="lang-ru">RU</label>
+
+      <input type="radio" id="lang-choice-ru" name="line-lang-picker" value="ru" onclick="updateLanguage(this)">
+      <label title="русский" for="lang-choice-ru" id="lang-ru">RU</label>
       <!-- &#127479; -->
+
 
     </div>
 
@@ -164,7 +174,7 @@
         <button translate id="resetButton" class="controlButton"
           onclick="if(isGameStopped){resetGame();}else{shouldReset = true;}" id="reset-btn">Reset</button>
 
-          <!-- Boutton dégagé car trop de confusion -->
+        <!-- Boutton dégagé car trop de confusion -->
         <!-- <button translate id="allPathButton" class="controlButton" onclick="drawMainPaths(this)"
           id="all-path-btn">Show all path</button> -->
 
@@ -175,7 +185,7 @@
     <!-- CURVE PANEL -->
     <div id="dataViewer">
       <!-- <canvas translate id="curve"></canvas> -->
-        <canvas id="curve"></canvas>
+      <canvas id="curve"></canvas>
     </div>
 
   </div>
