@@ -294,6 +294,18 @@ function firstVisitCheck() {
 window.onload = function () {
     initPage();
     firstVisitCheck();
+
+    dropDownListener();
+
+
+
+
+
+
+
+
+
+
 };
 
 function defaultValueRange(element) {

@@ -30,7 +30,25 @@
     ;
 }
 
-#background-picker:hover{
+
+
+
+
+
+
+
+/* CSS to show the expanded dropdown on click */
+#background-picker-div.open,
+#lang-picker.open {
+  height: calc(var(--nbBGChoice) * var(--iconHeight));
+  min-height: calc(var(--nbBGChoice) * var(--minIconHeight));
+}
+
+
+
+
+
+/* #background-picker-div:hover{
     height: calc(var(--nbBGChoice) * var(--iconHeight));
     min-height: calc(var(--nbBGChoice) * var(--minIconHeight));
 }
@@ -38,7 +56,7 @@
 #lang-picker:hover{
     height: calc(var(--nbLangChoice) * var(--iconHeight));
     min-height: calc(var(--nbLangChoice) * var(--minIconHeight));
-}
+} */
 
 .dropdown-square input {
     /*hide the nasty default radio buttons!*/
@@ -69,7 +87,6 @@
      we want to see only the selected radio button in the collapsed menu,
      and all of them when expanded*/
     display:flex;
-    
     
 }
 

@@ -194,7 +194,7 @@ const TRANSLATE = {
       },
 
 
-    "background-picker": {
+    "background-picker-div": {
         "title": {
             "en": "Background picker",
             "fr": "Sélection de l'arrière-plan",
