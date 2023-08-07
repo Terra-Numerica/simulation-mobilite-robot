@@ -6,8 +6,8 @@ const backgroundPickerDiv = document.getElementById('background-picker-div');
 const langPicker = document.getElementById('lang-picker');
 
 // Add touch event listeners to the icon elements
-document.getElementById('icon-background-picker').addEventListener('touchend', () => toggleDropdown(backgroundPickerDiv));
-document.getElementById('icon-lang-picker').addEventListener('touchend', () => toggleDropdown(langPicker));
+document.getElementById('icon-background-picker').addEventListener('touchstart', () => toggleDropdown(backgroundPickerDiv));
+document.getElementById('icon-lang-picker').addEventListener('touchstart', () => toggleDropdown(langPicker));
 
 
 // Add mouseover event listeners to the icon elements
@@ -49,8 +49,6 @@ window.addEventListener('click', (event) => {
 function toggleDropdown(dropdown) {
   dropdown.classList.toggle('open');
 }
-
-
 
 }
 
