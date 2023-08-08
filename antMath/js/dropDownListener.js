@@ -81,50 +81,50 @@ function dropDownListener(){
   const backgroundPickerDiv = document.getElementById('background-picker-div');
   const langPicker = document.getElementById('lang-picker');
 
-  // whent touchend on icon-background-picker, toggle backgroundPickerDiv and close langPicker
+  // whent touchend on icon-background-picker, open backgroundPickerDiv and close langPicker
   document.getElementById('icon-background-picker').addEventListener('touchend', (event) => {
     event.stopPropagation();
     console.log('toggle backgroundPickerDiv and close langPicker');
     toggleDropdown(backgroundPickerDiv);
-    langPicker.classList.remove('open');
+    closeDropdown(langPicker);
   });
 
-  // whent touchend on icon-lang-picker, toggle langPicker and close backgroundPickerDiv
+  // whent touchend on icon-lang-picker, open langPicker and close backgroundPickerDiv
   document.getElementById('icon-lang-picker').addEventListener('touchend', (event) => {
     event.stopPropagation();
     console.log('toggle langPicker and close backgroundPickerDiv');
     toggleDropdown(langPicker);
-    backgroundPickerDiv.classList.remove('open');
+    closeDropdown(backgroundPickerDiv);
   });
 
-  // when mouseenter on background-picker-div, open backgroundPickerDiv and close langPicker
-  document.getElementById('background-picker-div').addEventListener('mouseenter', () => {
+  // when mouseenter on icon-background-picker, open backgroundPickerDiv and close langPicker
+  backgroundPickerDiv.addEventListener('mouseenter', () => {
     console.log('open backgroundPickerDiv and close langPicker');
-    toggleDropdown(backgroundPickerDiv);
-    langPicker.classList.remove('open');
+    openDropdown(backgroundPickerDiv);
+    closeDropdown(langPicker);
   } );
 
   // when mouseenter on lang-picker, open langPicker and close backgroundPickerDiv
-  document.getElementById('lang-picker').addEventListener('mouseenter', () => {
+  langPicker.addEventListener('mouseenter', () => {
     console.log('open langPicker and close backgroundPickerDiv');
     toggleDropdown(langPicker);
-    backgroundPickerDiv.classList.remove('open');
+    closeDropdown(backgroundPickerDiv);
   }
   );
 
-  // when mouseleave on background-picker-div, close backgroundPickerDiv
-  document.getElementById('background-picker-div').addEventListener('mouseleave', (event) => {
+  // when mouseleave on icon-background-picker, close backgroundPickerDiv
+  backgroundPickerDiv.addEventListener('mouseleave', (event) => {
     console.log('close backgroundPickerDiv');
     // event.stopPropagation();
-    backgroundPickerDiv.classList.remove('open');
+    closeDropdown(backgroundPickerDiv);
   }
   );
 
   // when mouseleave on lang-picker, close langPicker
-  document.getElementById('lang-picker').addEventListener('mouseleave', (event) => {
+  langPicker.addEventListener('mouseleave', (event) => {
     console.log('lang-picker mouseleave: Closing langPicker');
     // event.stopPropagation();
-    langPicker.classList.remove('open');
+    closeDropdown(langPicker);
   }
   );
 
@@ -134,19 +134,19 @@ function dropDownListener(){
     input.addEventListener('click', (event) => {
       console.log('line-lang-picker input click: Closing langPicker');
       // event.stopPropagation();
-      langPicker.classList.remove('open');
+      closeDropdown(langPicker);
     });
   }
 
   );
 
-  // when click on background-picker-div input, close backgroundPickerDiv
+  // when click on icon-background-picker input, close backgroundPickerDiv
   const backgroundInputs = document.querySelectorAll('input[name="line-background-picker"]');
   backgroundInputs.forEach((input) => {
     input.addEventListener('click', (event) => {
       console.log('line-background-picker input click: Closing backgroundPickerDiv');
       // event.stopPropagation();
-      backgroundPickerDiv.classList.remove('open');
+      closeDropdown(backgroundPickerDiv);
     });
   } );
 
@@ -175,6 +175,14 @@ function dropDownListener(){
   // }
   // );
 
+}
+
+function openDropdown(dropdown) {
+  dropdown.classList.add('open');
+}
+
+function closeDropdown(dropdown) {
+  dropdown.classList.remove('open');
 }
 
 
