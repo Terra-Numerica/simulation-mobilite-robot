@@ -1,56 +1,77 @@
+function dropDownListener() {
+  const backgroundPickerDiv = document.getElementById('background-picker-div');
+  const langPicker = document.getElementById('lang-picker');
 
-function dropDownListener(){
-
-// Get the dropdown elements
-const backgroundPickerDiv = document.getElementById('background-picker-div');
-const langPicker = document.getElementById('lang-picker');
-
-// Add touch event listeners to the icon elements
-document.getElementById('icon-background-picker').addEventListener('touchstart', () => toggleDropdown(backgroundPickerDiv));
-document.getElementById('icon-lang-picker').addEventListener('touchstart', () => toggleDropdown(langPicker));
-
-
-// Add mouseover event listeners to the icon elements
-document.getElementById('background-picker-div').addEventListener('mouseenter', () => toggleDropdown(backgroundPickerDiv));
-document.getElementById('lang-picker').addEventListener('mouseenter', () => toggleDropdown(langPicker));
-
-// Add mouseover event listeners to the icon elements
-document.getElementById('background-picker-div').addEventListener('mouseleave', () => backgroundPickerDiv.classList.remove('open'));
-document.getElementById('lang-picker').addEventListener('mouseleave', () =>langPicker.classList.remove('open'));
-
-
-
-// Add change event listeners to the language and background inputs
-const langInputs = document.querySelectorAll('input[name="line-lang-picker"]');
-const backgroundInputs = document.querySelectorAll('input[name="line-background-picker"]');
-
-langInputs.forEach((input) => {
-  input.addEventListener('click', () => {
-    langPicker.classList.remove('open');
+  document.getElementById('icon-background-picker').addEventListener('touchend', (event) => {
+    event.stopPropagation();
+    toggleDropdown(backgroundPickerDiv);
   });
-});
 
-backgroundInputs.forEach((input) => {
-  input.addEventListener('click', () => {
+  document.getElementById('icon-lang-picker').addEventListener('touchend', (event) => {
+    event.stopPropagation();
+    toggleDropdown(langPicker);
+  });
+
+  document.getElementById('background-picker-div').addEventListener('mouseenter', (event) => {
+    event.stopPropagation();
+    toggleDropdown(backgroundPickerDiv);
+  });
+
+  document.getElementById('lang-picker').addEventListener('mouseenter', (event) => {
+    event.stopPropagation();
+    toggleDropdown(langPicker);
+  });
+
+  document.getElementById('background-picker-div').addEventListener('mouseleave', (event) => {
+    event.stopPropagation();
     backgroundPickerDiv.classList.remove('open');
   });
-});
 
-// Close dropdowns when clicking outside them
-window.addEventListener('click', (event) => {
-  if (!backgroundPickerDiv.contains(event.target)) {
-    backgroundPickerDiv.classList.remove('open');
-  }
-  if (!langPicker.contains(event.target)) {
+  document.getElementById('lang-picker').addEventListener('mouseleave', (event) => {
+    event.stopPropagation();
     langPicker.classList.remove('open');
+  });
+
+  const langInputs = document.querySelectorAll('input[name="line-lang-picker"]');
+  const backgroundInputs = document.querySelectorAll('input[name="line-background-picker"]');
+
+  langInputs.forEach((input) => {
+    input.addEventListener('click', (event) => {
+      event.stopPropagation();
+      langPicker.classList.remove('open');
+    });
+  });
+
+  backgroundInputs.forEach((input) => {
+    input.addEventListener('click', (event) => {
+      event.stopPropagation();
+      backgroundPickerDiv.classList.remove('open');
+    });
+  });
+
+  window.addEventListener('click', (event) => {
+    if (!backgroundPickerDiv.contains(event.target)) {
+      backgroundPickerDiv.classList.remove('open');
+    }
+    if (!langPicker.contains(event.target)) {
+      langPicker.classList.remove('open');
+    }
+  });
+
+  window.addEventListener('touchend', (event) => {
+    if (!backgroundPickerDiv.contains(event.target)) {
+      backgroundPickerDiv.classList.remove('open');
+    }
+    if (!langPicker.contains(event.target)) {
+      langPicker.classList.remove('open');
+    }
+  });
+
+  function toggleDropdown(dropdown) {
+    dropdown.classList.toggle('open');
   }
-});
-
-function toggleDropdown(dropdown) {
-  dropdown.classList.toggle('open');
 }
 
-}
 
 
 
