@@ -123,6 +123,8 @@ function switchLang2() {
             elt.title = (allowDownload) ? TRANSLATE[elt.id].title[language] : TRANSLATE.alertGenerateGIF.innerText[language];
         }
         else {
+            
+            console.log("elt", elt);
             elt.title = TRANSLATE[elt.id].title[language];
         }
         
