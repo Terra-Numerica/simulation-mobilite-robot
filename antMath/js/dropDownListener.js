@@ -128,8 +128,8 @@ function dropDownListener(){
   }
   );
 
-  // when click on lang-picker input, close langPicker
-  const langInputs = document.querySelectorAll('input[name="line-lang-picker"]');
+  // when click on lang-picker input, close langPicker (sauf 'icon-lang-picker (gérer au-dessus) )
+  const langInputs = document.querySelectorAll('input[name="line-lang-picker"]:not(#icon-lang-picker)');
   langInputs.forEach((input) => {
     input.addEventListener('click', (event) => {
       console.log('line-lang-picker input click: Closing langPicker');
@@ -140,8 +140,8 @@ function dropDownListener(){
 
   );
 
-  // when click on icon-background-picker input, close backgroundPickerDiv
-  const backgroundInputs = document.querySelectorAll('input[name="line-background-picker"]');
+  // when click on icon-background-picker input, close backgroundPickerDiv (sauf 'icon-background-picker' (gérer au-dessus) )
+  const backgroundInputs = document.querySelectorAll('input[name="line-background-picker"]:not(#icon-background-picker)');
   backgroundInputs.forEach((input) => {
     input.addEventListener('click', (event) => {
       console.log('line-background-picker input click: Closing backgroundPickerDiv');
