@@ -7,7 +7,7 @@ body {
     
 }
 
-#logo{
+#logo-div{
     position: fixed;
     left: 0;
     background-color: var(--navyColorTN);
@@ -17,7 +17,7 @@ body {
     
 }
 
-#logo>img{
+#logo-div img{
     /* height: var(--iconHeight);
     min-height: var(--minIconHeight);
     width: auto;
@@ -262,7 +262,7 @@ button.iconBar-button:hover {
 
 @media (max-width : 900px) {
 
-    #logo{
+    #logo-div{
         position: absolute;
         left: auto;
         top: auto;

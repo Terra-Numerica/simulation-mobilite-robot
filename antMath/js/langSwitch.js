@@ -154,6 +154,29 @@ function switchLang2() {
 
 const TRANSLATE = {
 
+    "logoTN":{
+        "title":{
+            "en":"TerraNumerica",
+            "fr":"TerraNumerica",
+            "zh":"TerraNumerica",
+            "hi":"TerraNumerica",
+            "es":"TerraNumerica",
+            "ar":"TerraNumerica",
+            "bn":"TerraNumerica",
+            "ru":"TerraNumerica"
+        },
+        "alt":{
+            "en":"TerraNumerica",
+            "fr":"TerraNumerica",
+            "zh":"TerraNumerica",
+            "hi":"TerraNumerica",
+            "es":"TerraNumerica",
+            "ar":"TerraNumerica",
+            "bn":"TerraNumerica",
+            "ru":"TerraNumerica"
+        }
+    },
+
     "alertPathTooShort": {
         "innerText": {
             "en": "Please draw a longer path",
