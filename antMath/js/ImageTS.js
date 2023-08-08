@@ -584,6 +584,7 @@ let shouldReset = false;
 
 function resetGame() {
 
+
     shouldReset = false;
 
     let downloadGif = document.getElementById("download-gif");
@@ -609,6 +610,18 @@ function resetGame() {
 
     let oldPlayPanel = document.getElementById("playPanel");
     oldPlayPanel.style = null;
+
+        // je sais pas pourquoi mais parfois, l'ancien canvas concerve les anciens traits --> donc on le suppr
+    let oldPlayGround = document.getElementById("playGround");
+    oldPlayGround.remove();
+    // recréer le canvas
+    let playGround = document.createElement("canvas");
+    playGround.id = "playGround";
+    playGround.width = window.innerWidth;
+    playGround.height = window.innerHeight;
+    oldPlayPanel.appendChild(playGround);
+
+
 
 
     // Set to null to make sure the old object is deleted
@@ -660,6 +673,13 @@ function resetGame() {
     isGameStopped = false;
     document.getElementById('stopButton').innerText = TRANSLATE.stopButton.innerText[language];
 
+    var pathSelect = document.getElementById('pathDrawing');
+    pathSelect.value = 0;
+    pathSelect.max = 0;
+
     initGame();
+
+    // BEAUCOUP PLUS SIMPLE ET SÛR D'EVITER LES BUGs : resetDraw();
+    
 
 }
