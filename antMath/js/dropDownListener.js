@@ -82,14 +82,16 @@ function dropDownListener(){
   const langPicker = document.getElementById('lang-picker');
 
   // whent touchend on icon-background-picker, toggle backgroundPickerDiv and close langPicker
-  document.getElementById('icon-background-picker').addEventListener('touchend', () => {
+  document.getElementById('icon-background-picker').addEventListener('touchend', (event) => {
+    event.stopPropagation();
     console.log('toggle backgroundPickerDiv and close langPicker');
     toggleDropdown(backgroundPickerDiv);
     langPicker.classList.remove('open');
   });
 
   // whent touchend on icon-lang-picker, toggle langPicker and close backgroundPickerDiv
-  document.getElementById('icon-lang-picker').addEventListener('touchend', () => {
+  document.getElementById('icon-lang-picker').addEventListener('touchend', (event) => {
+    event.stopPropagation();
     console.log('toggle langPicker and close backgroundPickerDiv');
     toggleDropdown(langPicker);
     backgroundPickerDiv.classList.remove('open');
