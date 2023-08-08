@@ -107,7 +107,7 @@ function dropDownListener(){
   // when mouseenter on lang-picker, open langPicker and close backgroundPickerDiv
   langPicker.addEventListener('mouseenter', () => {
     console.log('open langPicker and close backgroundPickerDiv');
-    toggleDropdown(langPicker);
+    openDropdown(langPicker);
     closeDropdown(backgroundPickerDiv);
   }
   );
@@ -149,31 +149,6 @@ function dropDownListener(){
       closeDropdown(backgroundPickerDiv);
     });
   } );
-
-  // when click on window, close dropdowns
-  // useless because mouseleave is enough
-  // window.addEventListener('click', (event) => {
-  //   console.log('window click: Closing dropdowns');
-  //   if (!backgroundPickerDiv.contains(event.target)) {
-  //     backgroundPickerDiv.classList.remove('open');
-  //   }
-  //   if (!langPicker.contains(event.target)) {
-  //     langPicker.classList.remove('open');
-  //   }
-  // } );
-
-  // when touchend on window, close dropdowns
-  // remove to avoid double event
-  // window.addEventListener('touchend', (event) => {
-  //   console.log('window touchend: Closing dropdowns');
-  //   if (!backgroundPickerDiv.contains(event.target)) {
-  //     backgroundPickerDiv.classList.remove('open');
-  //   }
-  //   if (!langPicker.contains(event.target)) {
-  //     langPicker.classList.remove('open');
-  //   }
-  // }
-  // );
 
 }
 
