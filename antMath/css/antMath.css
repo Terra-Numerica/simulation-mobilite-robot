@@ -7,6 +7,31 @@ body {
     
 }
 
+#logo{
+    position: fixed;
+    left: 0;
+    background-color: var(--navyColorTN);
+    border-radius: 0 0 15px 0;
+    /* Over the playPanel */
+    z-index: 2; 
+    
+}
+
+#logo>img{
+    /* height: var(--iconHeight);
+    min-height: var(--minIconHeight);
+    width: auto;
+    border-radius: 5px; */
+
+
+    height: calc(var(--iconHeight) - 5.5px);
+    min-height: var(--minIconHeight);
+    width: auto;
+    /* border-radius: 5px; */
+    margin: var(--marginTopIcon);
+
+}
+
 div.alert{
     position: fixed;
     top: 50%;
@@ -236,6 +261,19 @@ button.iconBar-button:hover {
 /* ==========================================================*/
 
 @media (max-width : 900px) {
+
+    #logo{
+        position: absolute;
+        left: auto;
+        top: auto;
+        right: 0;
+        bottom: 0;
+        /* background-color: var(--navyColorTN); */
+        border-radius: 15px 0 0 0;
+    }
+    
+    
+    
 
     /*=========================== ICON DIV =====================================  */
 
