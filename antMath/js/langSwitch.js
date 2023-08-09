@@ -19,30 +19,7 @@ if (!lang_support.includes(language)) {
 function updateLanguage(elt){
     language = elt.value;
     switchLang2();
-
-
-
-    // moveInputToFirstPosition(elt);
-
-
-
-    // console.log("Après le choix, reset le style");
-    // Rappel : le style est défini dans le fichier css
-    // height:var(--iconHeight); 
-    // min-width:var(--minIconHeight);
-    // min-height: var(--minIconHeight);
-
-    // On reset le style de la division
-    // let div = document.getElementById("lang-picker");
-    // console.log("height : " + div.style.height);
-    // div.style.height = "var(--iconHeight)";
-    // console.log("height : " + div.style.height);
-    // div.style.minWidth = "var(--minIconHeight)";
-    // div.style.minHeight = "var(--minIconHeight)";
-
-
-
-
+    moveInputToFirstPosition(elt);
 }
 
 console.log("Language : " + language);

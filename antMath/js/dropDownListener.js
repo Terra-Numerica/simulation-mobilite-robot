@@ -7,7 +7,7 @@ function dropDownListener1() {
     toggleDropdown(backgroundPickerDiv);
   });
 
-  document.getElementById('icon-lang-picker').addEventListener('touchend', () => {
+  document.querySelector('#lang-picker>label').addEventListener('touchend', () => {
     console.log('icon-lang-picker touchend: Opening langPicker');
     toggleDropdown(langPicker);
   });
@@ -90,7 +90,7 @@ function dropDownListener(){
   });
 
   // whent touchend on icon-lang-picker, open langPicker and close backgroundPickerDiv
-  document.getElementById('icon-lang-picker').addEventListener('touchend', (event) => {
+  document.querySelector('#lang-picker>label').addEventListener('touchend', (event) => {
     event.stopPropagation();
     console.log('toggle langPicker and close backgroundPickerDiv');
     toggleDropdown(langPicker);

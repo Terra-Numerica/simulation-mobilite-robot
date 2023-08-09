@@ -1,0 +1,11 @@
+Version : chemin vers bouf --> PAS VOYAGEUR de commerce
+
+Idée de structure de donnée :
+--> liste de points un peu comme pour la drawing app
+
+Fourmi qui follow les points du chemin --> en mode toutes les fourmis = la première fourmi de antMath
+Ajouté un "poids" à chaque points de la liste = probabilité de suivre ce point
+--> si la fourmi est sur un point, on incrémente le poids de ce point.
+
+On suit un point en fonction du poids et si suffisament près.
+

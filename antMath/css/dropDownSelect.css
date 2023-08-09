@@ -100,9 +100,9 @@
 
 /* .dropdown-square>input ~ label */
 
-.dropdown-square>input:checked + label{
+/* .dropdown-square>input:checked + label{
     background-color: var(--hoverIconColor);
-}
+} */
 
 
 label[for=choiceBackgroundGrass] {background-image:url("../img/background/ground3.jpg");}
