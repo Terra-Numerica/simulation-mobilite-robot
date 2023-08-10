@@ -35,7 +35,7 @@ var DrawingApp = /** @class */ (function () {
         };
         //when dragged
         this.dragEventHandler = function (e) {
-            console.log("dragEventHandler");
+            // console.log("dragEventHandler");
             if (draw) {
                 var mouseX = e.changedTouches ?
                     e.changedTouches[0].pageX :
