@@ -260,7 +260,7 @@ function initPage() {
     // Pas touche au path selection 
 
     // showHideDataViewer();
-    switchLang2();
+    switchLang();
     includeAllHTML();
 
     // Set as checked the input radio of the language associaate

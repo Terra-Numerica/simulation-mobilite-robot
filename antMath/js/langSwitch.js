@@ -18,7 +18,7 @@ if (!lang_support.includes(language)) {
  */
 function updateLanguage(elt){
     language = elt.value;
-    switchLang2();
+    switchLang();
     moveInputToFirstPosition(elt);
 }
 
@@ -74,7 +74,7 @@ function includeHTML(elmnt) {
 
 
 
-function switchLang2() {
+function switchLang() {
     if (!lang_support.includes(language)) {
         language = "en";
     }
