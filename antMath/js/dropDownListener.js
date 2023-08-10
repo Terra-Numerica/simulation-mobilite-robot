@@ -167,11 +167,13 @@ function dropDownListener() {
   const backgroundPickerDiv = document.getElementById('background-picker-div');
 
   backgroundPickerIcon.addEventListener('touchend', (event) => {
+    event.stopPropagation();
     console.log('Background Picker Icon touchend: toggling backgroundPickerDiv');
     toggleDropdown(backgroundPickerDiv);
   });
 
   backgroundPickerIcon.addEventListener('mouseenter', (event) => {
+    event.stopPropagation();
     console.log('Background Picker Icon mouseenter: opening backgroundPickerDiv');
     openDropdown(backgroundPickerDiv);
     console.log('Background Picker Icon mouseenter: closing langPicker');
@@ -179,12 +181,15 @@ function dropDownListener() {
   });
 
   backgroundPickerDiv.addEventListener('mouseleave', (event) => {
+    event.stopPropagation();
     console.log('Background Picker Div mouseleave: closing backgroundPickerDiv');
     closeDropdown(backgroundPickerDiv);
   });
 
   backgroundPickerInputs.forEach((input) => {
+    
     input.addEventListener('click', (event) => {
+      event.stopPropagation();
       event.stopPropagation();
       console.log('Background Picker Input click: closing backgroundPickerDiv');
       closeDropdown(backgroundPickerDiv);
@@ -198,17 +203,20 @@ function dropDownListener() {
 
   langPickerInputs.forEach((input) => {
     input.addEventListener('touchend', (event) => {
+      event.stopPropagation();
       console.log('Lang Picker Input touchend: toggling langPicker');
       toggleDropdown(langPicker);
     });
   });
 
   langPicker.addEventListener('mouseenter', (event) => {
+    event.stopPropagation();
     console.log('Lang Picker mouseenter: opening langPicker');
     openDropdown(langPicker);
   });
 
   langPicker.addEventListener('mouseleave', (event) => {
+    event.stopPropagation();
     console.log('Lang Picker mouseleave: closing langPicker');
     closeDropdown(langPicker);
   });
