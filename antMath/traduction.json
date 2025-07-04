@@ -1,0 +1,26 @@
+{
+    "controlPanel": {
+        "en":"Control Panel",
+        "fr":"Panneau de Contrôle"
+    },
+    "antSpeed":{
+        "en":"Ant's Speed",
+        "fr":"Vitesse des Fourmis"
+    },
+    "antSpacing":{
+        "en":"Ant's Spacing",
+        "fr":"Espacement des Fourmis"
+    },
+    "antPath":{
+        "en":"Ant's path Selected",
+        "fr":"Foumis sélectionnée"
+    },
+    "stopButton":{
+        "en":"Stop",
+        "fr":"Arrêt"
+    },
+    "startButton":{
+        "en":"Start",
+        "fr":"Départ"
+    }
+}
