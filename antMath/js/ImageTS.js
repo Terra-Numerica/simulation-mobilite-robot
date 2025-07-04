@@ -44,10 +44,12 @@ function resetDraw(element) {
 function pauseDraw(element) {
     if (Pause) {
         Pause = false;
+        element.innerText = "Stop";
         setTimeout(startAnts, 10, firstAnt, d, firstX, firstY);
     }
     else {
         Pause = true;
+        element.innerText = "Start";
     }
 }
 function drawPath(element) {

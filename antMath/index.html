@@ -8,31 +8,27 @@
     <!-- Parameters to import library -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Library Online -->
+    <!-- Library  Graphique-->
     <script type="text/javascript" src="./library/gif.js.optimized/dist/gif.js"></script>
-
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.min.js"></script> -->
-    <!-- library downloaded -->
     <script type="text/javascript" src="library/chart.min.js"></script>
     <script type="text/javascript" src="library/granim.min.js"></script>
-
-    
-    <!-- Library Local -->
+    <!-- Library to translate -->
+    <script src="library/jquery-3.7.0.min.js"></script>
+    <script src="library/jquery.cookie.js"></script>
+    <!-- My Library -->
     <script src="./js/Ant.js"></script>
     <script src="./js/DrawingAnt.js"></script>
     <script src="./js/ImageTS.js"></script>
     <script src="./js/canvas.js"></script>
     <script src="./js/curve.js"></script>
-    <!-- CSS -->
-    <link rel="stylesheet" href="./css/antMathV3.css">
-
-    <!-- ADD js for button -->
     <script src="./js/button.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/antMathV3.css">  
 
 </head>
 
 <body>
+    
 
     <!-- Menu for Smartphone -->
     <img src="/antMath/img/menu_boutton_opaque.png" alt="Menu button" id="menuButton" onclick="displayControlPanel()">
@@ -46,7 +42,7 @@
     <div id="controlPanel">
         <!-- Input -->
         <div id="inputControler">
-            <h1>Control Panel</h1>
+            <h1> Control Panel</h1>
             <!-- Slider -->
             <div id="antControler">
                 <div>
@@ -67,8 +63,8 @@
             </div>
             <!-- Button -->
             <div id="gameControler">
-                <button class="controlButton" onclick="pauseDraw(this)">Pause</button>
-                <button class="controlButton" onclick="EndScreenOne(this)">Download1</button>
+                <button class="controlButton" onclick="pauseDraw(this)">Stop</button>
+                <button class="controlButton" onclick="EndScreenOne(this)">GIF</button>
                 <button class="controlButton" onclick="resetDraw(this)">Reset</button>
                 <button class="controlButton" onclick="drawMainPaths(this)">All Path</button>
 

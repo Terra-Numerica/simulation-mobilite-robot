@@ -38,6 +38,9 @@ canvas:not(#curve){
     width: 25%;
     left: 75%;
     background-color: white;
+    /* Permet de l'afficher par dessus les fourmis si réduction */
+    position: absolute;
+    z-index: 999;
     /* Permet surement de réafficher après mini screen */
     /* display: block; */
 }
